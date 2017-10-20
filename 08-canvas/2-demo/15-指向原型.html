@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Cat(age){
+        // 直接这样传的话参数不能乱序，可以改为直接传一个对象进来
+        this.age = age;
+    }
+
+    // 升级版1
+    function Cat1(option){
+        this.age = option.age;
+        this.x = option.x;
+    }
+
+    // 升级版2
+    function Cat2(option){
+        this._init(option);
+    }
+    Cat2.prototype = {
+        _init:function(option){
+            this.age = option.age || '';
+        },
+        show:function(){
+            console.log(this.age);
+        }
+    };
+
+    Cat.prototype.show = function(){
+        console.log(this.age);
+    };
+    // 保证函数只存一份且所有对象都能使用
+
+    var cat1 = new Cat();
+        cat1.age = 11;
+    var cat2 = new Cat(20);
+
+    cat1.show();
+    cat2.show();
+
+</script>
+</body>
+</html>

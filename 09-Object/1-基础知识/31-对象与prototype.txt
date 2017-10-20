@@ -1,0 +1,3 @@
+    任何一个对象都是由Function创建的，
+所以任何一个对象都有prototype属性，指向Function;
+除此之外还有_proto_属性，指向原型;

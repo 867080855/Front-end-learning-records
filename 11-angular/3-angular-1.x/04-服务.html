@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-app="service">
+    <span>$http服务</span>
+    <div  ng-controller="httpCtrl">
+        <div>
+            {{wel}}
+        </div>
+    </div>
+    <hr>
+    <span>$location服务</span>
+    <div  ng-controller="urlCtrl">
+        <div>
+            {{myUrl}}
+        </div>
+        <div>
+            {{welcome}}
+        </div>
+    </div>
+    <hr>
+    <span>$tiemout服务</span>
+    <div ng-controller="timeCtrl">
+        <div>
+            {{content}}
+        </div>
+    </div>
+    <hr>
+    <span>$interval</span>
+    <div ng-controller="intervalCtrl">
+        <div>
+            {{num}}
+        </div>
+    </div>
+    <hr>
+    <span>自定义服务</span>
+    <div ng-controller="defineCtrl">
+        <div>
+            {{num}}
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+<script>
+    angular.module('service',[])
+        .controller('httpCtrl',function ($scope) {
+            $scope.wel = 3;
+    })
+        .controller('urlCtrl',function ($scope,$location) {
+            // 获取当前url地址
+            $scope.myUrl = $location.absUrl();
+
+            $scope.welcome = 2;
+        })
+        .controller('timeCtrl',function ($scope,$timeout) {
+            $scope.content = 'hello world';
+            $timeout(function () {
+                $scope.content = 'the timer was used!'
+            },2000);
+        })
+        .controller('intervalCtrl',function ($scope,$interval) {
+            var a = 1;
+            $interval(function () {
+                $scope.num = a;
+                a++;
+            },500);
+        })
+        // 控制器defineCtrl，负责调用自定义服务define
+        .controller('defineCtrl',function ($scope,define) {
+            var a = 10;
+            $scope.num = define.init(a);
+        })
+        // 自定义服务，并且在defineCtrl中调用
+        .service('define',function () {
+            this.init = function (a) {
+                return a-4;
+            }
+        })
+
+
+</script>
+</body>
+</html>

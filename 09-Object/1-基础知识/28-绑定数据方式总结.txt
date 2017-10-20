@@ -1,0 +1,6 @@
+1. ×Ö·û´®Æ´½Ó
+    var json = {name:'john'};
+    var str = '';
+
+    str += json.name;
+2. join

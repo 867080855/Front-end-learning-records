@@ -1,0 +1,20 @@
+属性屏蔽理论
+    function fn(){
+        this.name = 'ssss';
+    }
+
+    fn.prototype = {
+        name:'ddddd'
+    }
+
+    var f = new fn();
+    console.log(f);
+    console.log(f.name);   // ssss
+-----------------------------------------
+    根据属性搜索机制，先行检索构造函数的属性，发现目标属性，
+故原型中的name被屏蔽
+========================================
+原型中被屏蔽的属性该怎么被访问呢？
+    两种方法：
+        1. delete fn.name;
+        2. fn.prototype.name;

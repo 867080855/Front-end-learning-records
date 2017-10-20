@@ -1,0 +1,6 @@
+Ô­Éú£º
+    1. innerHTML
+    2. createElement & setAttribute
+jQuery:
+    3. html()
+    4.

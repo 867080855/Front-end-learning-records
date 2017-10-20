@@ -1,0 +1,50 @@
+Function:
+    - arguments
+        一个伪数组，用于保存函数中的参数(实参)
+        遇到函数的参数个数不确定，需要函数可以传递无限个参数时有两种解决方法：
+            1. 使用arguments
+            2. 传递一个数组给函数
+        属性：arguments.length----实参个数
+    - length
+        形参个数
+        fn.length----函数fn的形参个数
+    - call(供爷法则)
+        作用：
+            1. 借用
+                相当于把别人的方法放到自己中来，用完清空
+                借用别的(对象中已经存在的方法)/(函数)，借用谁的方法就把谁放在前边
+                tarClass.fn.call(ownClass);
+            2. 将伪数组改成真数组(调用Array的slice方法)(通过修改slice的this指向)
+                var json = {0:'',1:'',length};
+                var arr = Array.prototype.slice.call(json);
+                伪数组：
+                    - 包含length属性的json对象，不是一个真数组
+                    - key都是1,2,3,4,5...
+                    - 与真数组一样都是在模拟集合，只是模拟的方式不太一样，伪数组每次都需要自己去计算length
+                    - 没有数组那么多的方法
+                    - 出现的初衷：
+
+                    - 典型的伪数组
+                        var divs = document.getElementById('div');
+                        arguments
+                        jquery的框架
+    - apply(特别适合传递数组参数)
+        功能与call一样，但是参数不一样。
+        call传参是平铺的，apply使用数组传参。可以和arguments结合使用实现一些比较牛逼的功能
+        作用：
+            1. 求数组最值
+                var arr = [1,2,3,4,5];
+                Math.max.apply(null,arr);
+                为什么apply可以实现求最大值？max函数只接受离散的参数值。
+                    答：因为apply允许我们将一个数组"解开"成为一个个的参数再传递给调用函数
+                为什么是null？
+                    答：表示max函数不需要更改this指向。
+            2. 数组拼接(见demo21)
+    - callee(不是Function的直系属性)
+        返回正在被执行的函数对象
+        arguments.callee
+    - caller
+        返回函数的调用者，主要用来查看函数被谁调用
+    - constructor
+        判断实例基于哪一个构造函数造出来的
+    - prototype

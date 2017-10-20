@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="sprite.js"></script>
+</head>
+<body>
+    <div id="container">
+        <canvas>
+
+        </canvas>
+    </div>
+    <div class="box">
+        <button id="btn-down">↓</button>
+        <button id="btn-left">←</button>
+        <button id="btn-right">→</button>
+        <button id="btn-up">↑</button>
+    </div>
+    <script>
+        (function () {
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            // 封装一个对象
+            // 对象的属性：width,height,speed,direction,imgsrc
+            // 对象的方法：render(渲染) changeDir(改变方向)
+
+            var s = new Sprite({
+                x:300,
+                y:300,
+                w:80,
+                h:130,
+                fps:5,
+                oW:40,
+                oH:65,
+                src:'images/gameImgs/DMMban.png'
+            });
+            s.render(ctx);
+
+            var btn_left = document.querySelector('#btn-left');
+            var btn_right = document.querySelector('#btn-right');
+            var btn_up = document.querySelector('#btn-up');
+            var btn_down = document.querySelector('#btn-down');
+
+            btn_left.onclick = function () {
+                s.changeDir('left');
+            };
+            btn_right.onclick = function () {
+                s.changeDir('right');
+            };
+            btn_up.onclick = function () {
+                s.changeDir('up');
+            };
+            btn_down.onclick = function () {
+                s.changeDir('down');
+            };
+
+        }());
+    </script>
+
+</body>
+</html>

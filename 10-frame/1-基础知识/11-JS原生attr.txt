@@ -1,0 +1,13 @@
+1.设置属性
+    a.
+        ele.name = '';
+        ele.id = '';
+        ele.className = ''; // class属性设置比较特殊。
+    b.
+        ele.setAttribute(key,value);
+2. 获取属性
+    a.
+        var tar = ele.name;
+    b.
+        var tar = ele.getAttribute(key);
+

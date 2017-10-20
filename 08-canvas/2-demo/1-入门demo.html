@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- canvas 一般不使用style去写宽高。用js去定义。-->
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <canvas id="demo" width="600px" height="600px">
+        <!--ie9以上才支持canvas-->
+        <!--你的浏览器不支持canvas，请升级浏览器-->
+    </canvas>
+    <script>
+        // 拿到canvas画布
+        var canvas = document.getElementById("demo");
+        // canvas.style.width = '600px';
+            // 千万不能这么写。这还是style样式
+        canvas.style.border = '1px solid red';
+            // 边界可以写
+        canvas.width = 600;
+        canvas.height = 600;
+        // 拿到canvas上下文
+        var ctx = canvas.getContext('2d');  // 有 2d 和 webgl 两个带选项
+            // webgl 表示3d上下文。
+
+        // 描绘路径
+        ctx.moveTo(100,100);
+        ctx.lineTo(200,100);
+        ctx.lineTo(100,200);
+
+        // 闭合最后一条边
+//        ctx.lineTo(100,100);
+        ctx.closePath();
+
+        // 设置线宽
+        ctx.lineWidth = 4;  // 2像素靠内，2像素靠外
+
+        // 描边
+        ctx.strokeStyle = 'red';    // 所有的颜色表示方法都试用
+        ctx.stroke();
+
+        // 填充
+        ctx.fillStyle = 'skyblue';
+        ctx.fill(); // 默认填充色为黑色，线宽减半。
+
+
+
+
+    </script>
+</body>
+</html>

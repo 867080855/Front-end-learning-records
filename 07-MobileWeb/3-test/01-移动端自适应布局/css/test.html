@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*margin属性是用来定义兄弟盒子之间的距离的
+        在定义父子之间的距离的时候，margin-top属性会失效
+        可以用padding属性去定义。
+        */
+        section {
+            width: 400px;
+            height: 400px;
+            margin:0 auto;
+            background-color: blue;
+        }
+
+        section div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin:0 auto;
+            padding-top:30px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+
+        </div>
+    </section>
+</body>
+</html>

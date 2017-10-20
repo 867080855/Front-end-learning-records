@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <style>
+        body {
+            padding:0;
+            margin:0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+    </style>
+    <script src="konva.js"></script>
+    <script src="ProgressBar.js"></script>
+</head>
+<body>
+<div id="box">
+
+</div>
+</body>
+<script>
+    // 1. 创建舞台
+    var stage = new Konva.Stage({
+        container:'box',
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+
+    // 2. 创建层 可以添加很多层，背景层，光照层，动画层
+    var layer = new Konva.Layer();
+
+    // 3.把层添加到舞台
+    stage.add(layer);
+
+    // 中心点坐标，有什么用？
+    var cenX = stage.width()/2;
+    var cenY = stage.height()/2;
+    // Konva中获取属性都是靠内部的方法获取
+
+    // 4. 创建进度条对象
+    var p = new ProgressBar({
+        x:stage.width()/8,
+        y:stage.height()/2,
+        w:stage.width()*3/4,
+        h:stage.height()/12,
+        opacity:0.7,
+        fill:'lightblue',
+        stroke:'black',
+        cornerRadius:stage.height()/24
+    });
+    console.log(p);
+    console.log(p.group);
+
+    p.addToGroupOrLayer(layer);
+
+    p.changeValue(100);
+
+    layer.draw();
+
+//    p.changeValue(100);
+        // 方法调用的前后都可以让进度条发生变化
+</script>
+</html>

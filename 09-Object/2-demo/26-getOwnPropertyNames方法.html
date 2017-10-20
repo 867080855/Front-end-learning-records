@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Obj(){
+        this.name = 'obj';
+        this.show = function(){
+            console.log('i am show')
+        }
+    }
+    Obj.prototype = {
+        proto2:function () {
+            console.log('i am come from obj')
+        }
+    }
+
+    console.log(Object.getOwnPropertyNames(new Obj()));     // 获取对象中所有属性或方法
+    // name show 不会显示原型中的方法，因为那是继承来的
+    console.log(Object.keys(new Obj()));    // 获取对象中可以枚举的属性或方法
+    // name show
+
+
+    // 用于判断某个属性定义在对象自身，还是定义在原型链上。
+    console.log(Obj.prototype.hasOwnProperty('proto2'));    // true?????
+
+
+
+
+    console.log(Object.getOwnPropertyNames(Obj));
+    //length name arguments caller prototype
+</script>
+</html>

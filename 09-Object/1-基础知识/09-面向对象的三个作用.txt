@@ -1,0 +1,14 @@
+1. 面向对象编程
+    单个实例开发页面
+        bindDOM
+            单一职责原则(每个对象只负责自己的内容)
+2. 封装数据(绑定数据)
+    描述数据-json-ajax交互-后台交互
+    绑定数据三种方式：
+        1. 原生
+        2. jQuery
+        3. 模板
+            formatString()
+            art template
+            understore
+3. 封装框架

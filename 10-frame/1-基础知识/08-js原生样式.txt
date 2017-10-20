@@ -1,0 +1,15 @@
+1.设置样式
+    - ele.style.color = 'yellow';
+    - ele.style['color'] = 'yellow';
+    封装框架时只能使用第二种键值对的方式设置样式。
+2. 获取样式
+    - ele.style.color
+    - window.getComputedStyle(ele [,'伪类'])
+    第一种方式有缺陷：
+        动态添加的样式无法获取
+        class添加的样式无法获取
+    第二种方式也有缺陷：
+        无法设置，只能获取
+    ---------------------------------------------
+    ie浏览器(低版本)：
+        ele.currentStyle['color']

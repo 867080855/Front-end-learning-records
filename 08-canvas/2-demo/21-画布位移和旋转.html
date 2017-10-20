@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <canvas>
+
+        </canvas>
+    </div>
+    <script>
+        // 值得注意的是，画布的修改的影响范围只在其定义之后才能生效。
+            // 想要之后继续绘制的图形不受影响可以依靠save()和restore()方法实现
+        (function () {
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            ctx.fillStyle = 'teal';
+            ctx.fillRect(10,10,50,50);
+
+            ctx.save(); // 保存当前上下文的状态。
+
+            ctx.translate(300,300);
+                // 画布的移动让坐标系的绘制变得简单了不少
+            ctx.rotate(45*Math.PI/180);
+            ctx.scale(2,2);
+                //整个画布x,y方向放大两倍。
+            ctx.globalAlpha = .3;
+            ctx.moveTo(0,0);
+            ctx.lineTo(400,0);
+            ctx.moveTo(0,0);
+            ctx.lineTo(0,400);
+            ctx.stroke();
+
+            ctx.fillRect(10,10,50,50);
+
+            ctx.restore();  // 还原上一次保存的状态
+                // 状态2 会消失，但是之前状态2 内绘制的东西还存在。
+
+            ctx.fillRect(540,540,50,50);
+
+
+        }());
+    </script>
+</body>
+</html>

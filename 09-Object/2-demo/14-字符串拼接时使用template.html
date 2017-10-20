@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../4-frame/tecFrame.js"></script>
+    <script src="template.js"></script>
+</head>
+<body>
+<p id="box"></p>
+<script>
+    var film = {
+        "name":"美人鱼",
+        "lead":"周星驰",
+        "actor":"邓超、林允"
+    };
+
+    var str = '';
+        str += '<strong>电影名称：</strong>{{name}} <br/>';
+        str += '<strong>导演：</strong>{{lead}} <br/>';
+        str += '<strong>主演：</strong>{{actor}}';
+
+    // 注意拼接完成需要两步。
+        // 1. template.compile()
+        // 2. render()
+    var render = template.compile(str);
+    var con = render(film);
+    var box = $$.$id('box');
+
+    box.innerHTML = con;
+
+
+</script>
+</body>
+</html>

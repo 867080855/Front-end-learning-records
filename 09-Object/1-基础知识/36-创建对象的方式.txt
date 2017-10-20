@@ -1,0 +1,28 @@
+1. 构造函数创建
+    function Constructor(option){
+        this.name = option.name;
+        this.attack = function(){};
+    }
+2. 原型创建
+    var Role = function(){};
+    Role.prototype.name = data.name;
+    Role.prototype.attack = function(){};
+3. 混合模式创建(双对象模式)
+        -- 用这种方式
+        -- 值类型放在构造函数里边
+        -- 引用类型放在原型里边
+    function Role(option){
+        this.name = option.name;
+    }
+    Role.attack = function(){};
+4. 拷贝模式(框架课很常用)
+    function extend(tar,source){
+        for(var k in source){
+            tar[k] = source[k];
+        }
+        return tar;
+    }
+    var boy = {
+        name:'无忌'
+    };
+    var p = extend({},boy);

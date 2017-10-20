@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>测试内容见console控制台</p>
+<script>
+    var a = {"x":2};
+    var b = a;
+    a.x = 1;
+    console.log(b.x); // 1
+
+    a = {"x":3};
+        // 创建了一个新的对象，并为其分配了一个新的内存空间，
+            // 而b还指向以前的对象
+    console.log(b.x); // 1
+
+    a.x = 4;
+        // 修改的是新对象的x的值，不影响旧对象
+    console.log(b.x); // 1
+</script>
+</body>
+</html>

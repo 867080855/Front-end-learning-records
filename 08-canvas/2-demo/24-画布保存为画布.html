@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 把canvas的绘制内容输出称base64内容
+        语法：
+            canvas.toDataURL\l(type,encoderOptions)
+            canvas.toDataURL\l('image/jpeg',.5)
+    -->
+    <script src="Rect.js"></script>
+</head>
+<body>
+    <canvas id="canvas1">
+
+    </canvas>
+    <canvas id="canvas2">
+
+    </canvas>
+    <img src="" alt="" id="img_ID"/>
+    <script>
+        var canvas = document.querySelector('#canvas1');
+        var ctx = canvas.getContext('2d');
+
+        canvas.width = 600;
+        canvas.height= 600;
+        canvas.style.border = "1px solid #000";
+
+        var obj = new Rect({
+            x:20,
+            y:20,
+            w:100,
+            h:100,
+            scaleX:1.5,
+            scaleY:1.5,
+            strokeStyle:'black',
+            fillStyle:'skyblue',
+            opacity:0.7
+        });
+        obj.render(ctx);
+
+        // 把canvas 转换成一个图片
+        var result = canvas.toDataURL('image/png');
+        console.log(result);
+
+
+        // 拿到img
+        var img = document.querySelector("#img_ID");
+        img.src = result;
+
+        // 让图片动起来
+        setInterval(function () {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            obj.x += 20;
+            obj.render(ctx);
+
+//            var img = document.querySelector("#img_ID");
+//            img.src = canvas.toDataURL('image/png');
+
+            ctx2.drawImage(canvas,0,0);
+        },100);
+    </script>
+    <script>
+        // 画布渲染另一个画布
+        var canvas2 = document.querySelector("#canvas2")
+        var ctx2 = canvas2.getContext('2d');
+
+        canvas2.width = 500;
+        canvas2.height = 500;
+        canvas2.style.border = '1px solid orange';
+    </script>
+</body>
+</html>

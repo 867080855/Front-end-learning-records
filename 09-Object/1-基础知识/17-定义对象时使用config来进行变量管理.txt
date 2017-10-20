@@ -1,0 +1,26 @@
+    定义对象时，因为在不同的方法内，可能会多次使用同一
+个DOM对象，若使用时在不同的方法内多次重复定义，会导致内存的
+极大浪费， 因此，在对象的属性中加一个公有的config属性可以合理
+的解决这一问题：
+    config的使用有如下优点：
+        1. 变量统一管理
+        2. 节省内存，解决代码重复性问题
+        3. 方便内存回收
+    定义方式：
+        function Product(){
+            this.name = name;
+            this.age = age;
+
+            this.config = {
+                btn = document.getElementById('btn');
+                ...
+            };
+
+            // 使用config内的变量
+            var self = this;
+
+            function bindDOM = function(){
+                // 使用that调用，否则报错
+                that.config.btn.innerHTML = that.name;
+            }
+        }

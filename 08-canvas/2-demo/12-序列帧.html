@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <canvas>
+
+        </canvas>
+    </div>
+    <script>
+        (function () {
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            var img = new Image();
+            img.src = 'images/gameImgs/DMMban.png';
+
+            img.onload = function () {
+                var timer = null;
+                var imgW = 40;
+                var imgH = 65;
+                var frameIndex = 0;
+
+                timer = setInterval(function () {
+//                    ctx.clearRect(0,0,canvas.width,canvas.height);
+                        // 清除之前的图片墨迹
+                    canvas.width = canvas.width;
+                        // 也可以有清除图片墨迹的效果，如果通过代码重新设置
+                    // 画布的宽高，那么所有内容都会被清空。但是不建议使用。
+
+                    ctx.drawImage(img,40*frameIndex,0,imgW,imgH,
+                                        100,100,80,65*2);
+                    frameIndex++;
+                    frameIndex>3? frameIndex=0: frameIndex;
+                },1000/6);
+            }
+        }());
+    </script>
+</body>
+</html>

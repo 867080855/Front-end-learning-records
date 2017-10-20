@@ -1,0 +1,13 @@
+1. 普通方式
+    function fn(){}
+    fn();
+2. 函数表达式
+    var fn = function(){}
+    fn();
+3. 构造函数调用
+    var o = {};
+    o.fn = function(){};
+    o.fn();
+4. call,apply调用
+5. Function对象定义函数
+    var fn = new Function('a','b','return a + b');

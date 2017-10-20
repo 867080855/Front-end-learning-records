@@ -1,0 +1,661 @@
+/*=========================================common================================ */
+body {
+  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+a:hover{
+  text-decoration: none;
+}
+/* =======================================Bootstrap(button)========================= */
+.btn-register { 
+  color: #ffffff; 
+  background-color: #ED4E26; 
+  border-color: #F75F0D; 
+} 
+ 
+.btn-register:hover, 
+.btn-register:focus, 
+.btn-register:active, 
+.btn-register.active, 
+.open .dropdown-toggle.btn-register { 
+  color: #ffffff; 
+  background-color: #F73920; 
+  border-color: #F75F0D; 
+} 
+ 
+.btn-register:active, 
+.btn-register.active, 
+.open .dropdown-toggle.btn-register { 
+  background-image: none; 
+} 
+ 
+.btn-register.disabled, 
+.btn-register[disabled], 
+fieldset[disabled] .btn-register, 
+.btn-register.disabled:hover, 
+.btn-register[disabled]:hover, 
+fieldset[disabled] .btn-register:hover, 
+.btn-register.disabled:focus, 
+.btn-register[disabled]:focus, 
+fieldset[disabled] .btn-register:focus, 
+.btn-register.disabled:active, 
+.btn-register[disabled]:active, 
+fieldset[disabled] .btn-register:active, 
+.btn-register.disabled.active, 
+.btn-register[disabled].active, 
+fieldset[disabled] .btn-register.active { 
+  background-color: #ED4E26; 
+  border-color: #F75F0D; 
+} 
+ 
+.btn-register .badge { 
+  color: #ED4E26; 
+  background-color: #ffffff; 
+}
+
+/* ==============================Bootstrap(navbar)===================================== */
+.navbar-itcast {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  margin-bottom:0;
+  width: 100%;
+  top: 0;
+}
+.navbar-itcast .navbar-brand {
+  color: #777;
+}
+.navbar-itcast .navbar-brand:hover,
+.navbar-itcast .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.navbar-itcast .navbar-text {
+  color: #777;
+}
+.navbar-itcast .navbar-nav > li > a {
+  color: #777;
+}
+.navbar-itcast .navbar-nav > li > a:hover,
+.navbar-itcast .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: transparent;
+  border-bottom: 2px solid #ED4E26;
+}
+.navbar-itcast .navbar-nav > .active > a,
+.navbar-itcast .navbar-nav > .active > a:hover,
+.navbar-itcast .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: transparent;
+  border-bottom: 2px solid #ED4E26;
+}
+.navbar-itcast .navbar-nav > .disabled > a,
+.navbar-itcast .navbar-nav > .disabled > a:hover,
+.navbar-itcast .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.navbar-itcast .navbar-toggle {
+  border-color: #ddd;
+}
+.navbar-itcast .navbar-toggle:hover,
+.navbar-itcast .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.navbar-itcast .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.navbar-itcast .navbar-collapse,
+.navbar-itcast .navbar-form {
+  border-color: #e7e7e7;
+}
+.navbar-itcast .navbar-nav > .open > a,
+.navbar-itcast .navbar-nav > .open > a:hover,
+.navbar-itcast .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+@media (max-width: 767px) {
+  .navbar-itcast .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .navbar-itcast .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-itcast .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-itcast .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-itcast .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+.navbar-itcast .navbar-link {
+  color: #777;
+}
+.navbar-itcast .navbar-link:hover {
+  color: #333;
+}
+.navbar-itcast .btn-link {
+  color: #777;
+}
+.navbar-itcast .btn-link:hover,
+.navbar-itcast .btn-link:focus {
+  color: #333;
+}
+.navbar-itcast .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-itcast .btn-link:hover,
+.navbar-itcast .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-itcast .btn-link:focus {
+  color: #ccc;
+}
+/* ========================Bootstrap(tabs)=========================== */
+.panel-itcast {
+  border-color: #ddd;
+  border-radius: 0;
+  box-shadow: 1px 1px 5px #ccc;
+  background-color: #e0e0e0;
+}
+.panel-itcast.active {
+  background-color: #F73920;
+  color: #fff;
+}
+.panel-itcast.active::after {
+  content: '\e915';
+  font-family: 'weijinsuo';
+  font-size: 41px;
+  position: absolute;
+  left: 15px;
+  top: -9px;
+}
+.panel-itcast > .panel-heading > p {
+  padding: 50px 0;
+  color: #fff;
+}
+.panel-itcast > .panel-heading > p > strong {
+  font-size: 30px;
+}
+.panel-itcast > .panel-heading {
+  color: #333;
+  /* background-color: #f5f5f5; */
+  /* border-color: #ddd; */
+  float: right;
+  width: 120px;
+  height: 150px;
+  border-left: 1px dashed #c0c0c0;
+  text-align: center;
+  position: relative;
+  padding: 0;
+}
+.panel-itcast > .panel-heading::before,
+.panel-itcast > .panel-heading::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  position: absolute;
+  left: -8px;
+}
+.panel-itcast > .panel-heading::before {
+  top: -8px;
+}
+.panel-itcast > .panel-heading::after {
+  bottom: -8px;
+  box-shadow: 0 3px 1px #ccc inset;
+}
+.panel-itcast > .panel-heading > .toolTips {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: 30px;
+  padding: 0;
+}
+.panel-itcast > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ddd;
+}
+.panel-itcast > .panel-body {
+  margin-right: 120px;
+  height: 150px;
+}
+.panel-itcast > .panel-body  p {
+  margin-bottom: 0;
+}
+.panel-itcast > .panel-body .col-xs-6 > p:first-child {
+  color: #888;
+}
+.panel-itcast > .panel-heading .badge {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  color: #f5f5f5;
+  background-color: transparent;
+  border-radius: 0;
+  text-align: center;
+  padding: 0;
+  line-height: 20px;
+}
+.panel-itcast > .panel-heading .badge-one {
+  
+color: #F73920;
+  
+border: 1px solid #F73920;
+}
+.panel-itcast > .panel-heading .badge-two {
+  
+color: #337ab7;
+  
+border: 1px solid #337ab7;
+}
+/* ============================icon================================== */
+@font-face {
+  font-family: 'weijinsuo';
+  src: url('../font/MiFie-Web-Font.eot') format('embedded-opentype'), url('../font/MiFie-Web-Font.svg') format('svg'), url('../font/MiFie-Web-Font.ttf') format('truetype'), url('../font/MiFie-Web-Font.woff') format('woff');
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+	font-family: weijinsuo;
+	font-style: normal;	
+}
+
+.icon-mobilephone:before {
+  content: "\e908";
+  font-size: 13px;
+}
+
+.icon-telephone:before {
+  content: "\e909";
+  font-size: 15px;
+}
+.icon-uniE900:before {
+  content: "\e900";
+}
+
+.icon-uniE901:before {
+  content: "\e901";
+}
+
+.icon-uniE902:before {
+  content: "\e902";
+}
+
+.icon-uniE903:before {
+  content: "\e903";
+}
+
+.icon-uniE904:before {
+  content: "\e904";
+}
+
+.icon-uniE905:before {
+  content: "\e905";
+}
+
+.icon-uniE906:before {
+  content: "\e906";
+}
+
+.icon-uniE907:before {
+  content: "\e907";
+}
+
+@font-face {
+	font-family: 'itcast';
+	src: url('../font/itcast.eot') format("embedded-opentype"),
+	url('../font/itcast.svg') format("svg"),
+	url('../font/itcast.ttf') format("truetype"),
+	url('../font/itcast.woff') format("woff");
+}
+
+.ico-weijinsuo::before {
+  content: "\62";
+}
+
+.ico-logo::before {
+  content: "\61";
+}
+
+[class^="ico-"],
+[class*=" ico-"] {
+	font-family: itcast;
+	font-style: normal;	
+}
+
+
+/* ======================================header =====================================*/
+#header{
+	line-height: 40px;
+	font-size: 10px;
+}
+/* topbar */
+#header .topbar .row {
+	border-bottom: 1px solid #c7c7c7;
+	color: #777;
+}
+#header .topbar .row > div{
+	height: 40px;
+}
+#header .topbar .row > div + div{
+	border-left: 1px solid #c7c7c7;
+}
+#header .topbar .row  a{
+	color: #777;
+	font-style: normal;
+} 
+#header .topbar .row .erweima{
+	display: none;
+	position: absolute;
+	left: 15px;
+	top: 38px;
+	z-index: 1001;
+}
+#header .topbar .row .col-md-2:first-child:hover img{
+	display: block;
+}
+#header .topbar .row .btn-register{
+	color: #fff;
+}
+
+/* navbar */
+#header .navbar-itcast {
+    background-color: #fff;
+    border-color: #f5f5f5;
+}
+#header .ico-logo{
+    font-size: 28px;
+    color: #F73920;
+}
+#header .ico-weijinsuo{
+	font-size: 26px;
+}
+/* ================================carousel========================================= */
+#carousel .carousel-inner .item{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+@media (min-width: 768px){
+  #carousel .carousel-inner .item{
+    height: 410px;
+  }
+}
+#carousel .carousel-inner .item > img{
+  width: 100%;
+}
+/* ==================================special============================== */
+#special{
+  /* height: 300px; */
+  /* background-color: orange; */
+  padding: 50px 0;
+  border-bottom: 1px solid #c7c7c7;
+}
+#special > .container > .row > div {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#special > .container > .row > .col-sm-6 > a {
+  color: #333;
+  text-decoration: none;
+}
+#special > .container > .row > .col-sm-6 > a:hover {
+  color: #F73920;
+}
+#special > .container > .row .media-left > i {
+    display: block;
+    font-size: 30px;
+    padding: 10px 0;
+}
+/* ===============================date================================ */
+#date {
+  /* height: 50px; */
+  border-bottom: 1px solid #c7c7c7;
+  /* background-color: red; */
+}
+#date > .container > .row > p {
+  padding: 20px 0;
+  font-size: 15px;
+  /* line-height: 50px; */
+  margin-bottom: 0;
+}
+#date > .container > .row > p > i {
+  font-size: 20px;
+  padding: 0 10px;
+}
+#date > .container > .row > p:nth-of-type(1) > span {
+  color: #F73920;
+}
+#date > .container > .row > p:nth-of-type(1) > a {
+  color: #F73920;
+  border-bottom: 1px dashed #F73920;
+}
+#date > .container > .row > p:nth-of-type(2) > a {
+  color: #000;
+}
+
+/* ==============================production============================= */
+#production {
+  /* height: 300px; */
+  padding: 30px 0;
+  background-color: #f0f0f0;
+}
+#production > .container > .ul-wrapper {
+  overflow-x: scroll;
+/* when you set a attr like this ,PC users will see
+the scroll too.so we need to set it in js.
+  we can not also set it in media quiry,as the scroll
+appears in a dynamic way.*/
+}
+#production > .container > .ul-wrapper > .nav-tabs {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+#production > .container > .ul-wrapper > .nav-tabs > li {
+
+}
+#production > .container > .ul-wrapper > .nav-tabs > li > a{
+  background-color: transparent;
+  color: #000;
+  font-size: 16px;
+  border: 0;
+}
+#production > .container > .ul-wrapper > .nav-tabs > li > a:hover{
+  border: transparent;
+  background-color: #ddd;
+}
+#production > .container > .ul-wrapper > .nav-tabs > li.active {
+  border-bottom: 4px solid #F73920;
+}
+#production > .container > .ul-wrapper > .nav-tabs > li.active > a {
+  border: none;
+  font-style: normal;
+}
+/* ===============================news==================================== */
+#news {
+  padding-top: 40px;
+  border-bottom: 1px solid #c0c0c0;
+}
+#news .news-title {
+  padding: 0 20px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 2px dotted #ccc;
+  position: relative;
+  margin-right: 10px;
+  margin-bottom: 40px;
+}
+#news .news-title::after{
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  bottom: -5px;
+  right: -10px;
+}
+#news .nav-pills {
+  /* margin-top: 40px; */
+}
+#news .nav-pills > li{
+  float: left;
+  margin-right: 20px;
+}
+#news .nav-pills li > a{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #c0c0c0;
+  margin-bottom: 30px;
+  position: relative;
+}
+#news .nav-pills li > a.active,
+#news .nav-pills li > a:hover{
+  background-color: #F73920;
+}
+/* #news .nav-pills li > a::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  width: 0;
+  height: 20px;
+  border: 1px dashed #c0c0c0;
+} */
+#news .tab-content {
+  /* margin-top: 40px; */
+
+}
+#news .tab-content ul {
+  padding-left: 20px;
+  list-style: none;
+  /* background-color: red; */
+}
+/* icon-font */
+.icon-news01:before {
+  content: "\e90e";
+  font-size: 28px;
+  color: #EAEAEA;
+}
+.icon-news02:before {
+  content: "\e90f";
+  font-size: 28px;
+  color: #EAEAEA;
+}
+.icon-news03:before {
+  content: "\e910";
+  font-size: 28px;
+  color: #EAEAEA;
+}
+.icon-news04:before {
+  content: "\e911";
+  font-size: 28px;
+  color: #EAEAEA;
+}
+/* =========================#friends============================= */
+#friends {
+  padding: 30px 0;
+}
+#friends .container {
+  text-align: center;
+}
+#friends ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+#friends li {
+  float: left;
+  width: 120px;
+}
+#friends li + li {
+  border-left: 1px dashed #c0c0c0;
+}
+#friends li a{
+  font-size: 50px;
+  /* margin:0 30px; */
+  color: #c0c0c0;
+}
+#friends li a:hover {
+  color: #F73920;
+}
+.icon-uniE930:hover {
+  color: #df3232;
+}
+
+.icon-uniE930:before {
+  content: "\e946";
+}
+
+.icon-uniE92F:hover {
+  color: #e8380d;
+}
+
+.icon-uniE92F:before {
+  content: "\e92f";
+}
+
+.icon-uniE92E:hover {
+  color: #ed6f00;
+}
+
+.icon-uniE92E:before {
+  content: "\e92e";
+}
+
+.icon-uniE92A:hover {
+  color: #159f69;
+}
+
+.icon-uniE92A:before {
+  content: "\e92a";
+}
+
+.icon-uniE929:hover {
+  color: #07569e;
+}
+
+.icon-uniE929:before {
+  content: "\e929";
+}
+
+.icon-uniE931:hover {
+  color: #004098;
+}
+
+.icon-uniE931:before {
+  content: "\e931";
+}
+
+.icon-uniE92C:hover {
+  color: #d32019;
+}
+
+.icon-uniE92C:before {
+  content: "\e92c";
+}
+
+.icon-uniE92B:hover {
+  color: #3eac4a;
+}
+
+.icon-uniE92B:before {
+  content: "\e92b";
+}
+
+.icon-uniE92D:hover {
+  color: #2bb289;
+}
+
+.icon-uniE92D:before {
+  content: "\e92d";
+}
+/* ==============================footer======================== */

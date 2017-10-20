@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			border: 1px solid #000;
+			float: left;
+			margin-right: 20px;
+			margin-bottom:20px;
+		}
+		.container > div {
+			display: inline-block;
+		}
+		.box2 {
+			font-size: 0;
+		}
+		.box2 > span {
+			font-size: 16px;
+		}
+		.left {
+			width: 80%;
+			height: 200px;
+			background-color: orange;
+		}
+		.right {
+			width: 20%;
+			height: 200px;
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="container box1">
+		<span>未做任何修改</span>	
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+	<div class="container box2">
+		<span>设置字体大小为0</span>
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+	<div class="container box3">
+		<span>手动清楚div间距</span>
+		<div class="left"></div><div class="right"></div>
+	</div>
+</body>
+</html>

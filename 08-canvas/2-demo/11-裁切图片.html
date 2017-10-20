@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <canvas>
+
+        </canvas>
+    </div>
+    <script>
+        (function () {
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            var img = new Image();
+            img.src = 'images/gameImgs/DMMban.png';
+
+            img.onload = function () {
+                ctx.drawImage(img,40,65,40,65,100,100,40,65);
+                    // img后边的前四个数字为图片的裁切起点，及裁切宽高。
+                    // img后边的后四个数字为图片的显示起点，及显示的宽高。
+            }
+        }());
+    </script>
+</body>
+</html>

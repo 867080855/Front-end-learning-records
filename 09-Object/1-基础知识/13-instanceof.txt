@@ -1,0 +1,14 @@
+instanceof:
+    用于判断某个实例是不是根据某个构造函数创建的：
+    e.g.
+        function Product(){
+            this.name = 'asdf';
+        }
+        var p = new Product();
+        console.log(p instanceof Product);
+            // true
+    ==========================================
+    可以用来检测数据类型(不常用)
+    比如：
+        var arr = [];
+        console.log(arr instanceof Array);

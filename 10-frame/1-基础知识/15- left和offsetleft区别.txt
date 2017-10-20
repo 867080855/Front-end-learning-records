@@ -1,0 +1,10 @@
+left:
+    返回的是30px
+offsetLeft:
+    返回的是30
+-----------------------------------
+    因为动画框架是基于数学公式而建立的，必须可以进行数字运算。
+所以出现了如下公式的形式：
+    ele.style.left = ele.offsetLeft + speed + 'px';
+
+    虽然left的值可以通过公式(parseInt())转换成offsetLeft

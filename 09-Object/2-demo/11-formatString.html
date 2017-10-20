@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p></p>
+<script>
+    var con = document.getElementsByTagName('p')[0];
+    var user = {name:'xxx',role:'钻石会员'};
+    con.innerHTML = formatString("欢迎@role:@name来到百度世界",user);
+
+
+    function formatString(str,data){
+        return str.replace(/@(\w+)/g, function (match,key) {
+            return data[key];
+        });
+    }
+</script>
+</body>
+</html>

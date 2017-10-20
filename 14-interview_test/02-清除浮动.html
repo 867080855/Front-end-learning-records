@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+
+        div p {
+            float:left;
+            width: 500px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .test {
+            background-color: gold;
+        }
+
+        /*bootstrap清除浮动的方法*/
+        .clearfix-bootstrap::before,
+        .clearfix-bootstrap::after {
+            content:' ';
+            display: table;
+            /*
+                1. display:table;是为了在clearfix类的实体的前后插入两个空白的单元格，可以作为两个块级元素看待
+                2. 因为clearfix必然是加在浮动的元素上的，即本身的子元素必然就是一个块级元素
+                3. 块级元素不能相互重叠，自然就可以撑开高度。
+
+                4. content中的空格据说是为了解决欧朋浏览器的bug，但是现在测试的结果是，不加空格欧朋浏览器也没有问题存在。
+                5. 为什么要加before伪类？
+                    据说是为了防止margin-top的合并情况发生。
+            */
+        }
+        .clearfix-bootstrap::after {
+            clear:both;
+        }
+        /*
+            for ie6/7 only
+        */
+        .clearfix-bootstrap {
+            *zoom:1;
+            /*
+                1. zoom:1;前边加‘*’号是hack写法，之后ie6,7可以识别。
+                2. 如果是'_'号的话，只有ie6可以识别
+            */
+        }
+
+        /* 其他清除浮动的方法*/
+        .clearfix-method1 {
+            overflow: hidden;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="wall clearfix-method2" >
+        <p></p>
+    </div>
+    <p class="test">我是p元素的test</p>
+</body>
+</html>

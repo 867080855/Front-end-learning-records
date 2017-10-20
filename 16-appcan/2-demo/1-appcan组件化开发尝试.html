@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--由于appcan自带的定义component组件引入失效，但是组件化思想在前端非常必要，所以决定自行写一个简单的组件出来没负责
+    近期的appcan的项目开发
+        基本思路：
+            1. html创建一个div
+            2. js代码控制div生成的模板。
+        效果：
+            后期只需要引入一个div和一个js文件就可以实现组件的引入。提高代码的清晰度
+        实现
+            1. html中引入一个div
+            2. js中引入js文件
+            3. js中实例化对象
+    -->
+    <div id="work_detail"></div>
+</body>
+<script src="jquery-3.1.1.min.js"></script>
+<script src="createList_index.js"></script>
+<script>
+
+//                var a = new CreateList_index({
+//                    id:'work_detail',
+//                    bg:'red'
+//                });
+
+    $.ajax({
+        url : 'https://www.zhizhaojob.cn/index.php',
+        type : 'GET',
+        dataType:'json',
+        data:{
+            m:'App',
+            c:'index',
+            a:'compangprofil',
+            jid:'220'
+        },
+        success : function(str) {
+            var info = JSON.parse(str);
+            console.log(info);
+
+            var info_data = info.data;
+            console.log(info_data.category_cn);
+
+//            var a = new CreateList_index({
+//                id:'work_detail',
+//                bg:'red',
+//                data:info_data
+//            });
+
+
+        },
+        error : function(e) {
+            // alert(e);
+        }
+    });
+
+</script>
+</html>

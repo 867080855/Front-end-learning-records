@@ -1,0 +1,24 @@
+内置对象
+    - String
+        length
+        concat()
+        indexOf()
+        charAt()
+        ...
+    - Date
+    - Math
+        Math.max(param);-----param只接受离散值
+    - Array
+    - RegExp
+    - Number
+    - Object
+    - Function
+    - Null
+    - Boolean
+    - Error
+        try {} catch(e) {}
+        Error.message----错误信息
+        Error.name----错误类型，例如：引用错误
+    - Session
+=======================================
+Array 和 String 的所有方法都需要会

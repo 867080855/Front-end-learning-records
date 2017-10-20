@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="tecWang(extend).js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">change</button>
+<div id="box">
+
+</div>
+</body>
+<script>
+    var btn = document.getElementById('btn');
+    var box = document.getElementById('box');
+
+    btn.onclick = function () {
+        // 实例化对象，对象内部有内置函数，会自动初始化并完成动画要求
+        var animate = new Animate(box,{left:500, height:200,width:400},1000);
+    };
+
+
+    function Animate(ele,option,duration){
+        this.obj = {
+            timer:null,
+            interval:30
+        };
+
+        // 开始运行函数
+        this.start(ele,option,duration);
+    }
+    Animate.prototype = {
+        // 初始化函数。
+        start:function (ele,option,duration) {
+            var self = this;
+
+            // 数据初始化
+            var json = this.adapter(ele,option,duration);
+            $$.extend(self.obj,json);   // 将获得的数据传递给obj
+
+            // 动起来
+            this.move(this.obj);
+
+            console.log(this.obj);
+        },
+        // 适配器，负责转换原始数据为可以使用的数据,返回一个json，其中包含了对象需要的一切属性
+            // 包括：name, time, styles...
+        adapter:function (ele,option,duration) {
+            var self = this;
+            var json = {};
+            json.name = ele;
+
+            json.beginTime = +new Date();
+            json.nowTime = +new Date();
+            json.totalTime = duration;
+            json.tween = 0;
+
+            json.styles = getStyles(ele,option);
+            return json;
+
+            // 获取每个属性的状态：
+                // 1. key 2. value 3. originalValue
+            function getStyles(ele,option){
+                var arr = [];
+                for(var key in option){
+                    var styles = {};
+
+                    styles['key'] = key;
+                    styles['totalChange'] = option[key];
+                    styles['originalValue'] = parseInt($$.css(ele,key));
+                    arr.push(styles);
+                }
+                return arr;
+            }
+        },
+        // 核心函数，负责控制元素的运动
+        move:function (obj) {
+            var self = this;
+            obj.timer = setInterval(function () {
+                obj.nowTime = +new Date();
+                // tween属于对象的一个共有属性 ，不应该放在style里边
+                obj.tween = getTween(obj.beginTime,obj.nowTime,obj.totalTime);
+
+                if(obj.tween >= 1){
+                    self.stop(obj);
+                }else{
+                    setProperty(obj);
+                }
+            },obj.interval);
+
+            // 获取从开始到现在的总的时间进程
+            function getTween(beginTime,now,totalTime){
+                return ( now - beginTime ) / totalTime;
+            }
+
+            // 给目标设置属性
+            function setSingleProperty(ele,key,value){
+                /*
+                 * 单属性运动公式：
+                 *   起始距离 + 动画时间进程 * 总距离
+                 *   value = start + tween * totalLength
+                 * */
+                ele.style[key] = value;
+            }
+            function setProperty(obj){
+                var ele = obj.name;
+                var option = obj.styles;
+                for(var x = 0; x< option.length; x++){
+                    for(var k in option[x]){
+                        var key = option[x].key;
+                        var value = option[x].originalValue + option[x].totalChange * obj.tween + 'px';
+                        setSingleProperty(ele,key,value);
+                    }
+                }
+            }
+        },
+        // 停止定时器
+        stop:function (obj) {
+            clearInterval(obj.timer);
+        }
+    }
+</script>
+</html>

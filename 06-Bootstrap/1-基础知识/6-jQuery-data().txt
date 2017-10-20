@@ -1,0 +1,9 @@
+$element.data(param)
+	专门用于取元素的自定义属性
+	param:
+		目标属性的属性名称
+----------------------------------------
+eg:
+	<img src="" alt="" data-src="xxx">
+	var tar = $('img').eq(0).data('src');
+		// tar的值就是xxx

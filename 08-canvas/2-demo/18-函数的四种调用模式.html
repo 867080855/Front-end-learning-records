@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 方式1 函数执行模式----this = window;
+    function add(a,b){
+        console.log(this);
+        return a+b;
+    }
+    add();  // add() = window.add();
+    // 函数前边没有点的时候
+
+
+    // 方式2 对象方法的调用模式
+    function Cat(){
+        this.show = function () {
+            console.log(this);
+        }
+    }
+    var c = new Cat();
+    c.show();   // 对象调用自己的方法，this = c;
+        // 此处的this是20行的this
+
+    // 所有的事件响应的方法都是 对象方法调用模式。如onclick
+
+
+    // 方式3 构造器的调用模式(即构造函数里的this指向谁)
+    function Cat1(){
+        this.show = function () {
+            console.log(this);
+        }
+    }
+    var c1 = new Cat(); // 执行构造函数
+    // 构造器调用模式, c1 = this // true
+        // this.show = c1.show;此处的this是33行的this
+
+
+    // 方式4 call 和 apply 方式
+
+</script>
+</body>
+</html>

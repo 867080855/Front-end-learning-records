@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-app="" ng-init="switch=true">
+    <div>
+        <button ng-disabled="switch">点我</button>
+        <input type="checkbox" ng-model="switch">按钮
+        {{switch}}
+    </div>
+    <div ng-init="clicked=true">
+        <div ng-show="clicked">
+            可见
+        </div>
+        <div ng-show="!clicked">
+            <!--此处的clicked就相当于一个布尔类型的值-->
+            不可见
+        </div>
+        <input type="checkbox" ng-model="clicked">
+        {{clicked}}
+    </div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+1. Object的__proto__属性(指向Function对象的原型)：
+    console.log(Object.__proto__);
+        // Function
+    console.log(Object.__proto__ === Function.prototype);
+        // true
+        // 说明Object是Function对象的一个实例
+2. Function.prototype.__proto__属性(指向Object的原型)
+    console.log(Function.prototype.__proto__ === Object.prototype);
+        // true
+    console.log(Function.prototype.__proto__ === Object);
+        // false
+3. Object.prototype.__proto__属性(null):
+    console.log(Object.prototype.__proto__);
+        // null
+=============================================================
+总结：
+    1. Object,Date,Array等对象是Function的对象的实例
+       所有的内置对象都是Function对象的实例
+===================================================================
+    自定义对象实例 -》 自定义对象 -》 Object.prototype

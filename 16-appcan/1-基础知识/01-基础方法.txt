@@ -1,0 +1,48 @@
+1. 打印
+    appcan.logs(expr);
+1. 入口函数
+    appcan.ready(function (){
+        $a$
+    });
+    // 在appcan内部插件可用后执行内部的回调函数,
+    // 如果用到appcan的插件一定要调用该方法
+
+2. 定义函数
+    appcan.define(name,function(){
+        $a$
+    });
+
+3. 扩展对象
+    appcan.extend( obj1 , [ obj2 ] );
+
+4. 引用对象
+        var obj = appcan.require('foo');
+    或者：
+        appcan.use( 'foo' , function( $ , foo){
+            foo.do();
+        } );
+    或者：
+        appcan.foo.do();
+
+5. 判断数据类型
+    appcan.isString( obj );
+    appcan.isArray( obj );
+    ...
+5. trim函数
+    appcan.trim( str );
+    appcan.trimLeft( str );
+    appcan.trimRight( str );
+
+6. 继承父类
+    var Foo = function(){};
+    Foo.prototype = {
+        constructor : Foo,
+        show : function (){}
+    };
+
+    定义一个继承Foo的子类
+    var ChildFoo =  appcan.inherit( parent , function (){
+        init : function (){
+            // do something
+        }
+    })

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas>
+
+    </canvas>
+    <script>
+        var data = [{
+            "value":0.6,
+            "title":"1季度"
+        },{
+            "value":1.6,
+            "title":"2季度"
+        },{
+            "value":1.2,
+            "title":"3季度"
+        },{
+            "value":2.7,
+            "title":"4季度"
+        }];
+
+        (function (){
+            var json = paintXY();
+
+            //  获取data中value的最大值
+            var dataNum = [];
+            for(var x = 0;x<data.length;x++){
+                dataNum[x] = data[x].value;
+            }
+            var max = dataNum[0];
+            for(var x = 0;x < dataNum.length; x++){
+                max>dataNum[x]? max = max: max = dataNum[x];
+            }
+            var ratio = Math.ceil(max);
+            console.log(ratio);
+
+
+            // 根据坐标轴的长度和数据量确定初始点点的x，y坐标。
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            var originY = json.y0 - data[0].value/ratio*(json.axis_length);
+            var originX = json.x0 + json.axis_length/(data.length+1)*(1);
+            ctx.moveTo(originX,originY);
+
+            for(var x = 0;x < data.length-1; x++){
+                // 确定目标点的x，y坐标
+                var tarX = json.x0 + json.axis_length/(data.length+1)*(x+2);
+                var tarY = json.y0 - data[x+1].value/ratio*json.axis_length;
+                ctx.lineTo(tarX,tarY);
+                ctx.stroke();
+
+            }
+
+
+        }());
+
+
+        function paintXY() {
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            ctx.beginPath();
+            var x0 = 100;
+            var y0 = 500;
+            var axis_length = 400;
+            var arrow_length = axis_length*0.05;
+
+            // 绘制y轴
+            ctx.moveTo(x0,y0);
+            ctx.lineTo(x0,y0-axis_length);
+            ctx.lineTo(x0+Math.cos(45*Math.PI/180)*arrow_length,y0-axis_length+Math.sin(45*Math.PI/180)*arrow_length);
+            ctx.moveTo(x0,y0-axis_length);
+            ctx.lineTo(x0+Math.cos(135*Math.PI/180)*arrow_length,y0-axis_length+Math.sin(135*Math.PI/180)*arrow_length);
+
+            // 绘制x轴
+            ctx.moveTo(x0,y0);
+            ctx.lineTo(x0+axis_length,y0);
+            ctx.lineTo(x0+axis_length+Math.cos(-135*Math.PI/180)*arrow_length,y0+Math.sin(-135*Math.PI/180)*arrow_length);
+            ctx.moveTo(x0+axis_length,y0);
+            ctx.lineTo(x0+axis_length+Math.cos(135*Math.PI/180)*arrow_length,y0+Math.sin(135*Math.PI/180)*arrow_length);
+
+
+            ctx.stroke();
+            return {
+                "x0":x0,
+                "y0":y0,
+                "axis_length":axis_length
+            };
+        }
+    </script>
+</body>
+</html>

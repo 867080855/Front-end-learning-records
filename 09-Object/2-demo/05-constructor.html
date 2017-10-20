@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>内容见console控制台</p>
+<script>
+    function Product(){
+        this.name = '12';
+        var age = 23;
+    }
+
+    var p = new Product();
+    console.log(p);
+        /*
+        * 有两项内容：
+        *   1. 属性
+        *   2. _proto_
+        * */
+    console.log(p.name);
+    console.log(p.constructor);
+        /*
+        * 有一些问题：
+        *   1. constructor可以判断构造函数，也可以输出构造函数
+            *   function Product(){
+                     this.name = '12';
+                     var age = 23;
+                }
+                此处明显把var也打印了出来。但是var是私有属性，是不应该被看见的
+            2. 隐藏属性怎么定义?
+
+        */
+    console.log(p.age);
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+1. 原型实现继承
+    tarClass.prototype = new Base();
+    ------------------------
+    存在的问题？
+        基类的属性无法访问
+2. 构造函数实现继承
+    Base.call(this,arguments);
+    -------------------------
+    存在的问题？
+        基类的原型中的方法无法访问
+3. 两个组合实现继承
+    function p (){
+        Base.call(this,arguments);
+    }
+    p.prototype = new Base();
+    p.prototype.xxx = function(){};
+4. 寄生组合继承(了解)
+    通过写一个固定的函数实现继承
+5. 拷贝继承
+    之前的extend就类似于此方法。

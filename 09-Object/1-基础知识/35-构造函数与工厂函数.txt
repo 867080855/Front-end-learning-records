@@ -1,0 +1,31 @@
+区别：
+    1. 没有显式的创建对象----不需要new关键字
+    2. 有return语句
++==============================================
+设计模式：
+    工厂模式(后台的顶级模式)
+    所谓工厂模式，就是把后台传过来的数据直接传进一个
+工厂内(函数),经过工厂(函数)处理后传出一个成型的对象。
+可以直接付诸使用。
+    工厂模式并非针对一个特定的环境或方法，是一个具有普适性
+的模式，是封装性的一个良好体现。
+    工厂内执行了那些操作呢？
+        1. 创建Object
+        2. 写内部的数据处理函数
+        3. return一个Object
+        举例：
+            function Role(data){
+                var obj = new Obejct();
+                obj.name = data.name;
+                obj.attack = function(){};
+            }
+    缺点：
+        不需要使用prototype，实例化的时候会造成内存的浪费
+        解决方法：
+            引入原型创建对象的方式
+            var Role = function(data){
+                Role.prototype.name = data.name;
+                Role.prototype.attack = function(){};
+            }
+            缺点:
+                原型中的值类型无法被所有实例化对象共享

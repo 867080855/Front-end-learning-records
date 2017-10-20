@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="konva.js"></script>
+    <script src="DoubleCircle.js"></script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        var stage = new Konva.Stage({
+            container:'container',
+            width:window.innerWidth,
+            height:window.innerHeight
+        });
+
+
+
+        var cenX = stage.width()/2;
+        var cenY = stage.height()/2;
+
+        // 创建背景层
+        var bg_layer = new Konva.Layer();
+        stage.add(bg_layer);
+
+        // 内圆虚线
+        var innerCircle = new Konva.Circle({
+            x: cenX,
+            y: cenY,
+            radius: 252/2,
+            stroke: '#ccc',
+            strokeWidth: 4,
+            dash: [10,4] //设置虚线，10实线， 4像素空
+        });
+        bg_layer.add(innerCircle);
+        console.log(innerCircle);
+
+        // 外圆虚线
+        var outerCircle = new Konva.Circle({
+            x: cenX,
+            y: cenY,
+            radius: 220,
+            stroke: '#ccc',
+            strokeWidth: 4,
+            dash: [10,4] //设置虚线，10实线， 4像素空
+        });
+        bg_layer.add(outerCircle);
+        console.log(outerCircle);
+
+        // 太阳
+        var L1_sun = new DoubleCircle({
+            x:cenX,
+            y:cenY,
+            innerRadius:122/2,
+            outerRadius:90,
+            innerFill:'#fd1',
+            outerFill:'#ff0',
+            text:'太阳'
+        });
+        console.log(L1_sun);
+        L1_sun.addToGroupOrLayer(bg_layer);
+
+        bg_layer.draw();
+
+        // 创建动画层
+        var animation = new Konva.Layer();
+        stage.add(animation);
+
+        // 创建动画组 L2_group
+        var L2_group = new Konva.Group({
+            x:cenX,
+            y:cenY
+        });
+        animation.add(L2_group);
+
+        // 创建水星
+        var L2_mecurcy = new DoubleCircle({
+            x: 252/2 * Math.cos( 45 * Math.PI / 180 ) ,
+            y: 252/2 * Math.sin( 45 * Math.PI / 180 ) ,
+            innerRadius:30,
+            outerRadius:40,
+            innerFill:'orange',
+            outerFill:'#fb9',
+            text:'水星'
+        });
+        L2_mecurcy.addToGroupOrLayer(L2_group);
+
+        var L2_earth = new DoubleCircle({
+            x: 252/2 * Math.cos( 325 * Math.PI / 180 ) ,
+            y: 252/2 * Math.sin( 325 * Math.PI / 180 ) ,
+            innerRadius:30,
+            outerRadius:40,
+            innerFill:'skyblue',
+            outerFill:'gray',
+            text:'地球'
+        });
+        L2_earth.addToGroupOrLayer(L2_group);
+
+
+        // 创建动画组 L3_group
+        var L3_group = new Konva.Group({
+            x:cenX,
+            y:cenY
+        });
+        animation.add(L3_group);
+
+        var L3_mars = new DoubleCircle({
+            x: 220 * Math.cos( 180 * Math.PI / 180 ) ,
+            y: 220 * Math.sin( 180 * Math.PI / 180 ) ,
+            innerRadius:30,
+            outerRadius:40,
+            innerFill:'red',
+            outerFill:'gray',
+            text:'火星'
+        });
+        L3_mars.addToGroupOrLayer(L3_group);
+
+        animation.draw();
+
+
+        // 创建动画系统
+        var rotateAnglePerSec = 60;
+        var animate = new Konva.Animation(function (frame) {
+            var rotateAngle = rotateAnglePerSec * frame.timeDiff / 1000;
+            L2_group.rotate(rotateAngle);
+            
+            L2_group.getChildren().each(function (item) {
+                item.rotate(-rotateAngle);
+            });
+
+            L3_group.rotate(-rotateAngle);
+
+            L3_group.getChildren().each(function (item) {
+                item.rotate(rotateAngle);
+            });
+        },animation);
+        animate.start();
+
+
+        // 事件触发系统
+        animation.on('mouseenter', function () {
+            rotateAnglePerSec = 10;
+        });
+        animation.on('mouseleave', function () {
+            rotateAnglePerSec = 60;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-app="table" ng-controller="tableCtrl">
+        <table border>
+            <tr ng-repeat="row in data">
+                <td>{{row.first}}</td>
+                <td>{{row.second}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script>
+        angular.module('table',[])
+            .controller('tableCtrl',function ($scope) {
+                $scope.data = [{
+                    first:'长长久久',
+                    second:'生生世世'
+                },{
+                    first:'和和美美',
+                    second:'团团圆圆'
+                },{
+                    first:'顺顺利利',
+                    second:'和和睦睦'
+                }];
+            })
+    </script>
+</body>
+</html>

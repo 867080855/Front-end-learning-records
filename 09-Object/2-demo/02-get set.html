@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="itemInfo">
+    <div id="name">
+        <h1 id='pname'>乐视TV（ Letv） S50 Air 全配版 50英寸2D智能LED液晶 超级电视</h1>
+        <div id="pdes">各地区货源已陆续到库，我们将在十月十号左右发货，对于此次延迟发货给您带来的不便表示致歉，望您谅解。</div>
+        <div >已售：<strong id="psales">6000</strong></div>
+        <div>原价：<strong id='pprice'>6000</strong>元</div>
+        <div>优惠价：<strong id='pyouhui'>5000</strong>元</div>
+        <div>折扣：<strong id='pzhekou'>6.0</strong>折</div>
+        <div>生产日期：<strong id='date'>2015-09-09</strong></div>
+    </div>
+</div>
+<button id='btn'>加入购物车</button>
+
+</body>
+</html>
+
+<script>
+
+    //产品对象
+    /*类 -- 抽象对象*/
+        /*属性：名称 状态 已售 原价 优惠价 折扣 生产日期*/
+    function Product(){
+        this.name = 'ssssss';
+        this.status = 'ssssss';
+        this.totalSale = 0;
+        this.originPrice = 0;
+        this.actualPrice = 0;
+        this.discount = 0;
+        this.birthDate = new Date().toLocaleString();
+            // new Date本身就会返回一个当前的时间，不需要再去找别的方法
+        Object.defineProperty(this,"actualPrice",{
+            get: function () {
+//                return this.originPrice*0.4;
+                    // 之前已经指定过this了， 这个地方不需要再写
+                return actualPrice*0.5;
+            },
+            set: function (value) {
+                if(value > 10000){
+                    console.log('wrong price');
+                }else{
+                    actualPrice = value;
+                }
+            }
+        });
+
+        Object.defineProperty(this, "originPrice", {
+            get: function () {return originPrice*0.9;},
+            set: function (value) {
+                /*大概普通产品的价格都在0--1万*/
+                if(value>10000)
+                {
+                    alert('产品价格必须在0--1万之间');
+                }else{
+                    originPrice = value;
+                }
+            }
+        });
+
+        Object.defineProperty(this,'name',{
+            value:'乐视TV（ Letv） S50 Air 全配版 50英寸2D智能LED液晶',
+            // 设置该属性为不可修改。防止底层人员胡乱修改重要值。
+            writable:false
+        });
+    }
+
+
+    /*获取元素*/
+    var actualP = document.querySelector('#name');
+    var pname = document.querySelector('#pname');
+    var pyouhui = document.querySelector('#pyouhui');
+    var pprice = document.querySelector('#pprice');
+    var date = document.querySelector('#date');
+
+
+    /*搭积木开发 -- 代码可读性极高*/
+
+        //定义对象
+        var p = new Product();
+        p.actualPrice = 8000;
+        p.originPrice = 8000;
+
+        // 将实例化后的对象的参数赋值给元素
+        pname.innerHTML = p.name;
+        pyouhui.innerHTML = p.actualPrice;
+        pprice.innerHTML = p.originPrice;
+        date.innerHTML = p.birthDate;
+
+
+</script>
+

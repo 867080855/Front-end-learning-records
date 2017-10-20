@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function add(a,b){
+        return a + b;
+    }
+
+    function sub(a,b){
+        return a - b;
+    }
+
+    // call
+    var tar = add.call(sub,10,20);
+    console.log(tar);   // 30
+
+</script>
+</body>
+</html>

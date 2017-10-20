@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 函数的目的：
+        // 将一个json对象的所有属性拷贝给另外一个对象
+    function extend(tar,source){
+        for(var i in source){
+            tar[i] = source[i];
+        }
+        return tar;
+    }
+
+    var boy = {
+        name:'无忌',
+        age:20,
+        sex:'男'
+    };
+
+    var girl = {
+        name:'风晴雪',
+        age:16,
+        sex:'女'
+    };
+
+    var p = extend({},boy);
+    p.name = '醉侠客';
+    console.log(p);
+</script>
+</body>
+</html>

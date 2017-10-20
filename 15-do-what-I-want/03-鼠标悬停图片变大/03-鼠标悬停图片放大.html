@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--案例参考：穷游网底部-->
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+
+        .box {
+            width: 275px;
+            border:1px solid  red;
+        }
+        /*图片部分*/
+        .box dt {
+            width: 275px;
+            height: 185px;
+            overflow: hidden;
+        }
+        .box dt img {
+            transition: all 1s;
+        }
+        .box dt img:hover {
+            transform: scale(1.1);
+            transition:all 1s;
+        }
+        /*底部详细介绍*/
+        .box dd {
+            position: relative;
+        }
+        .box dd::before {
+            content:'';
+        }
+        .box dd::after {
+            content:'';
+            position:absolute;
+            left:50px;
+            top:-25px;
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            background: url("qiongyou2.jpg") no-repeat 0 0;
+            background-size:50px 50px;
+        }
+        .box dd header {
+            padding-left:120px;
+        }
+        .box dd .text{
+            line-height:30px;
+            padding:0 20px;
+        }
+        .box dd .text a {
+            text-decoration: none;
+            color:green;
+            font-weight:700;
+        }
+    </style>
+</head>
+<body>
+    <section class="box">
+        <dl>
+            <dt>
+                <img src="qiongyou.jpg" alt="">
+            </dt>
+            <dd>
+                <header>穷游大秘书</header>
+                <p class="text"><a href="#">
+                    今日话题 | 旅行路上，你做过的“最无聊”的事情是什么？
+                </a></p>
+            </dd>
+        </dl>
+    </section>
+
+</body>
+</html>

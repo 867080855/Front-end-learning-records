@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-app="table" ng-controller="tableCtrl">
+    <table border>
+        <tr ng-repeat="row in data">
+            <td>{{row.Name}}</td>
+            <td>{{row.Country}}</td>
+        </tr>
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+<script>
+    angular.module('table',[])
+        .controller('tableCtrl',function ($scope,$http) {
+            $http.get(':http://www.w3cschool.cn/try/angularjs/data/Customers_SQL.aspx')
+                .then(function (response) {
+                    $scope.data = response.data;
+                })
+        })
+</script>
+</body>
+</html>

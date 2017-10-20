@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- canvas优化   (创建两个画布)
+    1. 程序员把用户看不见的内容绘制到一个隐藏的地方
+    2. 把隐藏区域的内容绘制到用户可见的画布上
+    3. 可以提高效率-->
+    <script src="Rect.js"></script>
+</head>
+<body>
+    <div id="container">
+        <canvas>
+
+        </canvas>
+    </div>
+    <script>
+        (function () {
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            var canvasHide = document.createElement('canvas');
+            canvasHide.width = 600;
+            canvasHide.height = 600;
+            var ctxHide = canvasHide.getContext('2d');
+
+            var rect = new Rect({
+                x:20,
+                y:20,
+                w:100,
+                h:100,
+                scaleX:1.5,
+                scaleY:1.5,
+                strokeStyle:'black',
+                fillStyle:'skyblue',
+                opacity:0.7
+            });
+            // 渲染矩形
+            rect.render(ctxHide);
+
+            var rect2 = new Rect({
+                x:20,
+                y:20,
+                w:200,
+                h:200,
+                scaleX:1.5,
+                scaleY:1.5,
+                strokeStyle:'black',
+                fillStyle:'skyblue',
+                opacity:0.7
+            });
+            // 渲染矩形
+            rect2.render(ctxHide);
+
+            // 把隐藏画布的两个矩形绘制到用户画布上
+            ctx.drawImage(canvasHide,0,0);
+
+
+        }());
+    </script>
+</body>
+</html>

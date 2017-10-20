@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas>
+
+    </canvas>
+    <script>
+        (function(){
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            // 准备线型
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 20;
+
+            ctx.beginPath();
+            ctx.moveTo(100,100);
+            ctx.lineTo(300,100);
+            ctx.stroke();
+
+            ctx.beginPath();
+                // 开启一个新状态,新状态可以继承之前状态的样式，但是当前状态设置的新样
+                // 式只能作用于当前的状态。
+            ctx.strokeStyle = 'skyblue';
+            ctx.moveTo(100,200);
+            ctx.lineTo(300,200);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.strokeStyle = 'gold';
+            ctx.lineWidth = 12;
+                // 设置后所有线都变成了金色
+            ctx.moveTo(100,300);
+            ctx.lineTo(300,300);
+            ctx.stroke();
+        }());
+    </script>
+</body>
+</html>

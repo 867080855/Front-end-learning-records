@@ -1,0 +1,11 @@
+值类型：
+    1. number
+    2. string
+    3. boolean
+    4. undefined
+引用类型：
+    1. array
+    2. object
+        对象之间相互赋值
+    3. function
+    4. null

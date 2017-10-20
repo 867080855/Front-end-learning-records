@@ -1,0 +1,140 @@
+/* the settings writes following is only used in jd.com 
+if you want to write a whole website , you need to write 
+a new */
+
+*,
+::before,
+::after
+{
+	margin: 0;
+	padding: 0;
+
+	-webkit-tap-highlight-color: transparent;
+		/* clear the highlight effect default */
+	-webkit-box-sizing: border-box;
+		/* border attr calculated in box size. */
+}
+
+html,body{
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	font-family:Microsoft Yahei,sans-serif;
+		/* sans-serif is a font-family which mobile
+		phones supports all. */
+}
+
+a {
+	text-decoration:none;
+	color: #000;
+	/* mobile website use a tag to repalce button tag generally. */
+}
+
+ul,ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+input,textarea {
+	border: none;
+	resize: none;
+	outline: none;
+		/* a effect show when clicked,a skyblue outline */
+	-webkit-appearance: none;
+		/* 立体效果，在safari中有 */
+}
+
+/* clear float */
+.clearfix::before,
+.clearfix::after {
+	content: '';
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+	clear: both;
+}
+
+
+/*icon-font define*/
+[class ^= 'icon'] {
+	background: url('../img/sprites.png') no-repeat;
+	background-size: 200px 200px;
+}
+
+/* 头部通栏 */
+/* body铺满整屏 */
+body {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: red;
+}
+
+/* topbar */
+.topbar h2 {
+	text-align:center;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight:normal;
+	line-height: 44px;
+
+}
+.topbar {
+	width: 100%;
+	height: 45px;
+	background: url('../img/header-bg.png') repeat-x;
+	background-size: 1px 44px;
+		/* 缩放，原为2*88 */
+	border-bottom: 1px solid #e0e0e0;
+
+	position: absolute;
+	z-index: 999;
+}
+
+.topbar .icon-back {
+	background-position: -20px 0;
+	width: 20px;
+	height: 20px;
+	margin:12px 10px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.topbar form {
+	width: 100%;
+	height: 44px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.topbar input {
+	width: 100%;
+	height: 32px;
+	border: 1px solid #bfbfbf;
+	border-radius: 4px;
+	margin-top: 6px;
+}
+
+.topbar .icon-menu {
+	background-position: -60px 0;
+	width: 40px;
+	height: 44px;
+	display: block;
+	padding: 12px 10px;
+
+	background-clip: content-box;
+	background-origin: content-box;
+
+	position: absolute;
+	right: 0;
+	top: 0;
+}

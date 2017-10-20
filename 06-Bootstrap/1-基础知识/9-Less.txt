@@ -1,0 +1,52 @@
+because we have these needs:
+	1. a variable in css
+		e.g. var mainColor = #e0e0e0;
+	2. a nest relation
+	3. Mixin: a function to includes common sentences
+
+So we have the Less ---- CSS Preprocessor
+-------------------------------------------------
+synax:
+	1. comment
+		method-one: // xxx
+		method-two: /* xxx */	
+		--------------------------------------
+		wraning: when you compile the less, the comment like this (// xxx ) will be removed !
+	2. variables 
+		you can state a variable by write this :
+			@mainColor : #383838;
+		you can use it like this :
+		 	background-color : @mainColor;
+ 	3. nest relation
+ 		.container {
+ 			width: 100px;
+ 			div {
+ 				margin: 20px auto;
+ 				float: left;
+ 				&hover {
+ 					background-color: red;
+ 				}
+ 				span {
+ 					height: 300px;
+ 				}
+ 			}
+ 		}  		
+ 		--------------------------------
+ 		when you finish the less, you need compile it in the cmd.exe with the format like this:
+			lessc main.less > main.css
+		warning : write it in the dir which the file exists;
+	4. Mixin
+		.roundCorners (@radius: 5px){
+			border-radius: @radius;
+		}
+
+		.roundCorners(10px);	// set radius by new values 10px;
+		.roundCorners();	// set radius by 5px ;
+	5. import
+		@import url('_p.less');
+			the imported file can use the variables defined in main file.
+	6. functions 
+		- lighten
+			background-color:lighten(#000,10%);
+		- darken
+			color:darken(#fff,10%);

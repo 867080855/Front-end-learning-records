@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="../4-frame/tecFrame.js"></script>
+<script src="template.js"></script>
+<script id="artTemplate" type="text/html">
+    <strong>电影名称:</strong>{{name}} <br/>
+    <strong style="color:red">导演：</strong>{{director}} <br/>
+    <strong style="color:green">主演:</strong>{{actor}} <br/>
+    <br/>
+</script>
+<body>
+    <div id="demo"></div>
+</body>
+<script>
+    var demo = $$.$id('demo');
+    var film = [{
+        name:'美人鱼',
+        director:'周星驰',
+        actor:'邓超、林允'
+    },{
+        name:'功夫',
+        director:'王晶',
+        actor:'周星驰'
+    }];
+
+    var con = '';
+    for(var x = 0 ; x < film.length ; x ++ ){
+        con += template('artTemplate',film[x]);
+    }
+    demo.innerHTML = con;
+</script>
+</html>

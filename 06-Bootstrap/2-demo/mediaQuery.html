@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,html{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			height: 1000px;
+			background-color: skyblue;
+			margin:0 auto;
+		}
+		.container{
+			width: 100%;
+		}
+		
+		/*当使用最小宽度作为判断条件时，一定要从小到大排列*/
+		@media(min-width: 768px){
+			.container{
+				width: 750px;
+			}
+		}
+		@media(min-width: 992px){
+			.container{
+				width: 970px;
+			}
+		}
+		@media(min-width: 1200px){
+			.container{
+				width: 1170px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+</body>
+</html>

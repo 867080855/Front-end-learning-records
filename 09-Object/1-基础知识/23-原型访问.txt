@@ -1,0 +1,27 @@
+面试题：
+    var fun = function(){
+
+    };
+    fun.prototype = {
+        info:{
+            name:'peter',
+            age:23
+        }
+        // 此处的info是引用类型。如果是值类型就不可以了,如下
+        ,name:'rick'
+    };
+
+    var a = new fun();
+    var b = new fun();
+
+    a.info.name = 'jack';
+    b.info.name = 'tom';
+        /*
+            一旦info.name的值被修改，之后所有的
+        实例对象去访问info的name属性时都会变成
+        相应的值
+
+        */
+
+    console.log(a.info.name);   // tom
+    console.log(b.info.name);   // tom

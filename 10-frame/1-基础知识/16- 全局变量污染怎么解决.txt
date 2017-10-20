@@ -1,0 +1,28 @@
+全局变量污染的解决方法：
+    1. 函数
+        function fn(){
+            /*  在一个大函数中定义一个私有变量，
+            其作用域可以影响到fn函数下边的所有
+            子函数*/
+            var a = 0;
+        }
+    2. 对象
+        // 创建两个不同的对象，把自己需要的变量变成属性使用
+        // 即为将全局变量升级为对象的属性。
+        var module1 = function(){
+            this.name = 1;
+        }
+
+        var module2 = function(){
+            this.name = 2;
+        }
+    3. 使用函数，在函数内定义私有变量
+    4. 立即函数 + 闭包
+        (function(w){
+            var a = 0;
+
+            w.a = a;
+        })(window);
+
+        console.log(a);
+    5. 命名空间

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="konva.js"></script>
+    <script src="PieChart.js"></script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+
+    <script>
+        var data = [
+            { name: "前端", value: .25, color: '#e0e'  },
+            { name: "php",  value: .2,  color: 'orange'},
+            { name: "UI",	value: .3,	color: 'blue'  },
+            { name: "C++",	value: .05,	color: 'green' },
+            { name: "游戏",	value: .1,	color: 'purple'},
+            { name: "Java",	value: .1,	color: 'red'   }
+        ];
+
+        var stage = new Konva.Stage({
+            container:'container',
+            width:window.innerWidth,
+            height:window.innerHeight
+        });
+
+        var layer = new Konva.Layer();
+        stage.add(layer);
+
+        var cenX = stage.width()/2;
+        var cenY = stage.height()/2;
+
+        var pie = new PieChart({
+            x:cenX,
+            y:cenY,
+            radius:stage.height()/6,
+            data:data
+        });
+        pie.addToGroupOrLayer(layer);
+        pie.play();
+
+
+        layer.draw();
+
+
+    </script>
+</body>
+</html>

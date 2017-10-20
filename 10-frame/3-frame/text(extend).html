@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.js"></script>
+    <script src="tecWang(extend).js"></script>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            margin:30px 0 0 30px;
+            background-color: orange;
+            text-align: center;
+            float:left;
+        }
+        .info {
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 30px;
+            background-color: skyblue;
+        }
+        .show .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-left:50px;
+        }
+    </style>
+</head>
+<body>
+<p class="info">测试结果见console控制台</p>
+
+<section id="container">
+    <div class="event" id="event">
+        测试event用盒子
+        <a href="http://www.baidu.com" id="demo_a">跳转</a>
+    </div>
+    <div class="demo" id="demo">测试click用盒子</div>
+    <div class="dom" id="dom">
+        <span id="dom1" class="dom2">测试attr方法</span> <br>
+        <span class="dom2">测试$tag方法</span> <br>
+        <span class="dom3" id="dom3">测试class方法</span> <br>
+        <span class="html" id="html">测试html方法</span>
+    </div>
+    <span class="dom2">asd</span>
+    <i>sadf</i>
+    <div id="c" class="c">
+        <span>asf</span>
+        <span>sadasdf</span>
+        <span>jlkkl</span>
+    </div>
+    <div class="css" id="css">
+        <span>asfsd</span>
+        <p>asdfasgd</p>
+        <i>jkljlkhl</i> <br>
+        <strong>jjhbyv</strong>
+    </div>
+    <div class="show" id="show">
+        <button id="btn_show">show</button>
+        <button id="btn_hide">hide</button>
+        <div class="box"></div>
+    </div>
+</section>
+<script>
+    // 打印框架结构
+    console.log($$);
+
+    // 测试event
+    (function () {
+        // 现阶段的方法调用还很不方便。无法直接在dom上直接调用方法。
+        var dom = $$.$id('event');
+        $$.on(dom,'click',function () {
+            console.log($$.getEvent());
+            console.log($$.getTarget());
+        });
+
+        // 阻止冒泡,阻止默认事件
+        var a = $$.$id('demo_a');
+        $$.click(a,function (e) {
+            $$.preventDefault(e);
+            $$.stopPropagation(e);
+        });
+
+    })();
+
+    // 测试click,mouse
+    (function () {
+        $$.click('demo',function () {
+            this.style.backgroundColor = 'red';
+        });
+        
+        // hover
+        $$.hover('demo',function () {
+            this.style.backgroundColor = 'blue';
+        },function () {
+            this.style.backgroundColor = 'red';
+        });
+    })();
+
+    // 测试dom操作
+    (function () {
+    // 测试attr
+        // 设值
+        $$.attr('#dom1','data-tip','span');
+        // 获取
+        console.log($$.attr('#dom1','data-tip'));
+    // 测试类名操作
+        $$.addClass('#dom3','bigger red');
+
+        $$.removeClass('#dom3','bigger');
+
+    // 测试html
+        console.log($$.html('#html'));
+        console.log($$.html('#html','测试html成功'));
+    })();
+
+
+    
+    // 测试选择器
+    (function () {
+        // 测试$tag
+        var spans = $$.$tag('span','dom');
+        console.log(spans);
+
+        // 测试$class
+        var arr = $$.$class('dom2','dom');
+        console.log(arr);
+        // 此处的arr不能用for.in去遍历，因为arr并不是一个
+        // 真正的数组而是一个伪数组，会把length遍历进去，然后报错
+        for(var k = 0 ; k < arr.length; k ++){
+            arr[k].style.backgroundColor = 'green';
+        }
+
+        // 测试多组选择器
+        var doms = $$.$g('.event,.dom2,#demo,i');
+        console.log(doms);
+        for(var i in doms){
+            doms[i].style.backgroundColor = 'skyblue';
+        }
+
+        // 测试层次选择器
+        var con = $$.$c('#container .c span');
+        console.log(con);
+        for(var k = 0; k < con.length; k++){
+            con[k].style.border = '5px solid black';
+        }
+
+        // 测试层次 +　多组选择器
+        var con1 = $$.$('#container .c span,i,.dom span');
+        console.log(con1);
+    })();
+
+    // 测试css
+    (function () {
+        // css
+        $$.css('#css p','font-size','60px');
+        var style = $$.css('#css p','fontSize');
+        console.log(style);
+
+        // show hide
+        var btn_show = $$.$all('#btn_show');
+        var btn_hide = $$.$all('#btn_hide');
+        var box = $$.$all('#show .box');
+        // $$.on(btn_show,'click',$$.show(box));
+
+        $$.on(btn_show[0],'click',function () {
+        // 此处如果函数传参传的是btn_show的话，因为是数组，没有on的addEventListener 改成btn_show[0]
+            $$.show(box);
+            // 此处把方法挪进来是因为如过行上注释的写法，函数会立即执行，所以加一个function(){}
+        });
+
+        $$.on(btn_hide[0],'click',function () {
+            console.log("ss");
+            $$.hide(box);
+        });
+
+    })();
+
+</script>
+</body>
+</html>

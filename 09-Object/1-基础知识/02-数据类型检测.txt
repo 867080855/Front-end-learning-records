@@ -1,0 +1,18 @@
+1. typeof
+    typeof的检测也是有弊端的。有些数据类型无法被检测
+    比如：
+        {} 和 [] 返回的都是object，不能精准检测
+2. call
+    很重要，BAT必考，面试笔试必考，框架开发必用
+    console.log(toString.call(123));
+        // [Object Number]
+3. instanceof(不常用)
+    var arr = [];
+    console.log(arr instanceof Array);
+4. jQuery
+    jQuery提供了一系列方法：
+        jQuery.isArray();
+        jQuery.isFunction();
+5. constructor
+    用于判断一个实例的构造函数是谁,与instanceof类似
+        console.log(arr.constructor === Array);

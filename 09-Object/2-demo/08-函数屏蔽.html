@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function fn(){
+        this.name = 'ssss';
+    }
+
+    fn.prototype = {
+        name:'ddddd',
+        tip: function () {
+            console.log('this is a tip');
+        }
+    };
+
+    var f = new fn();
+    console.log(f);
+        /*
+        * fn
+        *       name: "ssss"
+        *       __proto__: Object   // fn的原型对象，其内由name属性，tip方法以及其自身的原型
+        *           name: "ddddd"
+        *           tip: ()
+        *           __proto__: ()
+         * */
+    console.log(f.name);
+</script>
+</body>
+</html>

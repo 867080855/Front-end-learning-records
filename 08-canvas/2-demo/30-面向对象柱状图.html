@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="konva.js"></script>
+    <script src="HistogramChart.js"></script>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+
+    <script>
+        var data = [
+            { name: '前端', value: '.8', color: 'green'},
+            { name: 'PHP', value: '.3', color: 'blue'},
+            { name: 'Java', value: '.7', color: 'red'},
+            { name: 'UI', value: '.9', color: 'orange'},
+            { name: 'IOS', value: '.4', color: 'purple'},
+            { name: 'Android', value: '.9', color: 'pink'}
+        ];
+
+        var stage = new Konva.Stage({
+            container:'box',
+            width:window.innerWidth,
+            height:window.innerHeight
+        });
+
+        var layer = new Konva.Layer();
+        stage.add(layer);
+
+
+        var x0 = 1/8 * window.innerWidth;
+        var y0 = 3/4 * window.innerHeight;
+        var width = 3/4 * window.innerWidth;
+        var height = 3/5 * window.innerHeight;
+
+
+        var option = {
+            x:x0,
+            y:y0,
+            w:width,
+            h:height,
+            data:data
+        };
+
+        var histogramChart = new HistogramChart(option);
+        console.log(histogramChart);
+        histogramChart.addToGroupOrLayer(layer);
+        histogramChart.animate();
+
+        layer.draw();
+    </script>
+</body>
+</html>

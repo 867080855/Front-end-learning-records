@@ -1,0 +1,16 @@
+变量搜索机制：
+	1. 搜索局部变量
+	2. 搜索全局变量
+------------------------------------------
+var a = 10;
+var b = 20;
+
+function test(){
+	console.log(a);		// 10
+}
+
+function test2(){		-->				function test2(){
+	console.log(a);		// undefined		var a;
+	var a = 1;								sonsole.log(a);
+}											a = 1;
+										}

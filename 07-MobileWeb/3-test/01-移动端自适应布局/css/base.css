@@ -1,0 +1,55 @@
+/*样式初始化*/
+*,
+::before,
+::after {
+    margin:0;
+    padding:0;
+    /*
+        border-box的盒模型有什么用处？
+            当想以百分比形式设置元素的总体尺寸，又想以像素的单位制定边框和内边距时候，边框模型特别有用。
+    */
+    -webkit-box-sizing: border-box;
+}
+
+html, body {
+    padding:0;
+    margin:0;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-size:14px;
+    font-family:Microsoft Yahei,sans-serif;
+    background-color: red;
+}
+
+a {
+    text-decoration:none;
+    color: #000;
+    /* mobile website use a tag to repalce button tag generally. */
+}
+ul,ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+input,textarea {
+    border: none;
+    resize: none;
+    outline: none;
+    /* a effect show when clicked,a skyblue outline */
+    -webkit-appearance: none;
+    /* 立体效果，在safari中有 */
+}
+
+/* clear float */
+.clearfix::before,
+.clearfix::after {
+    content: '';
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        // 创建对象方式
+        // 1.
+        var json = {};
+        var arr = [1,2,3,{}];
+
+        // 缺点是不能把json当成一个模版用来new一个新对象
+
+        // 2.
+        var obj = new Object();
+        obj.age = 21;
+        obj.show = function(){};
+
+        // 也不能用来作为模版，只是临时用来存储数据。
+
+        // 3. 通过构造函数构造出一个Cat对象。Cat类可以作为模版使用。
+        function Cat(){
+            this.age = 21;  // 必须有this
+            this.show = function(){
+                console.log('show cat');
+            };
+
+            // name = '1123';
+                // === window.name
+                // 并不会创建出一个cat.name来
+        }
+        var cat = new Cat();
+
+    </script>
+</body>
+</html>

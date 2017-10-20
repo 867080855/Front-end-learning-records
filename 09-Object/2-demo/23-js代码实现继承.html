@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+测试内容见console控制台
+<script>
+    // 定义一个基类--Person
+    var Person = function () {
+        this.name = '张三';
+        this.age = '20';
+    };
+    Person.prototype = {
+        walk:function () {
+            console.log('person all can walk!');
+        }
+    };
+
+
+    // 定义一个子类--Student
+    var Student = function () {
+        Person.call(this,arguments);
+        this.id = '0001';
+        this.skill = 'student can sing';
+    };
+    Student.prototype = new Person();
+        // 删除这句话之后Person的walk方法无法被继承
+    Student.prototype.dance = function () {
+        console.log('student can dance');
+    };
+
+
+    // 实例化学生类--LiRui
+    var LiRui = new Student();
+    console.log(LiRui);
+</script>
+</body>
+</html>

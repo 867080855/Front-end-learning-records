@@ -1,0 +1,11 @@
+viewport:
+	声明当前网页在移动端浏览器展示时的相关设置 
+	当页面宽度超出设备宽度时浏览器内部虚拟的一个页面容器，将这个页面容器缩放到设备那么大然后显示。
+
+	目前大多数手机浏览器的视口(承载页面的容器)的宽度都是980px；
+	视口声明应紧接着编码后放置。
+	-------------------------------------
+	设置：
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no || minimum-scale || maximum-scale">
+
+		user-scale=no为不允许用户缩放。

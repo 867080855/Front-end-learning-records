@@ -1,0 +1,24 @@
+对象？
+    1. 属性
+        这个对象有什么特征？
+        拿经典对象创建来讲，这个对象叫什么？这个对象多大了？
+    2. 方法
+        这个对象会做什么？会做饭？会走路？
+
+        var cat = new Cat()的对象的创建所获取到的其实只是拿到了Cat类的
+    空属性和空方法，然后再由程序员赋予其与众不同的值和方法。就比如说每个人
+    都会做饭都会走路，所以称其为人'类'，但是每个人的走路方式，每个人会做的
+    饭是不一样的，所以产生了不同的人(即对象)。
+
+    var o = {
+        name:'tecwang';
+        age:21;
+        cook:function(){
+            console.log('i can cook delicious food');
+        },
+        walk:function(){
+            console.log('i can walk to any direction i want');
+        }
+    };
+
+

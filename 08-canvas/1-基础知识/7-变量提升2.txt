@@ -1,0 +1,16 @@
+//  声明变量
+function test(){
+	var a = '1';
+	var b = function(){};
+	var c = '2';
+	var d = '3';
+}
+
+// 变量提升----上述代码等价于
+function test(){
+	var a,b,c,d
+	a = '1';
+	b = function(){};
+	c = '2';
+	d = '3';
+}

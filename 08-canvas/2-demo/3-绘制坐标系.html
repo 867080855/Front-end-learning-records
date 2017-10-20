@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <canvas>
+
+        </canvas>
+    </div>
+    <script>
+        function paintXY() {
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            ctx.beginPath();
+            var x0 = 100;
+            var y0 = 500;
+            var axis_length = 400;
+            var arrow_length = axis_length*0.05;
+
+            // 绘制y轴
+            ctx.moveTo(x0,y0);
+            ctx.lineTo(x0,y0-axis_length);
+            ctx.lineTo(x0+Math.cos(45*Math.PI/180)*arrow_length,y0-axis_length+Math.sin(45*Math.PI/180)*arrow_length);
+            ctx.moveTo(x0,y0-axis_length);
+            ctx.lineTo(x0+Math.cos(135*Math.PI/180)*arrow_length,y0-axis_length+Math.sin(135*Math.PI/180)*arrow_length);
+
+            // 绘制x轴
+            ctx.moveTo(x0,y0);
+            ctx.lineTo(x0+axis_length,y0);
+            ctx.lineTo(x0+axis_length+Math.cos(-135*Math.PI/180)*arrow_length,y0+Math.sin(-135*Math.PI/180)*arrow_length);
+            ctx.moveTo(x0+axis_length,y0);
+            ctx.lineTo(x0+axis_length+Math.cos(135*Math.PI/180)*arrow_length,y0+Math.sin(135*Math.PI/180)*arrow_length);
+
+
+            ctx.stroke();
+        }
+
+        paintXY();
+    </script>
+</body>
+</html>

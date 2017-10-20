@@ -1,0 +1,34 @@
+BOM对象(browser object model)：浏览器对象模型
+- Window
+        window.open
+        window.close
+    - Document
+        集合
+        document.write
+        document.getElementById
+        document.getElementsByTagName
+        document.getElementsByClassName
+    - History
+        window.history.back 后退
+        window.history.forward 前进
+        window.history.reload 刷新
+        window.history.go(num) 后退
+    - Location
+        window.location = 'http://www.baidu.com'
+        window.location.href
+            返回整个URL
+        window.location.search
+            返回‘?’以后的字符串----查询字符串
+        window.location.query
+    - Screen
+        window.screen.width
+        window.screen.height
+    - Navigator
+        获取相关的版本号信息
+    - Cookie
++==================================================
+window是鼻祖，其他的几个BOM对象是window的一个属性
+    平时所定义的变量也都是window的属性
+=================================================
+URL(uniform resource locator)
+    统一资源定位符

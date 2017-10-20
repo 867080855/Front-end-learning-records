@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas>
+
+    </canvas>
+    <script>
+
+        (function(){
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            // 绘制表格
+            // 1. 横线
+
+            var recH = 10;
+            for(var x = 0;x < (canvas.height)/recH ; x++ ){
+                ctx.moveTo(0,x*recH);    // 如果不设置当前画笔没有位置。
+                                        // 第一个lineTo作为moveTo
+                ctx.lineTo(canvas.width,x*recH);
+            }
+            // 2. 竖线
+            var recW = 10;
+            for(var x = 0; x < (canvas.width)/recW ; x++){
+                ctx.moveTo(x*recW,0);
+                ctx.lineTo(x*recW,canvas.height);
+            }
+            // 3. 描边
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+
+
+            }());
+    </script>
+</body>
+</html>

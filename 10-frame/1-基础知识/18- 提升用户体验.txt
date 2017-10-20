@@ -1,0 +1,23 @@
+1. 零参数编程
+    利用arguments
+    var a = arguments[0];
+2. 利用特殊含义的字符
+    switch(duration){
+        case:'slow':
+            duration:8000;
+            break;
+        case:'fast':
+            duration:2000;
+            break;
+    }
+3. 默认值
+    方法一：
+        if(a){
+            ...
+        }else{
+            a = 100;
+        }
+    方法二：
+        this.config = {
+            interval:20
+        };

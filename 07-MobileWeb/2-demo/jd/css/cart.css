@@ -1,0 +1,333 @@
+body {
+	background-color: #f5f5f5;
+	/* height: 1000px; */
+	/* padding-bottom: 62px; */
+}
+
+.topbar {
+	position: static;
+}
+/* tips */
+.tips {
+	width: 100%;
+	height: 34px;
+	line-height: 34px;
+	font-size: 13px;
+	text-align: center;
+	border-bottom: 1px solid #e0e0e0;
+	background-color: #fff;
+}
+
+.tips p {
+	width: 250px;
+	padding-left: 25px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.tips p::after {
+	content: '';
+	display: block;
+	width: 18px;
+	height: 18px;
+
+	background: url('../img/safe_icon.png') no-repeat;
+	background-size: 18px 18px;
+
+	position: absolute;
+	left:0 ;
+	top: 8px;
+}
+
+.saler {
+	margin-top: 10px;
+	background-color: #fff;
+}
+/* 公共类卖家单元 */
+.saler .dt {
+	height: 40px;
+	width: 100%;
+	/* background-color: #666; */
+	position: relative;
+	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+
+}
+
+/* 公共类复选框 */
+.checkbox {
+	display: block;
+	width: 20px;
+	height: 20px;
+	border-radius:10px;
+
+	background: url('../img/shop-icon.png') no-repeat;
+	background-size: 50px 100px;
+	background-position: 0 0;
+}
+
+.checkbox[checked] {
+	background-position: -25px 0;
+} 
+
+.saler .dt .check-box {
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.saler .dt .content {
+	width: 100%;
+	padding-left: 40px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.saler .dt .content img {
+	width: 20px;
+	height: 20px;
+	margin-top: 10px;
+	float: left;
+}
+
+.saler .dt .content span:nth-of-type(1) {
+	padding-left: 5px;
+	float: left;
+}
+
+.saler .dt .content span:nth-of-type(2) {
+	color: #d8505c;
+	padding-right: 5px;
+	float: right;
+} 
+
+.saler .dd {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.saler .dd .check-box {
+	width: 40px;
+	padding-left: 10px;
+	padding-top: 10px;
+	position: absolute;
+	left: 0;
+}
+
+.saler .dd .product {
+	width: 100%;
+	padding-left: 40px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.saler .dd .product .img-box {
+	float: left;
+	display: block;
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+}
+
+.saler .dd .product img {
+	width: 100%;
+}
+
+.saler .dd .product .detail {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	padding-left:130px;
+}
+
+.saler .dd .product .detail .name {
+	height: 30px;
+	line-height: 15px;
+	font-size: 13px;
+	/* width: 100%; */
+	overflow:hidden;
+	display: block;
+
+}
+
+.saler .dd .product .detail .price {
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.saler .dd .product .detail .op {
+	/*  */
+	width: 100%;
+}
+
+.saler .dd .product .detail .op .num {
+	float: left;
+}
+
+.saler .dd .product .detail .op .substract,
+.saler .dd .product .detail .op .add {
+	display: block;
+	width: 32px;
+	height: 24px;
+	border: 1px solid #e0e0e0;
+	float: left;
+	text-align: center;
+}
+
+.saler .dd .product .detail .op .substract {
+	border-radius: 2px 0 0 2px;
+}
+
+.saler .dd .product .detail .op .add {
+	border-radius: 0 2px 0 2px;
+}
+
+.saler .dd .product .detail .op input {
+	width: 32px;
+	height: 24px;
+	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	float: Left;
+}
+
+.saler .dd .product .detail .delete {
+	float: right;
+	margin-right: 10px;
+}
+
+.saler .dd .product .detail .delete .top {
+	width: 20px;
+	height: 5px;
+	background: url('../img/delete_up.png') no-repeat;
+	background-size: 20px 5px;
+	margin-left: -1px;
+}
+
+.saler .dd .product .detail .delete .bottom {
+	width: 18px;
+	height: 18px;
+	background: url('../img/delete_down.png') no-repeat;
+	background-size: 18px 18px;
+	margin-top: -3px;
+}
+
+/* cash */
+.cash {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: 62px;
+	width: 100%;
+	background-color: rgba(0,0,0,.4);
+	color: #fff;
+}
+
+.cash .check-box {
+	position: absolute;
+	width: 80px;
+}
+
+.cash .checkbox {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+}
+
+.cash .check-box span {
+	line-height: 62px;
+	padding-left: 30px;
+	font-size: 16px;
+	color: #fff;
+}
+
+.cash .info {
+	padding-left: 80px;
+	padding-right: 120px;
+	height: 62px;
+	line-height: 31px;
+}
+
+.cash .info .sum {
+	font-size: 16px;
+}
+
+.cash .info .other {
+	font-size: 12px;
+}
+
+.cash .submit {
+	width: 120px;
+	height: 62px;
+	padding: 0 2px;
+	text-align: center;
+	line-height: 62px;
+	color: #fff;
+	background-color:#d8505c;
+	font-weight:800;
+	font-size: 16px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.cash .submit span {
+	font-size: 12px;
+}
+
+/* 模态框 */
+.mask {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.4);
+	/* display: none; */
+	z-index: 9999;
+}
+
+.mask .box {
+	width: 80%;
+	height: 30%;
+	background-color: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	margin: 0 auto;
+	/* position: absolute;
+	top: 50%;
+	margin-top: -15%;
+	left: 50%;
+	margin-left: -40%; */
+}
+
+.mask .box .text {
+	line-height: 75px;
+	color: #666;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.mask .box .cancle ,
+.mask .box .submit{
+	display: block;
+	width: 40%;
+	/* height: 30%; */
+	height: 36px;
+	background-color: #aaa;
+	margin-left: 20px;
+	float: left;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 36px;
+	color: #fff;
+}
+
+.mask .box .submit {
+	background-color: #d8505c;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">change</button>
+<div id="box">
+
+</div>
+</body>
+<script>
+    var btn = document.getElementById('btn');
+    var box = document.getElementById('box');
+
+    btn.onclick = function () {
+        animate(box,{
+            left:500,
+            height:200
+        },5000);
+    };
+
+    function animate(ele,option,duration){
+        //  定义属性
+        var timer = null,
+            // +new Date() 将当前的时间转换成毫秒值
+            beginTime = +new Date(),
+            now = +new Date(),
+            totalTime = duration,
+            json = getStartValue(ele,option);   // 各参数起始位置
+
+        timer = setInterval(function () {
+            // 设置属性
+            now = +new Date();
+            var tween = getTween(beginTime,now,totalTime);
+
+            if(tween >= 1){
+                stop();
+            }else{
+                for(var k in option){
+                    setProperty( ele , k ,( json[k] + tween*option[k] )+'px');
+                }
+            }
+        },30);
+
+
+        // 获取从开始到现在的总的时间进程
+        function getTween(beginTime,now,totalTime){
+            return ( now - beginTime ) / totalTime;
+        }
+
+        // 给目标设置属性
+        function setProperty(ele,key,value){
+            /*
+             * 单属性运动公式：
+             *   起始距离 + 动画时间进程 * 总距离
+             *   value = start + tween * totalLength
+             * */
+            ele.style[key] = value;
+        }
+        // 获取目标的初始属性值
+        function getStartValue(ele,option){
+            var json = {};
+            for(var k in option){
+                json[k] = parseInt(window.getComputedStyle(ele)[k]);
+            }
+            return json;
+        }
+
+        // 让目标停下来
+        /*
+         * 单一功能原则：
+         *   尽量保证一个函数只有一个功能
+         *   本质：保证一个函数只有一个变化源
+         * */
+        function stop(){
+            clearInterval(timer);
+        }
+    }
+
+    // 为了数据的简洁易用性，可以加一个adapter(适配器)用来转换数据
+    /*
+    * 适配器示例：
+    *   function adapter(option){
+    *       var arr = [];
+    *       var json = {};
+    *       for(var k in option){
+    *           json[k] = option[k];
+    *           ..
+    *
+    *           arr.push();
+    *       }
+    *
+    *       return arr;
+    *   }
+    * */
+</script>
+</html>

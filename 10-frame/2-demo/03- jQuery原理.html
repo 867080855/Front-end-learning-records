@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    test
+</div>
+<script>
+    var $ = function(id){
+        this.elements = [];
+        return this.$id(id);
+    };
+    $.prototype = {
+        $id:function (id) {
+            this.elements.push(document.getElementById(id));
+            return this;
+        },
+        hide:function () {
+            for(var x = 0; x < this.elements.length; x++){
+                this.elements[x].style.display = 'none';
+                console.log('done');
+            }
+        }
+    };
+
+    // 实例化对象
+    new $('box').hide();
+</script>
+</body>
+</html>

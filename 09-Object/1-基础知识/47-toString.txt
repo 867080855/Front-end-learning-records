@@ -1,0 +1,5 @@
+1. toString方法是写在原型中的
+2. Array,String对象中一般都重写了toString方法
+3. 当使用Object.prototype.toString时，是为了访问鼻祖级别的toString方法
+===============================================
+toString方法的作用？

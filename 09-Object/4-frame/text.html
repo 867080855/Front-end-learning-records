@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="tecFrame.js"></script>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            margin:30px 0 0 30px;
+            background-color: orange;
+            text-align: center;
+            float:left;
+        }
+        .info {
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 30px;
+            background-color: skyblue;
+        }
+        .selector {
+            line-height: 50px;
+        }
+        .ajax {
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .dateFormat {
+            line-height: 30px;
+        }
+        .formatString {
+            height:40px;
+            padding:80px 0 ;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+<p class="info">测试结果见console控制台</p>
+
+<section>
+    <div class="selector" id="selector">测试选择器用盒子</div>
+    <div class="ajax" id="ajax">测试ajax用盒子 <br/> <span>请单击盒子</span></div>
+    <div class="dateFormat" id="dateFormat">测试dataFormat用盒子 <br/></div>
+    <div class="formatString" id="formatString">测试formatString用盒子 <br/></div>
+    <div class="extend" id="extend">测试extend用盒子 <br/></div>
+</section>
+<script>
+    // 打印框架结构
+    console.log($$);
+
+    // 测试selector
+    (function () {
+        // 测试id选择器
+        var selector_box = $$.$id('selector');
+//        console.log(selector_box);
+        selector_box.innerHTML += '<br>测试id成功';
+
+        // 测试class选择器
+        selector_box = $$.$class('selector')[0];
+        selector_box.innerHTML += '<br>测试class成功';
+
+        // 测试class选择器
+        selector_box = $$.$tag('div')[0];
+//        console.log(selector_box);
+        selector_box.innerHTML += '<br>测试tag成功';
+    })();
+
+    // 测试trim函数
+    (function () {
+        var str = '  3454334    ';
+        var s = '';
+//        console.log('length:' + str.length);
+
+        s = $$.ltrim(str);
+//        console.log('ltrim:' + s.length);
+
+        str = '  3454334    ';
+        s = $$.rtrim(str);
+//        console.log('rtrim:' + s.length);
+
+        str = '  3454334    ';
+        s = $$.trim(str);
+//        console.log('trim:' + s.length);
+    })();
+
+    // 测试ajax
+    (function () {
+        var ajax = $$.$id('ajax');
+        ajax.addEventListener('click', function () {
+            $$.ajax({
+                type:'get',
+                url:'test.php',
+                flag:true,
+                success: function (data) {
+                    ajax.getElementsByTagName('span')[0].innerHTML = data;
+                    console.log(data);
+                },
+                fail: function () {
+                    ajax.getElementsByTagName('span')[0].innerHTML = 'fail';
+                }
+            });
+
+        })
+    })();
+
+    // 测试dateFormat
+    (function () {
+        var dateFormat = $$.$id('dateFormat');
+        dateFormat.innerHTML += $$.dateFormat(new Date(),'yyyy年MM月dd日 <br> hh时mm分ss秒');
+    })();
+
+    // 测试formatString
+    (function () {
+        var con = $$.$id('formatString');
+        var user = {name:'xxx',role:'钻石会员'};
+        con.innerHTML += $$.formatString("欢迎@role:@name来到百度世界",user);
+    })();
+
+    // 测试extend
+    (function () {
+        var ex = $$.$id('extend');
+        var boy = {
+            name:'无忌',
+            age:20,
+            sex:'男'
+        };
+        var p = $$.extend({},boy);
+        p.name = '醉侠客';
+
+        ex.innerHTML += p;
+//        console.log(p)
+    })();
+
+    // 测试queryString(见2-demo/4-百度星座/detail.html)
+</script>
+</body>
+</html>

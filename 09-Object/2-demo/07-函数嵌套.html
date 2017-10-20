@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>详细信息见console控制台</p>
+<script>
+    function fn(){
+        this.name = '23';
+        this.fn2 = function(){
+            this.name = '34';
+        }
+    }
+
+    var f = new fn();
+    console.log(f);
+</script>
+</body>
+</html>

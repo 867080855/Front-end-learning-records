@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">move</button>
+    <div id="box">
+
+    </div>
+</body>
+
+<script>
+    var timer = null;
+
+    function move(){
+        now = +new Date();
+        pass = ( now - begin ) / totalTime;
+        console.log(pass);
+
+        len = totalTime * pass;
+
+        var box = document.getElementById('box');
+        box.style.left = pass * totalLength + 'px';
+
+        if(pass >= 1){
+            clearInterval(timer);
+        }
+    }
+
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+
+        begin = +new Date(),
+        now = +new Date(),
+        pass = 0,
+        totalTime = 5000,
+        totalLength = 500;
+
+        timer = setInterval(move,30);
+    }
+</script>
+</html>

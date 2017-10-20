@@ -1,0 +1,9 @@
+事件触发：
+    1. one
+    2. delegate
+        $('div').delegate('h3','click',function(){
+            $(this).css('color','red');
+        });
+    3. on
+    4. bind
+    5. click,move

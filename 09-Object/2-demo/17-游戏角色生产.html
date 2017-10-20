@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+
+<script>
+    // 创建人物模板
+    function Person(name){
+        var obj = new Object();
+        obj.name = name;
+        obj.HP = 100;
+        obj.MP = 100;
+        obj.skills = ['普通攻击','地狱火','漫天飞雪'];
+        obj.attack = function () {
+            alert('你受到十点伤害！');
+        };
+        obj.run = function () {
+
+        };
+        return obj;
+
+    }
+
+    // 创建人物
+    var boy = Person('剑侠客');
+    boy.attack();
+    boy.run();
+    console.log(boy);
+
+</script>
+</html>

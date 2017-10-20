@@ -1,0 +1,5 @@
+很重要的四个方法：
+    1. addClass
+    2. removeClass
+    3. attr
+    4. removeAttr

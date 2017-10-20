@@ -1,0 +1,18 @@
+方法1：
+	1.图片以背景背景图写在行内样式中，便于日后维护
+		<div class="item" style="background-image:url(...)"></div>
+	2.修改相应的行内样式
+		.item{
+			height:xxx;
+			background-repeat:no-repeat:
+			background-size:cover;
+				// cover即图片的短边等比缩放到接触指定盒子的长度(长图的话短边直到触底)。
+				// 不论是cover 还是 contain 都是等比缩放
+			background-position:center center;
+				// 使背景图始终居中。	
+		}
+
+方法2：
+	position:absolute;
+	left:50%;
+	margin-left:-width/2px;

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <style>
+        body {
+            padding:0;
+            margin:0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+    </style>
+    <script src="konva.js"></script>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    // 1. 创建舞台
+    var stage = new Konva.Stage({
+        container:'box',
+        width:window.innerWidth,
+        height:window.innerHeight
+    });
+
+    // 2. 创建层 可以添加很多层，背景层，光照层，动画层
+    var layer = new Konva.Layer();
+
+    // 3.把层添加到舞台
+    stage.add(layer);
+
+    // 中心点坐标，有什么用？
+    var cenX = stage.width()/2;
+    var cenY = stage.height()/2;
+        // Konva中获取属性都是靠内部的方法获取
+
+    // 4. 创建形状对象(绘制进度条),并添加渲染到层上
+    var innerRect = new Konva.Rect({
+        x:stage.width()/8,
+        y:stage.height()/2,
+        width:0,
+        height:stage.height()/12,
+        opacity:0.7,
+        fill:'lightblue',
+        cornerRadius:stage.height()/24
+    });
+    layer.add(innerRect);
+    layer.draw();
+
+    var outRect = new Konva.Rect({
+        x:stage.width()/8,
+        y:stage.height()/2,
+        height:stage.height()/12,
+        width:3/4*stage.width(),
+        stroke:'#000',  // 如果设置stroke就描边，设置fill就填充
+        strokeWidth:'4',
+        cornerRadius:stage.height()/24
+    });
+
+    layer.add(outRect);
+    layer.draw();
+
+
+    var loadImgIndex = 0;
+    var imgSrcArray = ['1.png','2.png'];
+//    for(var x = 0;x < imgSrcArray.length; x++){
+    for(var x = 0;x < 1000; x++){
+//        var img = new Image();
+//        img.src = imgSrcArray[x];
+//        img.onload = function () {
+            loadImgIndex++;
+            // 添加Konva动画
+            innerRect.to({
+//                width:width*(loadImgIndex/imgSrcArray.length),
+                width:3/4*stage.width()*(loadImgIndex/1000),
+                duration:2,
+                opacity:1
+            });
+//        }
+    }
+
+
+
+
+</script>
+</html>

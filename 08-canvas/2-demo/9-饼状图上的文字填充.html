@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <canvas>
+
+        </canvas>
+    </div>
+    <script>
+
+        var data = [{
+            "value": .2,
+            "color": "red",
+            "title": "应届生"
+        },{
+            "value": .3,
+            "color": "blue",
+            "title": "社会招生"
+        },{
+            "value": .4,
+            "color": "green",
+            "title": "老学员推荐"
+        },{
+            "value": .1,
+            "color": "#ccc",
+            "title": "公开课"
+        }];
+
+
+        function paintCake(data){
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 600;
+            canvas.style.border = '1px solid #000';
+
+            var startAngle = -90;
+            var endAngle = 0;
+            var x0 = 300;
+            var y0 = 300;
+            var r = 100;
+
+            for(var x = 0; x < data.length; x++ ){
+                endAngle = startAngle + data[x].value*360;
+                ctx.beginPath();
+                ctx.moveTo(x0,y0);
+                ctx.arc(x0,y0,r,startAngle*Math.PI/180,endAngle*Math.PI/180);
+                ctx.fillStyle = data[x].color;
+                ctx.fill();
+
+                // 填充文字
+                var txt = data[x].title;
+                var txtAngle = startAngle + data[x].value*360/2;
+                var tarX = x0 + Math.cos(txtAngle*Math.PI/180)*(r+20);
+                var tarY = y0 + Math.sin(txtAngle*Math.PI/180)*(r+20);
+                if(tarX < 200 ){
+                    ctx.textAlign = 'end';
+                }
+                console.log(tarX+'-'+tarY);
+                ctx.fillText(txt,tarX,tarY);
+
+                // 现在的结束角度作为下一次的开始角度
+                startAngle = endAngle;
+            }
+
+        }
+
+        (function () {
+            paintCake(data);
+
+        }());
+
+    </script>
+</body>
+</html>

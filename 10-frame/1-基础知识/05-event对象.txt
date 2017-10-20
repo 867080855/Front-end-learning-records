@@ -1,0 +1,7 @@
+如何证明event的存在？
+    $('#btn').click(function(){
+        alert(arguments.length);
+            // 1
+            // 这个1就是event对象
+    });
+---------------------------------------------

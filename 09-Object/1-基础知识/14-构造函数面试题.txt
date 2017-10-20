@@ -1,0 +1,28 @@
+1.
+    var fun = function(){
+        this.name = 'peter';
+
+        return {
+            name:'jack';
+        };
+    }
+
+    var p = new fun();
+    console.log(p.name);
+        // jack
+    /*
+        返回结果是jack，为什么呐？
+        构造函数也是函数，当成一个普通的函数看待就好。
+    当有return存在且返回的是一个对象的时候，以返回的内容为准。
+        此处return了一个对象。其name属性的值为jack
+        若返回的是一个字符串？则继续走构造函数的途径
+    */
+========================================================
+2.
+    var fun2 = function(){
+        this.name = 'peter';
+        return 'jack';
+    }
+    var p2 = new fun2();
+    console.log(p2.name);
+        // peter 解析见上

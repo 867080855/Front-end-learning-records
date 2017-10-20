@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="tecWang(extend).js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+        }
+        #box1 {
+            left:0;
+        }
+        #box2 {
+            left:200px;
+        }
+        #box3 {
+            left:400px;
+        }
+        #box4 {
+            left: 600px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">change</button>
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+</body>
+<script>
+    var btn = document.getElementById('btn');
+    var box1 = document.getElementById('box1');
+    var box2 = document.getElementById('box2');
+    var box3 = document.getElementById('box3');
+    var box4 = document.getElementById('box4');
+
+    btn.onclick = function () {
+        // 实例化对象，对象内部有内置函数，会自动初始化并完成动画要求
+        var animate = new Animate();
+
+        animate.setConfig({
+            interval:30
+        });
+
+        animate.start(box1, {top: 500, height: 200}, 1000);
+        animate.start(box2, {top: 500, height: 200}, 1000);
+        animate.start(box3, {top: 500, height: 200}, 1000);
+        animate.start(box4, {top: 500, height: 200}, 1000);
+    };
+
+    function Animate(){
+        // 对象队列
+        this.queue = [];
+
+        // 默认值
+        this.config = {
+            timer:null,
+            interval:20
+        };
+    }
+    Animate.prototype = {
+        // 初始化函数。
+        start:function (ele,option,duration) {
+            // 队列中添加新的需要的数据
+            this.queue.push(this.adapter(ele,option,duration));
+
+            // 动起来
+            this.moveMany(this.queue);
+
+            console.log(this);  // 此处的this，指的是animate对象，所以在下边的多个地方，可以使用this调用其方法
+        },
+        // 适配器，负责转换原始数据为可以使用的数据,返回一个json，其中包含了对象需要的一切属性
+            // 包括：name, time, styles...
+        adapter:function (ele,option,duration) {
+            var json = {};
+            json.name = ele;
+
+            json.beginTime = +new Date();
+            json.nowTime = +new Date();
+            json.totalTime = duration;
+            json.tween = 0;
+
+            $$.extend(json,this.config);
+
+            json.styles = getStyles(ele,option);
+            return json;
+
+            // 获取每个属性的状态：
+                // 1. key 2. value 3. originalValue
+            function getStyles(ele,option){
+                var arr = [];
+                for(var key in option){
+                    var styles = {};
+
+                    styles['key'] = key;
+                    styles['totalChange'] = option[key];
+                    styles['originalValue'] = parseInt($$.css(ele,key));
+                    arr.push(styles);
+                }
+                return arr;
+            }
+        },
+        // 核心函数，负责控制一个元素的运动
+        move:function (obj) {
+            var self = this;
+            obj.timer = setInterval(function () {
+                obj.nowTime = +new Date();
+                // tween属于对象的一个共有属性 ，不应该放在style里边
+                obj.tween = getTween(obj.beginTime,obj.nowTime,obj.totalTime);
+
+                if(obj.tween >= 1){
+                    self.stop(obj);
+                }else{
+                    setProperty(obj);
+                }
+            },obj.interval);
+
+            // 获取从开始到现在的总的时间进程
+            function getTween(beginTime,now,totalTime){
+                return ( now - beginTime ) / totalTime;
+            }
+
+            // 给目标设置属性
+            function setSingleProperty(ele,key,value){
+                /*
+                 * 单属性运动公式：
+                 *   起始距离 + 动画时间进程 * 总距离
+                 *   value = start + tween * totalLength
+                 * */
+                ele.style[key] = value;
+            }
+            function setProperty(obj){
+                var ele = obj.name;
+                var option = obj.styles;
+                for(var x = 0; x< option.length; x++){
+                    for(var k in option[x]){
+                        var key = option[x].key;
+                        var value = option[x].originalValue + option[x].totalChange * obj.tween + 'px';
+                        setSingleProperty(ele,key,value);
+                    }
+                }
+            }
+        },
+        // 控制多个元素的运动
+        moveMany:function (queue) {
+            for(var x = 0; x < queue.length; x++){
+                this.move(queue[x]);
+            }
+        },
+        // 停止定时器
+        stop:function (obj) {
+            clearInterval(obj.timer);
+        },
+        // 内存回收
+        clean:function () {
+
+        },
+        // 设置默认值
+        setConfig:function (json) {
+            $$.extend(this.config,json);
+        }
+    }
+</script>
+</html>

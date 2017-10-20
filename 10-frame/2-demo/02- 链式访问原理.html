@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Obj(){}
+    Obj.prototype = {
+        fn1:function () {
+            alert('fn1');
+            return this;
+                // this是当前对象，而fn1是当前方法
+                // 显然obj是当前对象，obj可以调用一系列的方法，所以可以实现链式访问
+                // 因为只有当前对象才有想要链式访问的一系列方法
+
+        },
+        fn2:function () {
+            alert('fn2');
+            return this;
+        }
+    };
+
+
+    var obj = new Obj();
+    obj
+        .fn1()
+        .fn2();
+</script>
+</body>
+</html>

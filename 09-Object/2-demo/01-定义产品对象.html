@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class="container">
+	<h2 id="title">产品名称</h2>
+	<h3 id="desc">产品描述</h3>
+	<div id="price">0</div>
+</div>	
+</body>
+<script>
+// 产品对象属性：名称 价格 描述
+// 写对象的话首先考虑好分类，一个空壳就好。
+	function Product () {
+		// 标题
+		this.title = 'iphone8';
+		// 价格
+		this.price = 5700;
+		// 图片轮播
+		this.images = [];
+		// 描述		
+		this.desc = '手机霸主';
+	}
+	Product.prototype = {
+		// 购买
+		buy:function(){
+
+		},
+		// 获取详细信息
+		getDetial:function(){
+
+		},
+		// 对代码进行分类管理
+		bindDOM:function(){
+
+		},
+		bindEvent:function(){
+
+		}
+	};
+	window.onload = function(){
+		var iphone = new Product();
+		iphone.title = 'iphone7';
+		iphone.price = 5555;
+		iphone.desc = 'iphone7,不止于大';
+		// 获取元素
+		var title = document.getElementById('title');
+		var desc = document.getElementById('desc');
+		var price = document.getElementById('price');
+		// 绑定元素
+		title.innerHTML = iphone.title;
+		desc.innerHTML = iphone.desc;
+		price.innerHTML = iphone.price;
+		// 绑定事件
+
+	}
+</script>
+</html>
