@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+        难点如下：
+            1.时针的变化不能突兀，不能从八点忽然跳转到九点。
+                可以把当前的分钟数/60加上当前小时数再乘上相应角度解决。
+            2.旋转的语法。
+                可以用css3解决。
+                    eg:element.style.webkitTransform = "rotate(__deg)";
+                    eg:element.style.MozTransform = "rotate(__deg)";
+                    //c3的兼容性较差，不同的浏览器需要写不同的代码。比较麻烦。
+    -->
+    <style>
+        .clock{
+            width: 600px;
+            height: 600px;
+            margin:0 auto;
+            background: url("images/clock.jpg") no-repeat ;
+            position: relative;
+        }
+        .clock div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .h{background: url(images/hour.png) no-repeat center center;}
+        .m{background: url(images/minute.png) no-repeat center center;}
+        .s{background: url(images/second.png) no-repeat center center;}
+                                                    /*center center 是指将图片的中心放在盒子的中心。*/
+    </style>
+    <script>
+        window.onload = function () {
+            var clock = document.getElementById("clock");
+            //创建时针、分针、秒针对象
+            var hour = clock.children[0];
+            var min = clock.children[1];
+            var sec = clock.children[2];
+            var ms, s, m,h;
+            setInterval(Rotate,1000);
+            function Rotate(){
+                var date  = new Date();
+                ms = date.getMilliseconds();
+                s = date.getSeconds() + ms/1000;
+                m = date.getMinutes() + s/60;
+                h = (date.getHours() + m/60)%12;
+                //console.log(ms + "," + s + "," + m + "," + h);
+                sec.style.webkitTransform = "rotate("+ s*6 +"deg)";
+                min.style.webkitTransform = "rotate("+ m*6 +"deg)";
+                hour.style.webkitTransform = "rotate("+ h*30 +"deg)";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="clock" id="clock">
+        <div class="h"></div>
+        <div class="m"></div>
+        <div class="s"></div>
+    </div>
+</body>
+</html>

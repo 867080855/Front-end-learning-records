@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #f7f7f7;
+		}
+		ul{
+			list-style: none;
+			margin:0;
+			padding:0;
+		}
+		.box {
+			width: 500px;
+			background-color: skyblue;
+			margin:100px auto;
+		}
+		#header{
+			width: 300px;
+			margin:0 auto;
+			padding:10px 0;
+			font-size: 20px;
+			line-height: 30px;
+		}
+		#header input{
+			width: 150px;
+			height: 30px;
+			font-size: 20px;
+		}
+		#header button{
+			width: 50px;
+			height: 30px;
+		}
+		#content{
+			border-top:1px solid #eee;
+			padding:0 0 0 50px;
+			margin:0 auto;	
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div id="header">
+			单号：<input type="text" id="txt">
+			<button id="btn">查询</button>
+		</div>	
+		<div id="content"></div>
+	</div>
+</body>
+<script>
+	var btn = document.getElementById('btn');
+	btn.onclick = function () {
+		var xhr = null;
+		// if(window.XMLHttpRequest){
+		// 	xhr = new XMLHttpRequest();
+		// }else{
+		// 	xhr = new ActiveXObject(Microsoft.XMLHTTP);
+		// }
+
+
+		/*用于异常信息处理，try里边出错执行catch内容，catch出问题下边会彻底终止。*/
+		try{	
+			xhr = new XMLHttpRequest();
+		}catch(e){
+			xhr = new ActiveXObject(Microsoft.XMLHTTP);
+		}
+
+
+		var code = document.getElementById('txt').value;
+		var url = './08-ems.php?code=' + code;
+		console.log(url);
+		xhr.open('get',url,true);
+
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					var data = JSON.parse(xhr.responseText);
+					console.log(data); 
+					if(data.status == 0){
+						var list = data.data.info.context;
+						var tag = '';
+						for(var x = 0 ; x < list.length; x++){
+							var item = list[x];
+							var desc = item.desc;
+							var t = new Date();
+			    	        t.setTime(item.time+'000');
+							var str = t.getFullYear()+'年'+(t.getMonth()+1)+'月'+t.getDay()+'日'+(t.getHours()>12?' 下午':' 上午')+t.getHours()%12+':'+t.getMinutes()+':'+t.getSeconds(); 
+							tag += '<li><div>'+str+'</div><div>'+item.desc+'</div></li>';
+						}
+						var ul = document.createElement('ul');
+						ul.innerHTML = tag;
+						document.getElementById('content').appendChild(ul);
+					}else{
+						var info = data.msg;
+						document.getElementById('content').innerHTML = info;
+					}
+
+				}
+			}
+		}
+
+		xhr.send(null);
+	}
+</script>
+</html>

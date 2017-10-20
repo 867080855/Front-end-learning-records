@@ -1,0 +1,19 @@
+//获得可视区域的宽高
+function client(){
+    if(window.innerWidth != null){
+        //最新浏览器
+        return {
+            width:window.innerWidth,
+            height:window.innerHeight
+        }
+    }else if(document.compatMode == "CSS1Compat"){
+        //标准浏览器
+        return {
+            width:document.documentElement.clientWidth,
+            height:document.documentElement.clientHeight
+        }
+    }return{    //怪异模式浏览器
+        width:document.body.clientWidth,
+        height:document.body.clientHeight
+    }
+}

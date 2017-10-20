@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+        盒子两种隐藏方式：
+           1.display:npne;-----隐藏不占位置，常用。
+           2.visibility:hidden;----隐藏占位置。
+           3.overflow:hidden;----隐藏超出的部分。
+        显示方式：
+           1.display:block;
+           2.visibility:visible;
+    -->
+    <style>
+        div{
+            display: none;;
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            margin:5px;
+            float:left;
+        }
+        #demo1{
+            margin-left: -1px;
+        }
+    </style>
+    <script>
+        function fun(obj){
+            var target = document.getElementById(obj);
+            target.style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="fun('demo1')">显示第1个盒子</button>
+    <button onclick="fun('demo2')">显示第2个盒子</button>
+    <button onclick="fun('demo3')">显示第3个盒子</button>
+    <button onclick="fun('demo4')">显示第4个盒子</button>
+    <br/>
+    <div id="demo1">第1个盒子</div>
+    <div id="demo2">第2个盒子</div>
+    <div id="demo3">第3个盒子</div>
+    <div id="demo4">第4个盒子</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.1.js"></script>
+	<script src="template.js"></script>
+	<script id="artid" type="text/html">
+	{{if weather}}
+		{{each weather as value}}
+			<div>
+				<span>日期：{{value.date}}</span>
+				<ul>
+					<li>白天天气：{{value.info.day[1]}}</li>
+					<li>白天温度：{{value.info.day[2]}}</li>
+					<li>白天风向：{{value.info.day[3]}}</li>
+					<li>白天风速：{{value.info.day[4]}}</li>
+				</ul>
+				<ul>
+					<li>夜间天气：{{value.info.night[1]}}</li>
+					<li>夜间温度：{{value.info.night[2]}}</li>
+					<li>夜间风向：{{value.info.night[3]}}</li>
+					<li>夜间风速：{{value.info.night[4]}}</li>
+				</ul>
+			</div>
+		{{/each}}
+	{{/if}}
+	</script>
+	<script>
+		$(function  () {
+			$.ajax({
+				type:'get',
+				url:'12-test.php',
+				dataType:'json',
+				success:function(data){
+					var html = template('artid', data);
+					$('#info').html(html);
+					// var d = data.weather;
+					// var info = document.getElementById('info');
+
+					
+					// var tag = '';
+
+					// for(var x = 0; x < d.length; x++){
+					// 	var data = d[x].date;
+					// 	var day = d[x].info.day;
+					// 	var night = d[x].info.night;
+
+					// 	tag += '<span>日期：' + data + '</span>';
+					// 	tag += '<ul><li>白天天气:' + day[1] + '</li>';
+					// 	tag += '<li>白天温度：'+day[2]+'</li>'
+					// 	tag += '<li>白天风向：'+day[3]+'</li>'
+					// 	tag += '<li>白天风速：'+day[4]+'</li></ul>'
+
+					// 	tag += '<ul>';
+					// 	tag += '<li>夜间天气：'+night[1]+'</li>';
+					// 	tag += '<li>夜间温度：'+night[2]+'</li>';
+					// 	tag += '<li>夜间风向：'+night[3]+'</li>';
+					// 	tag += '<li>夜间风速：'+night[4]+'</li>';
+					// 	tag += '</ul>'
+
+					// 	tag += '<span>------------------------------</span>'
+
+					// }
+					// info.innerHTML = tag;
+				},
+				error(){
+					console.log('error');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="info">
+		
+	</div>
+</body>
+</html>

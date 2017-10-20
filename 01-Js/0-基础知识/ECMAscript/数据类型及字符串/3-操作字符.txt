@@ -1,0 +1,29 @@
+1.concat()----连接字符串
+    ------------------------------
+    var txt1 = "abcde";
+    var txt2 = "123";
+    console.log(txt1.concat(txt2);)
+        //abcde123
+2.slice("起始位置",[结束位置])----截取字符串
+    //起始位置可以是负数，从右边往左边开始取。
+    console.log(txt.slice(-2));
+        //gy
+    //包左不包右
+    ------------------------------
+    var txt = "Shan Dong University Of Science And Technology";
+    console.log(txt.slice(4));
+        // Dong University Of Science And Technology
+    console.log(txt.slice(4,9));
+        // Dong
+3.substr("起始位置",[取的个数])----截取字符串
+    //起始位置负数的情况
+    console.log(txt.substr(-1));    ----ie6,7,8不兼容
+        //y
+        //兼容方法：
+            //console.log(txt.substr(txt.length-1,1));
+    --------------------------------
+    var txt = "Shan Dong University Of Science And Technology";
+    console.log(txt.substr(4));
+        // Dong University Of Science And Technology
+    console.log(txt.substr(4,5));
+        // Dong

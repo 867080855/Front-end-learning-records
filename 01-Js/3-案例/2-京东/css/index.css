@@ -1,0 +1,164 @@
+@charset "UTF-8";
+.banner{
+    /*banner不能占有空间，所以需要采用定位。
+        采用相对定位，但是不能给高度。
+    */
+    position: relative;
+}
+.banner a{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 604px;
+    background: url(../images/banner.jpg) no-repeat top center;
+}
+.main{
+    position: relative;
+    /*加相对定位盖住banner盒子。*/
+}
+.main .slider{
+    margin:12px 0 0 220px;
+    width: 730px;
+    height: 453px;
+    position: relative;
+    float: left;
+}
+.circle{
+    position: absolute;
+    bottom:8px;
+    left:50%;
+    margin-left: -66px;
+}
+.circle li{
+    float: left;
+    width: 18px;
+    height: 18px;
+    margin: 0 2px;
+    text-align: center;
+    color:#fff;
+    background-color: #3E3E3E;
+    border-radius:50%;
+    cursor: pointer;
+}
+.circle li.current{
+    background-color: #B61B1F;
+}
+.main .arrow{
+    display : none;
+}
+.arrow-l,.arrow-r{
+    position: absolute;
+    width: 28px;
+    height: 62px;
+    top:50%;
+    margin-top: -31px;
+    background-color: orange;
+    color:#fff;
+    font:500 18px/62px "SimSun";
+    text-align: center;
+    background-color: rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+.arrow-l:hover,.arrow-r:hover{
+    background-color: rgba(0, 0, 0, .4);
+    color:#fff;
+}
+.arrow-l{
+    left:0;
+}
+.arrow-r{
+    right:0;
+}
+.main .news{
+    width: 248px;
+    height: 453px;
+    margin:12px 0 0 10px;
+    border:1px solid #e4e4e4;
+    float: right;
+    overflow: hidden;
+}
+.jd-news{
+    height: 200px;
+    border-bottom:1px dashed #E8E8E7;
+}
+.jd-news .dt{
+    height: 43px;
+    border-bottom:1px dotted #E8E8E7;
+    padding: 0 15px;
+}
+.live-services .dt{
+    height: 43px;
+    padding: 0 15px;
+}
+.jd-news .dt h3,
+.live-services .dt h3{
+    font:14px/43px "MicroSoft YaHei";
+    float: left;
+}
+.jd-news .dt a{
+    font:13px/43px "SimSun";
+    float: right;
+}
+.jd-news .dd{
+    padding: 8px 0 0 15px;
+}
+.jd-news .dd li{
+    line-height: 28px;
+}
+.jd-news .dd span{
+    font-weight: 700;
+    padding-right: 5px;
+}
+.live-services ul{
+    width: 255px;
+}
+.live-services ul a{
+    display: block;
+    width: 62px;
+    height: 70px;
+    float: left;
+    border:1px solid #e4e4e4;
+    margin:-1px 0 0 -1px;
+    position: relative;
+}
+.live-services ul i{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top:13px;
+    left:18px;
+    background: url(../images/icon_lifeserv.png) right top no-repeat;
+}
+.live-services .icon-2 i{
+    background-position: right -25px;
+}
+.live-services ul .song{
+    background: url(../images/song.png) no-repeat right top;
+}
+.live-services ul span{
+    position: absolute;
+    top:45px;
+    left:19px;
+}
+
+/*双11活动*/
+.night{
+    position: relative;
+    margin:10px 0 5px 0;
+}
+.night-l{
+    float: left;
+}
+.margin-r{
+    float:right;
+    width: 1000px;
+    overflow: hidden;
+}
+.night-r ul{
+    width: 400%;
+}
+.night-r li{
+    float: left;
+    padding-right:1px; ;
+}

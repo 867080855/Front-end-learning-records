@@ -1,0 +1,20 @@
+offset家族：
+        //一套方便获得元素标尺的办法
+    offset----偏移，补偿
+    -----------------------------------
+    常用属性：
+        1.offsetWidth，offsetHeight----得到对象的宽、高
+            //该属性所获得的宽、高 = width + padding + border;
+                //不包含margin。
+            //在js中无法通过element.style.width得到属性。因为其只能得到行内式的属性。
+                //element.style.width为空
+            console.log(demo.offsetWidth);
+            console.log(demo.offsetHeight);
+        2.offsetLeft,offsetTop----距离上级带有定位的盒子的左边的位置和顶部的位置
+            //上级指父辈们。不仅仅指父亲。如果父级都没有定位，以body为主。
+            //没有右和下位置
+            console.log(son.offsetLeft);
+        3.offsetParent----返回该对象的父级(带有定位的父级，不一定是亲的)。
+            //之前学过ParentNode。返回的是亲父亲。
+
+

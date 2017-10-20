@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东轮播图改进</title>
+    <style>
+        .slider{
+            margin:12px 0 100px 220px;
+            width: 730px;
+            height: 453px;
+            position: relative;
+            float: left;
+            overflow: hidden;
+        }
+        .slider ul {
+            list-style: none;
+        }
+        .circle {
+            position: absolute;
+            left:50%;
+            bottom: 10px;
+            margin-left: -50px;
+        }
+        .circle span{
+            display: inline-block;
+            height: 18px;
+            width: 18px;
+            margin-right: 10px;
+            border-radius:50%;
+            background-color: #0873C0;
+            text-align: center;
+        }
+        .circle span.current{
+            background-color: #5EFF5E;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var slider = document.getElementById("slider");
+            var ul = document.getElementById("ul");
+            var lis = ul.children;
+            var circle = ul.parentNode.appendChild(document.createElement("div"));
+            circle.setAttribute("class","circle");
+            for(var x= 0;x<lis.length;x++){
+                var newSpan = document.createElement("span");
+                newSpan.innerHTML = x+1;
+                circle.appendChild(newSpan);
+            }
+            circle.children[0].setAttribute("class","current");
+            //console.log(circle.children[0]);
+        }
+    </script>
+</head>
+<body>
+    <div id="slider" class="slider">
+        <ul id="ul">
+            <li><img src="images/11.jpg" alt=""/></li>
+            <li><img src="images/22.jpg" alt=""/></li>
+            <li><img src="images/33.jpg" alt=""/></li>
+            <li><img src="images/44.jpg" alt=""/></li>
+            <li><img src="images/55.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+        </ul>
+    </div>
+</body>
+</html>

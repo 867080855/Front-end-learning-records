@@ -1,0 +1,39 @@
+ 变量声明提升：
+    在函数体内部定义变量，把定义变量的语句提升到最顶端，但是不赋值。
+        所以一下语句块的结果的为undefined;
+    ------------------------
+    var num = 10;
+    fun();
+    function fun(){
+        console.log(num);
+        var num = 20;
+    }
+    var a = 18;
+    f1();
+    ------------------------
+    相当于：
+        var num = 10;
+        fun();
+        function fun(){
+            var num;
+            console.log(num);
+            num = 20;
+        }
+    ------------------------------------------------------------
+    var a = 18;
+    f1();
+    function f1(){
+        var b=9;
+        console.log(a);
+        console.log(b);
+        var a = '123';
+    }
+    -----------------------------
+    function f1(){
+        var b=9;
+        var a;
+        console.log(a);
+        console.log(b);
+        a = '123';
+        console.log(a);
+    }-----undefined,9;

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        .nav{
+            width: 100%;
+            height: 30px;
+            background-color: #0b743a;
+            position: relative;
+        }
+        .nav a{
+            color:#fff;
+            line-height: 30px;
+            display: block;
+            padding: 0 50px;
+            width: 100px;
+            float: left;
+            text-decoration: none;
+        }
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.2);
+            display: none;
+        }
+        .b-close{
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            box-shadow: 2px -2px 8px 4px #666;
+            position: absolute;
+            left: 500px;
+            top: 200px;;
+            color: #fff;
+        }
+        .b-close .drop{
+            width: 100%;
+            float: left;
+            height: 20px;
+            background-color: #0b743a;
+            cursor: move;
+        }
+        .b-close span{
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="nav" id="nav">
+    <a href="javascript:;" id="login">注册</a>
+</div>
+<div class="box" id="box">
+    <div class="b-close">
+        <div class="drop" id="drop">注册信息(可以拖拽)</div>
+        <span>[关闭]</span>
+    </div>
+</div>
+<script>
+    var box = document.getElementById("box");
+    var b_close = box.children[0];
+    var drop = document.getElementById("drop");
+    var close = box.children[0].children[1];
+    var login = document.getElementById("login");
+    console.log(box);
+    console.log(close);
+    login.onclick = function () {
+        box.style.display = "block";
+    };
+    var x= 0,y=0;
+    var bx= 0,by=0;
+    drop.onmousedown = function (event) {
+        //注意此处为document的事件而不是b_close的事件
+            //因为如果是b_close的事件鼠标的移动范围太小，且只能往右下移动。
+        //获取鼠标在盒子的位置
+        var event = event || window.event;
+        bx = event.clientX - b_close.offsetLeft;
+        console.log(bx);
+        by = event.clientY - b_close.offsetTop;
+        console.log(by);
+        document.onmousemove = function (event) {
+            var event = event || window.event;
+            x = event.clientX;
+            y = event.clientY;
+            b_close.style.left = x - bx + "px";
+            b_close.style.top = y - by + "px";
+            window.getSelection()? window.getSelection().removeAllRanges() : document.selection.empty();
+        };
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    };
+    close.onclick = function () {
+        box.style.display = "none";
+    }
+</script>
+</body>
+</html>

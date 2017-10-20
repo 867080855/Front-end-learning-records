@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小火箭返回顶部</title>
+    <style>
+        img{
+            position: fixed;
+            right:20px;
+            bottom:20px;
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        .con{
+            width: 300px;
+            margin:0 auto;
+        }
+    </style>
+    <script src="my.js"></script>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="con">
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+            <p>我是内容，我是内容，我是内容</p>
+        </div>
+        <img src="images/Top.jpg" alt="" id="pic"/>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var pic = $id("pic");
+        var top = pic.offsetTop;
+        var lea = 0,tar = 0;
+        var timer = null;
+        window.onscroll = function () {
+            scroll().top>0 ?show(pic): hide(pic);
+            lea = scroll().top;
+        };
+        pic.onclick = function () {
+            timer = setInterval(slide,30);
+            //可能会出现回到原位后鼠标无法向下滚动的情况，其实是因为还没有真正到达最顶端
+                //因为最后的速度会越来越慢。可以通过查看控制台的提示来确定是否到达最顶。
+            function slide(){
+                lea = lea + (tar - lea)/10;
+                window.scrollTo(0,lea);
+                if(lea == tar){clearInterval(timer);
+                    console.log("clear!")
+                }
+            }
+        };
+    }
+</script>
+</html>

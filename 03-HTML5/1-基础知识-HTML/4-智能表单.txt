@@ -1,0 +1,27 @@
+传统的form表单(文本框、按钮、选择框)
+    input(7个):
+        text:文本框
+        password:密码
+        checkbox:多选
+        radio:单选
+        button:按钮
+        image:图片按钮
+        submit:提交
+        reset:重置表单
+    select:
+    button:
+====================================================
+HTML5的form表单
+    input:
+        datetime:日期       //兼容性不佳，不可以深度自定义。在移动端体验比较好。
+        color:颜色选择器          //同上
+        range:拖动条(有min,max和step属性)      //同上
+        search:
+        ---------------------------------------------------------
+        text(required):设定不能为空的文本框      //不要用。不能自定义弹出内容
+        number:
+        email:邮件提交(自带格式校验，但是可以骗过其校验。)
+        tel:
+        url:
+            //text,number,email,tel,url主要是为了手机虚拟键盘适配。用来确定所采集的是什么类型的数据
+    //网页开发过程中还是照常使用Jquery UI的样式。在移动端开始使用h5的新元素

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+	<input type="button" value="click" id="btn">
+	<div id="showInfo"></div>
+	<div>部分内容见控制台</div>
+</body>
+<script>
+	$(function(){
+		$("#btn").on("click",function () {
+			$.ajax({
+				// url:'01data.php',
+				// dataType:'html',
+				// url:'02data.php',
+				// dataType:'script',
+				url:'03data.php',
+				dataType:'text',
+				type:'get',
+				success:function (data) {
+					// console.log(data.username);
+						// zhangsan
+					// console.log(data);
+					// $('#showInfo').html(data);
+					// eval(data);
+						// eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。
+					console.log(data);
+				},
+				error:function (e) {
+					console.log(e);
+				}
+			});
+		});
+	});
+</script>
+</html>

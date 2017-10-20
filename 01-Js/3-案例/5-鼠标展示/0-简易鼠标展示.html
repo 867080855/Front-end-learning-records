@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标展示</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        #box{
+            width: 360px;
+            height: 70px;
+            padding-top: 360px;
+            background: url(images/01big.jpg) no-repeat center top;
+            margin:50px;
+            border:2px solid #e5e5e5;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+            border-top:2px solid #e5e5e5;
+        }
+        ul li{
+            float:left;
+        }
+    </style>
+    <script>
+        function fun(obj,bg){
+            //var li = document.getElementById(li_id);
+            var target = document.getElementById("box");
+			//alert(target.nodeName);
+            //alert(obj.nodeName);
+            target.style.backgroundImage = bg;
+        }
+    </script>
+</head>
+<body>
+    <!-- 结构布局思路：
+        1.一个大盒子，内置两个上下盒子。
+        2.一个大盒子，用padding-top属性把剩余部分挤下去。----采用此种。
+        -->
+    <div id="box">
+        <ul>
+            <li onmouseover="fun(this,'url(images/01big.jpg)')"><a href="#"><img src="images/01.jpg" alt=""/></a></li>
+            <li onmouseover="fun(this,'url(images/02big.jpg)')"><a href="#"><img src="images/02.jpg" alt=""/></a></li>
+            <li onmouseover="fun(this,'url(images/03big.jpg)')"><a href="#"><img src="images/03.jpg" alt=""/></a></li>
+            <li onmouseover="fun(this,'url(images/04big.jpg)')"><a href="#"><img src="images/04.jpg" alt=""/></a></li>
+            <li onmouseover="fun(this,'url(images/05big.jpg)')"><a href="#"><img src="images/05.jpg" alt=""/></a></li>
+        </ul>
+    </div>
+</body>
+</html>

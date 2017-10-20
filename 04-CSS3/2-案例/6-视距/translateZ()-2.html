@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            perspective: 500px;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 200px;
+            background-color: red;
+            /*transition:all 3s;*/
+        }
+        .demo:hover{
+            transform:rotateY(180deg) translateZ(300px);
+        }
+        /*translate的正负值到底怎么判断？？？
+            同样的参数一会大一会小
+            */
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="demo"></div>
+</body>
+</html>

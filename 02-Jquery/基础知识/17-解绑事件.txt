@@ -1,0 +1,5 @@
+unbind,undelegate,off分别可以解锁相应的绑定的事件
+    //绑定
+    $("ul").on("click","li:eq(1)",function(){});
+    //解除绑定
+    $("div").off("click");

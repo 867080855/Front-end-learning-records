@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box1 div,#box2 div{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //getClass(id,classname)方法封装
+            function getClass(classname,id){
+                //高版本浏览器
+                if(document.getElementsByClassName(classname)) {
+                    //有id的情况
+                    if (id) {
+                        return document.getElementById(id).getElementsByClassName(classname);
+                    } else {      //没有id的情况
+                        return document.getElementsByClassName(classname);
+                    }
+                }
+                //低版本浏览器
+                //有id的情况
+                var targets = [];
+                if(id){
+                    var nodes = document.getElementById(id).getElementsByTagName("*");
+                }else{
+                    nodes = document.getElementsByTagName("*");
+                }
+                for(var x = 0;x<nodes.length;x++){
+                    var textArray = nodes[x].className.split(" ");
+                    for(var j = 0;j<textArray.length;j++){
+                        if(textArray[j] == classname){
+                            targets.push(nodes[x]);
+                        }
+                    }
+                }
+                return targets;
+            }
+            console.log(getClass("test","box2"));
+            var tests = getClass("test","box2");
+            for(var i = 0;i<tests.length;i++){
+                tests[i].style.backgroundColor = "blue";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        <div></div>
+        <div class="demo test"></div>
+        <div></div>
+        <div class="demo"></div>
+        <div></div>
+    </div>
+    <div id="box2">
+        <div class="test"></div>
+        <div class="demo"></div>
+        <div></div>
+        <div></div>
+        <div class="demo one test"></div>
+    </div>
+</body>
+</html>

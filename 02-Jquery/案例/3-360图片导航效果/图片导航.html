@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;
+            list-style-type: none;
+        }
+        .box{
+            width: 758px;
+            margin:150px auto;
+            padding-left:10px;
+            border:1px solid #aaa;
+            overflow: hidden;
+        }
+        .box li{
+            width: 178px;
+            height: 125px;
+            float: left;
+            margin:10px 10px 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .box div,.box p{
+            width: 178px;
+            height: 25px;
+            position: absolute;
+            bottom:-25px;
+            left:0;
+            text-align: center;
+        }
+        .box div{
+            background: url(images/bg.png) #000 no-repeat 5px 0;
+            opacity:0.5;
+        }
+        .box p{
+            color:#fff;
+            line-height: 25px;
+        }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="images/01.JPG" alt=""/></li>
+            <li><img src="images/02.JPG" alt=""/></li>
+            <li><img src="images/03.JPG" alt=""/></li>
+            <li><img src="images/04.JPG" alt=""/></li>
+            <li><img src="images/05.JPG" alt=""/></li>
+            <li><img src="images/06.JPG" alt=""/></li>
+            <li><img src="images/07.JPG" alt=""/></li>
+            <li><img src="images/08.JPG" alt=""/></li>
+        </ul>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(".box li")
+                .append("<div></div><p>全栈，你值得拥有</p>")
+                //修改小图标
+                .children("div").each(function (index) {    //此处需要引入index形参
+                        $(this).css(
+                            "background-position","5px -"+index*25+"px"
+                        );
+                    })
+                .parent()
+                .mouseenter(function () {
+                    $(this).children("div,p").stop().animate({"bottom":0},500);
+                })
+                .mouseleave(function () {
+                    $(this).children("div,p").stop().animate({"bottom":"-25px"},500)
+                });
+
+
+    });
+</script>
+</html>

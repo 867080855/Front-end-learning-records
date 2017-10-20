@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东商城</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <!--两者引入的顺序不可以改变。-->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript">
+        window.onload = function(){
+            var login = document.getElementById("login");
+            var close_mask = document.getElementById("close_mask");
+            var mask = document.getElementById("mask");
+            login.onclick = function(){
+                mask.style.display = "block";
+            };
+            close_mask.onclick = function(){
+                mask.style.display = "none";
+            };
+        }
+    </script>
+</head>
+<body>
+<!--收获：
+        1.在fireworks测量字体旁边的边距时要注意一件事情。一个12px的字，其实它真正被字体占用的宽度是11px；
+            剩下的1px用于控制字间距，使字与字不至于堆在一起。
+        2.当忽然发现有些元素有padding属性时，可能是因为之前的某个位置自己重新设置过了，不用担心，重新设置回来就是了。
+        3.网页布局中，设计师一般是不会使用比较不正常的数字作为padding属性的(一般常用的就是10,15.20,25之类的数字)。
+            如果出现了一定要自己重新测量一遍。
+        4.字体的不同能会使&nbsp出现不同的间距。当出现的空格间距比自己想象的要大是，考虑可能是不小心使用了中文字体
+        5.注意权重的问题
+        6.背景图想改变位置只能通过background-position来改变
+        7.a链接作为一个图片的时候，往往需要设置一个宽和高来扩大可点击范围。
+            此时切记不要忘记将a设置为block属性。
+        8.position:absolute属性设置完成后，如果不跟着添加top，right等属性值，则定位效果不生效，依旧换行进行添加。
+        9.button这种特殊的表单元素默认是行内块的样式，两者之间有一定的间距。想要清除掉间距可以采用浮动脱标来解决。
+        10.浮动永远都在一行上，除非父亲装不下儿子，即儿子的宽度足够大。要么都浮动，要么都不浮。----物以类聚，人以群分。
+        11.不是导航栏不用加li，a即可。不用写的那么正式。
+        12.行内元素有margin-left和margin-right。但是没有margin-top和margin-right。也没有padding。
+        13.文本排版一定要设置宽高。
+        14.line-hight属性一定在font属性的后边。
+        15.浮动的盒子一定要设置高度啊。否则很危险的！！！
+        16.ul会被浮动的盒子贯穿！
+           最终的ul的高度等于ul本身的高度加上浮动盒子的高度。
+           给浮动的盒子加上高以后，现象立刻消失
+        17.绝对定位不占用位置。如果有浮动的盒子存在会浮动到其底部。
+        18.只有定位的盒子才能有z-index属性。
+-->
+<div class="mask" id="mask">
+    <div class="box">
+        <span id="close_mask">×</span>
+    </div>
+</div>
+<!--京东的头部导航开始-->
+<div class="shortcut">
+    <div class="w">
+        <div class="fl">
+            <div class="dt">
+                送至：北京
+                <i><s>◇</s></i>
+            </div>
+
+        </div>
+        <div class="fr">
+            <ul>
+                <li>
+                    <a href="javascript:;" id="login">你好，请登录</a> &nbsp;&nbsp;
+                    <a href="#" class="col-red">免费注册</a>
+                </li><li class="line"></li>
+                <li>我的订单</li><li class="line"></li>
+                <li class="arrow">我的京东<i><s>◇</s></i></li><li class="line"></li>
+                <li>京东会员</li><li class="line"></li>
+                <li>企业采购</li><li class="line"></li>
+                <li class="arrow phone"><em class="tel"></em>手机京东<i><s>◇</s></i></li><li class="line"></li>
+                <li class="arrow">关注京东<i><s>◇</s></i></li><li class="line"></li>
+                <li class="arrow">客户服务<i><s>◇</s></i></li><li class="line"></li>
+                <li class="arrow">网站导航<i><s>◇</s></i></li>
+            </ul>
+            <!-- 自制版，仍有不少缺陷。
+                1.登陆与注册之间的两个&nbsp;所空出来的距离出奇的大。
+                2.与标准版相比，文字没有错动，但是文字之间的竖线及图标均向右侧错动。
+            <ul>
+                <li>
+                    <a href="#">您好，请登录</a>
+                    &nbsp;&nbsp;
+                    <a href="#" class="color-red">免费注册</a></li><li class="wl">|</li>
+                <li class="text1">我的订单</li><li class="wl">|</li>
+                <li class="text2">我的京东<i><s>◇</s></i></li><li class="wl">|</li>
+                <li class="text1">京东会员</li><li class="wl">|</li>
+                <li class="text1">企业采购</li><li class="wl">|</li>
+                    <li class="text2 sjjd">
+                        <div class="phone">
+                            <h3>手机京东</h3>
+                        </div>
+                        手机京东
+                         <i><s>◇</s></i>
+                    </li>
+                        <li class="wl">|</li>
+                <li class="text2">关注京东<i><s>◇</s></i></li><li class="wl">|</li>
+                <li class="text2">客户服务<i><s>◇</s></i></li><li class="wl">|</li>
+                <li class="text2">网址导航<i><s>◇</s></i></li>
+            </ul>
+            -->
+        </div>
+    </div>
+</div>
+<!--京东的头部导航结束-->
+<!--topbanner开始-->
+<div class="topbanner" id="top_banner">
+    <div class="w tp">
+        <img src="images/topbanner.jpg" alt=""/>
+        <a href="javascript:;" class="close-banner" id="jd_close"></a>
+    </div>
+</div>
+<script>
+    var jd_close = document.getElementById("jd_close");
+    var topBanner = document.getElementById("top_banner");
+    jd_close.onclick = function(){
+        topBanner.style.display = "none";
+        /*此处没有双引号不会生效。*/
+    }
+</script>
+<div class="w clearfix">
+    <div class="logo">
+        <a href="www.jd.com" class="jd-a" target="_blank" title="京东">京东</a>
+        <div class="db11">
+            <a href="#"><img src="images/dong.gif" alt=""/></a>
+        </div>
+    </div>
+    <div class="search">
+        <input type="text" value="图书开抢"/>
+        <button>搜索</button>
+    </div>
+    <div class="shopping">
+        <a href="#">我的购物车</a>
+        <span class="icon1"></span>
+        <span class="icon2">></span>
+        <span class="icon3">8</span>
+    </div>
+    <div class="hotwords">
+        <a herf="#" class="col-red">11月11天</a>
+        <a herf="#">11.11秒杀</a>
+        <a herf="#">买2免1</a>
+        <a herf="#">Note5 黑</a>
+        <a herf="#">12期免息</a>
+        <a herf="#">智能科技</a>
+        <a herf="#">清仓</a>
+        <a herf="#">国际服饰</a>
+        <a herf="#">优惠券</a>
+    </div>
+</div>
+<!--nav开始-->
+<div class="nav clearfix">
+    <div class="w">
+        <div class="dropdown">
+            <div class="dt"><a herf="#">全部商品分类</a></div>
+            <div class="dd">
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">手机、数码、京东通信</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">手机、数码、京东通信</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">手机、数码、京东通信</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">手机、数码、京东通信</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">手机、数码、京东通信</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">手机、数码、京东通信</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">手机、数码、京东通信</h3>
+                    <span class="fr">></span>
+                </div>
+                <div class="items">
+                    <h3 class="fl">家用电器</h3>
+                    <span class="fr">></span>
+                </div>
+            </div>
+        </div>
+        <div class="hotitems">
+            <ul>
+                <li><a href="#">服装城</a></li>
+                <li><a href="#">美妆馆</a></li>
+                <li><a href="#">超市</a></li>
+                <li><a href="#">全球购</a></li>
+                <li><a href="#">闪购</a></li>
+                <li class="new"><a href="#">团购</a></li>
+                <li><a href="#">拍卖</a></li>
+                <li><a href="#">金融</a></li>
+                <li><a href="#">智能</a></li>
+            </ul>
+        </div>
+        <div class="bike">
+            <a href="#"><img src="images/bike.jpg" alt=""/></a>
+        </div>
+    </div>
+</div>
+<!--banner开始-->
+<div class="banner">
+    <a href="#"></a>
+</div>
+<!--核心区域开始-->
+<div class="w main clearfix">
+    <div class="slider" id="slider">
+        <a href="#"><img src="images/11.jpg" alt=""/></a>
+        <ul class="circle" id="circle">
+        </ul>
+        <div class="arrow" id="arrow">
+                <a href="javascript:;" class="arrow-l"><</a>
+                <a href="javascript:;" class="arrow-r">></a>
+        </div>
+        <script>
+            /*lis的问题很严重！！！
+            *   有空闲一定要搞清楚。
+            * */
+            //slider京东轮播图
+            var slider = document.getElementById("slider");
+            var imgs = [11,22,33,44,55,66];
+            for(var x= 0;x<imgs.length;x++){
+                var li = document.createElement("li");
+                li.innerHTML = x+1;
+                li.className = x;
+                slider.children[1].appendChild(li);
+            }
+            var lis = slider.children[1].children;
+            lis[0].className = "current";
+            var len = lis.length;
+            for(var j = 0;j<len;j++){
+                lis[j].index = j;
+                lis[j].onclick = lis[j].onmouseover = function(){
+                    for(var i = 0;i<len;i++){
+                        this.parentNode.children[i].className = "";
+                        slider.children[0].firstChild.src = "images/"+imgs[this.index]+".jpg"
+                    }
+                    this.className = "current";
+                }
+            }
+            //左右两个小箭头
+            //左右两个小箭头的hover效果
+            var arrow = slider.children[2];
+            slider.onmouseover = function(){
+                arrow.style.display = "block";
+            };
+            slider.onmouseout = function(){
+                arrow.style.display = "none";
+            };
+            //左右两个小箭头的点击效果
+            var arrow_r = slider.children[2].children[1];
+            var arrow_l = slider.children[2].children[0];
+            arrow_r.onclick = function(){
+                var str = slider.children[0].firstChild.src.split("");
+                var src1 =  str[str.length-5]*1;
+                var src2 =  str[str.length-6]*1;
+                if(src1 < 6){
+                    src1 += 1;  str[str.length-5] = src1;
+                    src2 += 1;  str[str.length-6] = src2;
+                    slider.children[0].firstChild.src = str.join("");
+                    for(var m = 0;m<this.parentNode.parentNode.children[1].children.length;m++){
+                        this.parentNode.parentNode.children[1].children[m].className = "";
+                    }
+                    this.parentNode.parentNode.children[1].children[src1-1].className = "current";
+                }
+            };
+            arrow_l.onclick = function(){
+                var str = slider.children[0].firstChild.src.split("");
+                var src1 =  str[str.length-5]*1;
+                var src2 =  str[str.length-6]*1;
+                if(src1 > 1){
+                    src1 -= 1;  str[str.length-5] = src1;
+                    src2 -= 1;  str[str.length-6] = src2;
+                    slider.children[0].firstChild.src = str.join("");
+                    for(var m = 0;m<this.parentNode.parentNode.children[1].children.length;m++){
+                        this.parentNode.parentNode.children[1].children[m].className = "";
+                    }
+                    this.parentNode.parentNode.children[1].children[src1-1].className = "current";
+                }
+            };
+        </script>
+    </div>
+    <div class="news">
+        <div class="jd-news">
+            <div class="dt">
+                <h3>京东快报</h3>
+                <a href="#">更多></a>
+            </div>
+            <div class="dd">
+                <ul>
+                   <li><a href="#"><span>[特惠]</span>1元秒杀</a></li>
+                   <li><a href="#"><span>[公告]</span>母婴类APP【京东宝宝】上线</a></li>
+                   <li><a href="#"><span>[特惠]</span>美的品牌日 APP嗨购大放“价”</a></li>
+                   <li><a href="#"><span>[公告]</span>京东深入蒙牛生产基地进行质检</a></li>
+                   <li><a href="#"><span>[特惠]</span>白条购家电 24期免息！</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="live-services" id="live_services" >
+            <div class="dt">
+                <h3>生活服务</h3>
+            </div>
+            <div class="dd">
+                <ul>
+                    <li><a href="#" class="song"><i></i><span>话费</span></a></li>
+                    <li><a href="#"><i></i><span>机票</span></a></li>
+                    <li><a href="#"><i></i><span>彩票</span></a></li>
+                    <li><a href="#"><i></i><span>游戏</span></a></li>
+                    <li><a href="#"><i></i><span>办公</span></a></li>
+                    <li><a href="#"><i></i><span>代购</span></a></li>
+                    <li><a href="#"><i></i><span>旅店</span></a></li>
+                    <li><a href="#"><i></i><span>水费</span></a></li>
+                    <li><a href="#"><i></i><span>电费</span></a></li>
+                    <li><a href="#"><i></i><span>账单</span></a></li>
+                    <li><a href="#"><i></i><span>借贷</span></a></li>
+                    <li><a href="#"><i></i><span>保险</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            //生活服务图片遍历
+            var live_services = document.getElementById("live_services");
+            var lis = live_services.getElementsByTagName("li");//需要加双引
+            //也可以用var iis = live_services.getElementByTagName("i");
+            //            alert(lis.length);
+            for(var x = 0;x<lis.length;x++){
+                var i = lis[x].firstChild.firstChild;
+                //alert(i.nodeName);
+                i.style.backgroundPositionY = -x*25 + "px";
+            }
+        </script>
+    </div>
+</div>
+<!--双11活动-->
+<div class="w clearfix">
+    <div class="night">
+        <div class="night-l">
+            <a href="#"><img src="images/night.jpg" alt=""/></a>
+        </div>
+        <div class="night-r">
+            <ul>
+                <li><a href="#"><img src="images/1.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/2.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/3.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/4.jpg" alt=""/></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--京东底部开始-->
+<div class="footer">
+    <div class="services">
+        <div class="slogen">
+            <span class="item slogen1"><img src="images/slogen1.png" alt=""/></span>
+            <span class="item slogen2"><img src="images/slogen2.png" alt=""/></span>
+            <span class="item slogen3"><img src="images/slogen3.png" alt=""/></span>
+            <span class="item slogen4"><img src="images/slogen4.png" alt=""/></span>
+        </div>
+        <div class="w buying clearfix">
+            <dl>
+                <dt><a href="#">购物指南</a></dt>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">会员介绍</a></dd>
+                <dd><a href="#">生活旅行/团购</a></dd>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">大家电</a></dd>
+                <dd><a href="#">联系客服</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="#">购物指南</a></dt>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">会员介绍</a></dd>
+                <dd><a href="#">生活旅行/团购</a></dd>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">大家电</a></dd>
+                <dd><a href="#">联系客服</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="#">购物指南</a></dt>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">会员介绍</a></dd>
+                <dd><a href="#">生活旅行/团购</a></dd>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">大家电</a></dd>
+                <dd><a href="#">联系客服</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="#">购物指南</a></dt>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">会员介绍</a></dd>
+                <dd><a href="#">生活旅行/团购</a></dd>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">大家电</a></dd>
+                <dd><a href="#">联系客服</a></dd>
+            </dl>
+            <dl>
+                <dt><a href="#">购物指南</a></dt>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">会员介绍</a></dd>
+                <dd><a href="#">生活旅行/团购</a></dd>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">大家电</a></dd>
+                <dd><a href="#">联系客服</a></dd>
+            </dl>
+            <div class="coverage">
+                <div class="dt">京东自营覆盖区县</div>
+                <div class="dd">
+                    <p>京东已向全国2357个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+                    <p class="seemore"><a href="#">查看详情</a> ></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w againw">
+        <div class="links">
+            <a href="#">关于我们</a>|
+            <a href="#">联系我们</a>|
+            <a href="#">商家入驻</a>|
+            <a href="#">营销中心</a>|
+            <a href="#">手机京东</a>|
+            <a href="#">友情链接</a>|
+            <a href="#">销售联盟</a>|
+            <a href="#">京东社区</a>|
+            <a href="#">京东公益</a>|
+            <a href="#">English Site</a>|
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="copyright">
+            北京市公安局朝阳分局备案编号110105014669 | 京ICP证070359号 | 互联网药品信息服务资格证编号(京)-经营性-2014-0008 | 新出发京零 字第大120007号<br>
+            音像制品经营许可证苏宿批005号 | 出版物经营许可证编号新出发(苏)批字第N-012号 | 互联网出版许可证编号新出网证(京)字150号<br>
+            网络文化经营许可证京网文[2014]2148-348号 违法和不良信息举报电话：4006561155 Copyright © 2004-2015 京东JD.com 版权所有<br>
+            京东旗下网站：360TOP 拍拍网 网银在线<br>
+        </div>
+        <div class="icons">
+            <a href="#"><img src="images/mess.png" alt=""/></a>
+            <a href="#"><img src="images/mess2.png" alt=""/></a>
+            <a href="#"><img src="images/mess3.png" alt=""/></a>
+            <a href="#"><img src="images/mess4.png" alt=""/></a>
+            <a href="#"><img src="images/mess5.png" alt=""/></a>
+        </div>
+    </div>
+</div>
+<!--京东底部结束-->
+</body>
+</html>

@@ -1,0 +1,5 @@
+如何把断掉的链式编程连上？
+    .end()  //结束链式编程的链，回到初始位置处。
+        //$(this).text(wjx_sel).prevAll().text(wjx_sel)
+                  .end()
+                  .nextAll().text(wjx_none);

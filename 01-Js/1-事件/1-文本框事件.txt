@@ -1,0 +1,6 @@
+1.oninput----检测用户表单输入内容事件
+    在低版本的浏览器中不兼容，如ie6，7，8。
+    需要使用onpropertychange事件。
+2.onfocus----获得焦点事件
+
+3.onblur----失去焦点事件

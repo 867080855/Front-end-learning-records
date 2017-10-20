@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.1.js"></script>
+    <script>
+        var data = [{
+            name: "传智播客",
+            url: "http://www.itcast.cn",
+            type: "IT最强培训机构"
+        },{
+            name: "黑马程序员",
+            url: "http://www.itheima.com",
+            type: "大学生IT培训机构"
+        },{
+            name: "传智前端学院",
+            url: "http://web.itcast.cn",
+            type: "前端的黄埔军校"
+        }];
+        jQuery(function () {
+            //把data数组动态导入tbody中
+//            //方法1.数组遍历
+//            var strHTML = "";
+//            for( var x = 0; x<data.length; x++){
+//                var temp = data[x];
+//                //方法1.拼接html
+//                strHTML += "<tr>";
+//                strHTML +=      "<td>"+ temp.name +"</td>";
+//                strHTML +=      "<td>"+ temp.url +"</td>";
+//                strHTML +=      "<td>"+ temp.type +"</td>";
+//                strHTML += "</tr>";
+//            }
+//            //拼接好的html标签放在tbody中
+//            $(".J_tb").html(strHTML);
+
+            //方法2.利用动态创建DOM
+                //1.清空所有子节点
+                $(".J_tb").empty();
+                //2.遍历
+                for( var x = 0; x < data.length; x++){
+                    //动态创建一个tr行标签，并且转换成jQuery对象
+                    var $trTemp = $("<tr></tr>>");
+
+                    //$trTemp动态添加td
+                    $trTemp.append("<td>"+data[x].name+"</td>");
+                    $trTemp.append("<td>"+data[x].url+"</td>");
+                    $trTemp.append("<td>"+data[x].type+"</td>");
+
+                    //创建好的行标签添加进表格
+                    $(".J_tb").append($trTemp);
+                }
+        });
+    </script>
+</head>
+<body>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>url</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody class="J_tb">
+                <tr>
+                    <td>data</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

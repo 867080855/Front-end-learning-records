@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            overflow: scroll;
+        }
+        p{
+            width: 2000px;
+            height: 2000px;
+            background-color: #0b743a;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+    <button>get scrollTop</button>
+    <button>set scrollTop</button>
+    <div>
+        <p></p>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $("button").eq(0).click(function () {
+            var $top = $("div").scrollTop();
+            console.log($top);
+        });
+        $("button").eq(1).click(function () {
+            //var $top = $("div").scrollTop(300);
+            var $top = $("div").scrollTop("300");
+                //加引号不加引号都可以
+            console.log($top);
+        });
+    });
+</script>
+</html>

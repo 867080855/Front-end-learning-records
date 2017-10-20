@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .slider{
+            margin:12px 0 0 220px;
+            width: 730px;
+            height: 453px;
+            position: relative;
+            float: left;
+        }
+        .circle{
+            position: absolute;
+            bottom:8px;
+            left:50%;
+            margin-left: -66px;
+        }
+        ul{
+            list-style: none;
+        }
+        .circle li{
+            float: left;
+            width: 18px;
+            height: 18px;
+            margin: 0 2px;
+            text-align: center;
+            color:#fff;
+            background-color: #3E3E3E;
+            border-radius:50%;
+            cursor: pointer;
+        }
+        .circle li.current{
+            background-color: #B61B1F;
+        }
+        .main .arrow{
+            display : none;
+        }
+        .arrow-l,.arrow-r{
+            position: absolute;
+            width: 28px;
+            height: 62px;
+            top:50%;
+            margin-top: -31px;
+            background-color: orange;
+            color:#fff;
+            font:500 18px/62px "SimSun";
+            text-align: center;
+            background-color: rgba(0, 0, 0, .2);
+            cursor: pointer;
+        }
+        .arrow-l:hover,.arrow-r:hover{
+            background-color: rgba(0, 0, 0, .4);
+            color:#fff;
+        }
+        .arrow-l{
+            left:0;
+        }
+        .arrow-r{
+            right:0;
+        }
+    </style>
+</head>
+<body>
+<div class="slider" id="slider">
+    <a href="#"><img src="images/11.jpg" alt=""/></a>
+    <ul class="circle"></ul>
+    <div class="arrow">
+        <a href="javascript:;" class="arrow-l"><</a>
+        <a href="javascript:;" class="arrow-r">></a>
+    </div>
+    <script>
+    //slider京东轮播图
+         var slider = document.getElementById("slider");
+        var imgs = [11,22,33,44,55,66];
+        for(var x= 0;x<imgs.length;x++){
+            var li = document.createElement("li");
+            li.innerHTML = x+1;
+            li.className = x;
+            slider.children[1].appendChild(li);
+        }
+        var lis = slider.children[1].children;
+        lis[0].className = "current";
+        var len = lis.length;
+        for(var j = 0;j<len;j++){
+            lis[j].index = j;
+            lis[j].onclick = lis[j].onmouseover = function(){
+                for(var i = 0;i<len;i++){
+                    this.parentNode.children[i].className = "";
+                    slider.children[0].firstChild.src = "images/"+imgs[this.index]+".jpg"
+                }
+                this.className = "current";
+            }
+        }
+    //左右两个小箭头
+        //左右两个小箭头的hover效果
+        var arrow = slider.children[2];
+        slider.onmouseover = function(){
+            arrow.style.display = "block";
+        };
+        slider.onmouseout = function(){
+            arrow.style.display = "none";
+        };
+        //左右两个小箭头的点击效果
+            var arrow_r = slider.children[2].children[1];
+            var arrow_l = slider.children[2].children[0];
+            arrow_r.onclick = function(){
+                var str = slider.children[0].firstChild.src.split("");
+                var src1 =  str[str.length-5]*1;
+                var src2 =  str[str.length-6]*1;
+                if(src1 < 6){
+                    src1 += 1;  str[str.length-5] = src1;
+                    src2 += 1;  str[str.length-6] = src2;
+                    slider.children[0].firstChild.src = str.join("");
+                    for(var m = 0;m<lis.length;m++){
+                        lis[m].className = "";
+                    }
+                    lis[src1-1].className = "current";
+                }
+            };
+            arrow_l.onclick = function(){
+                var str = slider.children[0].firstChild.src.split("");
+                var src1 =  str[str.length-5]*1;
+                var src2 =  str[str.length-6]*1;
+                if(src1 > 1){
+                    src1 -= 1;  str[str.length-5] = src1;
+                    src2 -= 1;  str[str.length-6] = src2;
+                    slider.children[0].firstChild.src = str.join("");
+                    for(var m = 0;m<lis.length;m++){
+                        lis[m].className = "";
+                    }
+                    lis[src1-1].className = "current";
+                }
+            };
+    </script>
+</div>
+</body>
+</html>

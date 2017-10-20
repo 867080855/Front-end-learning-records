@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background-color: deepskyblue;
+        }
+        .box{
+            height: 80px;
+            text-align: center;
+            line-height: 1;
+            margin: 100px auto;
+            font-size: 80px;
+            color: #FFF;
+            font-family: '微软雅黑';
+            position: relative;
+        }
+        .box span{
+            margin:0 20px;
+            transition: all 1.5s;
+        }
+        .box:hover span{
+            /*注意这个地方，如果写成.box span:hover就会效果很差。*/
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <span>4</span>
+    <span>亿</span>
+    <span>网</span>
+    <span>友</span>
+    <span>共</span>
+    <span>同</span>
+    <span>信</span>
+    <span>任</span>
+</div>
+</body>
+</html>

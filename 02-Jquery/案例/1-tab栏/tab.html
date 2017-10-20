@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;list-style: none;}
+        .tab{
+            width: 1000px;
+            margin:50px auto;
+        }
+        .t ul{
+            width: 440px;
+            overflow: hidden;
+            border:1px solid #eee;
+        }
+        .t li{
+            float: left;
+            display: block;
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+            border-top:4px solid #fff;
+            cursor: pointer;
+        }
+        .t li.current{
+            border-top:4px solid red;
+        }
+        .t span{
+            float: left;
+            line-height: 30px;
+            color:#eee;
+        }
+        .b{
+            width: 1000px;
+        }
+        .divItem{
+            display: none;
+        }
+        .selected{
+            display: block;
+        }
+    </style>
+    <script src="../jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="tab">
+        <div class="t">
+            <ul>
+                <li class="current">国际大牌<span>|</span></li>
+                <li>国妆名牌<span>|</span></li>
+                <li>清洁用品<span>|</span></li>
+                <li>男士精品</li>
+            </ul>
+        </div>
+        <div class="b">
+            <div class="divItem selected"><img src="images/guojidapai.jpg" alt=""/></div>
+            <div class="divItem"><img src="images/guozhuangmingpin.jpg" alt=""/></div>
+            <div class="divItem"><img src="images/qingjieyongpin.jpg" alt=""/></div>
+            <div class="divItem"><img src="images/nanshijingpin.jpg" alt=""/></div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(".t li").mouseenter(function () {
+            //实现li的互相切换
+            $(this).addClass("current")
+                   .siblings().removeClass("current");
+            var $this = $(this).index();
+            $(".divItem")
+                    .eq($this).addClass("selected")
+                    .siblings().removeClass("selected");
+        })
+
+    });
+</script>
+</html>

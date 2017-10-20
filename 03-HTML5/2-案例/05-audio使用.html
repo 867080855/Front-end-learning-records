@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+    这样写的话，自带的样式无法修改。推荐直接把controls属性去掉。另行添加样式。
+    <audio src="demo.mp3" controls="controls"></audio>
+-->
+<audio src="demo.mp3" id="1"></audio>
+    <!--不设置controls属性的话，页面上是看不到audio的。-->
+<button id="btn_play">播放</button>
+<button id="btn_pause">暂停</button>
+</body>
+<script>
+    var demo = document.getElementById("1");
+    var btn_play = document.getElementById("btn_play");
+    btn_play.addEventListener("click", function () {
+        demo.play();
+    });
+    var btn_pause = document.getElementById("btn_pause");
+    btn_pause.addEventListener("click", function () {
+        demo.pause();
+    });
+</script>
+</html>

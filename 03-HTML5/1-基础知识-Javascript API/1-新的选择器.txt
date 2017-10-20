@@ -1,0 +1,9 @@
+1.document.getElementsByClassName();
+2.
+    document.querySelector();   //获取第一个满足条件的元素，返回一个dom对象
+    document.querySelectorAll("li");    //获得所有满足条件的元素，返回一个dom对象数组
+    document.querySelectorAll("ul>li");     //h5将经常需要的操作又包装了一层，基本上可以实现jQuery的选择器了。
+    //jQuery:
+        //$(".item")    //返回一个jQuery对象（dom元素的数组）
+    //本质上返回的是一样的。都是dom数组。但是要知道两者取到的是不同的，jQuery所返回的东西要更多一些，会多一些其他成员(更多的api)。
+    //比如jQuery对象可以直接注册事件，但是js所得到的对象是不可以直接注册的,需要便利之后给每个对象单独注册事件。

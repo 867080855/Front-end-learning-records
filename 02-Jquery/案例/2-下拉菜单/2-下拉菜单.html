@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;padding:0;list-style: none;
+        }
+        .list{
+            width: 340px;
+            height: 30px;
+            margin:100px auto 0;
+                /*定义上为100px 左右对称 下为0*/
+            background: url(images/bg.jpg) no-repeat;
+            padding-left: 10px;
+        }
+        .list ul li{
+            width: 100px;
+            float: left;
+            text-align: center;
+            position: relative;
+            line-height: 30px;
+            background: url(images/libg.jpg) no-repeat;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .list ul ul{
+            position: absolute;
+            left:0;
+            line-height: 30px;
+            display: none;
+        }
+        .list ul ul a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color:#000;
+        }
+    </style>
+    <script src="../jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="list" id="list">
+        <ul>
+            <li>一级菜单1
+                <ul>
+                    <li><a href="#">二级菜单1</a></li>
+                    <li><a href="#">二级菜单2</a></li>
+                    <li><a href="#">二级菜单3</a></li>
+                </ul>
+            </li>
+            <li>一级菜单2
+                <ul>
+                    <li><a href="#">二级菜单1</a></li>
+                    <li><a href="#">二级菜单2</a></li>
+                    <li><a href="#">二级菜单3</a></li>
+                </ul>
+            </li>
+            <li>一级菜单3
+                <ul>
+                    <li><a href="#">二级菜单1</a></li>
+                    <li><a href="#">二级菜单2</a></li>
+                    <li><a href="#">二级菜单3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        //实现方法1
+//       $(".list>ul>li").mouseenter(function () {
+//           $(this).children("ul").show();
+//       });
+//       $(".list li").mouseleave(function () {
+//           $(this).children("ul").hide();
+//       })
+
+        //实现方法2
+//        $(".list li").hover(function () {
+//            $(this).children("ul").show();
+//        }, function () {
+//            $(this).children("ul").hide();
+//        })
+
+        //实现方法3
+//        $(".list li").hover(function () {
+//            //取到ul
+//            var $this = $(this).children("ul");
+//            var isShow = $this.css("display");
+//            isShow === "block" ?$this.hide() :$this.show();
+//        })
+
+        //实现方法4
+        $(".list li").hover(function () {
+            $(this).children().slideToggle();
+        })
+    })
+</script>
+</html>

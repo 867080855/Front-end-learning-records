@@ -1,0 +1,9 @@
+CACHE MANIFEST
+# vetsion1.0.0
+
+CACHE:
+	16-application-cache.html
+	16-cache.css
+	16-cache.js
+NETWORK:
+	*

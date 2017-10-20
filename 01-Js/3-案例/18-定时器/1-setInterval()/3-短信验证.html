@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+        注意事项：
+            1.clearInterval()可以解决定时器叠加的问题
+            2.this指代不到的时候可以
+                var _this = this;
+    -->
+    <style>
+        div{margin:200px auto;width:300px;}
+        button{width:100px;font-size:12px;margin-left: 10px;}
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementsByTagName("div")[0];
+            var timer = null;
+            var count = 61;
+            btn.children[1].onclick = function () {
+                clearInterval(timer);   //可以消除定时器叠加。
+                this.disabled = true;
+                var _this = this;
+                timer = setInterval(sendMessage,1000);
+                function sendMessage(){
+                    count --;
+                    if(count >= 0){
+                        _this.innerHTML = "重新发送("+count+")";
+                    }else{
+                        _this.innerHTML = "重新获取";
+                        _this.disabled = false;
+                        count = 61;
+                        clearInterval(timer);
+                    }
+
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <input type="text"/><button>获取验证码</button>
+</div>
+</body>
+</html>

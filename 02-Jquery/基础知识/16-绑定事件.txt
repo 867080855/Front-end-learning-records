@@ -1,0 +1,27 @@
+click,bind,one,delegate,on
+绑定多个事件：
+    1.方法1
+        $("button").click(function(){}).mouseenter(function(){});
+    2.方法2
+        a.两个事件方法一样时(常用)
+            $("button").bind("click mouseenter",function(){});
+        b.两个事件方法不一样时
+            $("button").bind({
+                "click":function(){},
+                "scroll":function(){}
+            });
+        c.
+            $("button").bind("click",{},function(e){console.log(e.data)})
+                //对象｛｝传递给function的参数
+=================================================================
+绑定单次事件
+    $("button").one("click",function(){});
+        //只能触发单次事件
+======================================================================
+给多个元素绑定事件
+    a.$("li").bind("click",function(){});
+    b.利用委托绑定方法(通过绑定父元素)(推荐)
+        $("ul").delegate("li","click",function(){});
+======================================================================
+利用on()绑定事件(强烈推荐，集上边所有方式于一身)
+    $("ul").on("click","li:eq(1)",function(){});

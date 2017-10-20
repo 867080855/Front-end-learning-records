@@ -1,0 +1,31 @@
+1. 内部插入节点：
+        //不论是什么情况都是往目标元素的孩子的位置添加的。
+    1).往后添加
+        $("div").append("<p>我是p元素</p>");    //往最后添加节点
+        $("<p>我是p元素</p>").appendTo($("div"));     //把前边的元素(<p>我是p元素</p>)追加给后边
+            //append和appendTo都是往后边添加元素，只是添加的方式不一样而已
+    2).往前添加
+        $("div").prepend("<p>prepend</p>");
+        $("<p>我是p元素</p>").prependTo($("div"));
+2.外部插入节点：
+    $("div").after(node);
+    $("div").before(node);
+    $("div").insertBefore(node);
+    $("div").insertAfter(node);
+3.删除节点：
+    $("div").remove();
+        //自杀：$(this).remove();
+    $("div").empty();
+        //等价于$("div").html("");     ----推荐使用此种，效率更高
+4.复制节点：
+    $("div").clone(boolean);
+        //boolean为true时，复制所有的事件+元素，否则只拷贝元素
+        //需要和append配合使用才有效果
+5.包裹节点
+    $("div").wrap("span");
+        //用span去包含每一个div
+    $("div").wrapAll("span");
+        //把所有的div包裹在一个span中
+6.替换节点
+    $("div").replaceWith($("p"));
+        //node节点为空会导致最终结果为空

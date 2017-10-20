@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            list-style: none;
+            width: 400px;
+        }
+        li{
+            line-height: 32px;
+        }
+        li span{
+            padding: 10px;
+        }
+        .current{
+            background-color: skyblue !important;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var lis = document.getElementsByTagName("li");
+            for(var x =0;x<lis.length;x++){
+                if(x%2==0){
+                    lis[x].style.backgroundColor = "#eee";
+                }
+                lis[x].onmouseover = function(){
+                    this.className = "current";
+                    //lis[x].className = "current";----不能用。
+                };
+                lis[x].onmouseout = function(){
+                    this.className = "";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+     <ul>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+         <li><span>上证指数</span><span>1234</span><span>.345636</span><span>24523-1341.3</span></li>
+     </ul>
+</body>
+</html>

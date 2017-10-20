@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //封装自己的getClass类方法
+            function getClass(classname){
+                function $id(id){return document.getElementById(id);}
+                //高版本浏览器
+                if(document.getElementsByClassName(classname)){
+                    return document.getElementsByClassName(classname);
+                }
+                //低版本浏览器
+                var targets = [];
+                var nodes = document.getElementsByTagName("*");
+                for(var x = 0;x<nodes.length;x++){
+                    var textArray = nodes[x].className.split(" ");
+                    for(var j = 0;j<textArray.length;j++){
+                        if(textArray[j] == classname){
+                            targets.push(nodes[x]);
+                            console.log(targets);
+                        }
+                    }
+                }
+                return targets;
+            }
+            var tests = getClass("test");//----结果为
+            console.log(tests);
+            for(var i =0;i<tests.length;i++){
+                tests[i].style.backgroundColor = "blue";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="demo test"></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div class="test"></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="demo one test"></div>
+</body>
+</html>

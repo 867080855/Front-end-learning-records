@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿网易tab栏</title>
+    <style>
+        *{margin:0;padding: 0;}
+        .box{
+            width: 298px;
+            height: 248px;
+            border:1px solid #eee;
+            margin:200px auto;
+        }
+        #top{
+            height: 32px;
+            overflow: hidden;
+        }
+        #top ul{
+            list-style: none;
+            width: 300px;
+        }
+        #top ul li{
+            width: 73px;
+            height: 30px;
+            border: 1px solid #eee;
+            margin:-1px 0 0 -1px;
+            float: left;
+            text-align: center;
+            font-size: 14px;
+            color: #376A77;
+            line-height: 30px;
+        }
+        #top ul li.current{
+            width: 78px;
+            border:none;
+            font-weight: 700;
+        }
+        #bottom div{
+            width: 298px;
+            height: 217px;
+            display: none;
+        }
+        #bottom div.current{
+            display: block;
+        }
+        .bigImg1{
+            background:url(images/1.jpg) no-repeat 9px 9px;
+        }
+        #bottom .bigImg2{
+            height: 58px;
+            padding-top: 159px;
+            padding-left: 25px;
+            font-size: 12px;
+            line-height: 25px;
+            background: url(images/2.jpg) no-repeat 9px 9px;
+        }
+        #bottom .bigImg3{
+            height: 58px;
+            padding-top: 159px;
+            padding-left: 25px;
+            font-size: 12px;
+            line-height: 25px;
+            background: url(images/3.jpg) no-repeat 9px 9px;
+        }
+        .bigImg4{
+            background:url(images/4.jpg) no-repeat 9px 9px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var lis = document.getElementById("top").getElementsByTagName("li");
+            var divs = document.getElementById("bottom").getElementsByTagName("div");
+            var className = [1,2,3,4];
+            for(var i = 0;i<lis.length;i++){
+                lis[i].index = i;
+                className[i] = divs[i].className;
+                className[0] = "bigImg1";
+                //暂时自己找不到什么更好的办法解决第一个div盒子的类名问题。
+                    //留待以后解决。
+                //alert(className[i]);
+                lis[i].onclick = lis[i].onmouseover = function(){
+                    for(var j = 0;j<lis.length;j++){
+                        lis[j].className = "";
+                        divs[j].className = className[j];
+                    }
+                    this.className = "current";
+                    divs[this.index].className += " current";
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div id="top">
+            <ul>
+                <li class="current">公主湾</li>
+                <li>1元</li>
+                <li>贵金属</li>
+                <li>酱香酒</li>
+            </ul>
+        </div>
+        <div id="bottom">
+            <div class="bigImg1 current"></div>
+            <div class="bigImg2">
+                <ul>
+                    <li>2016苹果新品 点这1元可得</li>
+                    <li>最高投资哪里有？1个钢镚变iPhone！</li>
+                </ul>
+            </div>
+            <div class="bigImg3">
+                <ul>
+                    <li>财务自由？30岁前要为自己做的财务规划。</li>
+                    <li>CPI一涨再涨，你的钱还值钱吗？</li>
+                </ul>
+            </div>
+            <div class="bigImg4"></div>
+        </div>
+    </div>
+</body>
+</html>

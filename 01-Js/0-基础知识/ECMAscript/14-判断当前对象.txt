@@ -1,0 +1,9 @@
+判断当前对象：
+    1.火狐、谷歌
+        event.target.id
+            //target 该事件被传送到的对象
+    2.ie678
+        event.srcElement.id
+    -------------------------------------------
+    兼容性写法：
+        var targetId = event.target? event.target.id :event.srcElement.id;

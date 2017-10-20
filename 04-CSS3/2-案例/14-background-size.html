@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            margin:100px auto;
+            background-color: gold;
+            border:5px dashed red;
+            padding:50px;
+            background-image: url(images/bg.jpg);
+            background-repeat: no-repeat;
+            /*加上no-repeat之后图片的原点开始变成了padding-box*/
+            margin-right: 30px;
+            float: left;
+        }
+        .box1{
+            width: 400px;
+            height: 200px;
+            background-clip:content-box;
+                /*background-clip*/
+            background-origin:content-box;
+                /*background-origin与background-size参照一致*/
+            /*background-size: 100% 100%; /!*背景图铺满了*!/*/
+            /*background-size:100% auto ; /!*此时能铺满是因为图片是正方形*!/*/
+            background-size:contain;
+                /*按cover:大边同比缩放,contain:按小边同比缩放*/
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

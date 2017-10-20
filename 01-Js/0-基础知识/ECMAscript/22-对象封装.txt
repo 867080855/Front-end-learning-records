@@ -1,0 +1,18 @@
+对象封装：
+    //构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+            this.showName = function(){console.log("name:"+name);};
+            this.showAge = function(){console.log("age:"+age);};
+        }
+
+    //调用
+    var person1 = new Person1("geowang",20);
+        //new直接指向了新对象并赋值给person
+    console.log(person1.name);
+        //也可以用console.log(person1["name"]);
+            //不提倡
+    console.log(person1.age);
+    person1.showName();
+    person1.showAge();

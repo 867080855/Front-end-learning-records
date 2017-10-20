@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, dl, dt, dd {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f7f7f7;
+        }
+        ul{
+            list-style: none;
+        }
+
+        .calendar{
+            width: 385px;
+            height: 312px;
+            margin:100px auto;
+            padding:48px 141px 10px 12px;
+            background:url(images/calendar.jpg) no-repeat 0 0 ;
+        }
+        .calendar dt,
+        .calendar dd{
+            overflow: hidden;
+        }
+        .calendar span{
+            display: block;
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            margin-right:1px;
+            border:3px solid transparent;
+            float: left;
+        }
+        .calendar dt{border-top:1px solid #5CADFF}
+        .calendar dt span {
+            height: 28px;
+            line-height: 34px;
+            font-size: 14px;
+        }
+        .calendar dd{
+            border-top: 1px solid #c8cacc;
+            cursor: pointer;
+        }
+        .calendar span>b,
+        .calendar span>i{
+            display: block;
+            line-height: 1;
+        }
+        .calendar span>b{
+            height: 26px;
+            line-height: 30px;
+            font-size: 18px;
+            font-family: Arial;
+            font-weight: normal;
+        }
+        .calendar span>i{
+            color: #999;
+            font-size: 12px;
+            font-style: normal;
+        }
+        /*first-child取得的是父亲的“所有”子元素的第一个孩子,且dt必须是第一个孩子
+            比如此时如果写成dd:first-child就不能够变色，必须把dd提到第一个才可以变色。
+        */
+        dt:first-child{
+            color:red;
+        }
+        /*first-of-type取得的是父亲的“特定类型的(比如dd)”第一个子元素
+            即此处的子元素中是不包含dt的所有子元素
+        */
+        dd:first-of-type{
+            color:red;
+        }
+        /*选中第二行*/
+        dd:nth-of-type(2){
+            color:gold;
+        }
+        /*选中最后一列*/
+        span:last-child{
+        /*dd span:last-child可以把dt那一行排出去*/
+        /*span:nth-child(7n)
+            也可以选中第六行
+            span:nth-child(7n-1) || span:nth-child(6n);
+            还可以选中第一行
+            span:nth-child(7n+1);
+                注意7n+1时n=0，但此0非彼0。此处的n还可以写成t
+            */
+            color:blue;
+        }
+        /*选中倒数第二列*/
+        span:nth-last-of-type(2){
+            color:green;
+        }
+        /*选中左上角第一个元素*/
+        dd:first-of-type span:first-child{
+            color:deepskyblue;
+        }
+
+        /*选中第三行前三个*/
+        dd:nth-of-type(3) span:nth-child(-n+3){
+            color:pink;
+        }
+    </style>
+</head>
+<body>
+<div class="calendar">
+    <dl>
+        <dt>
+            <span>一</span>
+            <span>二</span>
+            <span>三</span>
+            <span>四</span>
+            <span>五</span>
+            <span>六</span>
+            <span>日</span>
+        </dt>
+        <dd>
+            <span>
+                <b>30</b>
+                <i>十九</i>
+            </span>
+            <span>
+                <b>1</b>
+                <i>艾滋病日</i>
+            </span>
+            <span>
+                <b>2</b>
+                <i>廿一</i>
+            </span>
+            <span>
+                <b>3</b>
+                <i>廿二</i>
+            </span>
+            <span>
+                <b>4</b>
+                <i>廿三</i>
+            </span>
+            <span>
+                <b>5</b>
+                <i>廿四</i>
+            </span>
+            <span>
+                <b>6</b>
+                <i>廿五</i>
+            </span>
+        </dd>
+        <dd>
+            <span data-flag="festival">
+                <b>7</b>
+                <i>廿六</i>
+            </span>
+            <span>
+                <b>8</b>
+                <i>廿七</i>
+            </span>
+            <span>
+                <b>9</b>
+                <i>廿八</i>
+            </span>
+            <span>
+                <b>10</b>
+                <i>廿九</i>
+            </span>
+            <span>
+                <b>11</b>
+                <i>初一</i>
+            </span>
+            <span>
+                <b>12</b>
+                <i>初二</i>
+                </span>
+            <span>
+                <b>13</b>
+                <i>初三</i>
+            </span>
+        </dd>
+        <dd>
+            <span>
+                <b>14</b>
+                <i>初四</i>
+            </span>
+            <span>
+                <b>15</b>
+                <i>初五</i>
+            </span>
+            <span>
+                <b>16</b>
+                <i>初六</i>
+            </span>
+            <span>
+                <b>17</b>
+                <i>初七</i>
+            </span>
+            <span>
+                <b>18</b>
+                <i>初八</i>
+            </span>
+            <span>
+                <b>19</b>
+                <i>初九</i>
+            </span>
+            <span>
+
+                <b>20</b>
+                <i>初十</i></span>
+        </dd>
+        <dd>
+				<span>
+					<b>21</b>
+					<i>十一</i>
+				</span>
+				<span data-flag="festival">
+					<b>22</b>
+					<i>十二</i>
+				</span>
+				<span>
+					<b>23</b>
+					<i>十三</i>
+				</span>
+				<span>
+					<b>24</b>
+					<i>十四</i>
+				</span>
+				<span>
+					<b>25</b>
+					<i>十五</i>
+				</span>
+				<span>
+					<b>26</b>
+					<i>十六</i>
+				</span>
+				<span>
+					<b>27</b>
+					<i>十七</i>
+				</span>
+        </dd>
+        <dd>
+				<span>
+					<b>28</b>
+					<i>十八</i>
+				</span>
+				<span>
+					<b>29</b>
+					<i>十九</i>
+				</span>
+				<span>
+					<b>30</b>
+					<i>二十</i>
+				</span>
+				<span>
+					<b>31</b>
+					<i>廿一</i>
+				</span>
+				<span data-range="next-month">
+					<b>1</b>
+					<i>元旦</i>
+				</span>
+				<span data-range="next-month">
+					<b>2</b>
+					<i>廿三</i>
+				</span>
+				<span data-range="next-month">
+					<b>3</b>
+					<i>廿四</i>
+				</span>
+        </dd>
+    </dl>
+</div>
+</body>
+</html>

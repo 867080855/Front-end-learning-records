@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <button>append</button>
+    <button>appendTo</button>
+    <button>prepend</button>
+    <button>prependTo</button>
+    <br/>
+    <button>after</button>
+    <button>before</button>
+    <button>insertAfter</button>
+    <button>insertBefore</button>
+    <br/>
+    <button>remove</button>
+    <button>empty</button>
+    <br/>
+    <button>clone</button>
+    <button>wrap</button>
+    <button>wrapAll</button>
+    <br/>
+    <button>replaceWith</button>
+    <div>
+        DIV1
+        <span>SPAN</span>
+    </div>
+    <div>DIV2</div>
+    <p>ppppp</p>
+</body>
+<script>
+    $(document).ready(function () {
+        $("button:first").click(function () {
+            $("div").append("<p>append</p>");
+        });
+        $("button:eq(1)").click(function () {
+            $("<p>appendTo</p>").appendTo($("div"));
+        });
+        $("button:eq(2)").click(function () {
+            $("div").prepend("<p>prepend</p>");
+        });
+        $("button:eq(3)").click(function () {
+            $("<p>prependTo</p>").prependTo($("div"));
+        });
+        $("button:eq(4)").click(function () {
+            $("div").after("<p>after</p>")
+        });
+        $("button:eq(5)").click(function () {
+            $("div").before("<p>before</p>")
+        });
+        $("button:eq(6)").click(function () {
+            //$("div").insertAfter("<p>insertAfter</p>")
+                //会把div给插没
+            $("<p>insertAfter</p>").insertAfter($("div"));
+        });
+        $("button:eq(7)").click(function () {
+            $("<p>insertBefore</p>").insertBefore($("div"));
+        });
+        $("button:eq(8)").click(function () {
+            $("div").remove();
+        });
+        $("button:eq(9)").click(function () {
+            $("div").empty();
+        });
+        $("button:eq(10)").click(function () {
+            $("div").append($("div").clone());
+        });
+        $("button:eq(11)").click(function () {
+            $("div").wrap($("span"));
+        });
+        $("button:eq(12)").click(function () {
+            $("div").wrapAll($("span"));
+        });
+        $("button:eq(13)").click(function () {
+            $("div").replaceWith($("p"));
+        });
+    });
+</script>
+</html>

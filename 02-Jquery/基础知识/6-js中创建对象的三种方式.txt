@@ -1,0 +1,9 @@
+1.推荐使用
+    var demo = {
+        ready : function(){}
+    };
+2.不推荐，创建对象的过程中牵涉到原型的问题，会影响效率。
+    var demo = new Demo();
+    demo.ready = function(){};
+3.
+    Object.create();

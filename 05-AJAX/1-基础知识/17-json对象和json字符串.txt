@@ -1,0 +1,10 @@
+1. json字符穿与json对象
+	var str = '{"name":"三国演义","category":"文学","desc":"一个军阀混战的年代"}'
+	var data = JSON.parse(str);		// 字符串转成json对象
+	console.log(data.name);
+
+	var s = JSON.stringify(data);	// json对象转成json字符串
+	console.log(s);
+2. eval(不推荐使用，这样使用有一定的风险。有可能会有人通过字符串传入一些非法的操作通过eval去执行。)
+	var data1 = eval("(" + str + ")");
+	console.log(data1);		// 能实现parse相同的效果。

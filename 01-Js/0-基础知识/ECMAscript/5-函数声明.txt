@@ -1,0 +1,18 @@
+函数声明：
+    1.自定义函数
+        function fun(){
+            alert("自定义函数");
+        }
+    fun();  //放在函数的前后都可以正常调用
+    2.直接量声明
+        var fun1 = function(){
+            alert("直接量声明";
+        }
+    fun1(); //必须在函数声明的下边调用。
+            //因为有var的存在
+    3.Function关键字声明.
+        var fun2 = new Function("var a = 10; var b = 20; return a+b;");
+        fun2();
+    =========================================
+    立即执行函数：
+        function (){}();

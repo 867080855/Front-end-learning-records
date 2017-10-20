@@ -1,0 +1,12 @@
+事件处理程序：
+    1.事件源
+        js:document.getElementById("id");
+        jQuery:$("#id");
+    2.事件
+        js:document.getElementById("id").onclick
+        jQuery:$("#id").click
+            //jQuery不带on
+    3.事件处理程序
+        js:document.getElementById("id").onclick = function(){};
+        jQuery:$("#id").click(function(){});    //$符号可能会被覆盖重写。
+               jQuery("#id").click(function(){});

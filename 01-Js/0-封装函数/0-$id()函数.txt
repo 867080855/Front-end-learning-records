@@ -1,0 +1,4 @@
+//根据id获得对象
+function $id(id){
+    return document.getElementById(id);
+}

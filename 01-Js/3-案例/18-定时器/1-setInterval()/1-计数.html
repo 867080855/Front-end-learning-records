@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+        规范：setInterval("执行的函数",间隔时间)
+            正确写法：
+                1.setInterval(fun,1000);  //1000ms
+                    //不加引号不加括号
+                2.setInterval("fun()",1000);
+                    //可以用
+                    //加引号不加括号
+                3.setInterval(function(){},1000);
+    -->
+    <style>
+        #demo {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 60px;
+            text-align: center;
+            margin: 200px auto;
+            background-color: #0873C0;
+            color:#fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var demo = document.getElementById("demo");
+            setInterval(fun,20);
+            var num = 1 ;
+            function fun(){
+                num++;
+                demo.innerHTML = num;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="demo"></div>
+</body>
+</html>

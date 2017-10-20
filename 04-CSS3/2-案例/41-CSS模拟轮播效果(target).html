@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*使图片铺满屏幕开始*/
+        html,body {
+            height: 100%;
+        }
+        body,ul{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        .img-box{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-box li{
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            position: absolute;
+        }
+        /*使图片铺满整个屏幕结束*/
+        /*给li添加图片背景*/
+        .img-box li:first-child{
+            background-image: url(images1/bg1.jpg);
+                /*为什么图片不能铺满？？？
+                    因为此处写成了background而不是background-image,
+                因此层叠掉了之前的background-size属性，进而导致图片不能占满整个
+                屏幕。~~~~！！！！！*/
+            z-index: 5;
+        }
+        .img-box li:nth-child(2){
+            background-image: url(images1/bg2.jpg);
+            z-index: 4;
+        }
+        .img-box li:nth-child(3){
+            background-image: url(images1/bg3.jpg);
+            z-index: 3;
+        }
+        .img-box li:nth-child(4){
+            background-image: url(images1/bg4.jpg);
+            z-index: 2;
+        }
+        .img-box li:nth-child(5){
+            background-image: url(images1/bg5.jpg);
+            z-index: 1;
+        }
+        /*添加图片背景结束*/
+        /*添加五个a标签按钮*/
+        .handle{
+            width: 800px;
+            height: 120px;
+            position: absolute;
+            bottom:100px;
+            left:50%;
+            margin-left:-400px;
+            z-index: 10;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .handle li a{
+            display: block;
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            font-size: 120px;
+            border-radius: 60px;
+            color:#fff;
+            text-decoration: none;
+            text-align: center;
+            z-index: 15;
+            background-position: center center;
+        }
+        .handle li:first-child a{
+            background-image: url(images1/bg1.jpg);
+        }
+        .handle li:nth-child(2) a{
+            background-color: red;
+            background-image: url(images1/bg2.jpg);
+        }
+        .handle li:nth-child(3) a{
+            background-image: url(images1/bg3.jpg);
+        }
+        .handle li:nth-child(4) a{
+            background-image: url(images1/bg4.jpg);
+        }
+        .handle li:nth-child(5) a{
+            background-image: url(images1/bg5.jpg);
+        }
+        /*调节z-index使被选中的图片置顶，并添加动画*/
+        #bg1:target{
+            z-index: 6;
+            animation:slideleft 1s linear ;
+        }
+        #bg1:not(:target){
+            z-index: 5;
+        }
+        #bg2:target{
+            z-index: 6;
+            animation:rotateleftbottom 1s linear;
+        }
+        #bg2:not(:target){
+            z-index: 4;
+        }
+        #bg3:target{
+            z-index: 6;
+            animation:scale 1s linear;
+        }
+        #bg3:not(:target){
+            z-index: 3;
+        }
+        #bg4:target{
+            z-index: 6;
+            animation:rotaterighttop 1s linear;
+        }
+        #bg4:not(:target){
+            z-index: 2;
+        }
+        #bg5:target{
+            z-index: 6;
+            animation:slidedown 1s linear;
+        }
+        #bg5:not(:target){
+            z-index: 1;
+        }
+        /*动画效果*/
+        @keyframes slideleft {
+            0%{
+                transform:translate(-100%,0);
+            }
+            100%{
+                transform:translate(0,0);
+            }
+        }
+        @keyframes rotateleftbottom {
+            0%{
+                transform:rotate(-180deg) scale(0);
+            }
+            100%{
+                transform:rotate(0deg) scale(1);
+            }
+        }
+        @keyframes scale {
+            0%{
+                transform:scale(0);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+        @keyframes rotaterighttop {
+            0%{
+                transform:rotate(235deg) scale(0);
+            }
+            100%{
+                transform:rotate(0deg) scale(1)
+            }
+        }
+        @keyframes slidedown {
+            0%{
+                transform:translate(0,-100%);
+            }
+            100%{
+                transform:translate(0,0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="img-box">
+        <li class="img" id="bg1"></li>
+        <li class="img" id="bg2"></li>
+        <li class="img" id="bg3"></li>
+        <li class="img" id="bg4"></li>
+        <li class="img" id="bg5"></li>
+    </ul>
+    <ul class="handle">
+        <li><a href="#bg1">1</a></li>
+        <li><a href="#bg2">2</a></li>
+        <li><a href="#bg3">3</a></li>
+        <li><a href="#bg4">4</a></li>
+        <li><a href="#bg5">5</a></li>
+    </ul>
+</body>
+</html>

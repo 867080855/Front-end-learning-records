@@ -1,0 +1,6 @@
+方法：
+    onfocus();
+属性：
+    box.style.width;
+事件：
+    list.onchange;

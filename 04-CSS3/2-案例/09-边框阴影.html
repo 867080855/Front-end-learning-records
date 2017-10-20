@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, li, dl, dt, dd, h1, h2, h3, h4, h5 {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .wrapper>header{
+            padding: 20px 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .wrapper>header>h3{
+            line-height: 1;
+            font-weight: normal;
+            font-size: 28px;
+        }
+        .main{
+            width: 100%;
+        }
+        .main .item{
+            width: 210px;
+            height: 210px;
+            background-color: #fff;
+            display: flex;/*这句话可以让内容水平竖直居中*/
+            float: left;
+            margin:15px;
+            box-shadow: 2px 2px 5px #CCC;
+            position: relative;
+        }
+        .main .item:after {
+            content: attr(data-brief);
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 210px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #FFF;
+            font-family: '微软雅黑';
+            font-size: 18px;
+            background-color: rgba(170, 170, 170, 0);
+            z-index: -1;
+            transition: all 0.3s ease-in;
+        }
+        .main .item:hover:after {
+            background-color: rgba(170, 170, 170, 0.6);
+            z-index: 100;
+        }
+        /*正文开始*/
+        /*偏移量调整*/
+        .box-shadow{
+            width: 100px;
+            height: 100px;
+            border:1px solid #ddd;
+            margin:auto;
+        }
+        .shadow1 .box-shadow{
+            box-shadow: 2px 2px 8px #000;
+            /*水平偏移量 竖直偏移量 模糊度 阴影颜色*/
+        }
+        .shadow2 .box-shadow{
+            box-shadow: -2px -2px 8px #000;
+        }
+        .shadow3 .box-shadow{
+            box-shadow: 0 -2px 8px #000;
+        }
+        .shadow4 .box-shadow{
+            box-shadow: -2px 0 8px #000;
+        }
+        .shadow5 .box-shadow{
+            box-shadow: 15px 15px 0 #000;
+        }
+        /*偏移量和扩展量可以相加*/
+        .shadow6 .box-shadow{
+            box-shadow: 5px 5px 0 10px #000;
+            /*第四个数字表示四周扩充10像素
+                左上角本身有-5像素的阴影，加上了10像素，所以最终只有5像素
+            */
+        }
+        .shadow7 .box-shadow{
+            box-shadow:20px 20px 0 -10px #000;
+            /*扩展值可以取负值，显然扩展值取负值之后，阴影框会变小*/
+        }
+        /*偏移量和模糊度可以叠加，模糊度在偏移产生的阴影下进行模糊处理*/
+        .shadow8 .box-shadow{
+            box-shadow:5px 5px 5px #000;
+            /*
+                在谷歌开发者中心明显可以看到当模糊度为1时，模糊化的内容紧贴阴影开始
+            */
+        }
+        /*内阴影*/
+        .main .shadow9{
+            width: 934px;
+        }
+        .shadow9 .box-shadow{
+            box-shadow:inset 20px 20px 20px -10px #000;
+        }
+        /*模糊度开始
+            模糊度：一个颜色在一定距离内渐变至透明的过程
+        */
+        /*内外阴影*/
+        .shadow10 .box-shadow{
+            box-shadow: inset 20px 20px 20px -10px #000,
+                20px 20px 20px red;
+        }
+        /*两个外阴影*/
+        .shadow11 .box-shadow{
+            box-shadow:  20px 20px 20px -10px #000,
+            20px 20px 20px red;
+        }
+        /*两个内阴影*/
+        .shadow12 .box-shadow{
+            box-shadow: inset 20px 20px 20px -10px #000,
+            inset 20px 20px 20px red;
+        }
+        /*两个内阴影两个外阴影*/
+        .shadow13 .box-shadow{
+            box-shadow: inset 20px 20px 20px -10px #000,
+            inset 20px 20px 20px red,
+            20px 20px 20px -10px #000,
+            20px 20px 20px red;;
+        }
+        /*盒子布局*/
+        .box1 .box-shadow{
+            width: 90px;
+            height: 90px;
+            margin-right:10px;
+            background-color: red;
+        }
+        .box1 .left{
+            box-shadow:20px 20px 20px 20px #000;
+            /*没有影响别的盒子的布局*/
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header><h3>CSS3-边框阴影</h3></header>
+    <div class="main">
+        <div class="item shadow1" data-brief="左上偏移">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow2" data-brief="右下偏移">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow3" data-brief="向下偏移">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow4" data-brief="向右偏移">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow5" data-brief="偏移量与扩展值">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow6" data-brief="偏移量与扩展值">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow7" data-brief="偏移量与扩展值">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow8" data-brief="偏移量与模糊度">
+            <div class="box-shadow"></div>
+        </div>
+        <!-- 内阴影-->
+        <div class="item shadow9" data-brief="内阴影">
+            <div class="box-shadow"></div>
+        </div>
+        <!-- 模糊度-->
+        <div class="item shadow10" data-brief="">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow11" data-brief="">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow12" data-brief="">
+            <div class="box-shadow"></div>
+        </div>
+        <div class="item shadow13" data-brief="">
+            <div class="box-shadow"></div>
+        </div>
+        <!-- 盒子布局-->
+        <div class="item box1" data-brief="">
+            <div class="box-shadow left"></div>
+            <div class="box-shadow right"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

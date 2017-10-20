@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #target{
+            border:5px dashed #c0c0c0;
+            width: 100%;
+            height: 300px;
+            color:#e0e0e0;
+            font-size: 40px;
+            text-align: center;
+            line-height: 260px;
+            padding:20px;
+            -webkit-user-select: none;
+            cursor: pointer;
+            margin-bottom:50px;
+        }
+        #target.actived{
+            border-color:#888;
+            color:#fafafa;
+            box-shadow: 0 0 80px #e0e0e0 inset ;
+        }
+    </style>
+    <link rel="stylesheet" href="bootstrap.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>拖拽案例</h1>
+        </div>
+        <div class="jumbotron">
+            <p>你好啊，你今年几岁啊，哈哈，我的今天在哪里？</p>
+            <img src="toy.png" alt=""/>
+        </div>
+        <ul id="list" class="list-group"></ul>
+        <div id="target">
+            Drag something into here.
+        </div>
+    </div>
+</body>
+<script>
+    (function () {
+        var target = document.querySelector('#target');
+        var list = document.querySelector('#list');
+        //给target注册拖拽事件
+        target.addEventListener('dragenter', function () {
+//            console.log("done");
+            this.classList.add('actived');
+        });
+        target.addEventListener('dragleave', function () {
+            this.classList.remove('actived');
+        });
+        //想要捕获drop事件就一定得在该事件中阻止默认事件发生
+        target.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        //给target注册drop事件
+        target.addEventListener('drop', function (e) {
+            if(e.dataTransfer.files.length){
+                var files = e.dataTransfer.files;
+                for(var x = 0; x < files.length; x++ ){
+                    var liEle = document.createElement("li");
+                    liEle.setAttribute('class','list-group-item');
+                    liEle.innerHTML = '<h5 class="list-group-item-heading">'+files[x].name+'</h5><p class="list-group-item-text">'+files[x].lastModifiedDate.toLocaleDateString()+'   '+files[x].lastModifiedDate.toLocaleTimeString()+'  '+(files[x].size/1024).toFixed(2)+'KB'+'</p>';
+                    console.log(list);
+                    list.appendChild(liEle);
+                }
+            }else{
+//            var data = e.dataTransfer.getData('text/plain') ||
+//                    e.dataTransfer.getData('text/url');
+                var data = e.dataTransfer.getData('text/plain');
+                console.log(typeof(data) ); //string字符串
+                var flag = data.indexOf('http');
+                if(flag<0){
+                    this.innerHTML = data;
+                }else{
+                    //尴尬的事情在于，e.dataTransfer.getData('text/plain')获取到了图片的地址值，因此完全没有执行else内的内容。
+                    //解决：判断是否含有http在data中
+                    var img = document.createElement('img');
+                    img.src = data;
+                    console.log(img.src);
+                    target.innerHTML = '';
+                    target.appendChild(img);
+                }
+            }
+            this.classList.remove('actived');
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    })();
+</script>
+</html>

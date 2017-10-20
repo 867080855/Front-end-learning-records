@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        aside{
+            width: 200px;
+            height: 100%;
+            float: left;
+            background-color: #aaa;
+        }
+        aside ul{
+            font-size: 20px;
+            line-height: 2;
+                /*2表示2倍的字体大小*/
+            margin:20px 0 20px 40px;
+        }
+        aside ul li{
+            cursor: pointer;
+        }
+        article{
+            margin-left:200px;
+            padding:20px 50px 20px 20px;
+            font-size: 20px;
+            height: 100%;
+            overflow: scroll;
+            background-color: #f5f5f5;
+        }
+    </style>
+    <script src="data.js"></script>
+</head>
+<body>
+        <aside>
+            <ul id="list">
+            </ul>
+        </aside>
+        <article>
+            <p id="content">
+
+            </p>
+        </article>
+</body>
+<script>
+    (function () {
+        var listEle = document.querySelector("#list");
+        for(var title in data){
+            var liEle = document.createElement("li");
+            liEle.innerHTML = "★"+title;
+            liEle.setAttribute("data-title",title);
+            liEle.addEventListener("click", function () {
+                var tarTitle = this.dataset.title;
+                var con = document.querySelector("#content");
+                con.innerHTML = data[tarTitle];
+                //操作历史记录
+                if(window.history && history.pushState){
+                    history.pushState(tarTitle,"title(目前没有任何浏览器支持)","?t="+tarTitle);
+                }else{
+                    console.log("not support this func");
+                }
+                //当我们在伪造的访问历史中前进或后退时，可以执行一个事件(popstate)。
+            });
+            listEle.appendChild(liEle);
+        }
+
+        //添加本事件之前，点击前进和后退，页面不会发生变化
+        var con = document.querySelector("#content");
+        window.addEventListener("popstate", function (e) {
+            con.innerHTML = data[e.state];
+        });
+
+        //获取url后获取后边的t参数
+        var nowTitle = window.location.search.split("=")[1];
+        if(nowTitle){
+            con.innerHTML = data[decodeURI(nowTitle)];
+        }
+
+        //劫持
+//        window.location = "http://www.baidu.com";
+    })();
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<div class="fullpage" id="fullpage">
+    <!-- 第一屏-->
+    <section class="section">
+        <section class="section">
+            <!-- LOGO -->
+            <div class="logo"></div>
+            <!-- 文字 -->
+            <div class="text"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <!-- 特征 -->
+            <div class="feature"></div>
+        </section>
+    </section>
+    <!-- 第二屏-->
+    <section class="section">
+        <div class="shield">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="info"></div>
+    </section>
+    <!-- 第三屏-->
+    <section class="section">
+        <div class="speed"></div>
+        <div class="circle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+    <!-- 第四屏-->
+    <section class="section">
+        <div class="smart"></div>
+        <div class="search">
+            <div class="key"></div>
+            <div class="wrap">
+                <div class="tips"></div>
+            </div>
+        </div>
+    </section>
+    <!-- 第五屏-->
+    <section class="section">
+        <div class="design"></div>
+        <div class="browser">
+            <div class="bg"></div>
+            <div class="wrap">
+                <span></span>
+            </div>
+            <!-- 边框线-->
+            <div class="line"></div>
+            <div class="left-side border"></div>
+            <div class="right-side border"></div>
+            <div class="top-side border"></div>
+            <div class="bottom-side border"></div>
+        </div>
+    </section>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+</body>
+<script>
+    $("#fullpage").fullpage({
+        css3:true,
+        afterLoad: function (anchorLink, index) {
+            $('.section').removeClass('current');
+            // 延时100毫秒执行
+            setTimeout(function () {
+                $('.section').eq(index - 1).addClass('current');
+            }, 100);
+        }
+    });
+</script>
+</html>

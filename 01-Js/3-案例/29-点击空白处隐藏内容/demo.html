@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        #mask{
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;   /*标准浏览器 盒子半透明*/
+            filter:alpha(opacity=40);   /*ie6 半透明*/
+            background-color: black;
+            position: fixed;
+            top:0;
+            left:0;
+            display: none;
+        }
+        #con{
+            width: 300px;
+            height: 300px;
+            margin:-150px 0 0 -150px;
+            position: fixed;
+            background-color: #fff;
+            left: 50%;
+            top: 50%;
+            display: none;
+
+        }
+    </style>
+</head>
+<body>
+<a href="#" id="login">注册</a>
+<a href="#">登陆</a>
+<div id="mask"></div>
+<div id="con"></div>
+</body>
+<script>
+    var login = document.getElementById("login");
+    var con = document.getElementById("con");
+    var mask = document.getElementById("mask");
+    login.onclick = function (event) {
+        var event = event || window.event;
+        if(event.stopPropagation()){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble = true;
+        }
+        con.style.display = "block";
+        mask.style.display = "block";
+        document.body.style.overflow = "hidden";
+    };
+    document.onclick = function (event) {
+        var event = event || window.event;
+    //只点击mask之外的范围盒子才会消失
+        //获取被点击对象的id
+        var tarId = event.target ? event.target.id :event.srcElement.id;
+        //判断获得到的id跟指定对象的id是否相等
+        if(tarId != "con"){
+            con.style.display = "none";
+            mask.style.display = "none";
+            document.body.style.overflow = "visible";
+        }
+    }
+</script>
+</html>

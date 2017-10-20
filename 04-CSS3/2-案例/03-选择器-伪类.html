@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+        }
+        /*正文开始*/
+        section:nth-of-type(4) {
+            background-color: green;
+        }
+        section:nth-of-type(4) span:only-child{
+            color:orange;
+        }
+        section:nth-of-type(5) li:nth-child(2){
+            background-color: #0060BF;
+        }
+        section:nth-last-of-type(3) p:empty{
+            width: 350px;
+            height: 50px;
+            background-color: #0399A0;
+        }
+        section:target{
+            background-color: silver;
+        }
+        section:last-child p:after{
+            content:"111";
+            color:red;
+        }
+        section:last-child p:before{
+            content:"222";
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-伪类选择器</header>
+        <section id="demo1">
+            <header>简介</header>
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section>
+            <header>E:first-child</header>
+            <!-- 父亲的第一个孩子-->
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section>
+            <header>E:last-child</header>
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section id="demo2">
+            <header>E:only-child</header>
+            <!-- 选择父级的孩子只有一个元素的元素-->
+            <div class="wrap-box">
+                <ul>
+                    <li>我是</li>
+                    <li></li>
+                    <li><span>我是li</span></li>
+                    <li></li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <header>E:nth-child(n)</header>
+            <!-- n大于等于1
+                当括号内不指定数字直接写n时，为全部选中
+                当括号内不指定数字直接写2n时，为选中偶数项
+                ...
+                当括号内不指定数字直接写tn时，为每隔t个元素选中一个元素
+                    总之，此处可以写入变量
+                当括号内不指定数字写*时，没有效果。
+            -->
+            <div class="wrap-box">
+                <ul>
+                    <li>我是</li>
+                    <li></li>
+                    <li><span>我是li</span></li>
+                    <li></li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <header>E:nth-last-child(n)</header>
+            <!-- 倒数第n个-->
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section id="demo3">
+            <header>E:nth-of-type(n)</header>
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section>
+            <header>nth-last-of-type(n)</header>
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section>
+            <header>only-of-type</header>
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section>
+            <header>empty(重要)</header>
+            <!-- 选中元素内没有任何内容的元素-->
+            <div class="wrap-box">
+                <p></p>
+                <p>tecWang</p>
+            </div>
+        </section>
+        <section>
+            <header>E:target(非常有用~)</header>
+            <!-- 注意选中的方式不太一样
+                section:target;
+            -->
+            <div class="wrap-box">
+                <a href="#demo1">demo1</a>
+                <a href="#demo2">demo2</a>
+                <a href="#demo3">demo3</a>
+            </div>
+        </section>
+        <section>
+            <header>E:after</header>
+            <!--
+                一个冒号是伪类
+                两个冒号是伪元素
+            -->
+            <div class="wrap-box">
+                <p>pppppp</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

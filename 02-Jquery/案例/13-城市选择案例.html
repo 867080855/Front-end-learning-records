@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select{
+            width: 200px;
+            height: 200px;
+            font-size: 20px;
+            margin-right:10px;
+            vertical-align: top;
+        }
+        .btn-box{
+            display: inline-block;
+            width: 40px;
+            vertical-align: top;
+        }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn_sel_all").on("click", function () {
+                //选中所有元素
+                $("#src_city option").appendTo($("#tar_city"));
+            });
+            $("#btn_unsel_all").on("click", function () {
+                //选中所有元素
+                $("#tar_city option").appendTo($("#src_city"));
+            });
+            $("#btn_sel").on("click", function () {
+                $("#src_city option:selected").appendTo($("#tar_city"));
+            });
+            $("#btn_unsel").on("click", function () {
+                $("#tar_city option:selected").appendTo($("#src_city"));
+            })
+        });
+    </script>
+</head>
+<body>
+<select name="src-city" id="src_city" multiple>
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">广州</option>
+    <option value="4">深圳</option>
+    <option value="5">武汉</option>
+</select>
+<div class="btn-box">
+    <button id="btn_sel_all">>></button>
+    <button id="btn_sel">></button>
+    <button id="btn_unsel_all"><<</button>
+    <button id="btn_unsel"><</button>
+</div>
+<select name="tar-city" id="tar_city" multiple>
+
+</select>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;list-style: none;}
+        .box{
+            width: 650px;
+            height: 250px;
+            position: relative;
+            margin:100px auto;
+        }
+        .box ul{
+            width: 200%;
+        }
+        .box ul li{
+            position: absolute;
+            left:0;
+            top:0;
+            cursor: pointer;
+        }
+        .box ol{
+            z-index: 999;
+            position: absolute;
+            right:0;
+            bottom:10px;
+        }
+        .box ol li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: grey;
+            margin-right:10px;
+            text-align: center;
+            border:1px solid #fff;
+            cursor: pointer;
+        }
+        .box ol li.current{
+            color:orange;
+            background-color: #C81623;
+        }
+    </style>
+    <script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="images/01.jpg" alt=""/></li>
+            <li><img src="images/02.jpg" alt=""/></li>
+            <li><img src="images/03.jpg" alt=""/></li>
+            <li><img src="images/04.jpg" alt=""/></li>
+            <li><img src="images/05.jpg" alt=""/></li>
+        </ul>
+        <ol>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        var zIndex = 0;
+        $(".box ol li").mouseenter(function () {
+            zIndex++;
+            $(this).addClass("current").siblings().removeClass("current");
+            var $olli = $(".box ul li").eq($(this).index())
+                    .css({
+                        "zIndex":zIndex,
+                        "left":"650px"
+                    })
+                    .animate({"left":0},1000);
+            console.log(zIndex);
+            console.log("$olli"+$olli);
+        });
+
+    });
+</script>
+</html>

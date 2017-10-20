@@ -1,0 +1,11 @@
+7.数组转换为字符串。
+    join()----把数组转换成一个字符串，新生成一个字符串，不改变原有数组。
+        注：join()内的内容可以省略，省略后默认使用逗号作为连接符。
+        var txt = ["aa","bb","cc"];
+        console.log(txt.join("-"));
+        console.log(txt);
+8.字符串转换为数组。
+    split()----把字符串转换为数组，根据相应的规则拆分字符串。
+        var string = "aa,bb,cc";
+        console.log(string.split(","));
+        console.log(string.split(""));  //不设定规则会自动把每个字符都转换成数组。

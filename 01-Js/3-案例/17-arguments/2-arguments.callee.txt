@@ -1,0 +1,16 @@
+2.arguments.callee  ----返回正在执行的函数
+            //在使用函数递归调用时推荐使用arguments.callee代替函数名本身。
+    ------------------------------------------------
+    function fn(a,b,c){
+            console.log(a+b+c);
+            console.log(arguments.length);
+            console.log(arguments.callee);
+        }
+    fn(1,2,3);
+            /*  cellee返回：
+                function fn(a,b,c){
+                    console.log(a+b+c);
+                    console.log(arguments.length);
+                    console.log(arguments.callee);
+                    }
+            */

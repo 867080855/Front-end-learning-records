@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //封装自己的getClass类方法
+                    //缺点是对于class中含有超过一个类名的情况会出错。
+            function getClass(classname){
+                //针对本身就支持本方法的浏览器
+                if(document.getElementsByClassName(classname)){
+                    return document.getElementsByClassName(classname);
+                }
+                //针对低版本的浏览器
+                //alert("done1");
+                var targets = [];
+                var nodes = document.getElementsByTagName("*");
+                var len = nodes.length;
+                //alert("done2");
+                for(var x = 0;x<len;x++){
+                    if(nodes[x].className == classname){
+                        targets.push(nodes[x]);
+                        //console.log(targets);
+                        //日志: [object HTMLDivElement],[object HTMLDivElement],[object HTMLDivElement],[object HTMLDivElement]
+                    }
+                }
+                return targets;
+            }
+            getClass("demo");//----结果为4
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="demo test"></div>
+    <div></div>
+    <div class="demo"></div>
+    <div></div>
+    <div class="test"></div>
+    <div class="demo"></div>
+    <div></div>
+    <div></div>
+    <div class="demo"></div>
+</body>
+</html>

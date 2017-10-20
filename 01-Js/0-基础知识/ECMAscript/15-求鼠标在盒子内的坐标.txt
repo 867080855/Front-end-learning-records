@@ -1,0 +1,12 @@
+求鼠标在盒子内的坐标：
+    var demo = document.getElementById("demo");
+    console.log(demo);
+    demo.onmousemove = function (event) {
+            var event = event || window.event;
+            var left = event.pageX - demo.offsetLeft;
+            var top = event.pageY - demo.offsetTop;
+            demo.innerHTML = "当前坐标" +left + "px" + top + "px" + "<br/>" + "pageX:" + event.pageX + "; pageY:" + event.pageY;
+    }
+
+
+

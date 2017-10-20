@@ -1,0 +1,405 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    padding: 0;
+}
+.section {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+/*第一屏*/
+.section:first-child {
+    background-color: #0da5d6;
+}
+.section:first-child .logo,
+.section:first-child .feature {
+    background: url(../images/p1.png) no-repeat;
+    /*相当于在使用精灵图*/
+    position: absolute;
+}
+.section:first-child .logo {
+    width: 247px;
+    height: 185px;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -123px;
+    background-position: -256px 0;
+}
+.section:first-child .feature {
+    width: 772px;
+    height: 49px;
+    margin: 156px 0 0 -386px;
+    background: url(../images/p1.png) no-repeat 0 -345px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.section:first-child .text{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top:50%;
+    line-height: 90px;
+    margin-top:20px;
+    font-size: 90px;
+}
+.section:first-child span{
+    display: inline-block;
+    background-image:url(../images/p1.png);
+    margin:0 35px;
+    width: 100px;
+    height: 90px;
+    opacity:0;
+}
+.section:first-child span:nth-of-type(1){
+    background-position:-3px -205px;
+    width: 70px;
+    height: 90px;
+}
+.section:first-child span:nth-of-type(2){
+    background-position:-72px -205px;
+}
+.section:first-child span:nth-of-type(3){
+    background-position:-172px -205px;
+}
+.section:first-child span:nth-of-type(4){
+    background-position:-272px -205px;
+}
+.section:first-child span:nth-of-type(5){
+    background-position:-372px -205px;
+}
+.section:first-child span:nth-of-type(6){
+    background-position:-472px -205px;
+}
+.section:first-child span:nth-of-type(7){
+    background-position:-572px -205px;
+}
+.section:first-child span:nth-of-type(8){
+    background-position:-672px -205px;
+}
+/*动画效果*/
+.current.section:first-child span{
+    margin:0 8px;
+    opacity:1;
+    transition:all 1.5s ease-out 0.3s;
+    /*最后一个参数为delay*/
+}
+/*第二屏*/
+.section:nth-of-type(2){
+    background-color: #2AB561;
+}
+.section:nth-of-type(2) .shield{
+    width: 408px;
+    height: 482px;
+    margin: -241px 0 0 -550px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 0;
+}
+.section:nth-of-type(2) .info{
+    width: 635px;
+    height: 309px;
+    margin: -160px 0 0 -70px;
+    background: url(../images/p2.png) no-repeat;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.section:nth-of-type(2) .shield span{
+    display: block;
+        /*没有这一步的话，span的属性基本都不会生效。*/
+    background: url(../images/shield.png) no-repeat;
+    position: absolute;
+}
+.section:nth-of-type(2) span:first-child{
+    width: 111px;
+    height: 121px;
+    background-position: -10px -34px;
+    top: 28px;
+    transform: translate(460%, -128%) rotate(80deg);
+}
+.section:nth-child(2) span:nth-child(2) {
+    width: 176px;
+    height: 149px;
+    background-position: -123px -6px;
+    left: 113px;
+    transform: translate(65%, 279%) rotate(145deg);
+}
+.section:nth-child(2) span:nth-child(3) {
+    width: 117px;
+    height: 121px;
+    background-position: -301px -34px;
+    left: 291px;
+    top: 28px;
+    transform: translate(400%, 380%) rotate(70deg);
+}
+.section:nth-child(2) span:nth-child(4) {
+    width: 106px;
+    height: 176px;
+    background-position: -15px -157px;
+    top: 151px;
+    left: 5px;
+    transform: translate(500%, 29%) rotate(110deg);
+}
+.section:nth-child(2) span:nth-child(5) {
+    width: 176px;
+    height: 176px;
+    background-position: -123px -157px;
+    top: 151px;
+    left: 113px;
+    transform: translate(472%, 73%) rotate(60deg);
+}
+.section:nth-child(2) span:nth-child(6) {
+    width: 111px;
+    height: 176px;
+    background-position: -301px -157px;
+    top: 151px;
+    left: 291px;
+    transform: translate(195%, 136%) rotate(90deg);
+}
+.section:nth-child(2) span:nth-child(7) {
+    width: 80px;
+    height: 100px;
+    background-position: -41px -335px;
+    top: 329px;
+    left: 31px;
+    transform: translate(-31%, -106%) rotate(282deg);
+}
+.section:nth-child(2) span:nth-child(8) {
+    width: 176px;
+    height: 153px;
+    background-position: -123px -335px;
+    top: 329px;
+    left: 113px;
+    transform: translate(47%, -157%) rotate(80deg);
+}
+.section:nth-child(2) span:nth-child(9) {
+    width: 83px;
+    height: 102px;
+    background-position: -301px -335px;
+    top: 329px;
+    left: 291px;
+    transform: translate(-320%, -410%) rotate(120deg);
+}
+/*动画效果*/
+.current.section:nth-of-type(2) span{
+    /*为什么此处current和section之间加上空格就不能用？
+
+    */
+    transform:translate(0,0) rotate(0deg);
+    transition:all 4s ;
+}
+/*第三屏*/
+.section:nth-of-type(3) {
+    background-color: #DE8910;
+}
+.section:nth-of-type(3) .speed{
+    width: 631px;
+    height: 273px;
+    margin: -136px 0 0 -600px;
+    background: url(../images/p3.png) no-repeat 0 -291px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.section:nth-of-type(3)  span{
+    position: absolute;
+    background: url(../images/p3.png) no-repeat;
+}
+.section:nth-of-type(3) span:nth-child(1){
+    width: 450px;
+    height: 450px;
+    background-position: 0 -605px;
+    right: 150px;
+    top:100px;
+}
+.section:nth-of-type(3) span:nth-child(2){
+    width: 400px;
+    height: 400px;
+    right: 171px;
+    top: 123px;
+    background-position: -470px -620px;
+}
+.section:nth-of-type(3) span:nth-child(3){
+    width: 370px;
+    height: 370px;
+    right: 190px;
+    top: 142px;
+    background-position: -877px -641px;
+}
+.section:nth-of-type(3)::after{
+    content:'';
+    position: absolute;
+    width: 300px;
+    height: 280px;
+    background: url(../images/p3.png) no-repeat;
+    background-position: -333px 0;
+    top:205px;
+    right:220px;
+    transform:translate(-600px,600px);
+}
+.current.section:nth-of-type(3)::after{
+    transform:translate(0,0);
+    transition:all 2s;
+}
+/*第四屏*/
+.section:nth-of-type(4) {
+    background-color: #16BA9D;
+}
+.section:nth-of-type(4) .smart{
+    width: 611px;
+    height: 295px;
+    margin: -147px 0 0 -18px;
+    background: url(../images/p4.png) no-repeat -565px 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.section:nth-of-type(4) .search{
+    width: 529px;
+    height: 67px;
+    margin: -155px 0 0 0;
+    background: url(../images/p4.png) no-repeat;
+    position: absolute;
+    top: 50%;
+    opacity: 0;
+    left: -100%;
+}
+.section:nth-of-type(4) .key{
+    width: 0;
+    height: 17px;
+    background: url('../images/p4.png') no-repeat -570px -330px;
+    position: absolute;
+    left: 26px;
+    top: 26px;
+    overflow: hidden;
+}
+.section:nth-of-type(4) .wrap{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    overflow: hidden;
+        /*将其设置为溢出隐藏， 并且把tips的内容藏到盒子外边。动画开始后一步一步移动到盒子内部*/
+}
+.section:nth-of-type(4) .tips{
+    width: 529px;
+    height: 380px;
+    background: url('../images/p4.png') no-repeat -1px -79px;
+    transform: translate(0, -100%);
+}
+/*动画效果*/
+.current.section:nth-of-type(4) .search{
+    left:50%;
+    margin-left:-597px;
+    opacity:1;
+    transition:all 1s ease-in-out;
+}
+.current.section:nth-of-type(4) .key{
+    animation:type 1s steps(5) 1.5s forwards;
+}
+.current.section:nth-of-type(4) .tips{
+    transform:translate(0,0);
+    transition:all 1s ease-in-out 2.8s;
+}
+@keyframes type {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 88px;
+    }
+}
+/*第五屏*/
+.section:nth-of-type(5) {
+    background-color: #0DA5D6;
+}
+.section:nth-of-type(5) .design{
+    width: 1077px;
+    height: 133px;
+    margin: 0 0 0 -535px;
+        /*为什么是负值，是为了调节left和top 的偏移*/
+    background: url('../images/p5.png') no-repeat 0 0;
+    position: absolute;
+    left: 50%;
+    top: 70px;
+}
+.section:nth-of-type(5) .browser{
+    width: 1002px;
+    height: 576px;
+    margin: 0 0 0 -501px;
+    position: absolute;
+    left: 50%;
+    top: 240px;
+}
+.section:nth-child(5) .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(../images/p5.png) no-repeat -38px -162px,rgba(255,255,255,0.15);
+    opacity: 0;
+}
+.section:nth-child(5) .wrap {
+     width: 0;
+     height: 27px;
+     position: absolute;
+     top: 30px;
+     left: 67px;
+     overflow: hidden;
+        /*有一个overflow：hidden的盒子。随着盒子的变长，子盒子的边框也逐渐表现出来*/
+ }
+
+.section:nth-child(5) .wrap span {
+    display: block;
+    width: 916px;
+    height: 25px;
+    border: rgba(255,255,255,0.5) solid 1px;
+    border-radius: 3px;
+    margin-left: 1px;
+}
+.section:nth-child(5) .border {
+    position: absolute;
+    opacity: 1;
+}
+
+.section:nth-child(5) .left-side {
+    top: -150%;
+    height: 100%;
+    border-left: rgba(255, 255, 255, 0.5) solid 1px;
+}
+
+.section:nth-child(5) .top-side {
+    left: 150%;
+    width: 100%;
+    border-top: rgba(255, 255, 255, 0.5) solid 1px;
+}
+
+.section:nth-child(5) .right-side {
+    top: 100%;
+    right: 0;
+    height: 100%;
+    border-right: rgba(255,255,255,0.5) solid 1px;
+}
+/*动画效果*/
+.current.section:nth-of-type(5) .right-side{
+    top:0;
+    transition:all 1s 0.5s;
+}
+.current.section:nth-of-type(5) .left-side{
+    top:0;
+    transition:all 1s 0.5s;
+}
+.current.section:nth-of-type(5) .top-side{
+    left:0;
+    transition:all 1s 0.5s;
+}
+.current.section:nth-of-type(5) .wrap{
+    width: 932px;
+    transition:all 1s linear 1.8s;
+}
+.current.section:nth-of-type(5) .bg{
+    opacity:1;
+    transition:opacity 2s 2.8s;
+}

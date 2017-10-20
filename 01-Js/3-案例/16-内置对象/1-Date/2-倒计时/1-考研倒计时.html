@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #demo {
+            width: 600px;
+            height: 200px;
+            margin: 200px auto;
+            background-color: #0873C0;
+            color:#fff;
+        }
+        #demo p {
+            line-height: 60px;
+            font-size: 40px;
+            font-weight: 700;
+            color: #C81623;
+            margin:30px 0 0 0 ;
+        }
+        #demo span{
+            text-align: center;
+            font-size: 60px;
+            line-height: 100px;
+            padding-left: 60px;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            var demo = document.getElementById("demo");
+            var tarDate = new Date("2016/12/24 00:00:00").getTime();
+            var curDate = new Date().getTime();
+            //var tarDate = new Date(2016,12,24);
+            var time = tarDate - curDate;
+            setInterval(fun,1000);
+            var second;var hour;var minute;var day;var month;var year;
+            function fun(){
+                var nowTime = new Date();
+                time = (tarDate - nowTime)/1000;
+                day = parseInt(time/60/60/24%30);
+                hour = parseInt(time/60/60%24);
+                minute = parseInt(time/60%60);
+                second = parseInt(time%60);
+                day <10 ? day = "0"+day : day;
+                hour <10 ? hour = "0"+hour : hour;
+                minute <10 ? minute = "0"+minute : minute;
+                second <10 ? second = "0"+second : second;
+                demo.children[1].innerHTML = (day + "天" + hour +"时" + minute + "分" + second +"秒");
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="demo">
+    <p>考研倒计时</p>
+    <span></span>
+</div>
+</body>
+</html>

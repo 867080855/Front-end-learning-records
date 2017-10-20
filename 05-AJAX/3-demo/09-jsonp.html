@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function cb(data){	// data从哪儿来？从下边的src内的接口里边来。
+			console.log(data);
+		}
+		// 等价于 cb(["zhangsan"，"lisi","wangwu","zhaoliu"])
+			// cb(); 即执行之前定义的cb函数。
+	</script>
+</body>
+<script src="./09-jsonp.php?_jsonp=cb"></script>	<!-- 加载即请求。 -->
+	<!-- 返回的是
+		callback(["zhangsan","lisi","wangwu","zhaoliu"]) -->
+</html>

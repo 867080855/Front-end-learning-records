@@ -1,0 +1,13 @@
+1.ARIA属性：
+    Accessible Rich Internet Application(无障碍富互联网应用程序)
+    主要针对与屏幕阅读器(e.g.NVDA),更快更好的理解网页
+    -------------------------------------------------
+    要追求更好的文档结构
+    eg:
+        1.<label><input type="text"></label>
+        2.<label for="txt"></label><input type="text" id="txt">
+        ARIA主要是为了残障人士的方便使用。即让其了解什么地方是导航，什么地方是select控件
+2.自定义属性(重要)data：
+    通过DOM存储与DOM对象强相关的属性
+    eg：
+        张三与张三的年龄、性别

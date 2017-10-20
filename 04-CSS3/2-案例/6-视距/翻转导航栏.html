@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        *::before,*::after{
+            box-sizing: border-box;
+        }
+        body{
+            text-align: center;
+        }
+        nav {
+            display: inline-block;
+            margin:100px auto;
+        }
+        nav a {
+            display: inline-block;
+            color:#fff;
+            text-decoration: none;
+        }
+        nav a span {
+            line-height: 40px;
+            background-color: #2195dc;
+            display: inline-block;
+            padding:0 25px;
+            position: relative;
+            transform-style:preserve-3d;
+            transform-origin:top;
+            transform:rotateX(0deg);
+            transition:all .3s ease;
+        }
+        nav a:hover span{
+            transform:rotateX(90deg) translateY(-20px);
+        }
+        nav a span::after{
+            content:attr(data-hover);
+                /*取到自定义属性的值*/
+            position: absolute;
+            top:100%;
+            left:0;
+            background-color: #0965a0;
+            width: 100%;
+            height: 100%;
+            transform-origin:top ;
+            transform:rotateX(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">
+            <span data-hover="前端学院">传智播客</span>
+                <!-- 自定义属性的名称可以随便起-->
+        </a>
+    </nav>
+    <nav>
+        <a href="#">
+            <span data-hover="面向对象">传智播客</span>
+        </a>
+    </nav>
+    <nav>
+        <a href="#">
+            <span data-hover="前端学院">传智播客</span>
+        </a>
+    </nav>
+    <nav>
+        <a href="#">
+            <span data-hover="前端学院">传智播客</span>
+        </a>
+    </nav>
+    <nav>
+        <a href="#">
+            <span data-hover="前端学院">传智播客</span>
+        </a>
+    </nav>
+    <nav>
+        <a href="#">
+            <span data-hover="前端学院">传智播客</span>
+        </a>
+    </nav>
+    <nav>
+        <a href="#">
+            <span data-hover="前端学院">传智播客</span>
+        </a>
+    </nav>
+    <nav>
+        <a href="#">
+            <span data-hover="前端学院">传智播客</span>
+        </a>
+    </nav>
+
+</body>
+</html>

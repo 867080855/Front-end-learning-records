@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, li, dl, dt, dd, h1, h2, h3, h4, h5 {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .wrapper>header{
+            padding: 20px 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .wrapper>header>h3{
+            line-height: 1;
+            font-weight: normal;
+            font-size: 28px;
+        }
+        .main{
+            width: 100%;
+        }
+        .main .item{
+            width: 210px;
+            height: 210px;
+            background-color: #fff;
+            display: flex;
+            float: left;
+            margin:15px;
+            box-shadow: 2px 2px 5px #CCC;
+            position: relative;
+        }
+        .main .item:after {
+            content: attr(data-brief);
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 210px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #FFF;
+            font-family: '微软雅黑';
+            font-size: 18px;
+            background-color: rgba(170, 170, 170, 0);
+            z-index: -1;
+            transition: all 0.3s ease-in;
+        }
+        .main .item:hover:after {
+            background-color: rgba(170, 170, 170, 0.6);
+            z-index: 100;
+        }
+        /*消息框开始*/
+        .border-radius{
+            width: 180px;
+            height: 180px;
+            margin:auto;
+            border:1px solid red;
+            position: relative;
+        }
+        .news-box1 .border-radius{
+            height: 90px;
+            width: 140px;
+            background-color: red;
+            border-radius: 6px;
+        }
+        .news-box1 .border-radius::after{
+            content:''; /*必须写，否则伪元素不会生效*/
+            width: 0;
+            height: 0;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent;
+            border-right-color: red;
+            /*其实就是设置一个小型的四边不同色*/
+            position: absolute;
+            top: 50%;
+            margin-top:-10px;
+            left:-20px;
+        }
+        .news-box2 .border-radius{
+            width: 45px;
+            height: 45px;
+            border-width:45px 0 45px 70px ;
+            border-color: red;
+            border-style:solid;
+            border-radius:0  0 60px 0;
+        }
+        .news-box3 .border-radius{
+            height: 90px;
+            width: 150px;
+            background-color: red;
+            border-radius: 8px;
+            position: relative;
+        }
+        .news-box3 .border-radius::after{
+            content:'';
+            width: 30px;
+            height: 30px;
+            border-width:0 0 30px 30px ;
+            border-style:solid;
+            border-color:red;
+            border-left-color:transparent;
+            position: absolute;
+            right: -20px;
+            top:0;
+            border-radius:0 0 60px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header><h3>标题</h3></header>
+        <div class="main">
+            <div class="item news-box1" data-brief="消息框">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item news-box2" data-brief="消息框">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item news-box3" data-brief="消息框">
+                <div class="border-radius"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

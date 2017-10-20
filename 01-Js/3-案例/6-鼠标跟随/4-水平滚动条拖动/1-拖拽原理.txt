@@ -1,0 +1,15 @@
+拖拽原理：
+    1.按下鼠标
+    2.移动鼠标
+    ------------------------------------
+    bar.onmousedown = function(event){
+        var event = event || window.event;
+        //算出当前bar的位置。
+        x = event.clientX - bar.offsetLeft;
+        len = x;
+        per = x/bar.offsetWidth;
+        document.onmousemove = function(){
+            tar = this.clientX;
+            bar.style.left = tar;
+        }
+    }

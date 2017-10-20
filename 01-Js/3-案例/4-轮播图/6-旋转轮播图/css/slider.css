@@ -1,0 +1,32 @@
+@charset "UTF-8";
+*{margin:0;padding:0;}
+img{
+    vertical-align: top;
+}
+.w{
+    width: 1200px;
+    height: 700px;
+    margin:20px auto;
+    position: relative;
+}
+.slider-main-img{
+    position: absolute;
+    left:0;
+    top:0;
+}
+.slider-main-img img{
+    width: 100%;
+}
+.slider-arrow-pre,
+.slider-arrow-next{
+    position: absolute;
+    top:30px;
+    z-index: 999;
+    cursor: pointer;
+}
+.slider-arrow-pre{
+    left:0;
+}
+.slider-arrow-next{
+    right:0;
+}

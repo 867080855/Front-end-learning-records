@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;list-style: none;}
+		.wrapper{
+			width: 400px;
+			height: 500px;
+			background-color: skyblue;
+			margin:50px auto;
+		}
+		.header{
+			width: 200px;
+			height: 30px;
+			margin:0 auto;
+			text-align: center;
+		}
+		.header select{
+			width: 50px;
+			height: 30px;
+		}
+		.header button{
+			width: 50px;
+			height: 30px;
+		}
+		.info{
+			padding-left:50px;
+			background-color: orange;
+			font-size: 20px;
+			line-height: 30px;
+			border-top: 1px solid #eee;
+		}
+	</style>
+	<script src="jquery-1.11.1.js"></script>
+	<script src="template.js"></script>
+	<script id="artid" type="text/html">
+		{{if longitude}}
+				<li>经度:{{longitude}}</li>
+				<li>维度:{{altitude}}</li>
+				<li>海拔高度:{{altitude}}</li>
+				<li>天气:{{weather}}</li>
+				<li>温度:{{temp}}</li>
+				<li>最高温度:{{h_tmp}}</li>
+				<li>最低温度:{{l_tmp}}</li>
+				<li>风向:{{WD}}</li>
+				<li>风速:{{WS}}</li>
+				<li>日出时间:{{sunrise}}</li>
+				<li>日落时间:{{sunset}}</li>
+		{{/if}}
+	</script>
+</head>
+<body> 
+	<div>疑似该接口已经关闭，无法取到cityCode	<br>
+	可以通过以下接口访问到另外的天气:http://apis.haoservice.com/weather?cityname=%E5%8C%97%E4%BA%AC&key=6ed6ac575007489c9dd156bb56187951
+	</div>
+	<div>怀疑可能是因为存在某些监测机制，导致解析自动终止。原生js可以正常解析数据。</div>
+	<div class="wrapper">
+		<div class="header">
+			<select id="sel">
+				<option value="101010100">北京</option>
+				<option value="101020100">上海</option>
+				<option value="101280101">广州</option>
+				<option value="101280601">深圳</option>
+			</select>
+			<button id="btn">query</button>
+		</div>
+		<div class="info" id="info">
+			<div class="content" id="content">
+				<ul></ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	// function queryWeather(cityName){
+	// 	$.ajax({
+	// 		type:'get',
+	// 		url:'./11-cityCode.php',
+	// 		dataType:'json',
+	// 		data:{cityName:cityName},
+	// 		success:function(data){
+	// 			queryCityCode(data.retData.cityCode);
+	// 		},
+	// 		error:function(){
+	// 			console.log('error');
+	// 		}
+	// 	});
+	// }
+
+
+	function queryCityCode(cityCode){
+		$.ajax({
+			type:'get',
+			url:'./11-weather.php',
+			dataType:'json',
+			data:{cityCode:cityCode},
+			success:function(data){
+				var wea = data.retData;
+				var html = template('artid',wea);
+				$('#content').find('ul').html(html);
+
+				// var tag = '{{if longitude}}'
+			 //    +'<ul>'
+				// +'<li>经度:{{longitude}}</li>'
+				// +'<li>维度:{{altitude}}</li>'
+				// +'<li>海拔高度:{{altitude}}</li>'
+				// +'<li>天气:{{weather}}</li>'
+				// +'<li>温度:{{temp}}</li>'
+				// +'<li>最高温度:{{h_tmp}}</li>'
+				// +'<li>最低温度:{{l_tmp}}</li>'
+				// +'<li>风向:{{WD}}</li>'
+				// +'<li>风速:{{WS}}</li>'
+				// +'<li>日出时间:{{sunrise}}</li>'
+				// +'<li>日落时间:{{sunset}}</li>'
+				// +'</ul>'
+				// +'{{/if}}';
+
+				// var render = template.compile(tag);
+				// var html = render(data.retData);
+
+				// $("#content").html(html);
+
+
+				// var wea = data.retData;
+				// var tag = '';
+
+				// tag += '<li>经度:' +wea.longitude+ '</li>';
+				// tag += '<li>维度:' +wea.latitude+ '</li>';
+				// tag += '<li>海拔高度:' +wea.altitude+ '</li>';
+				// tag += '<li>天气:' +wea.weather+ '</li>';
+				// tag += '<li>温度:' +wea.temp+ '</li>';
+				// tag += '<li>最高温度:' +wea.h_tmp+ '</li>';
+				// tag += '<li>最低温度:' +wea.l_tmp+ '</li>';
+				// tag += '<li>风向:' +wea.WD+ '</li>';
+				// tag += '<li>风速:' +wea.WS+ '</li>';
+				// tag += '<li>日出时间:' +wea.sunrise+ '</li>';
+				// tag += '<li>日落时间:' +wea.sunset+ '</li>';
+
+				// var info = $('ul').html(tag);
+				
+			}
+		});
+	}
+	$(function () {
+		$('#btn').on('click',function(){
+			var cityCode = $("#sel option:selected").val();
+			console.log(cityCode);
+			queryCityCode(cityCode);
+		});
+	});
+</script>
+</html>

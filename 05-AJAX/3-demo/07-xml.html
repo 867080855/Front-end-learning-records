@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function () {
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+					// 第一步:初始化xhr对象
+				var xhr = null;		// 定义一个xhr对象
+				if(window.XMLHttpRequest){		// 标准浏览器
+					xhr = new XMLHttpRequest();
+				}else{	// 早期的ie浏览器
+					xhr = new ActiveXObject(Microsoft.XMLHTTP);
+				}
+				// 第二步：指定xhr的工作
+				xhr.open('get','./07-four-book.xml',true);	//打开链接
+
+				// 第三步：指定回调函数
+				xhr.onreadystatechange = function () {
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							var data = xhr.responseXML;
+							var bs = data.getElementsByTagName('bookstore')[0];
+							var books = bs.getElementsByTagName('book');
+							var tag = "";
+							for(var x = 0; x < books.length; x++){
+								var book = books[x].getElementsByTagName('name')[0];
+								var category = books[x].getElementsByTagName('category')[0];
+								var desc = books[x].getElementsByTagName('desc')[0];
+								tag += '<tr><td>'+getNodeText(book)+'</td><td>'+getNodeText(category)+'</td><td>'+getNodeText(desc)+'</td></tr>' 
+							}
+							var tbody = document.createElement('tbody');
+								tbody.innerHTML = tag;
+								document.getElementById('bookInfo').appendChild(tbody);
+							console.log(bs);
+						}
+					}
+				}
+
+				// 第四步：执行发送的动作
+				xhr.send();
+			}
+		}
+
+		function getNodeText(node){
+			if(window.ActiveXObject){
+				return node.text;
+			}else{
+				if(node.nodeType == 1){
+					return node.textContent;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="showInfo"></div>
+	<div>
+		<form>
+			<input type="button" value="submit" id="btn">
+		</form>
+	</div>
+	<div id="bookInfo"></div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="box" id="box"></div>
+</body>
+<script>
+    var num = 0;
+    window.onresize = function(){
+        var demo = document.getElementById("box");
+        demo.innerHTML = window.innerWidth || document.body.clientWidth;
+        num++;
+        console.log(num);
+    };
+    //ie有bug，每动一个像素num变两个数
+</script>
+</html>

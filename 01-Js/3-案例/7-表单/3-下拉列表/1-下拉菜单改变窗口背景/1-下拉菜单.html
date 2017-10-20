@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background:url(images/chun.jpg) no-repeat;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            /*
+            var ops = document.getElementById("select").getElementsByTagName("option");
+                //想要给下拉菜单的选项改变写事件不能写在option.click上。
+                //应该写在select.onchange;
+            for(var x = 0;x<ops.length;x++){
+                //alert("3");
+                //alert(ops[x].nodeName);
+                ops[x].onchange = function(){
+                    alert("3");
+                    alert(this.value);
+                }
+            }
+            */
+            var select = document.getElementById("select");
+            select.onchange = function(){
+                //alert(this.value);
+                switch(this.value){
+                    case "1":
+                        document.body.style.backgroungImage = "url(images/chun.jpg)";
+                        break;
+                    case "2":
+                        document.body.style.backgroundImage = "url(images/xia.jpg)";
+                        break;
+                    case "3":
+                        document.body.style.backgroundImage = "url(images/qiu.jpg)";
+                        break;
+                    case "4":
+                        document.body.style.backgroundImage = "url(images/dong.jpg)";
+                        break;
+
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <select name="" id="select">
+        <option value="1">春意绵绵</option>
+        <option value="2">夏日炎炎</option>
+        <option value="3">秋声瑟瑟</option>
+        <option value="4">冬雪皑皑</option>
+    </select>
+</div>
+</body>
+</html>

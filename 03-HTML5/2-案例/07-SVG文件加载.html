@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        polygon{
+            fill:red!important;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+    <!-- 方法1(推荐使用)-->
+    <!--<iframe src="demo.svg" frameborder="0"></iframe>-->
+    <!-- 方法2-->
+        <!-- 一般用于引用第三方插件，比如adobe flash-->
+    <!--<object data="demo.svg" type=""></object>-->
+    <!-- 方法3-->
+        <!-- 所有浏览器都支持，但是没有相关的声明-->
+    <!--<embed src="demo.svg" type=""/>-->
+    <svg data-src="demo.svg">
+        <!-- 给svg添加src属性-->
+    </svg>
+    <script>
+        window.addEventListener("load", function () {
+            var svgs = document.getElementsByTagName("svg");
+            for(var x = 0;x < svgs.length; x++){
+                //向服务器发送请求得到svg文件
+                var src = $(svgs[x]).data('src');
+                $.get(src, function(data) {
+
+                    var el = data.documentElement;
+                    $(document.body).append($(el));
+                });
+            }
+        });
+    </script>
+</body>
+</html>

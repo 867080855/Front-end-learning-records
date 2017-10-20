@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+        }
+        /*正文开始*/
+        section ul{
+            list-style: none;
+        }
+        section li{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: skyblue;
+            margin-right:10px;
+        }
+        .justify:nth-of-type(2) ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        .justify:nth-of-type(3) ul{
+            display: flex;
+            justify-content: space-around;
+        }
+        .justify:nth-of-type(4) ul{
+            display: flex;
+            justify-content: center;
+        }
+        .justify:nth-of-type(5) ul{
+            display: flex;
+            justify-content: flex-start;
+        }
+        .justify:nth-of-type(6) ul{
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-justify-content</header>
+        <section class="content">
+            <header>简介</header>
+            <div class="wrap-box">
+                <p>调整主轴方向对齐方式，包括space-between,space-around,center,flex-start,flex-end</p>
+            </div>
+        </section>
+        <section class="justify">
+            <header>space-between(两端对齐)</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="justify">
+            <header>space-around</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="justify">
+            <header>center</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="justify">
+            <header>flex-start</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="justify">
+            <header>flex-end</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        .box{
+            width: 1150px;
+            height: 460px;
+            border:1px solid red;
+            margin:50px auto;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            width: 1300px;
+        }
+        ul li{
+            height: 460px;
+            width: 240px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <ul id="ul">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script src="my.js"></script>
+<script>
+    //存在的问题；
+        //右边角会有空白。          //把盒子变小之后可以遮住。别的办法？
+    var box = $id("box");
+    var lis = $id("ul").children;
+    for(var x = 0;x<lis.length;x++){
+        lis[x].style.backgroundImage = "url(images/"+(x+1)+".jpg)";
+        lis[x].onmouseover = function(){
+            for(var i = 0;i<lis.length;i++){
+                animate(lis[i],{width:100});
+            }
+            animate(this,{width:800});
+        };
+        lis[x].onmouseout = function () {
+            for(var i = 0;i<lis.length;i++){
+                animate(lis[i],{width:240});
+            }
+        }
+    }
+
+
+    console.log(lis);
+</script>
+</html>

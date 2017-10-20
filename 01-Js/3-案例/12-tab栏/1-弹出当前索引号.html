@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易tab栏</title>
+    <style>
+        .current{background-color: yellow;}
+    </style>
+    <script>
+        window.onload = function(){
+            var btns = document.getElementsByTagName("button");
+            for(var x = 0 ;x<btns.length;x++){
+                //alert(x);
+                    //弹出结果为0,1,2,3,4,5
+                //给button弹出相应的索引的方法如下
+                    //难就难在点击后弹出当前索引号
+                btns[x].index = x;//很重要！！！
+                btns[x].onclick = function(){
+                    alert(this.index);
+                    //alert(x);
+                        //弹出结果为6
+                        //理由：循环早已执行完毕。之所以此时才弹出对话框是因为此时单击事件才发生。
+                    for(var y = 0;y<btns.length;y++){
+                        btns[y].className = "";
+                    }
+                    this.className = "current";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button>我是帝王</button>
+    <button>我是帝王</button>
+    <button>我是帝王</button>
+    <button>我是帝王</button>
+    <button>我是帝王</button>
+    <button>我是帝王</button>
+</body>
+</html>

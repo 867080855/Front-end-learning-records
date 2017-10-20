@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 1000px;
+            height: 1000px;
+            margin:0 auto;
+        }
+        .heart{
+            width: 500px;
+            height: 500px;
+            background-color: #ffffaa;
+            position: absolute;
+            left:50%;
+            margin-left:-250px;
+            top:100px;
+            z-index: -2;
+        }
+        .left,.right{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top:97px;
+        }
+        .left{
+            left:56px;
+            border-radius:100px;
+        }
+        .right{
+            left:215px;
+            -webkit-border-radius: 100px;
+            border-radius: 100px;
+        }
+        .bottom{
+            width: 220px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            left:50%;
+            margin-left:-132px;
+            top:169px;
+            z-index: -1;
+        }
+        .left,.right,.bottom{
+            animation:scale 2s infinite ;
+        }
+        @keyframes scale {
+            0%{
+                transform:scale(1) rotate(45deg);
+            }
+            50%{
+                transform:scale(1.2) rotate(45deg);
+            }
+            100%{
+                transform:scale(1) rotate(45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="heart">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="bottom"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+    $("li").text(wjx_none);
+        //选中的所有的li每一个都会执行text方法
+        var t = $("li").text();
+        console.log(t);
+            //若选中的是一个数组返回的是第一个值

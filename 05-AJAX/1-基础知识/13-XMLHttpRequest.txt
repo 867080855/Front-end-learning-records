@@ -1,0 +1,5 @@
+学习一件新事物的流程：
+	1. 是什么？
+		Ajax(asynchronous javascript and xml) 
+	2. 可以做什么？
+	3. 怎么完成？

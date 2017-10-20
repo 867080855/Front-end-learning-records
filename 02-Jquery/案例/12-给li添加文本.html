@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <ul class="box">
+        <li>传智播客</li>
+        <li>传智播客</li>
+        <li>传智播客</li>
+        <li>传智播客</li>
+    </ul>
+</body>
+<script>
+    $(function () {
+//        $(".box li").each(function (index, e) {
+//            var orginTxt = $(e).text();
+//            $(e).text(orginTxt + index;
+//        });
+        $.each($("li"),function(index,e){
+            var orginTxt = $(e).text();
+            $(e).text(orginTxt + index);
+        });
+    });
+</script>
+</html>

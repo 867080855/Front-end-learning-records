@@ -1,0 +1,10 @@
+能够制作jQuery插件：
+    1.全局jQuery对象函数扩展方法：
+        eg:$.log = function(){console.log(new Date());};
+            //调用：$.log();
+    2.jQuery对象扩展方法
+        eg:$.fn.log = function(){console.log($(this).text());};
+                //$.fn是jQuery的原型
+            //调用：$(function () {$("div").log();});
+=================================================================
+    自己以后可以写自己的插件，不同的插件组合起来组成一个库。也可以将别的插件封装到自己的库内。

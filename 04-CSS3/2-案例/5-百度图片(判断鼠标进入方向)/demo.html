@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        .box{
+            width: 1020px;
+            margin:50px auto;
+            background-color: #f7f7f7;
+        }
+        .list{
+            width: 300px;
+            height: 200px;
+            margin:40px 40px 0 0 ;
+            float: left;
+            border-radius:20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .wrap-box{
+            transform-origin: 0 0;
+            transform: rotate(-90deg);
+            transition: transform 1s;
+                /*设置为只有transform属性发生变化*/
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .current.list .wrap-box{
+                /*并集选择器
+                    current 和 list 不是后代的关系，自然不能用后代选择器
+                    */
+            transform:rotate(0deg);
+        }
+        .wrap-box{
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .list .wrap-box.top{
+            transform-origin:top left;
+        }
+        .list .wrap-box.right{
+            transform-origin:right top;
+        }
+        .list .wrap-box.bottom{
+            transform-origin:right bottom;
+        }
+        .list .wrap-box.left{
+            transform-origin:left bottom;
+        }
+    </style>
+    <script src="js/jquery-1.11.1.js"></script>
+    <script src="js/my.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <!-- 为什么要在div里边加一个img，div为了做动画，所以与img分离了。-->
+                <img src="images/1.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/2.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/3.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/4.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/5.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/6.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/7.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/8.jpg" alt=""/>
+            </div>
+        </div>
+        <div class="list">
+            <img src="images/00.png" alt=""/>
+            <div class="wrap-box">
+                <img src="images/9.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

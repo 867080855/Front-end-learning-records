@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 200px;
+            height: 220px;
+            margin:200px auto;
+            text-align: center;
+            position: relative;
+            border: 1px solid #eee;
+        }
+        .box .mt{
+            line-height: 30px;
+            color: #ff533a;
+        }
+        .box .close{
+            position: absolute;
+            top:0;
+            left:-22px;
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            color: #aaa;
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var close = document.getElementById("close");
+            close.onclick = function(){
+                this.parentNode.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <span class="mt">手机淘宝</span>
+        <img src="images/taobao.webp" alt=""/>
+        <span class="close" id="close">x</span>
+    </div>
+</body>
+</html>

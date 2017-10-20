@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, li, dl, dt, dd, h1, h2, h3, h4, h5 {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .wrapper>header{
+            padding: 20px 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .wrapper>header>h3{
+            line-height: 1;
+            font-weight: normal;
+            font-size: 28px;
+        }
+        .main{
+            width: 100%;
+        }
+        .main .item{
+            width: 210px;
+            height: 210px;
+            background-color: #fff;
+            display: flex;
+            float: left;
+            margin:15px;
+            box-shadow: 2px 2px 5px #CCC;
+            position: relative;
+        }
+        .main .item:after {
+            content: attr(data-brief);
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 210px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #FFF;
+            font-family: '微软雅黑';
+            font-size: 18px;
+            background-color: rgba(170, 170, 170, 0);
+            z-index: -1;
+            transition: all 0.3s ease-in;
+        }
+        .main .item:hover:after {
+            background-color: rgba(170, 170, 170, 0.6);
+            z-index: 100;
+        }
+        /*图形初始化*/
+        .border-radius{
+            width: 180px;
+            height: 180px;
+            margin:auto;
+            border:1px solid red;
+        }
+        /*线条图形开始*/
+        .circle .border-radius{
+            /*border-radius:50%;*/
+            border-radius: 90px;
+        }
+        .square .border-radius{
+            border-radius: 90px 90px 0 0 ;
+        }
+        .square .border-radius{
+            border-radius: 90px 90px 0 0 ;
+        }
+        .half-circle .border-radius{
+            height: 90px;
+            border-radius: 90px 90px 0 0 ;
+        }
+        .left-up-circle .border-radius{
+            border-radius: 90px 0 0 0 ;
+        }
+        .quarter-circle .border-radius{
+            width: 90px;
+            height: 90px;
+            border-radius: 90px 0 0 0 ;
+        }
+        .horizontal-ellipse .border-radius{
+            height: 90px;
+            /*border-radius: 50%;*/
+            border-radius: 90px / 45px;
+                /*第一个参数表示水平半径，第二个参数表示垂直半径*/
+        }
+        .vertical-ellipse .border-radius{
+            width: 90px;
+            border-radius: 45px / 90px ;
+        }
+        .half-horizontal-ellipse .border-radius{
+            height: 45px;
+            border-radius: 90px 90px 0 0  / 45px 45px 0 0 ;
+            /*radius 半径
+                上边的属性其实只是在设置各个边上的半径而已。跟autoCAD很像
+            */
+        }
+        .half-vertical-ellipse .border-radius{
+            width: 45px;
+            border-radius: 45px 0 0 45px / 90px 0 0 90px ;
+        }
+        .left-up-vertical-ellipse .border-radius{
+            width: 45px;
+            height: 90px;
+            border-radius:45px 0 0 0 / 90px 0 0 0;
+                /*可以理解为分别设置1，2，3，4号位置的水平边和垂直边
+                    故此处为1号点的水平为45px，垂直为90px
+                */
+        }
+        /*填充图形开始*/
+        .cake-circle .border-radius{
+            width: 70px;
+            height: 70px;
+            border:50px solid red;
+            border-radius:85px;
+        }
+        .filled-shape2 .border-radius{
+            width: 70px;
+            height: 70px;
+            border: 50px solid red;
+            border-radius:50px ;
+            /*当圆角直径小于边框直径时，元素内角是直角*/
+        }
+        .filled-shape3 .border-radius{
+            width: 70px;
+            height: 70px;
+            border: 50px solid red;
+            border-radius:80px 0 0 0;
+            /*当圆角直径小于边框直径时，元素内角是直角*/
+        }
+        .filled-shape4 .border-radius{
+            width: 70px;
+            height: 70px;
+            border: 50px solid red;
+            border-radius:80px 0;
+            /*当圆角直径小于边框直径时，元素内角是直角*/
+        }
+        .filled-shape5 .border-radius{
+            width: 0;
+            height: 0;
+            border-width: 90px;
+            border-style:solid;
+            border-color:red green blue orange;
+        }
+        .filled-shape6 .border-radius{
+            width: 0;
+            height: 0;
+            border-width: 90px;
+            border-style:solid;
+            border-color:red transparent blue orange;
+        }
+        .filled-shape7 .border-radius{
+            width: 0;
+            height: 0;
+            border-width: 90px;
+            border-style:solid;
+            border-color:red ;
+            border-right-color: transparent;
+            border-radius:90px;
+        }
+        .filled-shape8 .border-radius{
+            width: 0;
+            height: 0;
+            border-width: 90px;
+            border-style:solid;
+            border-color:transparent ;
+            border-right-color: red;
+            border-radius:90px;
+        }
+        .filled-shape9 .border-radius{
+            width: 180px;
+            height: 0;
+            border-top-width: 90px;
+            border-bottom-width: 90px;
+            border-top-color: red;
+            border-bottom-color: green;
+            border-radius:90px;
+
+            /*方法二*/
+            /*width: 180px;*/
+            /*height: 90px;*/
+            /*border-bottom-width: 90px;*/
+            /*background-color: red;*/
+            /*border-bottom-color: green;*/
+            /*border-radius:90px;*/
+        }
+        /*太极*/
+        .filled-shape10 .border-radius{
+            width: 180px;
+            height: 0;
+            border-top-width: 90px;
+            border-bottom-width: 90px;
+            border-top-color: red;
+            border-bottom-color: green;
+            border-radius:90px;
+            position: relative;
+        }
+        .filled-shape10 .border-radius::after,
+        .filled-shape10 .border-radius::before{
+            content:'';
+            position: absolute;
+            top: 50%;
+            margin-top:-45px;
+            width: 20px;
+            height: 20px;
+            border-width: 35px;
+            border-style:solid;
+            border-radius: 45px;
+        }
+            /*太极左*/
+        .filled-shape10 .border-radius::before{
+            background-color: red;
+            border-color: green;
+        }
+            /*太极右*/
+        .filled-shape10 .border-radius::after{
+            background-color: green;
+            border-color: red;
+            right:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header><h3>CSS3-边框圆角</h3></header>
+        <div class="main">
+            <!-- 线条图形开始-->
+            <div class="item circle" data-brief="整圆">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item square" data-brief="拱形">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item half-circle" data-brief="半圆">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item left-up-circle" data-brief="左上角弧形">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item quarter-circle" data-brief="四分之一圆">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item horizontal-ellipse" data-brief="横着的椭圆">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item vertical-ellipse" data-brief="竖着的椭圆">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item half-horizontal-ellipse" data-brief="半个横着的椭圆">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item half-vertical-ellipse" data-brief="半个竖着的椭圆">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item left-up-vertical-ellipse" data-brief="左上角椭圆">
+                <div class="border-radius"></div>
+            </div>
+
+            <!-- 填充图形开始-->
+            <div class="item cake-circle" data-brief="饼环">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape2" data-brief="四角弧形">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape3" data-brief="左上角圆饼">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape4" data-brief="对角圆饼">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape5" data-brief="四边不同色">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape6" data-brief="右透明色">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape7" data-brief="圆右透明色">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape8" data-brief="圆右不透明色">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape9" data-brief="太极简陋版">
+                <div class="border-radius"></div>
+            </div>
+            <div class="item filled-shape10" data-brief="太极">
+                <div class="border-radius">
+
+                </div>
+            </div>
+    </div>
+</body>
+</html>

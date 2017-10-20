@@ -1,0 +1,13 @@
+in是一个二元运算符
+    可以用来判断json中有没有某个属性,不能判断是否有某个值。
+        //比如
+            //var json = {name:"andy",age:20};
+            //console.log("andy" in json);----false
+    要求：
+        左边必须是字符串
+        右边要么是数组要么是对象，不能是字符串
+    -------------------------------------------
+    var json = {name:"刘德华",age:24};
+    if("name" in json){console.log(true);}else{console.log(false);}
+            //如下这么写也可以。
+            //console.log("name" in json ?true :false);

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+<button>显示</button>
+<button>隐藏</button><br/>
+<button>向上滑动</button>
+<button>向下滑动</button>
+<input type="button" value="切换"/><br/>
+<button>淡入</button>
+<button>淡出</button>
+<button>淡入淡出切换</button>
+<button>设置不透明度</button><br/>
+<div></div>
+<script>
+    $(document).ready(function () {
+        $("div").eq(0).css({
+            "width":"100px",
+            "height":"100px",
+            "background-color":"gold",
+            "display":"none"
+        });
+        $("button").eq(0).click(function () {
+            $("div").show(1000,function(){console.log("show");})
+        });
+        $("button").eq(1).click(function () {
+            $("div").hide(1000,function(){console.log("hide");})
+        });
+        $("button").eq(2).click(function () {
+            $("div").slideUp(1000,function(){console.log("slideUp");})
+        });
+        $("button").eq(3).click(function () {
+            $("div").slideDown(1000,function(){console.log("slideDown");})
+        });
+        $("input[type='button']").click(function () {
+            $("div").slideToggle();
+        });
+        $("button").eq(4).click(function () {
+            $("div").fadeIn();
+        });
+        $("button").eq(5).click(function () {
+            $("div").fadeOut();
+        });
+        $("button").eq(6).click(function () {
+            $("div").fadeToggle();
+        });
+        $("button:eq(7)").click(function () {
+            //console.log("2");
+            $("div").fadeTo(1000,0.5);
+        });
+    });
+</script>
+</body>
+</html>

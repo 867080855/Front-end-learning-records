@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul,li{margin:0;padding:0;}
+        .box{
+            display: flex;
+            width: 500px;
+            height: 600px;
+            background-color: red;
+            margin:0 auto;
+            flex-direction: column;
+            text-align: center;
+            font-family: "Microsoft YaHei";
+                /*确定纵向为主轴方向*/
+            justify-content: space-between;
+        }
+        .box .header{
+            height: 60px;
+            line-height: 60px;
+            background-color: yellow;
+        }
+        .box .main{
+            flex:1;
+            background-color: skyblue;
+            display: flex;
+        }
+        .main .aside{
+            width: 130px;
+            background-color: gold;
+        }
+        .main .content{
+            flex:1;
+        }
+        .box .footer{
+            height: 60px;
+            line-height: 60px;
+            background-color: greenyellow;
+        }
+        .box .control{
+            height: 60px;
+            line-height: 60px;
+        }
+        .control ul{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            background-color: #fff;
+        }
+        .control li{
+            flex:1;
+            border-radius:15px;
+            background-color: black;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="header">header</div>
+    <div class="main">
+        <div class="aside">aside</div>
+        <div class="content"></div>
+    </div>
+    <div class="footer">footer</div>
+    <div class="control">
+        <ul>
+            <li>联系我们</li>
+            <li>加入我们</li>
+            <li>了解我们</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

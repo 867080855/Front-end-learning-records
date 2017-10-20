@@ -1,0 +1,10 @@
+动画完成之后执行的函数----可以用于链式操作
+eg:
+    animate(box,"width",function(){alert("done");})
+    function animate(obj,attr,fn){
+        //...
+        //动画执行完毕
+        if(fn){
+            fn();
+        }
+    }

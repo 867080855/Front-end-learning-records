@@ -1,0 +1,119 @@
+1.格式
+	function funcName(param){
+		// body
+	}
+2.分类
+	a.function fn(){}
+		fn();
+	b.var fn1 = function(){}
+		fn1();
+		// a型声明可以先调用后声明，b型不可以。
+		/* 原因：
+			javascript代码运行分两个阶段：
+				1.预解析--所有的函数定义提前，所有的变量声明提前，变量的
+				赋值不提前。
+				2.执行--从上到下依次执行。但是存在一些意外情况，如window.onload,setTimeout,setInterval,ajax中的回调函数。
+			预解析阶段函数声明和变量声明会被提前，则fn1会以一个undefined的形式的变量存在，必然不能执行函数内部的内容。
+				3.js是单线程的，以队列形式执行
+		*/
+	c.函数的参数可以是一个函数，且函数可以直接调用
+		function fn2(callback){
+			callback();
+		}
+
+		var obj = {
+			name:'zhangsan',
+			say:function(){console.log(123);}
+		}
+
+		fn2(obj.say);
+	d.函数闭包(函数作为返回值)
+		// 函数的嵌套形成闭包
+		function fn4(){
+			var n = 1;
+			var fn = function(){
+				console.log(123);
+			}
+			return fn;
+		}	
+		alert(n);	// n is undefined
+		var fn5 = fn4();
+		fn5();	// 123
+
+		------------------------------------------
+
+		function fn4(){
+			var n = 1;
+			var fn = function(){
+				n++;
+				console.log(n);
+			}
+		}
+
+		var fn5 = fn4();
+		fn5();	// 2
+		fn5();	// 3
+		fn5();	// 4
+			// 闭包会保留原函数的作用域。
+	e.
+		var data = [];
+		for(var x = 0; x < 3; x++){
+			data[i] = function(){
+				console.log(i);
+			}
+		}
+
+		data[0]();	// 3
+		data[1]();	// 3
+		data[2]();	// 3
+			//js中for循环不存在块作用域，全局可见。在for循环执行完成之后i变成了3，但是i并没有被嵌入到function中，而是在将来function执行的时候直接调用现在的i，即3。
+		/*
+			js作用域：
+				- 全局作用域
+				- 函数作用域
+		*/
+
+		---------------------------------------------------
+
+		// 如何输出0，1，2呢？
+		var data = [];
+		for(var x = 0; x < 3; x++){
+			data[x] = (function(k){
+
+
+				return function(){
+					console.log(k);
+				}
+
+
+			})(x);
+		}
+		data[0]();	// 0 
+		data[1]();	// 1
+		data[2]();	// 2
+	f.面向对象
+		function juiceMachine(fruit){	// 构造函数
+				this.fruit = fruit;
+			this.produceJuice = function(){
+				console.log(this.fruit+'汁');
+			}
+		}
+
+			// 上述的函数有两重身份：
+				// 1. 构造函数
+				// 2. 一个对象
+
+		juiceMachine.price = '123';
+		juiceMachine.prototype.brand = '九阳';
+		juiceMachine.prototype.close = function(){console.log('closed');}
+
+
+		var apple = new juiceMachine('苹果');
+		apple.produceJuice();
+		var orange = new juiceMachine('橘子');
+		orange.produceJuice();
+
+
+		var brand = apple.brand;
+		console.log(brand);
+		apple.close();

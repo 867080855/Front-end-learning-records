@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿垂直滚动条</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 500px;
+            border:1px solid #aaa;
+            margin:50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .content{
+            padding-right: 20px;
+        }
+        .scroll{
+            position: absolute;
+            width: 20px;
+            height: 100%;
+            top: 0;
+            right: 0;
+        }
+        .bar{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 20px;
+            height: 100px;
+            background-color: #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #write {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-color: palegoldenrod;
+            right: 0;
+            top: 200px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        <div id="content" class="content">线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数线性代数</div>
+        <div id="scroll" class="scroll">
+            <div class="bar"></div>
+        </div>
+    </div>
+    <div id="write"></div>
+    <script>
+        var box = document.getElementById("box");
+        var con = document.getElementById("content");
+        var scroll = document.getElementById("scroll");
+        var bar = scroll.children[0];
+        var write = document.getElementById("write");
+        //计算bar的长度。
+        var h1 = con.offsetHeight ;
+        var h2 = box.offsetHeight;
+        var s1 = scroll.offsetHeight;
+        var h = h2*s1/h1;
+        bar.style.height = h+"px";
+        //bar与content同步滚动。
+        var x = 0,bx = 0;
+        bar.onmousedown = function (event) {
+            //获取鼠标在bar的位置
+            x = event.clientY - bar.offsetTop; //true
+            // document.write("x:"+x);
+            document.onmousemove = function (event) {
+                bx = event.clientY -x ;
+                if(bx<0){bx=0}else if(bx>(s1-h)){bx=(s1-h);}
+                console.log(s1-h);
+                bar.style.top = bx+ "px";
+                window.getSelection()? window.getSelection().removeAllRanges() : document.selection.empty();
+                write.innerHTML = "clientY:"+event.clientY +"<br/>"+ "top:"+box.offsetTop + "<br/>"+ "bx:"+bx + "<br/>" + "x:" + x;
+            };
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+</html>

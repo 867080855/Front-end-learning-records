@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+            font-size: 20px;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+    <button>height</button>
+    <button>get height</button>
+    <button>width</button>
+    <button>get width</button>
+    <div></div>
+</body>
+<script>
+    $(document).ready(
+        function () {
+            //设置高度
+            $("button").eq(0).click(function () {
+//                $("div").css({
+//                    "height":"300px"
+//                });
+//                $("div").height(300);
+                $("div").height("300px");
+            });
+            $("button").eq(1).click(function () {
+                $("div").html("height:"+$("div").height());
+            });
+            $("button").eq(2).click(function () {
+                $("div").width("300px");
+            });
+            $("button").eq(3).click(function () {
+                $("div").html("width:"+$("div").width());
+            })
+        }
+    );
+</script>
+</html>

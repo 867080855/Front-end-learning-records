@@ -1,0 +1,68 @@
+1.节点分类：
+    文档节点
+        根节点
+            元素节点(即标签。eg: span,li等)
+            文本节点
+            属性节点
+                //利用nodeType == 1 时为元素节点可以获得元素节点
+2.节点访问：
+    getElementById();
+    getElementsByName();
+    getElementsByClassName();   //有兼容性问题。
+        //ie 6,7,8不支持。
+3.节点关系
+    1.父节点：parentNode
+    2.兄弟节点：
+        下一个兄弟
+            nextSibling  只有ie6,7,8认识
+            nextElementSibling  其他浏览器认识
+        上一个兄弟(同上)
+            previousSibling
+            previousElementSibling
+        //为使其兼容应写为(常用)
+            //var ele = this.nextElementSibling || this.nextSibling;
+            //尽量先写正常浏览器，再写ie浏览器。否则正常浏览器会报错。
+    3.子节点：(兼容性不好)
+        第一个孩子
+            firstChild      只有ie6,7,8认识
+            firstElementChild       其他浏览器认识
+        最后一个孩子(同上)
+            lastChild
+            lastElementChild
+        //为使其兼容应写为(常用)
+                //var ele = this.firstElementChild || this.firstChild;
+    4.孩子节点：
+        children 选取所有的孩子(孩子只包括元素节点) ----很重要
+            //ie6,7,8也都兼容。
+            //有一个问题是ie6,7,8中会把注释节点也当成一个孩子。
+            (庶出)
+        childNodes 选出全部的孩子
+            (嫡出)
+            //在谷歌、火狐中换行也算一个孩子。ie中不算。
+            //利用nodeType == 1 时为元素节点可以获得元素节点。
+            /*
+                var nodes = document.getElementById("ul").childNodes;
+                var targets = [];
+                for(var x = 0;x<nodes.length;x++){
+                    if(nodes[x].nodeType == 1){
+                        targets.push(nodes[x]);
+                    }
+                }
+                console.log(targets);
+                    //结果为3个li。
+            */
+            /*
+                <ul id="ul">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <script>
+                    var ul = document.getElementById("ul");
+                    console.log(ul.childNodes)
+                        //ie中结果为3
+                        //谷歌中结果为7
+                </script>
+            */
+
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易淘宝搜索框</title>
+    <!--
+        出现的问题很弱智，因为if的判断条件忘记使用连等调试了半天，日后吸取教训。
+    -->
+    <style>
+        *{margin:0;padding:0;}
+        .box{
+            width: 350px;
+            height: 30px;
+            margin: 200px auto;
+            position: relative;
+        }
+        #txt{
+            width: 250px;
+            height: 25px;
+        }
+        #message{
+            position: absolute;
+            top:8px;
+            left:15px;
+            color:#ccc;
+            font-size: 12px;
+            cursor: text;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            function $id(id){return document.getElementById(id);}
+            $id("txt").oninput = $id("txt").onpropertychange = function(){
+                if(this.value == "") {
+                    $id("message").style.display = "block";
+                }else {
+                    $id("message").style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+     <div class="box">
+         <input type="text" id="txt"/>
+         <label for="txt" id="message">必败的国际大牌</label>
+         <!-- label for = id -->
+     </div>
+</body>
+</html>

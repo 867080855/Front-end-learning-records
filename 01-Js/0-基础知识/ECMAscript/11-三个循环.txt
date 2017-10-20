@@ -1,0 +1,25 @@
+1.for循环
+    var sum = 0;
+    for(var x = 1;x<=100;x++){
+        sum += x;
+    }
+    console.log("sum:"+sum);
+----------------------------------------------
+2.while循环
+    var sum1 = 0;
+    var j = 0;
+    while(j<=100){
+        sum1 += j;
+        j++;
+    }
+    console.log("sum1:"+sum1);
+----------------------------------------------
+3.do...while循环
+    var sum2 = 0;
+    var i = 0;
+    do{
+        //i++; //写在前边的话最后结果为5151
+        sum2 += i;
+        i++;
+    }while(i<=100)
+    console.log("sum2:"+sum2);

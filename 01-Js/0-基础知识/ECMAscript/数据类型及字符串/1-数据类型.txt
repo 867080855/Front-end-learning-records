@@ -1,0 +1,8 @@
+数据类型：
+    string
+    number
+    boolean
+    array
+    object
+    undefined
+    null

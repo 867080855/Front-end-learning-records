@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        .box{
+            width: 540px;
+            height: 240px;
+            margin: 200px auto;
+            border:1px solid #999;
+            position: relative;
+        }
+        .showField{
+            margin:20px;
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        ul{
+            width: 5000px;
+            height: 200px;
+            list-style: none;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        ul li{
+            float: left;
+        }
+        ol{
+            list-style: none;
+            position: absolute;
+            right: 40px;
+            bottom:30px;
+        }
+        ol li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-left:20px;
+            background-color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+        ol li.current{
+            background-color: #ff8400;
+        }
+    </style>
+    <script>
+        //存在的问题：
+            //当鼠标干预轮播图之后，无法继续鼠标干预的进度，会自动回到当初的位置继续轮播。
+        function $id(id){return document.getElementById(id);}
+        function animate(obj,tar){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                console.log("done");
+                var speed = tar>obj.offsetLeft? 15 :-15;
+                var result = tar - obj.offsetLeft;
+                obj.style.left = obj.offsetLeft + speed + "px";
+                if(Math.abs(result) <=15){
+                    clearInterval(obj.timer);
+                    obj.style.left = tar + "px";
+                }
+            },20);
+        }
+        window.onload = function(){
+            console.log("done");
+
+            //初始化ol
+            var box = $id("box");
+            var ul = $id("ul");
+            var ol = document.createElement("ol");
+            box.appendChild(ol);
+            for(var x = 0,len = ul.children.length;x< len;x++){
+                var li = document.createElement("li");
+                li.innerHTML = x+1;
+                ol.appendChild(li);
+            }
+            var olLis = ol.children;
+            olLis[0].className = "current";
+
+
+            //轮播图无缝自动滚动
+            var timer = null;
+            var key = 0,square =0;
+            ul.appendChild(ul.children[0].cloneNode(true));
+            var ulLis = ul.children;
+            timer = setInterval(autoplay,1500);
+            function autoplay(){
+                key++;
+                if(key > ulLis.length-1){
+                    ul.style.left = 0;
+                    key = 1;
+                }
+                console.log("auto:"+key);
+                animate(ul,-key*500);
+
+                square++;
+                if(square > olLis.length-1){
+                    square = 0;
+                }
+                for(var x=0;x<olLis.length;x++){
+                    olLis[x].className = "";
+                }
+                olLis[square].className = "current";
+            }
+
+            //鼠标移到盒子停止计时器
+            box.onmouseover = function () {
+                clearInterval(timer);
+            };
+            box.onmouseout = function () {
+                timer = setInterval(autoplay,1500);
+            };
+
+            //鼠标控制轮播图滚动
+            var target = 0;
+            for(var i = 0;i<olLis.length;i++){
+                olLis[i].index = i;
+                olLis[i].onmouseover = function () {
+                    target = -(this.index)*500;
+                    animate(ul,target);
+                    for(var x = 0;x<olLis.length;x++){
+                        olLis[x].className = "";
+                    }
+                    olLis[this.index].className = "current";
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="box" class="box">
+        <div class="showField">
+            <ul id="ul" class="ul">
+                <li><img src="images/1.jpg" alt=""/></li>
+                <li><img src="images/2.jpg" alt=""/></li>
+                <li><img src="images/3.jpg" alt=""/></li>
+                <li><img src="images/4.jpg" alt=""/></li>
+                <li><img src="images/5.jpg" alt=""/></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

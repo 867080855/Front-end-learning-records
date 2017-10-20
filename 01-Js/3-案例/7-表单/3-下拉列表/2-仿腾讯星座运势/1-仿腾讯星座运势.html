@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿腾讯星座运势</title>
+    <style>
+        *{margin:0;padding:0;}
+        .box{
+            width: 278px;
+            height: 200px;
+            margin:200px auto;
+            border: 1px solid #eee;
+        }
+        .dt{
+            line-height: 35px;
+            padding-left: 10px;
+            color: #0873C0;
+            font-weight: 700;
+        }
+        .mt{
+            overflow: hidden;
+        }
+        .icon{
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin: 0 10px 0 19px;
+            background: url(images/xingicon.png) no-repeat left top;
+        }
+        .right{
+            float: left;
+        }
+        .yunshi{
+            width: 180px;
+            height: 18px;
+            margin-top: 6px;
+        }
+        .yunshi p{
+            display: inline-block;
+        }
+        .greyStar{
+            display: inline-block;
+            width: 80px;
+            height: 13px;
+            position: relative;
+            background: url(images/yunshi.png) no-repeat left top;
+        }
+        .yellowStar{
+            width: 80px;
+            height: 13px;
+            position: absolute;
+            top:0;
+            left:0;
+            background: url(images/yunshi.png) no-repeat left bottom;
+
+        }
+        .mb{
+            display: none;
+            font-size: 14px;
+            padding: 8px 19px;
+            line-height: 26px;
+        }
+        .mb.show{
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            /*代码不易于后期维护。
+            *   考虑采用数组来改进。
+            * */
+            var sele = document.getElementById("sele");
+            var icon = document.getElementById("icon");
+            var yellowStar = document.getElementById("yellowStar");
+            //alert(yellowStar.nodeName);
+            sele.onchange = function(){
+                function changePosition(x){
+                    icon.style.backgroundPosition = "0 " + -x*50 + "px";
+                }
+                function changeWidth(x){
+                    yellowStar.style.width = x*16 + "px";
+                }
+                function changeText(x){
+                    var text = document.getElementById("text");
+                    var divs = text.getElementsByTagName("div");
+                    for(var i = 0;i<divs.length;i++){
+                        divs[i].className = "mb";
+                    }
+                    divs[x].className = "mb show";
+                }
+                switch(this.value) {
+                    case "1": changePosition(0); changeWidth(4); changeText(0); break;
+                    case "2": changePosition(1); changeWidth(4); changeText(1); break;
+                    case "3": changePosition(2); changeWidth(4.5); changeText(2);break;
+                    case "4": changePosition(3); changeWidth(3.5); changeText(3);break;
+                    case "5": changePosition(4); changeWidth(3); changeText(4);break;
+                    case "6": changePosition(5); changeWidth(4); changeText(5);break;
+                    case "7": changePosition(6); changeWidth(5); changeText(6);break;
+                    case "8": changePosition(7); changeWidth(3); changeText(7);break;
+                    case "9": changePosition(8); changeWidth(4); changeText(8);break;
+                    case "10": changePosition(9); changeWidth(2); changeText(9);break;
+                    case "11": changePosition(10); changeWidth(1);  changeText(10);break;
+                    case "12": changePosition(11); changeWidth(0.5);changeText(11); break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="dt">星座运势</div>
+        <div class="dd">
+            <div class="mt">
+                <div class="icon" id="icon"></div>
+                <div class="right">
+                    <select name="" id="sele">
+                        <option value="1">白羊座(03.21-04.19)</option>
+                        <option value="2">金牛座(04.20-05.20)</option>
+                        <option value="3">双子座(05.21-06.21)</option>
+                        <option value="4">巨蟹座(06.22-07.22)</option>
+                        <option value="5">狮子座(07.23-08.22)</option>
+                        <option value="6">处女座(08.23-09.22)</option>
+                        <option value="7">天秤座(09.23-10.23)</option>
+                        <option value="8">天蝎座(10.24-11.22)</option>
+                        <option value="9">射手座(11.23-12.21)</option>
+                        <option value="10">摩羯座(12.22-01.19)</option>
+                        <option value="11">水瓶座(01.20-02.18)</option>
+                        <option value="12">双鱼座(02.19-03.20)</option>
+                    </select>
+                    <div class="yunshi">
+                        <p>今日运势：</p>
+                        <div class="greyStar">
+                            <div class="yellowStar" id="yellowStar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="text">
+                <div class="mb show" id="1">今天你难免产生一些不愿被拘束的感觉，情绪也容易受到外界影响。如果老板、家人给你施压，无视你...[详细]</div>
+                <div class="mb" id="2">你和他人之间的火药味开始升级了，吵架，纷争在所难免。需要控制自己固执的脾气，坚守自己某些观...[详细]</div>
+                <div class="mb" id="3">今天的你需要小心财务问题，金钱引发的不快，可能会让彼此都做不成朋友。投资建议也不要太依赖朋...[详细]</div>
+                <div class="mb" id="4">你开始渐渐恢复元气了，但今日的你容易在感情中过于敏感，疑神疑鬼只会让自己变得更受伤。虽然能...[详细]</div>
+                <div class="mb" id="5">今天你难免会有一些挣扎的感觉，特别想要舍弃一些想法，改变自己的日常作息或是工作状态，但却很...[详细]</div>
+                <div class="mb" id="6">今天是你情感丰富的一天，热情地参与到与各种人的交流中，某些想法也变得更为果敢。然而也可能体...[详细]</div>
+                <div class="mb" id="7">今天你的状态有所恢复，比起前两日伤感又多事多累的状态，今天开始全面回归信心了。把握住机遇，...[详细]</div>
+                <div class="mb" id="8">心情总算有些好转了，今天是你充满各种幻想和浪漫细胞的一天。适合与他人多多交流自己的价值观和...[详细]</div>
+                <div class="mb" id="9">你对自己的情感需求更加晦涩不明，许多情感都压抑在心中，不愿意表达出来了。今天的你感性丰富，...[详细]</div>
+                <div class="mb" id="10">你的感情开始升温了，这几天很注重人际和情感关系。有机会和朋友拉近距离，参加一些社交聚会活动...[详细]</div>
+                <div class="mb" id="11">今天的你可能会有一些事业上的新灵感，虽然现在还是停留在遐想的阶段，但是也会为你指引方向。今...[详细]</div>
+                <div class="mb" id="12">诗意的生活给你带来许多浪漫的幻想，最近的你情绪也相当丰富，爱情与家庭生活是你最为关注的。单...[详细]</div>
+            </div>
+            </div>
+    </div>
+</body>
+</html>

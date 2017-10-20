@@ -1,0 +1,36 @@
+var iQuery = function(dom){
+    //返回一个对象，不要误解为json
+    return {
+        //为返回的象定义一个ready属性，方便$().ready的调用
+        ready:function(func){
+            //console.log("ready");     //成功调用返回ready
+            //func();
+            //判断document.onload有没有被赋值
+                //1.有，接收一个旧的函数。先去调用新的函数再调用旧的函数
+                //2.没有，直接赋值这个onload事件
+                if(typeof dom.onload === "function"){
+                    dom.onload = function(){
+                        //接收旧的函数
+                        var oldFunc = dom.onload;
+                        //创建新的函数
+                        dom.onload = function(){
+                            //调用新函数
+                            func();
+                            //调用旧函数
+                            oldFunc();
+                        }
+                    }
+                }else{
+                    dom.onload = func;
+                }
+        }
+    };
+}
+//iQuery().ready();
+//因为没有document.onload，所以采用window
+jQuery(window).ready(function(){console.log("first");});
+jQuery(window).ready(function(){console.log("second");});
+    //first,second均成功显示
+======================================================================
+//重点：
+    //1.函数可以作为变量来传递。

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #fff333;
+            position: absolute;
+            left:0;
+            top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">200</button>
+    <button id="btn2">400</button>
+    <div id="box"></div>
+    <script>
+        function $id(id){return document.getElementById(id);}
+        btn1.onclick = function () {
+            animate($id("box"),200);
+        };
+        btn2.onclick = function () {
+            animate($id("box"),400);
+        };
+        //匀速运动函数
+        function animate(obj,tar){
+            //不需要写成var obj.timer
+            //自定义属性不需要var
+            obj.timer = setInterval(function () {
+                if(obj.offsetLeft > tar){
+                    clearInterval(obj.timer);
+                        //注意此处不可以直接写timer。
+                }
+                obj.style.left = obj.offsetLeft + 10 + "px";
+            },30);
+
+        }
+    </script>
+</body>
+</html>

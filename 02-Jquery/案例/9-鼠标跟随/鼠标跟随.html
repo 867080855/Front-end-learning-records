@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+<img src="images/ts.gif" alt=""/>
+</body>
+<script>
+    $(document).ready(function () {
+        $(document).on("mousemove", function (e) {
+            var w = $("img").width();
+            var h = $("img").height();
+            var $this = $("img").css({
+                "position":"absolute",
+                "left": e.pageX-w/2,
+                "top": e.pageY-h/2
+            });
+        })
+    });
+</script>
+</html>

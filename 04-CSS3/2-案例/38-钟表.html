@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background-color: #ffffaa;
+        }
+        .clock{
+            width: 200px;
+            height: 200px;
+            border:10px solid #000;
+            border-radius:105px;
+            margin:100px auto;
+            position: relative;
+            background-color: #fff;
+        }
+        .line{
+            width: 6px;
+            height: 200px;
+            position: absolute;
+            background-color: #CCC;
+            left:50%;
+            margin-left:-3px;
+            top:0;
+        }
+        .line::after{
+            content:'';
+            width: 8px;
+            height: 160px;
+            position: absolute;
+            left:50%;
+            margin-left:-4px;
+            top:20px;
+            background-color: #fff;
+        }
+        .line2,.line4,.line6{
+            width: 3px;
+        }
+        .line2{
+            transform:rotate(30deg);
+        }
+        .line3{
+            transform:rotate(60deg);
+        }
+        .line4{
+            transform:rotate(90deg);
+        }
+        .line5{
+            transform:rotate(120deg);
+        }
+        .line6{
+            transform:rotate(150deg);
+        }
+        .dotted{
+            background-color: #000;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            border-radius:15px;
+            left:50%;
+            top:50%;
+            margin:-15px 0 0 -15px;
+        }
+        .hour{
+            width: 6px;
+            height: 40px;
+            background-color: #000;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin:-40px 0 0 -3px;
+            z-index: 100;
+        }
+        .minute{
+             width: 4px;
+             height: 60px;
+             background-color: #000;
+             position: absolute;
+             left:50%;
+             top:50%;
+             margin:-60px 0 0 -2px;
+             transform-origin:bottom center;
+             transform:rotate(30deg);
+             z-index: 10;
+         }
+        .second{
+            width: 2px;
+            height: 70px;
+            background-color: red;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin:-70px 0 0 -1px;
+            z-index: 5;
+            transform-origin:bottom center;
+            animation:rotate 60s steps(60) infinite;
+                /*steps设置步长，使秒针实现跳动效果*/
+            /*animation:rotate 60s infinite linear;*/
+                /*linear为指定匀速旋转*/
+        }
+        @keyframes rotate {
+            from{
+
+            }
+            to{
+                transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div class="line line4"></div>
+        <div class="line line5"></div>
+        <div class="line line6"></div>
+        <div class="dotted"></div>
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+    </div>
+</body>
+</html>

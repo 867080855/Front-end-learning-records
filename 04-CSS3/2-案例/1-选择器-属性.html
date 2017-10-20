@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+        }
+        form{
+            width: 300px;
+            margin:0 auto;
+        }
+        form input[type="text"]{
+            width: 200px;
+        }
+        .attr1 a[href="./b.rmvb"]{
+            color:pink;
+        }
+        .attr2 a[class ~= "download"]{
+            color:red;
+        }
+        .attr3 a[class |= "download"]{
+            color:pink;
+        }
+        .attr4 a[class *= "download"]{
+            color:red;
+        }
+        .attr5 a[class ^= "download"]{
+            color:yellow;
+        }
+        .attr6 a[class $= "download"]{
+            color:gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-属性选择器</header>
+        <section>
+            <header>简介</header>
+            <div class="wrap-box">
+                <form action="">
+                    <ul>
+                        <li>姓名：<input type="text"/></li>
+                        <li>密码：<input type="password"/></li>
+                        <li>性别：<input type="radio"/>男
+                            <input type="radio"/>女</li>
+                        <li>兴趣：<input type="checkbox"/>编程</li>
+                        <li><input type="button" value="提交"/></li>
+                    </ul>
+                </form>
+            </div>
+        </section>
+        <section class="attr1">
+            <header>E[attr]</header>
+            <!-- 判断是否某个属性的值是否相等-->
+            <div class="wrap-box">
+                <a href="./a.rmvb" class="download download-movie">下载</a>
+                <a href="./b.mp3" class="download download-movie">下载</a>
+                <a href="./b.rmvb" class="download download-movie">下载</a>
+            </div>
+        </section>
+        <section class="attr2">
+            <header>E[attr ~= attr]</header>
+            <!-- 判断是否以空格为分隔符的字符串中含有指定字符串-->
+            <div class="wrap-box">
+                <a href="./a.rmvb" class="download download-movie">下载</a>
+                <a href="./b.mp3" class="download download-movie">下载</a>
+                <a href="./b.rmvb" class="download download-movie">下载</a>
+            </div>
+        </section>
+        <section class="attr3">
+            <header>E[attr |= attr]</header>
+            <!-- 判断是否以‘-’为分隔符的字符串中含有指定字符串-->
+            <div class="wrap-box">
+                <a href="./a.rmvb" class="download-download-movie">下载</a>
+                <a href="./b.mp3" class="download-download-movie">下载</a>
+                <a href="./b.rmvb" class="download-download-movie">下载</a>
+            </div>
+        </section>
+        <section class="attr4">
+            <header>E[attr *= attr]</header>
+            <!-- 判断是否在一个没有任何分隔符的字符串中含有指定字符串-->
+            <div class="wrap-box">
+                <a href="./a.rmvb" class="downloaddownloadmovie">下载</a>
+                <a href="./b.mp3" class="downloaddownloadmovie">下载</a>
+                <a href="./b.rmvb" class="downloaddownloadmovie">下载</a>
+            </div>
+        </section>
+        <section class="attr5">
+            <header>E[attr ^= attr]</header>
+            <!-- 判断是否在开头处含有指定字符串-->
+            <div class="wrap-box">
+                <a href="./a.rmvb" class="downloadmovie">下载</a>
+                <a href="./b.mp3" class="moviedownload">下载</a>
+                <a href="./b.rmvb" class="downloaddownloadmovie">下载</a>
+            </div>
+        </section>
+        <section class="attr6">
+            <header>E[attr $= attr]</header>
+            <!-- 判断是否在结尾处含有指定字符串-->
+            <div class="wrap-box">
+                <a href="./a.rmvb" class="downloadmovie">下载</a>
+                <a href="./b.mp3" class="moviedownload">下载</a>
+                <a href="./b.rmvb" class="downloaddownloadmovie">下载</a>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

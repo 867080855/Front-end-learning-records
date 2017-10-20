@@ -1,0 +1,19 @@
+    function fun(a,b){
+        console.log(a+b);
+    }
+    fun(1,2);----3
+    fun(5);----NaN
+    fun(4,6,8);---10,多出的8直接不处理。(js特性，其他语言不允许。)
+-------------------------------------------------------------------------------
+arguments存储了函数传递过来的实参。
+则：
+    function fun(a,b){
+        console.log(fun.length);
+        console.log(arguments.length);
+        if(fun.length == arguments.length){
+            console.log(a+b);
+        }else{
+            console.error("参数个数不匹配" +  ",正确个数为" + fn.length + "个");
+        }
+    }
+    fun();

@@ -1,0 +1,5 @@
+计算机编程语言：
+    1.解释型
+        javascript,java,php
+    2.编译型
+        c,c++

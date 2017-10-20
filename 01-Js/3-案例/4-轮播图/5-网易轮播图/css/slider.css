@@ -1,0 +1,58 @@
+@charset "UTF-8";
+.w{
+    width: 310px;
+    height: 265px;
+    margin:100px auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider{
+    width: 310px;
+    height: 220px;
+    /*为什么在这里加overflow:hidden没有用？*/
+}
+.slider-main{
+    width: 620px;
+    height: 220px;
+}
+.slider-main-img{
+    position: absolute;
+    top:0;
+    left:0;
+}
+.slider-ctrl{
+    width: 310px;
+    height: 45px;
+    text-align: center;
+    padding-top: 5px;
+}
+.slider-ctrl-con{
+    display: inline-block;
+    margin: 0 5px;
+    width: 32px;
+    height: 20px;
+    background: url(../images/icon.png) no-repeat -32px -843px;
+    cursor: pointer;
+    text-indent: -999em;
+}
+.current{
+    background-position: -32px -823px;
+}
+.slider-ctrl-pre,
+.slider-ctrl-next{
+    width: 30px;
+    height: 35px;
+    position: absolute;
+    top:50%;
+    margin-top:-20px;
+    background: url(../images/icon.png) no-repeat;
+    cursor: pointer;
+}
+.slider-ctrl-pre{
+    left:6px;
+    background-position: 0 0;
+}
+.slider-ctrl-next{
+    right:6px;
+    background-position: 0 -46px;
+}

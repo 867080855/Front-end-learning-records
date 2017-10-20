@@ -1,0 +1,3 @@
+0-window.onload----页面加载事件
+1.window.onscroll----页面滚动事件
+2.window.onresize----窗口改变事件

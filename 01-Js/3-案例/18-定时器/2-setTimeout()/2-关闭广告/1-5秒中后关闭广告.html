@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img{
+            position: absolute;
+            top:0;
+        }
+        #left{
+            left:0;
+        }
+        #right{
+            right:0;
+        }
+        .content {
+            padding:0 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <img src="images/1.gif" alt="" id="left"/>
+    <img src="images/2.gif" alt="" id="right"/>
+    <div class="content">good good study,day day up!good good study,day day up!good good study,day day up!good good study,day day up!good good study,day day up!good good study,day day up!good good study,day day up!good good study,day day up!good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+    <div class="content">good good study,day day up!</div>
+</div>
+</body>
+</html>
+<script>
+    function $id(id){return document.getElementById(id);}
+    function hide(id){$id(id).style.display = "none";}
+    function show(id){$id(id).style.display = "block";}
+    setTimeout(closeAd,5000);
+    function closeAd(){
+        hide("left");
+        hide("right");
+    }
+</script>

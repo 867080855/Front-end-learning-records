@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    	.myProgress{
+    		-webkit-appearance: none;
+    		
+    	}
+    	/*声明伪对象*/
+    	/*css在aaaa后边虚拟了一个DOM对象after*/
+    	/*.content::after{
+    		content:'bbbbb';
+    		color:#f40;
+    	}*/
+    	.myProgress::-webkit-progress-bar{
+			background-color: #f40;
+			color:red;
+    	}
+
+    </style>
+</head>
+<body>
+<div class="content">aaaa</div>
+<!-- 1.datalist -->
+	<!-- datalist是一个数据列表，它的呈现需要一个载体 -->
+	<input type="text" list="input_list" name="">
+	<!-- datalist用的不多 -->
+    <datalist id="input_list">
+    	<!-- 注意选项要写在value里边 -->
+        <option value="李四"></option>
+        <option value="老马"></option>
+    </datalist>
+<!-- 2.进度条-1 -->
+	<!-- 默认的最大值为1，可以通过调节max改变状态 -->
+    <progress value="0" max=""></progress>
+	<progress class="myProgress" value="0.1" max=""></progress>
+<!-- 2.进度条-2 -->
+	<meter min="0" max="100" low="40" value="90" ></meter>
+</body>
+</html>

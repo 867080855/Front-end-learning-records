@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <ul id="list">
+
+    </ul>
+    <div id="list_detail">
+
+    </div>
+</body>
+<script>
+    //定义一个键值对，键为学生姓名， 值为学生信息
+    var data = {
+        01:{name:"张三",age:20},
+        02:{name:"李四",age:18},
+        03:{name:"王五",age:17}
+    };
+    var list = document.getElementById("list");
+    for(var key in data){
+        var item = data[key];
+        var liEle = document.createElement("li");
+        liEle.appendChild(document.createTextNode(item.name));
+        liEle.setAttribute("data-name",item.name);
+        liEle.setAttribute("data-age",item.age);
+        list.appendChild(liEle);   //变量本地化
+        //给元素添加单机事件.
+        liEle.addEventListener("click", function () {
+            console.log(this.dataset.age);
+//            console.log(this.getAttribute("data-name"));
+//            console.log(this.innerHTML);
+        });   //添加事件监听器
+
+    }
+
+</script>
+</html>

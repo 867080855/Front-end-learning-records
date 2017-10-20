@@ -1,0 +1,35 @@
+js对象和jQuery对象相互转换
+    1.把DOM对象转换成jQuery对象
+        1)$(document) -> 把DOM对象转换成jQuery对象
+        //用$()符号把DOM对象包一下就可以将其转化成jQuery对象
+            //示例：$(btn)
+                //js里边的click也是有的，它是触发点击事件。
+                    //调用btn.click()     括号里不能传参
+                //js里边的onclick是绑定点击事件。
+    2.jQuery对象转换成js对象
+        1).$("#btn")[Index] -> jQuery对象转换成js对象
+            //$("btn")[1].onclick = function(){};
+        2).$("#btn").get(Index) -> jQuery对象转换成js对象
+================================================================
+    eq(0)和get(0)的区别：
+        $("div").eq(0)获得的是jQuery对象
+            //jQuery.fn.init[1]
+        $("div").get(0)获得的是DOM对象
+            //<div>innerHTML</div>
+        -----------------------------------------------
+            $("div").eq(0).css({   //这里的键值对可以带双引号单引号，也可以不带引号 })
+                //一些不合法的变量名可以通过加引号来声明。比如"a b"
+            $("div").get(0).css({})     //报错。css is not a function.因为DOM对象没有css方法。
+
+
+
+
+
+
+
+
+
+
+
+
+

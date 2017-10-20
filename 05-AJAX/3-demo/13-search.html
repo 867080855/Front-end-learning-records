@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;list-style: none;}
+		input{
+			vertical-align: top;
+		}
+		body{
+			background-color: #f7f7f7;
+		}
+		.wrapper{
+			width: 280px;
+			margin:50px auto;
+		}
+		.wrapper input{
+			width: 200px;
+			height: 30px;
+			font-size:18px;
+			padding-left:10px;
+		}
+		.wrapper button{
+			width: 50px;
+			height: 34px;
+			color:#000;
+		}
+		.wrapper .info {
+			padding-left: 10px;
+			width: 200px;
+			height: 150px;
+			font-size:20px;
+			line-height: 30px;
+			font-family: Microsoft Yahei;
+			background-color: #fff;
+			overflow: hidden;
+			display: none;
+		}
+		.info .list{
+			width: 100%;
+		}
+		.info li{
+
+		}
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<input type="text"><button id="btn">search</button>
+		</div>
+		<div id="info" class="info">
+			<ul class="list">
+				
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+	$(function  () {
+		$('input:first-child').on('keyup',function () {
+			var txt = $('input:first-child').val();
+			$('#info').css('display','block');
+			console.log(txt);
+			queryTarget(txt);
+		});
+
+
+
+		function queryTarget(keyWord){
+			var src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + keyWord;
+
+			$.ajax({
+			type:'get',
+			async:'true',
+			dataType:'jsonp',
+			jsonp:'cb',		
+				// 这个cb就相当于php中的$_GET['username']
+			url:src,
+			jsonpCallback:'callback',
+			success:function(data){
+					var s = data.s;
+					var tag = '';
+					for(var x = 0; x < s.length; x++){
+						tag += '<li>' + s[x] + '</li>';
+					}
+					$('ul:eq(0)').html(tag);
+				},
+			error:function(){
+				console.log('error');
+				}
+			});
+		}
+	});
+</script>
+</html>

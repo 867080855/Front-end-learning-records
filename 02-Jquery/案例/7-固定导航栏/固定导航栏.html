@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{ margin:0;padding:0; }
+        img{vertical-align: top;}
+        .nav{
+            width: 100%;
+            position: absolute;
+            top:168px;
+            left:0;
+        }
+        .top{
+            width: 100%;
+        }
+        .main{
+            width: 1000px;
+            margin:0 auto;
+        }
+    </style>
+    <script src="../jquery-1.11.1.js"></script>
+</head>
+<body>
+    <div class="top"><img src="images/top.png" alt=""/></div>
+    <div class="nav"><img src="images/nav.png" alt=""/></div>
+    <div class="main"><img src="images/main.png" alt=""/></div>
+</body>
+<script>
+
+
+    $(function () {
+        $(window).scroll(function () {
+            var docScrollTop = $(document).scrollTop();
+            if(docScrollTop >= 168){    //168为top图片的高度
+                $(".nav").css({
+                    "position":"fixed",
+                    "top":0
+                });
+                $(".main").css({"margin-top":$(".nav").height()});
+            }else{
+                //固定导航栏变回默认状态
+                $(".nav").css({
+                    "position":"static"
+                });
+                $(".main").css({"margin-top":0});
+            }
+        });
+    });
+</script>
+</html>

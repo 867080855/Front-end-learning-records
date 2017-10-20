@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;vertical-align: top;}
+        body{
+            background: url(images/wrapBg.jpg) no-repeat;
+        }
+        h2{
+            text-align: left;
+
+        }
+        .center{
+            width: 800px;
+            height: 200px;
+            border:1px solid #000;
+            margin:0 auto;
+            background-color: #fff;
+        }
+        .left{
+            width: 565px;
+            height: 200px;
+            float: left;
+        }
+        .talkBox{
+            width: 100%;
+            text-align: left;
+            padding:0 0 0 25px;
+            position: relative;
+        }
+        .talkBox h2{
+            font:normal normal normal 18px/29px "MicroSoft YaHei";
+        }
+        .talkBox a{
+            text-decoration: none;
+            color:#000;
+        }
+        .talkBox textarea{
+            width: 540px;
+            height: 80px;
+            padding:2px;
+            overflow: hidden;
+            border:1px solid gray;
+        }
+        .funBox{
+            height: 18px;
+        }
+        .funBox a{
+            padding-top:2px;
+            padding-left:18px;
+            display: inline-block;
+            height: 16px;
+            font-size: 14px;
+        }
+        .faceDiv{
+            width: 200px;
+            background-color: #f0f0f0;
+            position: absolute;
+            display: none;
+        }
+        .friendDiv{
+            width: 60px;
+            background-color: #f0f0f0;
+            position: absolute;
+            display: none;
+        }
+        .sendBox{
+            width: 100%;
+        }
+        .sendBox input:hover {
+            background: url(images/bg1.png) 0 -195px no-repeat;
+        }
+        .sendBox input,span{
+            float: right;
+            line-height: 33px;
+        }
+        .sendBox input{
+            width: 112px;
+            margin:0 20px 0 14px ;
+            background:url("images/bg1.png") no-repeat -117px -165px;
+            cursor: pointer;
+            border:0;
+            text-indent: -999em;
+        }
+        .countBox{
+            color:#999;
+            margin:0 15px 0 0;
+        }
+        .countBox em{
+            font-family: Georgia, Tahoma, Arial;
+            font-size: 26px;
+            position: relative;
+            top: -5px;
+            vertical-align: middle;
+        }
+        .right{
+            float: right;
+            width: 210px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script src="my.js"></script>
+</head>
+<body>
+    <div class="center">
+        <div class="left">
+            <div class="talkBox">
+                <h2><a href="#">夏天来了，你懂得......</a></h2>
+                <textarea name="" class="msgText" cols="30" rows="10"></textarea>
+                <div class="funBox">
+                    <a href="#" class="topicBtn">话题</a>
+                    <a href="#" class="friendBtn">朋友</a>
+                    <a href="#" class="faceBtn">表情</a>
+                    <a href="#" class="picBtn">照片</a>
+                    <a href="#" class="videoBtn">视频</a>
+                </div>
+                <div class="sendBox">
+                    <input type="button" class="send" value="广播"/>
+                    <span class="countBox">还能输入<em>140</em>字</span>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+引子：
+    var arr = [];
+    arr.run = function(){console.log("done");};
+    arr.run();
+    var arr1 = [];
+    arr1.run(); //报错,未定义。
+========================================================
+定义一个所有数组都能使用的方法：
+    //prototype 原型。js的继承全靠此物。
+    Array.prototype.run = function(){console.log("done");};
+        //Array为一个类

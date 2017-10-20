@@ -1,0 +1,14 @@
+WebStorm中创建代码段：
+    1.快捷键(ctrl+shift+a)或者设置中打开live Templates
+    2.选中相应的文档点击右侧的加号
+    3.在内容中写入代码段，变量用$变量名$表示。
+    4.设定好相应的触发器
+    5.设定好默认值(edit variables)，记得在default value中设置时加上双引号。
+sublime3中创建代码段：
+    1.打开Tools-developer-new snippet
+    2.解除tabTrigger的注释
+    3.删除掉content的已有内容。并加入新的内容
+    4.变量用$(1:default value)表示。1代表tab键跳转的先后次序
+    5.scope属性设定好出发的文件类型.比如，source.js。需要注意的是，html文件不需要修改此项
+因为emmet插件占用了tab键。
+    6.文件保存在sublime text3-user-snippet文件夹中

@@ -1,0 +1,19 @@
+自定义动画：
+    $("div").animate({
+        "width":"300px",
+        "height":"300px",
+        "background-color":"gold"
+    },2000)
+    -------------------------------
+终止动画：
+    stop([clearQueue],[jumpToEnd]);
+        //clearQueue    清除队列，终止后边的所有动画。默认为false
+        //jumpToEnd     立即执行完当前动画。默认为false。
+            //如果为true，表示立即执行当前动画，执行完毕后执行后边的动画
+            //如果为false，
+        //示例：
+            //stop(true);
+            //stop(false);
+            //stop(true,true);
+            //stop(false,true);
+            //stop(false,false) === stop()

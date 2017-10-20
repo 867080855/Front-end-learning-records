@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function () {
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				// 第一步:初始化xhr对象
+				var xhr = null;		// 定义一个xhr对象
+				if(window.XMLHttpRequest){		// 标准浏览器
+					xhr = new XMLHttpRequest();
+				}else{	// 早期的ie浏览器
+					xhr = new ActiveXObject(Microsoft.XMLHTTP);
+				}
+				// 第二步：指定xhr的工作
+				xhr.open('post','./06-data-post.php',true);	//打开链接
+
+				// 第三步：指定回调函数
+				xhr.onreadystatechange = function () {
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							var data = xhr.responseText;
+							console.log(data);
+						}
+					}
+				}
+
+				// 第四步：执行发送的动作
+				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+				var username = document.getElementById('username').value;
+				var password = document.getElementById('password').value;
+				var param = 'username='+username+'&password='+password;
+					// 如果username乱码可以采用encodeURIComponent(username)
+				xhr.send(param);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="showInfo"></div>
+	<div>
+		<form>
+			username: <input type="text" id="username">
+			password: <input type="password" id="password">
+			<input type="button" value="submit" id="btn">
+		</form>
+	</div>
+</body>
+</html>

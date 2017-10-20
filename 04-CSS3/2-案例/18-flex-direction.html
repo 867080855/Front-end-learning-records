@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+        }
+        /*正文开始*/
+        section ul{
+            list-style: none;
+        }
+        section li{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: skyblue;
+            margin:20px;
+        }
+        .item:nth-of-type(2) ul{
+            /*为什么是1？因为target item是父盒子wrapper
+                item类的元素是section。故需要第1个？*/
+            display: flex;
+            flex-direction: row;
+                /*设定主轴方向
+                    此时为从左水平向右
+                    */
+            background-color: red;
+        }
+        .item:nth-child(4) ul{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-flex-direction</header>
+        <section class="item">
+            <header>flex-direction</header>
+            <div class="wrap-box">
+                <p>主轴方向，包括有row,column,row-reverse,column-reverse</p>
+            </div>
+        </section>
+        <section class="item" data-brief="水平方向主轴">
+            <header>flex-direction-row</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="item" data-brief="水平方向主轴">
+            <header>flex-direction-column-reverse</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

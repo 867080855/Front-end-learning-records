@@ -1,0 +1,28 @@
+对象(object):
+    一种带有属性和方法的数据类型。
+        //数组也可以设置属性和方法。
+        //var num = 10;num.index = 10;
+            //console.log(num.index);
+            //报错。不能给其赋值。但是数组可以做到。
+    ----------------------------------------------------------
+    声明对象：
+        1.var obj = new Object();
+        2.字面量式声明(常用：
+            var obj = {};
+            obj.name = "geowang";
+            obj.age = 55;
+            obj.showName = function(){
+               return obj.name;
+            };
+            obj.showAge = function(){
+               return obj.age;
+            };
+            -------------------------------
+            eg:var json = {width:100,height:100};
+    使用对象：
+        1.使用对象属性：
+            console.log(obj.name);
+            console.log(obj.age);
+        2.使用对象方法
+            obj.showName();
+            obj.showAge();

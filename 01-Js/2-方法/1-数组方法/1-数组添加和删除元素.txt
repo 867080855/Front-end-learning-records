@@ -1,0 +1,24 @@
+5.数组添加和删除----非常重要
+    1).push()----向数组末尾添加一个或多个元素,并返回新的长度。
+        var arr = [1,2,3,4];
+            arr.push(5);
+            console.log(arr);
+            console.log(arr.push(6,8));//----返回值为7
+
+    2).unshift----向数组开头添加一个或多个元素，并返回新的长度。
+
+            arr.unshift(4,3,2,1);
+            console.log(arr);
+            console.log(arr.unshift(8,6));//----返回值为13
+
+    3).pop()----移除数组最后一个元素，返回最后一个值。
+            var arr = [1,2,3,4,5];
+            arr.pop();
+            console.log(arr);   //----[1,2,3,4];
+            console.log(arr.pop());     //----4,为删除前的数组的最后一个元素。
+
+    4).shift()----移除数组第一个元素，并返回第一个值。
+
+            arr.shift();
+            console.log(arr);
+            console.log(arr.shift()); //----2

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <a href="http://www.baidu.com" class="link">百度一下</a>
+    </div>
+</body>
+<script>
+    $(function () {
+        $(".link").on("click", function (e) {
+            //兼容所有浏览器
+            e.preventDefault();
+            e.stopPropagation();
+            console.log(e.type);
+            console.log(e.which);
+        });
+        $(".box").on("click", function () {
+            console.log("father");
+            //点击子盒子，控制台打出了father，说明冒泡了。使用preventBubble可以解决这个问题。
+        });
+        $(document).keydown(function (e) {
+            console.log(e.keyCode)
+        });
+    })
+</script>
+</html>

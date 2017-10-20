@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 100%;
+            height: 100%;
+            font-size: 50px;
+        }
+    </style>
+    <script src="my.js"></script>
+</head>
+<body>
+<div class="box">
+    拖动窗口改变大小才会显示颜色
+</div>
+<script>
+    reSizeChangeColor();
+    //页面一加载就执行一次，可以解决刚打开页面没颜色的问题、
+    //函数比变量的优先级高，当两个有冲突的时候优先执行函数。
+    window.onresize = reSizeChangeColor;
+    //此处不带有括号，只要屏幕改变大小就触发函数。
+    function reSizeChangeColor() {
+        if(client().width > 960){
+            document.body.style.backgroundColor = "skyblue";
+        }else if(client().width > 640){
+            document.body.style.backgroundColor = "orange";
+        }else{
+            document.body.style.backgroundColor = "green";
+        }
+    }
+</script>
+</body>
+</html>

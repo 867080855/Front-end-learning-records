@@ -1,0 +1,15 @@
+avg()º¯Êý
+    var arr = [1,2,3,4,5];
+    function avg(array){
+        var len = arr.length;
+        var sum = 0;
+        for(var x = 0;x<len;x++){
+            sum += arr[x];
+            //console.log("sum"+x+":" + sum);
+        }
+        //console.log("arr.length:"+len);
+        //console.log("sum:"+sum);
+        return sum / len;
+    }
+    ----------------------------------------
+    document.write(avg(arr));

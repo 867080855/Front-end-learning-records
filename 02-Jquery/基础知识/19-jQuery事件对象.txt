@@ -1,0 +1,19 @@
+click事件对象
+    $("button").click(function(e){
+        console.log(e);
+            //e：event
+            //event其中有一些有用的属性，如pageX，pageY等
+    });
+    event.data //传递的额外事件响应方法的额外参数
+        event.currentTarget //在事件响应方法中等同于this，当前Dom对象
+        event.target //事件触发源，不一定===this
+            //比如div内嵌一个a。点击a时事件源是谁呢？可以用(e.target === this)来判断
+    event.pageX //The mouse position relative to the left edge of the document
+    event.pageY
+    event.stopPropagation()//阻止事件冒泡
+    e.preventDefault(); //阻止默认行为(比如超链接的跳转，表单元素的提交)
+        event.type //事件类型：click，dbclick...
+            //当两个事件绑定了同一种方法时，可以用来查看究竟是什么事件触发了
+        event.which //鼠标的按键类型：左1 中2 右3
+            //右键被浏览器捕获了，不能演示
+        event.keyCode   //获得按键的ASCII码值

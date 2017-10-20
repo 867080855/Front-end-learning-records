@@ -1,0 +1,13 @@
+    function person(name,age){  //构造函数，内部只写属性，方法拿出来写。
+        this.name = name;
+        this.age =age;
+    }
+    Person.prototype.showName = function(){console.log("name:"+this.name);};
+    Person.prototype.showAge = function(){console.log("age:"+this.age);};
+==========================================================
+    var demo = new Person("geowang",20);
+    demo.showName();
+    var demo1 = new Person("liuyi",30)l
+    demo.showName();
+    console.log(demo.showName == demo1.showName);
+        //true，用了共同的父亲Person

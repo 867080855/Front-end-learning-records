@@ -1,0 +1,21 @@
+    btn.onclick = function(event) {  语句 }
+        event   单词翻译过来   事件 的意思
+        event  就是事件的对象    指向的是 事件  是   onclick
+        在触发DOM上的某个事件时，会产生一个事件对象event，这个对象中包含着所有与事件有关的信息。所有浏览器都支持event对象，但支持的方式不同。
+    比如鼠标操作时候，会添加鼠标位置的相关信息到事件对象中。
+    -----------------------------------------
+        普通浏览器支持 event
+        ie 678 支持 window.event
+        -------------------------
+        兼容性写法：
+            document.onclick = function(event){
+                    var event = event || window.event;
+                    console.log("x:"+event.clientX);
+                    console.log("Y:"+event.clientY);
+            }
+    1.clientX,clientY----当前窗口左上角为基准点
+        类似于固定定位
+    2.pageX,pageY----当前文档左上角为基准点
+        类似于绝对定位
+    3.screenX,screenY----屏幕左上角为基准点
+    4.target----返回被传送到的对象

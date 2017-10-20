@@ -1,0 +1,30 @@
+    function fn(){
+        console.log(this);  //此处的this指向的是window
+    }
+    fn();   //window
+    new fn();   //object
+                //添加了new的函数this指向的是新的对象，即新的对象是函数fn的调用者
+===============================================
+    function fn1(){
+        this.num = 10;
+    }
+    fn1();
+    console.log(window.num);
+===========================================
+    //构造函数
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+        this.showName = function(){console.log("name:"+name);};
+        this.showAge = function(){console.log("age:"+age);};
+    }
+    var person1 = new Person("geowang",20);
+        //new直接指向了新对象并赋值给person
+    var person2 = new Person("geowang",20);
+    console.log(person1.showName == person2.showName);  //false;
+    console.log(person1.name);
+        //也可以用console.log(person1["name"]);
+            //不提倡
+    console.log(person1.age);
+    person1.showName();
+    person1.showAge();

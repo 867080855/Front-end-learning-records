@@ -1,0 +1,15 @@
+    HTML5之前的多媒体主要是依靠与第三方插件。例如adobe flash
+    现在：
+        使用HTML5自带的多媒体元素
+        1.audio
+            <audio src="demo.mp3" id="1"></audio>
+                <!--不设置controls属性的话，页面上是看不到audio的。-->
+            <button id="btn_play">播放</button>
+            <button id="btn_pause">暂停</button>
+        2.video
+            track(字幕)(了解)
+
+        兼容：
+
+==================================================
+    属性：

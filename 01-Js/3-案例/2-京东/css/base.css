@@ -1,0 +1,490 @@
+@charset "UTF-8";
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+fieldset, img,input,button { border:none; padding:0;margin:0;outline-style:none; }
+ul, ol { list-style:none; }/*清楚li左侧小圆点*/
+input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}
+select, input { vertical-align:middle;}
+select, input, textarea { font-size:12px; margin:0; }
+textarea { resize:none; } /*防止拖动*/
+img {border:0;	vertical-align:middle; }  /*  去掉图片低测默认的3像素空白缝隙*/
+table { border-collapse:collapse; }
+body {
+    font:12px/150% Arial,Verdana,"\5b8b\4f53";
+    color:#666;
+    background:#fff;
+}
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after{clear:both;}
+.clearfix{
+    *zoom:1;/*IE/7/6*/
+}
+a {color:#666; text-decoration:none; }
+a:hover{color:#C81623;}
+h1,h2,h3,h4,h5,h6 {text-decoration:none;font-weight:normal;font-size:100%;}
+s,i,em{font-style:normal;text-decoration:none;}
+.col-red{color: #C81623!important;}
+
+/*公共类*/
+.w {  /*版心 提取 */
+    width: 1210px;margin:0 auto;
+}
+.fl {
+    float:left
+}
+.fr {
+    float:right
+}
+.al {
+    text-align:left
+}
+.ac {
+    text-align:center
+}
+.ar {
+    text-align:right
+}
+.hide {
+    display:none
+}
+/*登陆弹出框*/
+.mask{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index:999;
+}
+.box{
+    width: 400px;
+    height: 240px;
+    background-color: #fff;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-200px;
+    margin-top:-120px;
+}
+.box span{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top:10px;
+    right: 10px;
+    font-size:20px;
+    cursor: pointer;
+}
+/*头部导航开始*/
+.shortcut{
+    height: 30px;
+    line-height: 30px;
+    background-color: #f1f1f1;
+    width: 100%;
+}
+.shortcut .dt,
+.fr .arrow{
+    padding: 0 20px 0 10px;
+    position: relative;
+}
+/*大盒子i和小盒子s，移动大盒子小盒子会跟着移动。
+从逻辑上来讲
+    1.通过大盒子的绝对定位定位到指定的位置上
+    2.限制大盒子的高度来隐藏菱形符号的一半
+    3.移动大盒子里边的小盒子来显示需要的图形
+    4.最后再移动一次大盒子，使结果完美显示
+注：
+    之后再用到小盒子时，直接挪用即可。
+*/
+.shortcut .dt i,
+.arrow i{
+    font:400 15px/15px "SimSun";
+    /*此处已经设置了宋体，下边也不需要重复设置了*/
+    position: absolute;
+    top:13px;
+    right:3px;
+    width:15px;
+    height:7px;
+    overflow: hidden;
+}
+.shortcut .dt s ,
+.arrow s{
+    position: absolute;
+    top:-8px;
+}
+/*
+    .fr ul{
+         list-style: none;
+    该代码可以省略，初始化的时候已经清楚过样式了
+}
+
+*/
+.fr ul li{
+    float: left;
+    /*
+        font:400 12px/30px "宋体";
+        之所以“您好，请登录”与“免费注册”之间看起来间距过大，是因为采用了中文字体的缘故。若取消本行则问题解决
+    */
+    padding: 0 10px;
+}
+/*若不写上.line的样式，整个右部栏会偏左。其实是因为有八个line类没有显示出来但是被计算进了ul的宽度
+    因此ul的总宽度才是880*0。
+    计算如下：
+        68*8+176+20*8=880
+*/
+.fr .line{
+    width: 1px;
+    height: 12px;
+    background-color: #ddd;
+    padding: 0;
+    margin-top: 8px;
+}
+.fr .arrow{
+    padding-right: 20px;
+}
+.fr .phone {
+    padding-left: 25px;
+}
+.fr .tel{
+    background: url("../images/sprite.png") no-repeat 0 0;
+    width: 15px;
+    height: 20px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    text-indent: -999em;
+}
+/*头部右侧导航条-----自制版 缺陷同上。除此之外，与标准版相比，代码过于繁琐。
+.fr ul{
+    list-style:none;
+}
+.fr ul li{
+    float: left;
+    font:400 12px/30px "SimSun";
+}
+.color-red{
+    color:#C81623;
+}
+.fr ul li.text1{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.fr ul li.text2{
+    padding-left: 10px;
+    padding-right: 20px;
+    position: relative;
+}
+.fr ul li.sjjd{
+    padding-left: 25px;
+    padding-right: 20px;
+}
+.fr .phone h3{
+    background: url("../images/sprite.png") no-repeat 0 0;
+    width: 15px;
+    height: 20px;
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    text-indent: -999em;
+}
+.fr ul li.text2 i{
+    position: absolute;
+    right: 5px;
+    top:13px;
+    width: 12px;
+    height: 7px;
+    overflow: hidden;
+}
+.fr ul li.text2 s{
+    font:700 15px/15px "SimSun";
+    position: absolute;
+    top:-8px;
+}
+.fr ul li.wl{
+    color:#DDDDDD;
+    width: 1px;
+}
+*/
+/*顶部导航栏完成*/
+/*topbanner开始*/
+.topbanner{
+    background-color: #8A25C6;
+}
+/*此处不宜将w设置为相对定位。因为w还会用于别的地方。故增加了一个类tp*/
+.tp{
+    position: relative;
+}
+.close-banner{
+    background: url(../images/close.png) no-repeat;
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    top:5px;
+    right: 0;
+}
+.close-banner:hover{
+    background-position:bottom;
+}
+/*topbanner完成*/
+
+.logo{
+    width: 360px;
+    height: 75px;
+    padding-top:25px ;
+    background: url(../images/logo.png) no-repeat 0 25px;
+    float: left;
+    position: relative;
+}
+.jd-a{
+    display: block;/*若没有这句话，下边的内容就不会生效。*/
+    width: 160px;
+    height: 50px;
+    text-indent: -999em;
+}
+.db11{
+    position: absolute;
+    width: 180px;
+    height: 80px;
+    top: 10px;
+    left:168px;
+}
+.search{
+    width: 538px;
+    height: 35px;
+    float: left;
+    margin-top: 25px;
+}
+.search input{
+    width: 450px;
+    height: 32px;
+    border:2px solid #B61D1D;
+    font:14px/32px "microsoft yahei";
+    color:#666;
+    padding-left: 4px;
+    float:left;
+}
+.search button{
+    width: 80px;
+    height: 36px;
+    background-color: #B61D1D;
+    font:16px/32px "microsoft yahei";
+    color:#fff;
+    cursor: pointer;
+    float:left;
+}
+.shopping{
+    float: right;
+    width: 96px;
+    height: 34px;
+    line-height: 34px;
+    margin:25px 65px 0 0;
+    padding-left: 43px;
+    border: 1px solid #dfdfdf;
+    position: relative;
+}
+.icon1{
+    position: absolute;
+    /*必须设置宽高，否则无法显示*/
+    width: 16px;
+    height: 13px;
+    left:20px;
+    top:10px;
+    background: url(../images/sprite.png) no-repeat -1px -59px ;
+}
+.icon2{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font:13px/13px simsun;
+}
+.icon3{
+    position: absolute;
+    width: 16px;
+    height: 14px;
+    top:-4px;
+    line-height: 14px;
+    color: #fff;
+    text-align: center;
+    background-color: #C81623;
+    border-radius: 7px 7px 7px 0;
+}
+.hotwords{
+    width: 500px;
+    padding:7px 0;
+    float:left;
+}
+.hotwords a{
+    margin-right: 6px;
+}
+/*头部结束*/
+/*nav开始*/
+.nav{
+    height: 44px;
+    border-bottom:2px solid #B1191A;
+}
+/*以下内容纯属假象！
+
+此处的height属性，非设不可！
+    1.因为如果没有设置高度的话，会影响下边的盒子。
+    怎么影响呢？
+        dropdown的盒子是左浮动的，一个脱标的盒子。则下边的浮动的盒子会去围绕着它去贴合。
+    2.且用clearfix去消除本盒子的浮动也没有作用。
+        为什么没有用呢？
+            一般消除浮动是给其父盒子用的。给一个浮动的盒子当然没有用。
+    一定要引以为戒。
+    3.一个浮动的盒子内部放置两个标准流的盒子应该是很常见的。
+        但是浮动的没有高度的盒子
+    */
+.dropdown{
+    float: left;
+    width: 210px;
+    height: 44px;
+    position: relative;
+    z-index: 10;
+    overflow: visible;
+}
+.dropdown .dt{
+    height: 44px;
+}
+
+.dropdown .dt a{
+    display: block;
+    height: 44px;
+    font:15px/44px MicroSoft YaHei;
+    padding-left: 10px;
+    background-color: #B1191A;
+    color:#fff;
+}
+.dropdown .dd{
+    height: 465px;
+    background-color: #C81623;
+    margin-top: 2px;
+}
+.dropdown .items{
+    padding:0 15px 0 10px;
+    border-left: 1px solid #B61D1D;
+    height: 31px;
+    font:15px/31px "MicroSoft YaHei";
+    color:#fff;
+}
+.dropdown .items span{
+    font-weight: 600;
+    font-family: "SimSun";
+}
+.hotitems{
+    float: left;
+    width: 680px;
+    height: 44px;
+}
+.hotitems li {
+    float: left;
+}
+.navitems li a:hover {
+    color: #B1191A;
+}
+.hotitems li.new{
+    background: url(../images/new.jpg) no-repeat right top;
+}
+.hotitems li a{
+    display: block;
+    padding: 0 20px;
+    font:400 15px/44px MicroSoft YaHei;
+    color:#333333;
+}
+.bike{
+    float: right;
+    width: 140px;
+    height: 44px;
+    background-color: darkblue;
+}
+/*nav结束*/
+/*底部开始*/
+.slogen{
+    height:54px;/*宽度必须设置*/
+    padding:20px 0;
+    margin-bottom: 15px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+.item{
+    position: absolute;
+    top:20px;
+    left:50%;
+}
+.slogen1{
+    margin-left: -608px;
+}
+.slogen2{
+    margin-left: -304px;
+}
+.slogen3{
+    margin-left: 2px;
+}
+.slogen4{
+     margin-left: 304px;
+}
+/*
+.dl{
+    float:left;
+    width: 198px;
+    background-color: blue;
+}
+找错误：
+    语句错误在于dl前边加了“.”
+    这是标签选择却误用了类选择器！
+*/
+.buying dl{
+    float:left;
+    width: 198px;
+}
+.buying dt,
+.coverage .dt{
+    padding-top: 10px;
+    height: 28px;
+    font-size: 16px;
+    font-family:MicroSoft YaHei;
+}
+.buying dd,
+.coverage .dd{
+    height: 20px;
+}
+.coverage{
+    float: right;
+    width: 210px;
+    height: 165px;
+    background: url(../images/china.png) no-repeat left bottom;
+}
+.coverage .dd{
+    margin-top: 10px;
+}
+.coverage .seemore{
+    float:right;
+    margin-top: 5px;
+}
+.seemore{
+    cursor: pointer;
+}
+.againw{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 23px;
+    border-top:1px solid #e5e5e5;
+    text-align: center;
+}
+.againw .links{
+    height: 25px;
+}
+.againw .links a{
+    padding: 0 6px ;
+}
+.againw .copyright{
+    line-height: 18px;
+}
+.againw .icons{
+    margin-top: 10px;
+}

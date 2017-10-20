@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ul{list-style: none;}
+        body{background-color: #000;}
+        .cloud{
+            width: 83px;
+            height: 42px;
+            background: url("images/cloud.gif") no-repeat 0 0 ;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .nav{
+            width: 800px;
+            height: 42px;
+            background: url("images/rss.png") no-repeat right top #fff;
+            margin: 100px auto;
+            border-radius: 5px;
+            position: relative;
+        }
+        .nav ul{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .nav li{
+            float: left;
+            width: 83px;
+            text-align: center;
+            line-height: 42px;
+            cursor: pointer;
+        }
+        .nav li:hover{
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav" class="nav">
+        <div id="cloud" class="cloud"></div>
+        <ul>
+            <li>首页新闻</li>
+            <li>师资力量</li>
+            <li>活动策划</li>
+            <li>企业文化</li>
+            <li>招聘信息</li>
+            <li>公司简介</li>
+            <li>上海校区</li>
+            <li>广州校区</li>
+        </ul>
+    </div>
+    <script>
+        var cloud = document.getElementById("cloud");
+        var ul = document.getElementById("nav").children[1];
+        var leader = 0;
+        var tar = 0;
+        //出现了一个问题：
+            //定义单击事件之后this.offsetLeft传出的值会被onmouseout的函数再次替换掉。
+            //所以定义一个新的current变量来存储单击事件产生的坐标值。
+        var current = 0;
+        var lis = ul.children;
+        for(var x = 0;x<lis.length;x++){
+            lis[x].onmouseover = function () {
+                tar = this.offsetLeft;
+            };
+            lis[x].onmouseout = function () {
+                tar = current;
+            };
+            lis[x].onclick = function () {
+                current = this.offsetLeft;
+
+            }
+        }
+
+        setInterval(slide,10);
+        function slide(){
+            leader = leader +(tar - leader)/10;
+            cloud.style.left = leader +"px";
+            //结合offsetLeft和style.left的可更改不可更改的特性。
+                //来作为接收及更改数值的操作。
+        }
+
+
+
+    </script>
+</body>
+</html>

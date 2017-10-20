@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/*
+    ::before是元素一开始的内容，在元素的内部
+    ::after是元素结尾的内容，也在元素的内部
+*/
+body::before{
+    content:"css注入的内容";
+    font-size: 80px;
+}

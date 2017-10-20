@@ -1,0 +1,33 @@
+============================================================
+jQuery操作样式：
+    1.设置样式
+        //单个设置样式
+            $("li").css("background","red");
+            $("li").css("font-size","30px");
+
+        //设置多个样式
+            $("li").css({
+                "background-color":"red",
+                "font-size":"30px"
+            })
+    2.添加类样式
+        $("li").addClass("divItem");
+            //注意:样式的名字直接写就好。不需要写成.divItem
+    3.删除类样式
+        //清除制定样式(如果指定的样式不存在，将不进行任何操作)
+            $("li").removeClass("divItem");
+        //清除选定对象所有样式
+            $("li").removeClass();
+    4.切换类样式
+        //切换到指定样式
+            $("li").toggleClass("divItem1");
+    5.判断有没有样式
+        //hasClass()    返回布尔值
+        $("li").hasClass("divItem");
+        -------------------------------------------------------
+            var hasElement = $("li").hasClass("divItem");
+            if(hasClass){
+                $("li").removeClass("divItem");
+            }else{
+                $("li").addClass("divItem");
+            }

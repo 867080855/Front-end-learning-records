@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            height: 200px;
+            width: 200px;
+            margin:200px auto;
+            border:1px solid #eee;
+            background-color: #0873C0;
+            text-align: center;
+        }
+        .box p {
+            color:#fff;
+            line-height: 40px;
+        }
+        .box span {
+            color:#000;
+            display: block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 50px;
+            margin: 0 auto;
+            background-color: #FF6B39;
+
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("box");
+            var bboys = box.children;
+            //添加顶部详细时间
+            var topP = bboys[0];
+            var date = new Date();
+            var weekDays  = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            topP.innerHTML = date.getFullYear() + "年" + date.getMonth() + "月" + date.getDate() + "日" + "   " + weekDays[date.getDay()];
+            //添加“大”日期
+            var largeDate = bboys[1];
+            largeDate.innerHTML  = date.getDate();
+        }
+    </script>
+</head>
+<body>
+<div id="box" class="box">
+    <p></p>
+    <span></span>
+</div>
+</body>
+</html>

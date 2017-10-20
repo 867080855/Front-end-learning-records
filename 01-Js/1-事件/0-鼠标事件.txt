@@ -1,0 +1,8 @@
+1.onclick----单击事件
+
+2.onmouseover----鼠标经过
+3.onmouseout----鼠标移出
+4-onmousemove----鼠标移动1像素就执行
+
+5.onmouseup----鼠标弹起
+6.onmousedown----鼠标按下

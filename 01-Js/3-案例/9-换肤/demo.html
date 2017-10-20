@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤</title>
+    <!--
+        收获：
+            backgroundImage属性在赋值的时候一定要加上url();
+        -->
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background: url(images/1.jpg) no-repeat top center;
+        }
+        .box{
+            width: 100%;
+            height: 200px;
+            background-color: rgba(255,255,255,.4);
+            text-align: center;
+        }
+        .box img{
+            padding:20px 5px;
+            height: 150px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var pic1 = document.getElementById("pic1");
+            var pic2 = document.getElementById("pic2");
+            var pic3 = document.getElementById("pic3");
+            pic1.onclick = function(){
+                document.body.style.backgroundImage = "url(images/1.jpg)";
+            };
+            pic2.onclick = function(){
+                document.body.style.backgroundImage = "url(images/2.jpg)";
+            };
+            pic3.onclick = function(){
+                document.body.style.backgroundImage = "url(images/3.jpg)";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <img src="images/1.jpg" alt="" id="pic1"/>
+        <img src="images/2.jpg" alt="" id="pic2"/>
+        <img src="images/3.jpg" alt="" id="pic3"/>
+    </div>
+</body>
+</html>

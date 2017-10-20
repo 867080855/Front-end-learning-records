@@ -1,0 +1,7 @@
+字符串 string
+数字 number
+空对象 null
+数组 array
+对象 object
+
+js中数据类型不需要特别定义，统一用var就好。

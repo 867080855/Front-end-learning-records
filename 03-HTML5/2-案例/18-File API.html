@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <form action="" >
+        <input type="file" id="input_file" class="form-control hidden" multiple/>
+        <!--multiple可以让文件域多选-->
+        <!--
+            为什么此处用button不可以实现选择文件后成功跳出列表框的行为？
+                因为button不可以向上提交信息，此处必须用input才可以
+        -->
+        <!--<button id="btn_sel" class="btn btn-info">选择文件</button>-->
+        <input type="button" value="选择文件" id="btn_sel" class="btn btn-info"/>
+        <!--<input type="button" value="显示列表框" id="btn_read" class="btn btn-warning"/>-->
+        <ul id="file_list" class="list-group"></ul>
+    </form>
+</div>
+</body>
+<script>
+    (function () {
+        var list = document.querySelector("#file_list");
+        var input_file = document.querySelector("#input_file");
+        var btn_sel = document.querySelector("#btn_sel");
+//        var btn_read = document.querySelector("#btn_read");
+        btn_sel.addEventListener('click', function () {
+            input_file.click();
+        });
+        //单击事件完成后file元素发生change事件，显示列表框
+        input_file.addEventListener('change', function () {
+            console.log("done");
+            var files = input_file.files;
+            for(var x = 0; x < files.length; x++ ){
+                var li = document.createElement("li");
+                li.setAttribute('class','list-group-item');
+                li.innerHTML = '<h5 class="list-group-item-heading">'+files[x].name+'</h5><p class="list-group-item-text">'+files[x].lastModifiedDate.toLocaleDateString()+'   '+files[x].lastModifiedDate.toLocaleTimeString()+'  '+(files[x].size/1024).toFixed(2)+'KB'+'</p>';
+                list.appendChild(li);
+            }
+        });
+
+//        btn_read.addEventListener('click', function () {
+//            console.log("done");
+//            var files = input_file.files;
+//            for(var x = 0; x < files.length; x++ ){
+//                var li = document.createElement("li");
+//                li.setAttribute('class','list-group-item');
+//                li.innerHTML = '<h5 class="list-group-item-heading">'+files[x].name+'</h5><p class="list-group-item-text">'+files[x].lastModifiedDate.toLocaleDateString()+'   '+files[x].lastModifiedDate.toLocaleTimeString()+'  '+(files[x].size/1024).toFixed(2)+'KB'+'</p>';
+//                list.appendChild(li);
+//            }
+//        });
+    })();
+</script>
+</html>

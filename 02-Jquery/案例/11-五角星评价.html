@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;list-style: none;}
+        .comment{
+            width: 200px;
+            margin:300px auto;
+            font-size: 30px;
+        }
+        .comment li{
+            float: left;
+            cursor: pointer;
+        }
+
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+<script>
+    $(function () {
+            var wjx_sel = "★",
+                wjx_none = "☆";
+            $(".comment").on("mouseenter","li", function () {
+                $(this).text(wjx_sel).prevAll().text(wjx_sel).end().nextAll().text(wjx_none);
+            })
+                         .on("click","li", function () {
+                $(this).addClass("clicked").siblings().removeClass("clicked");
+            })
+                         .on("mouseleave", function () {
+                $(this).children().text(wjx_none);//鼠标移开所有五角星变为空心
+                $(".clicked").text(wjx_sel).prevAll().text(wjx_sel).end().nextAll().text(wjx_none);
+            });
+
+    });
+</script>
+</html>

@@ -1,0 +1,4 @@
+map():
+    1.$.map(array,function(e,index){return index});
+        //注意全局变量时引用map的时候e和index的书写顺序应该注意。跟别的情况是反着的
+    2.$("li").map(function(index,e){});

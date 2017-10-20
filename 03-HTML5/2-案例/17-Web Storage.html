@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        textarea{
+            font-size: 24px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<textarea id="txt_value" cols="30" rows="10"></textarea><br/>
+<button id="btn_set">set Stroage</button>
+<button id="btn_get">get Storage</button>
+<script>
+    var btnSet = document.getElementById("btn_set");
+    var btnGet = document.getElementById("btn_get");
+    var txt_value = document.getElementById("txt_value");
+    btnSet.addEventListener("click", function () {
+        if(window.sessionStorage){
+            sessionStorage.setItem("key1",txt_value.value); //推荐使用
+            //sessionStorage["key1"] = txt_value.value;
+        }
+    });
+    btnGet.addEventListener("click", function () {
+        if(window.sessionStorage){
+            txt_value.value = sessionStorage.getItem("key1");
+            //txt_value.value = sessionStorage["key1"];
+        }
+    });
+</script>
+</body>
+</html>

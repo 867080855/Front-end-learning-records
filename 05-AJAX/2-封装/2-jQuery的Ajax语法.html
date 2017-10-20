@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+	<script>
+		$.ajax({
+			url:'./data.php',
+			type:'POST',
+			dataType:'html',
+			data:{username:'qqq',password:'123'},
+			success:function(data){
+				console.log(data);
+			},
+			error:function(){
+				console.log(0);
+			}
+		});
+	</script>
+</body>
+</html>

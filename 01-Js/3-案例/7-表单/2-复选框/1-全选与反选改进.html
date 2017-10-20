@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选与反选改进</title>
+    <script>
+        window.onload = function(){
+            var btns = document.getElementsByTagName("button");
+            var inputs = document.getElementById("bottom").getElementsByTagName("input");
+            //利用封装函数来改进
+            function all(flag){
+                for(var x = 0;x<inputs.length;x++){
+                    inputs[x].checked = flag;
+                }
+            }
+            //直接调用函数即可。
+            btns[0].onclick = function(){all(true);};
+            btns[1].onclick = function(){all(false);};
+            btns[2].onclick = function(){
+                for(var x = 0;x<inputs.length;x++){
+                    inputs[x].checked == true ? inputs[x].checked = false : inputs[x].checked = true;
+                }
+            }
+            //为什么不能写成inputs[x].checked == true ？ all(false) : all(true);
+                //因为all()函数内嵌了一个for循环。而此处外层已经有一个for循环了。
+        }
+    </script>
+</head>
+<body>
+<div id="top">
+    <button>全选</button>
+    <button>全不选</button>
+    <button>反选</button>
+</div>
+<div id="bottom">
+    <ul>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+        <li>选项：<input type="checkbox" name=""/></li>
+    </ul>
+</div>
+</body>
+</html>

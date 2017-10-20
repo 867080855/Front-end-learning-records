@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, li, dl, dt, dd, h1, h2, h3, h4, h5 {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .wrapper>header{
+            padding: 20px 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .wrapper>header>h3{
+            line-height: 1;
+            font-weight: normal;
+            font-size: 28px;
+        }
+        .main{
+            width: 100%;
+        }
+        .main .item{
+            width: 210px;
+            height: 210px;
+            background-color: #fff;
+            display: flex;/*这句话可以让内容水平竖直居中*/
+            float: left;
+            margin:15px;
+            box-shadow: 2px 2px 5px #CCC;
+            position: relative;
+        }
+        .main .item:after {
+            content: attr(data-brief);
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 210px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #FFF;
+            font-family: '微软雅黑';
+            font-size: 18px;
+            background-color: rgba(170, 170, 170, 0);
+            z-index: -1;
+            transition: all 0.3s ease-in;
+        }
+        .main .item:hover:after {
+            background-color: rgba(170, 170, 170, 0.6);
+            z-index: 100;
+        }
+        /*正文开始*/
+        .linear-gradient{
+            width: 160px;
+            height: 60px;
+            margin:auto;
+        }
+        .item:nth-of-type(1) .linear-gradient{
+            background-image:linear-gradient(yellow,green,red,skyblue);
+        }
+        /*标准写法*/
+        .item:nth-child(2) .linear-gradient{
+            background-image: linear-gradient(yellow,skyblue);
+        }
+        /*nth-child和nth-of-type都是选择的父元素的儿子*/
+        .item:nth-child(3) .linear-gradient{
+            background-image: linear-gradient(0deg,yellow,skyblue);
+        }
+        .item:nth-child(4) .linear-gradient{
+            background-image: linear-gradient(90deg,yellow,skyblue);
+        }
+        /*The gradient line is defined by the center of the box containing
+    the gradient image and by an angle. The color of the gradient is defined
+    by different points, the starting point, the ending point and, in between, optional stop-color points.*/
+        .item:nth-child(5) .linear-gradient{
+            background-image: linear-gradient(180deg,yellow,skyblue);
+        }
+        .item:nth-child(6) .linear-gradient{
+             background-image: linear-gradient(to top,yellow,skyblue);
+         }
+        .item:nth-child(7) .linear-gradient{
+            background-image: linear-gradient(to top right,yellow,skyblue);
+        }
+        .item:nth-child(8) .linear-gradient{
+            background-image: linear-gradient(135deg,yellow,skyblue);
+        }
+        /*控制渐变*/
+        .item:nth-child(9) .linear-gradient{
+            background-image: linear-gradient(to right,yellow 20%,skyblue 60%);
+        }
+        .item:nth-child(10) .linear-gradient {
+            background-image: linear-gradient(to right, yellow 50%, skyblue 60%, gold);
+        }
+            /*黄色从百分之五十开始渐变，但百分之五十时黄色已经结束，故不再渐变。天蓝从百分之六十开始渐变，故百分之五十到百分之六十之间为天蓝纯色，从百分之六十之后由天蓝色开始向金色过度
+            注意：百分比以整个渐变框为参考。表示的是位置。
+            */
+
+        /*径向渐变开始
+            径向渐变：
+                1.辐射范围
+                2.中心点
+                3.颜色起止
+        */
+        .linear-gradient1 {
+            width: 160px;
+            height: 160px;
+            margin:auto;
+        }
+        .radial-gradient1 .linear-gradient1{
+            background-image:radial-gradient(yellow,green);
+        }
+        .radial-gradient2 .linear-gradient1{
+            background-image:radial-gradient(90px at center center,yellow,green);
+        }
+        .radial-gradient3 .linear-gradient1{
+            background-image:radial-gradient(90px at right top,yellow,green);
+        }
+        .radial-gradient4 .linear-gradient1{
+            background-image:radial-gradient(90px at 40px 40px,yellow,green);
+        }
+        /*坐标位置以左上角为原点*/
+        .radial-gradient5 .linear-gradient1{
+            background-image:radial-gradient(120px 60px at center center,yellow,green);
+        /*辐射范围半径可以是椭圆*/
+        }
+        .radial-gradient6 .linear-gradient1 {
+            background-image: radial-gradient(circle at center center, yellow, green);
+        }
+        .radial-gradient7 .linear-gradient1 {
+            background-image: radial-gradient(circle at center center, yellow, green);
+        }
+        /*重复渐变开始*/
+        .radial-gradient8 .linear-gradient{
+            background-image: repeating-linear-gradient(yellow 20%, green 50%);
+        }
+        /*重复渐变开始*/
+        .radial-gradient9 .linear-gradient1{
+            background-image: repeating-radial-gradient(120px at center center , yellow 20%, green 50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header><h3>CSS3-渐变</h3></header>
+        <div class="main">
+            <!-- 线性渐变-->
+            <div class="item gradient1" data-brief="四色线性渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient2" data-brief="标准渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient3" data-brief="固定方向渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient4" data-brief="90度渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient5" data-brief="180度渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient6" data-brief="关键字渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient7" data-brief="关键字渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient8" data-brief="135度渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient9" data-brief="135度渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item gradient10" data-brief="135度渐变">
+                <div class="linear-gradient"></div>
+            </div>
+            <!-- -->
+            <div class="item radial-gradient1" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+            <div class="item radial-gradient2" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+            <div class="item radial-gradient3" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+            <div class="item radial-gradient4" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+            <div class="item radial-gradient5" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+            <div class="item radial-gradient6" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+            <div class="item radial-gradient7" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+            <div class="item radial-gradient8" data-brief="">
+                <div class="linear-gradient"></div>
+            </div>
+            <div class="item radial-gradient9" data-brief="">
+                <div class="linear-gradient1"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

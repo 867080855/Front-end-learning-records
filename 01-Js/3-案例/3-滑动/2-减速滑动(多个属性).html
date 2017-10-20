@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: #fff333;
+            position: absolute;
+            left:0;
+            top:40px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">left+top+width</button>
+<button id="btn2">left+opacity+zIndex</button>
+<div id="box"></div>
+<script>
+    //待解决的问题：
+        //ie中加入opacity属性后普通移动属性都会失效。移出json中定义的opacity属性恢复正常。
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var box = document.getElementById("box");
+    btn1.onclick = function () {
+        animate(box,{left:800,top:200,width:400},function(){alert("done")});
+    };
+    btn2.onclick = function () {
+        animate(box,{left:200,opacity:50,zIndex:3})
+    };
+    function animate(obj,json){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(slide,30);
+        function slide(){
+            var flag = true;
+            //所幸是在for循环中用，若用函数的话step会变成内部变量了。
+            for(var attr in json){
+                var curAttr = 0;
+                if(attr == "opacity"){
+                    curAttr = getStyle(obj,attr)*100;
+                    console.log(curAttr);
+                    //console.log(step);
+                }else{
+                    curAttr = parseInt(getStyle(obj,attr));
+                }
+                var step = (json[attr]-curAttr)/10;
+                step = step>0 ?Math.ceil(step) :Math.floor(step);
+                if(attr == "opacity"){
+                    if("opacity" in obj.style){
+                        obj.style.opacity = (curAttr+step)/100;
+                    }else{
+                        obj.style.filter = "alpha(opacity = 30)";
+                    }
+                }else if(attr == "zIndex"){
+                    obj.style.zIndex = json[attr];
+                }
+                else {
+                    obj.style[attr] = curAttr + step + "px";
+                }
+            if(json[attr] != curAttr){flag=false;}
+            }
+            if(flag){clearInterval(obj.timer);console.log("done");}
+        }
+    }
+    function getStyle(obj,attr){
+        if(window.getComputedStyle){
+            return window.getComputedStyle(obj,null)[attr];
+        }else{
+            return obj.currentStyle[attr];
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+css选择器回顾：
+    1.基础选择器
+        #id id选择器
+        .class 类选择器
+        element 标签选择器
+        * 通配符选择器    //主要配合其他选择器使用
+        , 并集选择器
+    2.层级选择器
+        div.liItem  交集选择器
+        空格 后代选择器
+        > 子代选择器(亲儿子)
+            //div>span  选择div的亲儿子span
+        + 紧邻选择器
+            //div+p     选择div紧挨着的下一个p元素
+        : 伪类选择器
+jQuery选择器：
+    1.基础选择器
+        $("#id") id选择器
+        $(".class") 类选择器
+        $("li") 标签选择器
+        $("*") 通配符选择器
+        $(".class,div") 并集选择器
+    2.层级选择器
+        $("div span") 后代选择器
+        $("div>span") 子代选择器
+        $("div+p")    紧邻选择器
+        $("div~p")    兄弟选择器
+    3.过滤选择器
+        1).基本过滤选择器
+            :eq(Index) 选择指定Index的元素(Index为从0开始的序号)
+                //示例: $("li:eq(4)") 选择所有li元素的地五个元素
+            :first  选择第一个元素
+            :last   选择最后一个元素
+            :even / :odd
+                //:odd  选择Index为奇数的元素
+                //:even 选择Index为偶数的元素
+            :lt(Index) / :gt(Index)
+                //lt(Index) 选择小于指定序号的元素
+                    //litter than
+                //gt(Index) 选择大于指定序号的元素
+                    //geeat than
+        2).属性过滤选择器
+            $("a[href]")    //选择具有指定值或属性的元素
+            $("a[href][title]")     //选择同时具有多个指定值或属性的元素
+            $("a[href = 'http://www.baidu.com']")   //选择属性等于指定值的元素
+            $("a[href != 'http://www.baidu.com']")  //选择属性不等于指定值的元素
+            $("a[href ^= 'http']")  //选择开头为XXX的元素
+            $("a[href $= 'http']")  //选择结尾为XXX的元素
+            $("a[href *= 'http']")  //选择属性含有XXX的元素
+    4.筛选选择器(都是方法)
+        .eq(Index)
+        .first()
+        .last()
+        .find(expr)
+            //expr string类型的字符串，可以是id名，class，标签名等
+                //expr也可以为空
+        .parent(expr)
+        .sibling(expr)
+        .children(expr)
+    5.表单选择器(获取type等于相应属性的input元素)
+        $(":text");
+        $(":checkbox");
+        $(":checked");

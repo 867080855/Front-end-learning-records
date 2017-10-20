@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        非常注意：
+            ul会被浮动的盒子贯穿！
+            最终的ul的高度等于ul本身的高度加上浮动盒子的高度。
+            给浮动的盒子加上高以后，现象立刻消失
+        注意：
+            一个没有高的盒子根本不可能有背景色！！！！
+        问题0：浮动的盒子不算在body内？
+            有时候在有时候不在。。。
+        问题1：为什么float盒子可以在nav盒子的上边？
+                因为float盒子是浮动的。不是标准流。
+        问题2：为什么items盒子不再nav盒子的上边？
+        -->
+    <meta charset="UTF-8">
+    <title>浮动的没有高的盒子放两个标准流盒子实验</title>
+    <style>
+        .float{
+            margin: 50px;
+            float:left;
+            width: 200px;
+            height: 40px;
+            background-color: yellowgreen;
+        }
+        .standard1{
+            width: 150px;
+            height: 40px;
+            background-color: palevioletred;
+        }
+        .standard2{
+            width: 200px;
+            height: 700px;
+            background-color: deeppink;
+        }
+        .nav1 {
+            width: 100%;
+            height: 250px;
+            background-color:skyblue;
+        }
+        .nav2,.nav3{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .items{
+            width: 300px;
+        }
+        .items ul{
+            list-style:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="float">
+        <div class="standard1"></div>
+        <div class="standard2"></div>
+    </div>
+    <div class="items">
+        <ul>
+            <li><a href="#">服装城</a></li>
+            <li><a href="#">美妆馆</a></li>
+            <li><a href="#">超市</a></li>
+            <li><a href="#">全球购</a></li>
+            <li><a href="#">闪购</a></li>
+            <li><a href="#">团购</a></li>
+            <li><a href="#">拍卖</a></li>
+            <li><a href="#">金融</a></li>
+            <li><a href="#">智能</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>

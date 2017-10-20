@@ -1,0 +1,16 @@
+1.offsetWidth(披着羊皮的狼)
+    width + padding + border
+2.clientWidth
+    width + padding 不包含border
+    ------------------------------------------------
+        ie9及其以上版本：
+            window.innerWidth
+        标准模式：
+            document.documentElement.clientWidth
+        怪异模式：
+            document.body.clientWidth
+3.scrollWidth
+    大小就是内容的大小
+        //如果内容没有超过盒子，就是width+padding
+4.screen.width
+    电脑屏幕的分辨率宽度

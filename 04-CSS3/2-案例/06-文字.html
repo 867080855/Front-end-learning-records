@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+        }
+        section:nth-of-type(1)>div{
+            font-size: 80px;
+            color:#000;
+            text-shadow:4px 4px 16px #ccc;
+                /*四个参数从左到右：
+                    左偏移量 上偏移量 模糊度 阴影颜色*/
+        }
+        section:nth-of-type(2) .wrap-box{
+            overflow: hidden;
+        }
+        section:nth-of-type(2) .change{
+            /*section:nth-of-type(2)>span是选不中任何元素的。因为span不是section的亲儿子*/
+            background-color: red;
+            width: 50px;
+            height: 100px;
+            float: left;
+            margin-right:200px;
+            /*word-break:break-all;*/
+                /*打断所有字母*/
+            word-wrap:break-word;
+                /*认为纯英文是一个词，纯中文是一个词*/
+        }
+        section:nth-of-type(2) .normal{
+            background-color: red;
+            width: 50px;
+            height: 100px;
+            float: left;
+            margin-right:200px;
+        }
+        section:nth-of-type(2) .pre{
+            background-color: red;
+            width: 50px;
+            height: 100px;
+            float: left;
+            margin-right:200px;
+            white-space: pre;
+        }
+        section:nth-of-type(2) .pre-wrap{
+            background-color: red;
+            width: 50px;
+            height: 100px;
+            float: left;
+            margin-right:200px;
+            white-space: pre-wrap;
+        }
+        section:nth-of-type(2) .pre-line{
+            background-color: red;
+            width: 50px;
+            height: 100px;
+            float: left;
+            margin-right:200px;
+            white-space: pre-line;
+        }
+        section:nth-of-type(2) .nowrap{
+            background-color: red;
+            width: 50px;
+            height: 100px;
+            float: left;
+            margin-right:200px;
+            white-space: nowrap;
+        }
+        /*不论是pre还是pre-wrap都是保留原有的格式，区别是pre不换行，pre-wrap会换行
+            pre-line与pre-wrap相比前者会把空行清除掉。
+            nowrap强制不换行
+        */
+        section:nth-of-type(3) .single-line p{
+            width: 300px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            border:1px solid #333;
+            overflow: hidden;
+        }
+        section:nth-of-type(3) .multiple-line p{
+            width: 300px;
+            text-overflow: ellipsis;
+            border:1px solid #333;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp:3;
+            -webkit-box-orient:vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-颜色</header>
+        <section>
+            <header>文字阴影</header>
+            <div class="wrap-box">
+                <span>文字阴影</span>
+            </div>
+        </section>
+        <section>
+            <header>文字换行</header>
+            <div class="wrap-box">
+                <p class="normal">文字换行 http:www.baidu.com</p>
+                <p class="change">文字换行 http:www.baidu.com</p>
+                <p class="normal">文字换行文字换行文字换行</p>
+                <p class="pre">文字换行
+                    http:www.baidu.com</p>
+                <p class="pre-wrap">文字换行
+                    http:www.baidu.com</p>
+                <p class="pre-line">文字
+                    <!-- preline中回车的换行不会被忽略，tab的换行会被忽略-->
+                    换行
+                    http:www.baidu.com</p>
+                <p class="nowrap">文字
+                    换行
+                    http:www.baidu.com</p>
+            </div>
+        </section>
+        <section>
+            <header>文字溢出</header>
+            <!-- 文字溢出需要具备三个条件
+                1.强制不换航
+                2.文字溢出处理
+                3.overflow:hidden-->
+            <div class="single-line wrap-box">
+                <p>文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出</p>
+            </div>
+            <div class="multiple-line wrap-box">
+            <!-- 兼容性很不好，慎重选择，比较完备的多行溢出需要js配合完成-->
+                <p>文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出文字溢出</p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

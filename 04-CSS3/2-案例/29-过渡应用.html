@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            margin:100px auto;
+            background: url(images/flower.jpg) no-repeat center center;
+            background-size: 100% auto;
+                /*为什么此处设置为contain时没有反应，因为下边的hover设置的是大小，而此处不是，没有发生属性的变化，故而没有渐变的表现。*/
+            transition: all 1.5s;
+        }
+        .box:hover{
+            background-size: 120% auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>

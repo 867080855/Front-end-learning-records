@@ -1,0 +1,27 @@
+1.charAt(index);----返回指定位置字符
+    ------------------------------------------
+    var txt = "abcde";
+    console.log(txt.charAt(3));
+            //d
+2.charCodeAt();----返回指定位置字符的unicode编码
+    var txt = "abcdefg";
+    console.log(txt.charCodeAt(0));
+    ---------------------------------
+    //获取字符串长度
+    var txt = "what are you 弄啥嘞";
+    console.log(txt.length);//16
+    function getTxtLength(str) {
+        var len = 0;
+        var c = 0;
+        for (var x = 0; x < str.length; x++) {
+            c = str.charCodeAt(x);
+            if (c >= 0 && c <= 127) {
+                len += 1;
+            } else {
+                len += 2;
+            }
+        }
+        return len;
+    }
+    console.log(getTxtLength(txt)); //19
+    //相差的三个字符是空格。

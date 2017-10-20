@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="box" id="box"></div>
+</body>
+<script>
+    //本函数可以实现每改变一次窗口大小实现一次函数。
+        //不过每次改变的基点是拖动的瞬间。且如果拖动的事件超过1秒就会导致两次甚至多次的输出
+        //可以考虑通过加大延迟时间来解决。不过相应的响应会看起来比较慢。
+    var num = 0;
+    var demo = document.getElementById("box");
+    window.onresize = throttle(function(){
+            demo.innerHTML = window.innerWidth || document.body.clientWidth;
+            num++;
+            console.log(num);
+    },1000);
+    //节流函数
+    function throttle(fn,delay){
+        //throttle 节流
+        var timer = null;
+        return function () {
+            clearTimeout(timer);
+            timer = setTimeout(fn,delay)
+        }
+    }
+</script>
+</html>

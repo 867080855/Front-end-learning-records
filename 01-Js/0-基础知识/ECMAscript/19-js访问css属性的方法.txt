@@ -1,0 +1,32 @@
+1.利用点语法
+    eg:box.style.width----带有单位
+       box.style.top
+    --------------------------------------------
+    缺陷：
+        1.得到的width和top是没有办法传递参数的。因为其不是变量，而是一个属性值。
+            var w = "width";
+            box.style.w-----不能这么写，错误的。
+        2.只支持行内式
+2.利用中括号([])访问属性(可以传参)
+    eg:box.style["width"];
+    --------------------------------------
+    "width"是一个变量，很方便。
+        function fn(attr){
+            console.log(box.style[attr]);
+        }
+===================================================================================
+获得内嵌式或外链式的样式：
+    ie,opera:
+       obj.currentStyle
+    标准浏览器(w3c):
+        window.getComputedStyle("元素","伪类");
+        //两个选项是必须写的，但是一般不学习伪类，用null代替。
+    ------------------------------------------------------------
+    兼容性写法&返回当前样式的函数：
+        function getStyle(obj,attr){
+            if(window.getComputedStyle){
+                return window.getComputedStyle(obj,null)[attr];
+            }else{
+                return obj.currentStyle[attr];
+            }
+        }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin:20px;
+            background-color: #0873C0;
+            position: absolute;
+            left:0;
+            top:100px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("btn");
+            var box = document.getElementById("box");
+            var num = 0;
+            var timer = null;
+            btn.onclick = function () {
+
+                timer = setInterval(slide,20);
+                function slide(){
+                    num ++;
+                    console.log(num);
+                    num>500 ? clearInterval(timer) : box.style.left = num+"px";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">开始滑</button>
+    <div id="box" class="box"></div>
+</body>
+</html>

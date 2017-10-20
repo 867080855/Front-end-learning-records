@@ -1,0 +1,5 @@
+1.ªÒ»°scrollTop
+    $("div").scrollTop();
+2.…Ë÷√scrollTop
+    $("div").scrollTop("300");
+    $("div").scrollTop(300);

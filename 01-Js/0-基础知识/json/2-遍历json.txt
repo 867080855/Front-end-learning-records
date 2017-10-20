@@ -1,0 +1,13 @@
+利用关键字for in:
+    var json = {width:200,height:300,left:40};
+    for(var k in json){
+        console.log(k+":"+json[k]);
+        //得到的属性
+    }
+    -----------------------------------
+    for in遍历数组的k得到的是索引值
+    -----------------------------------
+    结果：
+        width:200
+        height:300
+        left:40

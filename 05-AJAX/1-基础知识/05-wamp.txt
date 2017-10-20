@@ -1,0 +1,11 @@
+WAMP:
+    W:windows   操作系统
+    A:apache    提供网页服务的应用程序
+    M:mysql     数据库(oracle,sqlserver)
+    P:php       后台编程语言(用于做动态网站，java,jsp,.net,python)
+安装常见问题：
+    1.端口冲突(80)。
+        iis默认占有80端口。停止iis服务即可。
+        或者修改wamp端口。wamp5-apache-apache.conf-修改Listen。
+    2.缺少MSVCR100.dll.
+        在网上找到安装到指定位置。

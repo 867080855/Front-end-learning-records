@@ -1,0 +1,18 @@
+1.数组声明
+    1).var arr = [1,2,3,4,5];----常用
+    2).var arr = new Array[1,2,3,4,5];
+2.数组使用
+    1).arr[i];
+3.数组长度
+    1).arr.length;----属性，不是方法。
+4.数组遍历
+    1).
+        var arr = [1,2,3,4,5];
+        for(var x = 0;x<arr.length;x++){
+            console.log(arr[x]);
+        }
+    2).----效率更高，因为只需要获取一次数组长度。
+        var arr = [1,2,3,4,5];
+        for(var x = 0,len = arr.length;x<len;x++){
+            console.log(arr[x]);
+        }

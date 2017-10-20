@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+	<div>
+		<select id="province"></select>
+		<select id="city"></select>
+	</div>
+</body>
+<script src='http://apis.haoservice.com/efficient/area?areaId=0&key=02f509b934d949c5b0bbea254e57a543'></script>
+<script>
+	$(function () {
+		$('#province').on('change',function () {
+			console.log("done");
+		});
+	})
+</script>
+</html>

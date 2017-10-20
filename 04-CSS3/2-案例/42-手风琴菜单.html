@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul,li{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .menu{
+            width: 400px;
+            height: 500px;
+            margin:100px auto;
+        }
+        .menu li{
+            width: 100%;
+        }
+        .menu li>header{
+            width: 100%;
+            height: 50px;
+            background-color: #0060BF;
+            color:#fff;
+            font-size: 20px;
+            line-height: 40px;
+        }
+        .menu .content{
+            width: 100%;
+            height: 0;
+            background-color: #ff2222;
+            text-align: center;
+            color:#fff;
+            transition:height 1s;
+        }
+        /*.menu li:nth-of-type(1) .content{*/
+            /*/!*.menu .content:nth-of-child(1)选择不上，为什么?*/
+                /*因为nth选择content类的父亲的第一个，content的父亲是li，*/
+            /*因此要先固定好li再去确定content*/
+            /**!/*/
+            /*height: 250px;*/
+        /*}*/
+        .menu li:hover .content{
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+       <li>
+           <header>标题</header>
+           <div class="content"></div>
+       </li>
+       <li>
+           <header>标题</header>
+           <div class="content"></div>
+       </li>
+       <li>
+           <header>标题</header>
+           <div class="content"></div>
+       </li>
+       <li>
+           <header>标题</header>
+           <div class="content"></div>
+       </li>
+       <li>
+           <header>标题</header>
+           <div class="content"></div>
+       </li>
+    </ul>
+</body>
+</html>

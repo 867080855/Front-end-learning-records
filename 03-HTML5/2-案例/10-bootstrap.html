@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav">
+                <li class="active item red"><a href="#">Home</a></li>
+                <li class="item block"><a href="#">Link</a></li>
+                <li class="item dash"><a href="#">Link</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        </nav>
+    </div>
+    <script>
+//        //1.获取所有li元素
+//        var lis = document.querySelectorAll(".nav>li");
+//        //2.遍历，给li元素加事件(click)
+//        for(var x = 0;x<lis.length;x++){
+//            var item = lis[x];
+//            item.addEventListener("click", function (e) {
+//                //3.重置类名
+//                for(var i = 0;i < lis.length; i++){
+//                    lis[i].classList.remove("active");
+//                }
+//                //4.事件执行中，将当前出发事件的元素加上active类名
+//                this.classList.add("active");
+//                console.log(this.classList);
+//            });
+//        }
+
+        var item = document.querySelector(".navbar-brand");
+        item.addEventListener("click", function (e) {
+            var exist = this.classList.contains("active");
+            //toggle()的第二个参数true为添加，false为删除。:
+            this.classList.toggle("active",!exist);
+            e.preventDefault();
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+html结构的访问：
+    文档：document
+    文档结构：
+        html body head
+        -------------------------
+        console.log("head:"+document.head);
+        console.log("title:"+document.title);
+        console.log("body:"+document.body);
+            //head:[object HTMLHeadElement]
+              title:我的页面
+              body:[object HTMLBodyElement]
+        //注意没有document.html。可以用document.documentElement访问。
+            //html不能直接访问。
+            //console.log("html:"+document.html);
+            //html:undefined
+        console.log("html:"+document.documentElement);
+            //html:[object HTMLHtmlElement]
+        ------------------------------------------------------------
+        怎么访问一个div标签：

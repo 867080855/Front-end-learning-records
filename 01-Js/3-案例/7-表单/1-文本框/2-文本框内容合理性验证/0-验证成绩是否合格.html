@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <!--
+        margin:0 auto;语句需要在给定盒子宽度以后才能使用。
+    -->
+    <style>
+        *{margin:0;padding:0;}
+        input{
+            outline-style: none;
+            border:1px solid #ccc;
+            height: 20px;
+        }
+        #form{
+            width: 500px;
+            margin:100px auto;
+        }
+        span{
+            display: inline-block;
+            height: 20px;
+            width: 170px;
+            border:1px solid #ccc;
+            font-size: 12px;
+            line-height: 20px;
+            color:#999;
+            margin-left:10px;
+            padding-left: 25px;
+            background-color: #eee;
+        }
+        .wrong{
+            background: url(images/wrong.png) no-repeat #FFDCD0 4px 2px ;
+            border:1px solid #FFAC91;
+            color:#FF6B39;
+        }
+        .right{
+            background: url(images/right.png) no-repeat #DFFFDF 4px 2px ;
+            border:1px solid #ACFFAC;
+            color:#5EFF5E;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            function $id(id){ return document.getElementById(id);}
+            $id("txt").onblur = function(){
+                if(this.value == ""){
+                    $id("result").className = "wrong";
+                    $id("result").innerHTML = "输入的成绩不能为空！";
+                }else if(isNaN(this.value)){
+                    $id("result").className = "wrong";
+                    $id("result").innerHTML = "输入的成绩不能为文字！";
+                }else if(this.value >150 || this.value <0){
+                    $id("result").className = "wrong";
+                    $id("result").innerHTML = "输入的成绩不能超出[0-150]！";
+                }else{
+                    $id("result").className = "right";
+                    $id("result").innerHTML = "成绩正确";
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="form">
+        语文:<input type="text" value="" id="txt"/><span id="result">请输入成绩</span>
+    </div>
+</body>
+</html>

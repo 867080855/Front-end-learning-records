@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+        }
+        /*正文开始*/
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: #0399A0;
+            margin:0 auto;
+            transition:all 1s;
+            transform-origin:0 0;
+                /*设置坐标原点的左上角*/
+        }
+        .rotate-x .box:hover{
+            /*transform:rotateX(135deg);*/
+            transform:rotateX(135deg);
+            transform-origin:top;
+        }
+        .rotate-y .box:hover{
+            transform:rotateY(135deg);
+        }
+        .rotate-z .box:hover{
+            transform:rotateZ(135deg);
+        }
+        .rotate-xyz .box:hover{
+            transform:rotateX(135deg) rotateY(135deg) rotateZ(135deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-3D旋转</header>
+        <section>
+            <header>简介</header>
+            <div class="wrap-box">
+                <p>3D旋转的坐标系比较奇特：以传统的x，y轴呈于纸面，但y轴正方向向下，z轴指向于垂直纸面方向，向外为正</p>
+            </div>
+        </section>
+        <section class="rotate-x">
+            <header>3D-旋转-x轴(类似于单杠运动员旋转)</header>
+            <div class="wrap-box">
+                <div class="box"></div>
+            </div>
+        </section>
+        <section class="rotate-y">
+            <header>3D-旋转-y轴(类似于钢管舞的旋转)</header>
+            <div class="wrap-box">
+                <div class="box"></div>
+            </div>
+        </section>
+        <section class="rotate-z">
+            <header>3D-旋转-z轴(类似于转盘的旋转)</header>
+            <div class="wrap-box">
+                <div class="box"></div>
+            </div>
+        </section>
+        <section class="rotate-xyz">
+            <header>3D-多轴旋转</header>
+            <div class="wrap-box">
+                <div class="box"></div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

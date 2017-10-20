@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: '微软雅黑';
+			background-color: #F7F7F7;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.wrapper {
+			width: 1024px;
+			margin: 0 auto;
+		}
+
+		.wrapper > section {
+			margin-bottom: 30px;
+			box-shadow: 1px 1px 4px #DDD;
+			background-color: #FFF;
+		}
+
+		.wrapper > header {
+			text-align: center;
+			line-height: 1;
+			padding: 20px;
+			margin-bottom: 10px;
+			font-size: 30px;
+		}
+
+		.wrapper section > header {
+			line-height: 1;
+			padding: 10px;
+			font-size: 22px;
+			color: #333;
+			background-color: #EEE;
+		}
+
+		.wrapper .wrap-box {
+			padding: 20px;
+		}
+		/*
+			1.坐标系：正常x，y坐标系
+			2.参数:(dx,dy)
+				需要y轴单独移动时，设置dx为0即可。
+				负值表示负方向移动
+		*/
+		.box {
+			width: 160px;
+			height: 160px;
+			background-color: yellow;
+			margin: 15px auto 0;
+			transition: all 1s;
+		}
+		.skew .box:hover{
+			transform:skew(45deg);
+		}
+		.skew2 .box:hover{
+			transform:skew(-45deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<header>CSS3-移动</header>
+		<!-- 简介 -->
+		<section class="brief">
+			<header>skew</header>
+			<div class="wrap-box">
+				<p>通过 skew() 方法，可以使盒子发生倾斜，通过设置角度距离实现</p>
+				<p>使用方法如：transform: skew(angle)</p>
+			</div>
+		</section>
+		<!-- 分隔线 -->
+		<section class="skew">
+			<header>倾斜</header>
+			<div class="wrap-box">
+				<div class="box"></div>
+			</div>
+		</section>
+		<section class="skew2">
+			<header>倾斜</header>
+			<div class="wrap-box">
+				<div class="box"></div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

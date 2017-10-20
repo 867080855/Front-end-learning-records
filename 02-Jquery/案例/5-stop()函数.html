@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            margin-top: 10px;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <button>startAnimation</button>
+    <button>stopAnimation</button>
+    <div></div>
+</body>
+<script>
+    $(document).ready(function () {
+        $("button:first").click(function () {
+            $("div").animate({"height":"400px"},2000);
+            $("div").animate({"width":"400px"},2000);
+            $("div").animate({"height":"200px"},2000);
+            $("div").animate({"width":"200px"},2000);
+        });
+        $("button:last").click(function () {
+           //$("div").stop(true);   //停止当前动画，并清空队列
+           //$("div").stop(false);    //停止当前动画，不清空队列
+           //$("div").stop(false,true);     //立即完成当前动画，不清空队列
+           //$("div").stop(false,false);     //停止当前动画，不清空队列
+           //$("div").stop(true,true);     //立即完成当前动画，清空队列
+            $("div").stop();
+
+        });
+    })
+</script>
+</html>

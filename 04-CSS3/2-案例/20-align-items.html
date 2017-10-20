@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+        }
+        /*正文开始*/
+        section ul{
+            list-style: none;
+            display: flex;
+            min-height: 300px;
+        }
+        section li{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: skyblue;
+            margin-right:10px;
+        }
+        section li:nth-child(2){
+            line-height: 300px;
+        }
+        .align:nth-child(3) ul{
+            align-items: baseline;
+        }
+        .align:nth-child(4) li{
+            height: auto;
+        }
+        .align:nth-child(4) ul{
+            align-items: stretch;
+        }
+        .align:nth-child(5) ul{
+            align-items: center;
+        }
+        .align:nth-child(6) ul{
+            align-items: flex-start;
+        }
+        .align:nth-child(7) ul{
+            align-items: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-align-items</header>
+        <section class="content">
+            <header>简介</header>
+            <div class="wrap-box">
+                <p>调整侧轴方向对齐方式，包括baseline,stretch,flex-start,flex-end</p>
+            </div>
+        </section>
+        <section class="align">
+            <header>baseline</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="align">
+            <header>stretch</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="align">
+            <header>center</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="align">
+            <header>flex-start</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+        <section class="align">
+            <header>flex-end</header>
+            <div class="wrap-box">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

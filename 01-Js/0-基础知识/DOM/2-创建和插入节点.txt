@@ -1,0 +1,22 @@
+1.创建节点：
+    1).createElement();
+2.插入节点(只能插入孩子。)
+    1).appendChild(); ----添加孩子到盒子的  最后面 ！
+    2).insertBefore(插入的节点,参照节点);  ----添加孩子到指定位置。
+            //两个节点必须写满
+            //若第二个参数为null,则默认把新生成的盒子放在最后边。但不能为空。
+                //obj.insertBefore(target,null);
+    ------------------------------------------------------
+    var box = document.getElementById("box");
+        //创建节点
+        var firstDiv = document.createElement("div");
+        var test = document.createElement("nav");
+        //插入节点
+        box.appendChild(firstDiv);
+        box.insertBefore(test,box.children[0]);
+    3).怎么给自己添加兄弟呢？
+        1>.box.parentNode.appendChild(box.cloneNode());
+            //如果存在script代码会插入到代码后边，下边的为改进版
+        2>.console.log(box.parentNode.children);
+           box.parentNode.insertBefore(box.cloneNode(true),box.parentNode.children[1]);
+            //box.parentNode.children可以获得body的所有孩子。包括script代码块。

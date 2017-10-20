@@ -1,0 +1,8 @@
+1.encodeURIComponent(); ----±àÂë
+2.decodeURIComponent(); ----½âÂë
+-------------------------------------------------------------------
+      var url = "http://www.itcast.cn?name=cz";
+      var enUrl = encodeURIComponent(url);
+        console.log(enUrl); //http%3A%2F%2Fwww.itcast.cn%3Fname%3Dcz
+      var deUrl = decodeURIComponent(enUrl);
+        console.log(deUrl); //http://www.itcast.cn?name=cz

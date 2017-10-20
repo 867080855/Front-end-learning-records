@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei";
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+        }
+        .wrapper>section{
+            background-color: #fff;
+            min-height: 100px;
+            margin-bottom: 30px;
+            box-shadow:1px 1px 4px #ddd;
+        }
+        .wrapper>header{
+            font-size: 30px;
+            margin-bottom: 10px;
+            padding:20px;
+            text-align: center;
+            line-height: 1;
+        }
+        .wrapper section > header{
+            background-color: #eee;
+            color:#333;
+            padding:10px;
+            font-size: 22px;
+            line-height: 1;
+        }
+        .wrap-box{
+            padding:20px;
+            overflow: hidden;
+        }
+        section:nth-of-type(2){
+            overflow: hidden;
+            background-color: orange;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left;
+            margin-right:100px;
+            margin-bottom:10px;
+            text-align: center;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
+        }
+        .child2{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0,0,0,.2)
+        }
+        .RGBA>div{
+            background-color: RGBA(0, 0, 0, .3);
+        }
+        .HSLA>div{
+            background-color: HSLA(0,10%,10%,.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>CSS3-颜色</header>
+        <section>
+            <header>opacity</header>
+            <!-- 子元素会继承父元素的透明度
+                想要解决就必须把子元素放在父元素之外，即opacity是有缺点的
+            -->
+            <div class="wrap-box">
+
+            </div>
+        </section>
+        <section>
+            <header>transparent</header>
+            <!-- transparent是完全透明的，跟玻璃一样-->
+            <div class="wrap-box">
+                <div class="father">
+                    <div class="child"></div>
+                    transparent设置的盒子，此处的child不是没有设置上，是本身是透明的
+                </div>
+                <div class="father">
+                    <div class="child2"></div>
+                    rgba设置的盒子
+                </div>
+            </div>
+        </section>
+        <section CLASS="RGBA">
+        <header>RGBA</header>
+        <div class="wrap-box">
+
+        </div>
+        </section>
+        <section CLASS="HSLA">
+            <header>HSLA</header>
+            <div class="wrap-box">
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

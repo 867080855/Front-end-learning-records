@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ol{list-style: none;}
+        ul{list-style: none;}
+        img{display: block;}
+        .slider{
+            width: 490px;
+            height: 170px;
+            padding: 5px;
+            margin:150px auto;
+            border: 1px solid #eee;
+        }
+        #inner-border{
+            overflow: hidden;
+            height: 170px;
+            width: 490px;
+            position: relative;
+        }
+        .slider ul{
+            width: 1000%;
+            height: 170px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .slider li{
+            float: left;}
+        .slider ol{
+            position: absolute;
+            left:50%;
+            margin-left: -60px;
+            bottom: 10px;}
+        .slider ol li{
+            width: 18px;
+            height: 18px;
+            float: left;
+            background-color: #fff;
+            margin-right: 6px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .slider ol li.current{
+            background-color: #FF6B39;}
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div id="inner-border">
+            <ul>
+                <li><a href="#"><img src="images/01.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/02.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/03.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/04.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/05.jpg" alt=""/></a></li>
+            </ul>
+            <ol>
+                <li class="current">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ol>
+        </div>
+    </div>
+</body>
+<script>
+    var slider = document.getElementById("inner-border");
+    var ul = slider.children[0];
+    var ol = slider.children[1];
+    var olLis = ol.children;
+    var leader = 0;
+    var tar = 0;
+    var timer = null;
+        //tar和leader如果在本for循环之后再定义会报错，mutable variables is accessible...
+            //解决措施就是定义在tar调用之前。
+    for(var x = 0;x<olLis.length;x++ ){
+        olLis[x].index = x;
+        olLis[x].onmouseover = function () {
+            for(var j = 0;j<olLis.length;j++){
+                olLis[j].className = "";
+            }
+            this.className = "current";
+            tar = -this.index * 490;
+            //console.log("index:"+this.index);
+        };
+
+    timer = setInterval(slide,30);
+    function slide (){
+        leader = leader +(tar - leader)/10;
+        ul.style.left = leader + "px";
+    }}
+</script>
+</html>

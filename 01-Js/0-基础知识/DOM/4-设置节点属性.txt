@@ -1,0 +1,17 @@
+1.获取节点属性
+    getAttribute();
+    -------------------------------------------------
+        div(element).getAttribute("id");
+        div.getAttribute("class");
+2.设置节点属性(更为常用)
+    setAttribute("属性","值");
+    --------------------------------------------------
+        div.setAttribute("class","demo");
+    --------------------------------------------------
+        //两种更改class名的方法：
+            1).div.className = "demo";(不推荐)
+            2).div.setAttribute("class","demo");
+3.删除节点属性
+    removeAttribute();
+    --------------------------------------------------
+        div.removeAttribute("title");

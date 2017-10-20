@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>classListDemo</title>
+</head>
+<body>
+    <h1 class="class1 class2 class3">
+
+    </h1>
+    <script>
+//        var h1 = document.getElementsByTagName("h1")[0];
+//        var list = h1.className.split(" ");
+//        console.log(list);
+//        list.push("class4");
+//        console.log(list);
+//        h1.className = list.join(" ");
+//        list = h1.className.split(" ");
+//        console.log(list);
+
+        var h1 = document.getElementsByTagName("h1")[0];
+        //通过classList
+        var list = h1.classList;
+        list.add("class4");
+        console.log(list);
+        list.remove("class2");
+        console.log(list);
+        var flag = list.contains("class5");
+        console.log(flag);
+    </script>
+</body>
+</html>

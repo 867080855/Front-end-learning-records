@@ -1,0 +1,11 @@
+获得用户选择的内容
+    window.getSelection();         //一般浏览器
+    document.selection.createRange();       //ie浏览器
+    ------------------------------------------------------
+    兼容性写法：
+         var txt = "";
+         if(window.getSelection){
+               txt = window.getSelection().toString();  //转换为字符串
+         }else{
+               txt = document.selection.createRange().text;     //转换为字符串
+         }

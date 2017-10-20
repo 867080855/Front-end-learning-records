@@ -1,0 +1,11 @@
+跨域问题解决：
+
+	function(data){
+		console.log(data.username);
+	}
+
+	<script src="./xxx.php"></script>
+
+==================================================
+出于安全问题，浏览器不用许ajax跨域获取数据
+	可以通过scr加载js的方式传递数据。以函数参数的形式传递数据。

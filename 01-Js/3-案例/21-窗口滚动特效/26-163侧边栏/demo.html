@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        .fixed{
+            position: fixed;
+            top:0;
+            left:0;
+            z-index: 999;
+        }
+        .main{
+            width: 1300px;
+            margin:0 auto;
+            padding-top: 50px;
+        }
+        .left{
+            position: absolute;
+            top:120px;
+            left:10px;
+        }
+        .right{
+            position: absolute;
+            top:120px;
+            right:10px;
+        }
+    </style>
+    <script src="my.js"></script>
+</head>
+<body>
+<div id="nav" class="nav fixed">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="aside" id="aside">
+    <img src="images/left.png" alt="" class="left"/>
+    <img src="images/right.png" alt="" class="right"/>
+</div>
+<div class="main">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+<script>
+    var nav = $id("nav");
+    var aside = $id("aside");
+    var left = aside.children[0];
+    var right = aside.children[1];
+    //var main = nav.nextSibling;
+        //不能这么写，只有ie6,7,8兼容。
+    var main = nav.nextElementSibling;
+    //console.log(nav.offsetHeight);
+    var lea= 0,tar= 0,timer=null;
+    var aTop = left.offsetTop;
+        //此处不能用aside的offsetTop属性。因为aside没有定位。
+            //定位的是left和right
+    console.log("a:"+aTop);
+    window.onscroll = function () {
+        console.log(scroll().top);
+        clearInterval(timer);
+        tar = scroll().top + aTop;
+        console.log(tar);
+        timer = setInterval(slide,30);
+        function slide(){
+            lea = lea + (tar-lea)/10;
+            left.style.top = lea + "px";
+            right.style.top = lea + "px";
+        }
+    }
+</script>
+</html>

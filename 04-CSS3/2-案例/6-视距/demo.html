@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .center{
+            width: 1000px;
+            margin:50px auto;
+        }
+        .box{
+            display: inline-block;
+            width: 310px;
+            height: 438px;
+            border:1px solid red;
+            perspective: 400px;
+                /*值越小越明显*/
+        }
+        .box1 img{
+            transition:all 1s;
+            transform-origin:left;
+        }
+        .box1:hover img {
+            transform:rotateY(40deg);
+        }
+        .box2 img{
+            transition:all 1s;
+            transform-origin:bottom;
+        }
+        .box2:hover img{
+            transform:rotateX(40deg);
+        }
+        .box3 img{
+            transition:all 1s;
+            transform-origin:bottom;
+        }
+        .box3:hover img{
+            transform:rotateZ(40deg);
+        }
+    </style>
+</head>
+<body>
+<div class="center">
+    <div class="box box1">
+        <img src="images/pk1.png" alt=""/>
+    </div>
+    <div class="box box2">
+        <img src="images/pk1.png" alt=""/>
+    </div>
+    <div class="box box3">
+        <img src="images/pk1.png" alt=""/>
+    </div>
+</div>
+</body>
+</html>

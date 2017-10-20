@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, li, dl, dt, dd, h1, h2, h3, h4, h5 {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f7f7f7;
+        }
+        .wrapper{
+            width: 1000px;
+            margin:0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .wrapper>header{
+            padding: 20px 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .wrapper>header>h3{
+            line-height: 1;
+            font-weight: normal;
+            font-size: 28px;
+        }
+        .main{
+            width: 100%;
+        }
+        .main .item{
+            width: 210px;
+            height: 210px;
+            background-color: #fff;
+            display: flex;/*这句话可以让内容水平竖直居中*/
+            float: left;
+            margin:15px;
+            box-shadow: 2px 2px 5px #CCC;
+            position: relative;
+        }
+        .main .item:after {
+            content: attr(data-brief);
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 210px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #FFF;
+            font-family: '微软雅黑';
+            font-size: 18px;
+            background-color: rgba(170, 170, 170, 0);
+            z-index: -1;
+            transition: all 0.3s ease-in;
+        }
+        .main .item:hover:after {
+            background-color: rgba(170, 170, 170, 0.6);
+            z-index: 100;
+        }
+        /*正文开始*/
+        .img{
+            width: 130px;
+            height: 130px;
+            position: relative;
+            margin:auto;
+            background: url(images/bg.jpg) no-repeat;
+        }
+        .img::after,
+        .img::before{
+            content:'';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding:30px;
+            box-sizing:border-box;
+        }
+        .img::after{
+            background: url(images/bg.jpg) no-repeat;
+            left:50px;
+            top:50px;
+                /*这一步很关键，如果不设置border-box，设置padding后盒子会跟着变大。
+                    border-box的意思是，padding+border+content=100%，
+                    这样content才会变得比原来小*/
+            background-clip: content-box;
+                /*设定显示区域*/
+            background-origin: padding-box;
+                /*设定原点*/
+        }
+        .img::before{
+            background-clip: content-box;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header><h3>标题</h3></header>
+        <div class="main">
+            <div class="item bg1" data-brief=""><div class="img"></div></div>
+            <div class="item bg2" data-brief=""><div class="img"></div></div>
+            <div class="item bg3" data-brief=""><div class="img"></div></div>
+            <div class="item bg4" data-brief=""><div class="img"></div></div>
+            <div class="item bg5" data-brief=""><div class="img"></div></div>
+            <div class="item bg6" data-brief=""><div class="img"></div></div>
+            <div class="item bg7" data-brief=""><div class="img"></div></div>
+            <div class="item bg8" data-brief=""><div class="img"></div></div>
+        </div>
+    </div>
+</body>
+</html>

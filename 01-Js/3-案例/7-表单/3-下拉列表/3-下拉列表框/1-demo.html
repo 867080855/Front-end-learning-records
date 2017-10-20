@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;list-style: none  }
+        .list{
+            width: 340px;
+            height: 30px;
+            margin:100px auto;
+            background: url(images/bg.jpg) no-repeat;
+            padding-left: 10px;
+        }
+        .list ul li{
+            width: 100px;
+            text-align: center;
+            line-height: 30px;
+            float: left;
+            margin-right:10px;
+            position: relative;
+            background: url(images/libg.jpg);
+        }
+        .list ul ul{
+            position: absolute;
+            left:0;
+            line-height: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="list" class="list">
+    <ul>
+        <li>一级菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+    //注意的问题：
+        //定义对象的方法的时候需要在prototype下定义。
+    function List(id){
+        this.id = document.getElementById(id);
+        this.lis = this.id.children[0].children;
+    }
+    List.prototype.init = function(){
+        var _this = this;
+        for(var x = 0;x < this.lis.length;x++){
+            this.lis[x].onmouseover = function(){
+                _this.show(this.children[0]);
+            };
+            this.lis[x].onmouseout = function () {
+                _this.hide(this.children[0]);
+            }
+        }
+    };
+    List.prototype.show = function(obj){
+        obj.style.display = "block";
+    };
+    List.prototype.hide = function(obj){
+        obj.style.display = "none";
+    };
+
+    var list = new List("list");
+    list.init();
+</script>
+</body>
+</html>

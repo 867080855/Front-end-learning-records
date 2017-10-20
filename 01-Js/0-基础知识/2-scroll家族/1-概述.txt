@@ -1,0 +1,23 @@
+scroll家族：
+    scroll----滚动
+    -------------------------------------------
+    常用属性：
+        1.scrollTop,scrollLeft----被卷去的头部和左部
+            //如何得scrollTop属性?
+            ----------------------------------
+            谷歌没有声明dtd的浏览器：
+                document.body.scrollTop;
+            火狐及其他浏览器：
+                document.documentElement.scrollTop
+            ie9和最新浏览器：
+                window.pageXOffset:
+                window.pageYOffset:
+            兼容性写法：
+                window.onscroll = function () {
+                    var scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                    document.title = scrolltop;
+                }
+        2.scrollTo(x,y)
+            window.scroll(15,15);
+                //x,y必须
+            方法可把内容滚动到指定坐标。

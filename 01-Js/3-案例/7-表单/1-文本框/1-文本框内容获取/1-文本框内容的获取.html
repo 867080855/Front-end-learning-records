@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框内容的获取</title>
+    <!-- 文本框所获得的内容为字符型的数据。-->
+</head>
+<body>
+    <input type="text" id="txt"/>
+    <button>加</button>
+    <script>
+        var txt = document.getElementById("txt");
+        var btn = document.getElementsByTagName("button")[0];
+        //var num = Number(txt.value);
+        btn.onclick = function(){
+            alert(txt.value);
+            var num = Number(txt.value);
+                //var num = txt.value*1;
+            alert(num + num);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #follower{
+            position: absolute;
+            left:0;
+            top: 0;
+        }
+        img{
+            width: 88px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="follower">
+    <img src="images/img.jpg" alt=""/>
+</div>
+<script>
+    var fol = document.getElementById("follower");
+    console.log(fol);
+    var leaderX = 0;
+    var leaderY = 0;
+    var tarX = 0;
+    var tarY = 0;
+    document.onmousemove = function (event) {
+        tarX = event.clientX - fol.offsetWidth/2;
+        tarY = event.clientY - fol.offsetHeight/2;
+    };
+    setInterval(follow,4);
+    function follow(){
+        leaderX = leaderX + (tarX - leaderX)/10;
+        leaderY = leaderY + (tarY - leaderY)/10;
+        fol.style.left = leaderX + "px";
+        fol.style.top = leaderY + "px";
+    }
+</script>
+</body>
+</html>
