@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../../js/mui.min.js"></script>
+    <link href="../../css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" >
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="title_company"></h1>
+		</header>
+	<div class="mui-content">
+<!--轮播图-->
+		<div class="mui-slider">
+		    
+		    <div class="mui-slider-group mui-slider-loop" id="slider">
+		    	
+		    </div> 
+		
+	</div>  
+
+ 
+ <ul class="mui-table-view">
+    <li class="mui-table-view-cell"> <span class="caozuogong"> 操作工 </span>
+    	<span class="mui-pull-right  spanmony">3000-5000</span>      </li>
+   <li class="mui-table-view-cell tagxiaobiaoqian"> <span>待遇好</span></li>
+</ul> 
+
+
+<ul class="mui-table-view gongsimingchneg-li" style="">
+    <li class="mui-table-view-cell gongsimingchneg-li"  data-id="" data-jid="">  青岛海新达国际运输服务有限公司<span class="mui-icon mui-icon-forward mui-pull-right"></span></li>
+    <li class="mui-table-view-cell qiyexinxi-li">  股份制企业 | 500-999人 | 青岛</li>  
+</ul>  
+<ul class="mui-table-view">
+    <li class="mui-table-view-cell"> 地址：山东;青岛市;四方区;萍乡路53号</li>
+   
+</ul> 
+ 
+ <ul class="mui-table-view">
+    <li class="mui-table-view-cell">职位详情</li>
+     <li class="mui-table-view-cell zhiwexiangqingxinxi">职位详情</li>
+</ul> 
+  
+<!--职位详细列表-->
+	<div id="job_list">
+		
+	</div>
+
+
+
+<ul class="mui-table-view uilist">
+   
+   <li class="mui-table-view-cell mui-media">
+        <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg" style="height: 3em;width:4em;border-radius: 3px;margin-top: .4em;max-width: none;">
+            <div class="mui-media-body">
+            	<p class='mui-ellipsis'>青岛龙鹤制衣有限公司</p>
+            	<span class='mui-ellipsis ' style="color: #8f8f94;">操作工</span><span style="color: #8f8f94;" class='mui-ellipsis mui-pull-right'>3500~4000</span>
+                <p class=''></p><span style="color: #8f8f94;" class='mui-ellipsis'>全请将</span><span class='mui-ellipsis mui-pull-right' style="color: #8f8f94;">青岛市/黄岛区</span>
+            </div>
+        </a>
+    </li>
+</ul>
+</div>
+
+
+
+ 
+
+<script>
+	document.addEventListener( "plusready",  function(){
+			// 轮播图
+		var jid = localStorage.getItem('jid');
+		
+		
+	        mui.ajax($$$.siturl+'m=App&c=index&a=compangprofil&jid='+jid,{
+				type:'get',
+				success:function(data){
+					var jsons=JSON.parse(data);
+					var sliderbox = document.querySelector('#slider');
+					var jobs=jsons.job;
+					var reslut="";
+					 
+					for(var i=0;i< jobs.length;i++ ){						
+						reslut+='<li class="mui-table-view-cell mui-media li_togo_next" id="'+jobs[i].jid+'">';
+						reslut+='<a href=":;">';
+						reslut+=' <img class="mui-media-object mui-pull-left" src="'+$$$.imgurl+jobs[i].logo+'" style="height: 3.2em;width:3.3em;border-radius: 3px;margin-top: .4em;max-width: none;">';	
+						reslut+=' <div class="mui-media-body">';	
+						reslut+='<p class="mui-ellipsis" style="color: #8f8f94;">' + jobs[i].companyname + ' </p>';	
+						reslut+='<span class="mui-ellipsis; " style="color: #8f8f94;">'+jobs[i].category_cn+'</span><span class="mui-ellipsis mui-pull-right" style="color: #8f8f94;">'+jobs[i].minwage+'-'+jobs[i].maxwage+'元</span>';	
+						reslut+='<p class=""></p><span style="color: #8f8f94;" class="mui-ellipsis">全请将</span><span style="color: #8f8f94;" class="mui-ellipsis mui-pull-right">'+jobs[i].district_cn+'</span>';	
+						reslut+='</div>';	
+						reslut+='</a>';
+						reslut+='</li>';													
+					}
+					
+					document.querySelector('.uilist').innerHTML=reslut; 
+					
+					//点击事件
+					var alist=document.querySelectorAll('.li_togo_next');
+					
+					for (var i=0;i< alist.length;i++){	
+						
+						alist[i].addEventListener('click',function(e){
+							e.preventDefault();
+								localStorage.setItem("jid", this.getAttribute('id'));
+								//localStorage.getItem("jid");
+								mui.openWindow({
+								    url: 'job.html',  
+								    id:localStorage.getItem("jid")
+								  });
+							e.stopPropagation();
+						}) 
+					}
+					
+				
+				var tags = jsons.data.tag_cn.split(',');
+	            var leng=0;
+	            if(tags.length>4){
+	                leng=4;
+	
+	            }else{
+	                leng=tags.length;
+	            }
+	            var srce='';
+	            for (var i=0; i <leng; i++) {
+	               
+	                srce+='<span style="font-size;12px;line-height: 12px;height:18px;padding:2px 0;box-sizing: border-box;display: inline-block;text-align: center;border:1px solid #5CA8FC;border-radius: 5px;color:#5CA8FC;margin-right:3px;">'+tags[i]+'</span>';
+	            }	
+					// 顶部栏
+					document.querySelector('#title_company').innerHTML = jsons.data.companyname;
+					
+					
+					document.querySelector('.tagxiaobiaoqian').innerHTML=srce;
+					document.querySelector('.caozuogong').innerHTML=jsons.data.jobs_name;
+					document.querySelector('.spanmony').innerHTML=jsons.data.minwage+'-'+jsons.data.minwage+'元'; 
+					document.querySelector('.gongsimingchneg-li').innerHTML=jsons.data.companyname+'<span class="mui-icon mui-icon-forward mui-pull-right"></span>'; 
+					document.querySelector('.qiyexinxi-li').innerHTML=jsons.data.nature_cn+'|'+jsons.data.scale_cn+'|'+jsons.data.district_cn; 
+					document.querySelector('.zhiwexiangqingxinxi').innerHTML=jsons.data.contents;
+					
+					document.querySelector('.gongsimingchneg-li').setAttribute('data-id',jsons.data.cid);
+					document.querySelector('.gongsimingchneg-li').setAttribute('data-jid',jsons.data.jid);
+					document.querySelector('.gongsimingchneg-li').addEventListener('click',function(e){
+						e.preventDefault();
+						var cid=this.getAttribute('data-id');
+							localStorage.setItem("cid", cid);
+						mui.openWindow({
+						    url:'../company/company.html',
+						    id:'company',
+						})
+						e.stopPropagation();
+					});
+					//轮播图
+					var result = '';
+	              
+	                function lunbotu(jsons){
+	                	var result = '';
+		                var tar = jsons;
+		                //(JSON.stringify(tar));
+		                var url = $$$.imgurl;
+		               // alert(url);
+		                result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+						result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[0] +'" /></a></div>';
+		                for(var x = 1; x < tar.length-1; x++){
+							result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[x] +'" /></a></div>';
+						}
+	                	result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+	                	result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[0] +'" /></a></div>';
+		                sliderbox.innerHTML = result;
+		                
+		                // 创建轮播图对象
+		                var gallery = mui('.mui-slider');
+						gallery.slider({
+						  interval:0//自动轮播周期，若为0则不自动播放，默认为0；
+						});
+	                }
+	               
+	                lunbotu(jsons.img);
+	           }    
+			});				
+	},true);
+  function goJobLink(){
+    	//var jid = localStorage.getItem('jid');
+    	//localStorage.setItem('jid',jid);
+    	mui.openWindow({
+		    url:'../job/job.html',
+		    id:'job',
+		    extras:{
+		      jid:jid
+		    },
+		    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		    waiting:{
+		      autoShow:true,//自动显示等待框，默认为true
+		      title:'正在加载...',//等待对话框上显示的提示内容
+		    }
+		})
+    }
+  
+  function applyJob(){
+  	alert('申请职位');
+  }
+
+</script>
+
+</html>

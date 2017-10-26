@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+	    	var page = 1;
+			mui.init({
+			  pullRefresh : {
+			    container:'#refreshContainer',//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+			    up : { 
+			      height:50,//可选.默认50.触发上拉加载拖动距离
+			      auto:false,//可选,默认false.自动上拉加载一次
+			      contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+			      contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+			      callback :pullfresh_function //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			    } 
+			  }    
+			});      
+		
+			function pullfresh_function() {
+			     //业务逻辑代码，比如通过ajax从服务器获取新数据；
+			     //注意：
+			     //1、加载完新数据后，必须执行如下代码，true表示没有更多数据了：
+			     //2、若为ajax请求，则需将如下代码放置在处理完ajax响应数据之后
+			       page ++;
+		           sssrequest();
+		           this.endPullupToRefresh(true);
+		           function sssrequest(){
+
+		                mui.ajax($$$.siturl + 'm=App&c=Index&a=discuzInde&page='+page,{
+		                    type : 'GET',
+		                    success : function(str) {
+		                        var data = JSON.parse(str);
+		          				
+				                // 职位详细信息
+				                var ties = data.data;
+				                
+				                alert(JSON.stringify(ties));
+				                
+				                
+				                for(var x = 0; x < ties.length; x++){
+				                	new CreateList_index({
+				                		id:'tie_list2',
+				                		data:ties[x]
+				                	})
+				                }
+				                
+				                var ul = document.querySelector('#tie_list2')
+								var lis = ul.children;
+								for(var x = 0 ;x < lis.length; x++){
+									lis[x].addEventListener('click',function(){
+										var id = this.children[0].getAttribute('data-id');
+										localStorage.setItem('tid',id);
+			//							alert(localStorage.getItem('jid'))
+									})
+								}
+		                    },
+		                    error : function(e) {
+//		                         alert(e);
+		                    }
+		                });
+		                
+		           }
+		 
+			     
+			     
+			     
+			}
+
+    </script>
+
+		
+		
+		
+		<style type="text/css">
+			/*头部区域*/
+			.content{
+				margin-top: 44px;
+
+			}
+			.mui-bar {
+				background-color: #5CA8FC;
+			}
+			
+			.mui-bar .mui-icon:active {
+				opacity: 1;
+			}
+			/*内容区域*/
+			
+			.mui-card {
+				margin: 0;
+				margin-bottom: 10px;
+
+			}
+			
+			.mui-card-footer:before,
+			.mui-card-header:after {
+				background-color: #fff;
+			}
+			
+			.mui-card-footer:before {
+				position: static;
+			}
+			/*图片*/
+			
+			.smallUl {
+				padding: 0;
+				/*background-color: #ccc;*/
+				width: 100%;
+				box-sizing: border-box;
+			}
+			
+			.smallUl::after,
+			.smallUl::before {
+				content: ' ';
+				height: 0;
+				visibility: hidden;
+				display: block;
+				clear: both;
+			}
+			
+			.smallImg {
+				list-style: none;
+				float: left;
+				width: 28%;
+				margin-right: 3%;
+				margin-bottom: 10px;
+				height: 110px;
+				background-color: #fff;
+				border: 1px solid #ededed;
+			}
+			
+			@media screen and (min-width: 768px) {
+				.smallImg {
+					width: 13%;
+					margin-right: 1%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部区域-->
+		<!--顶部栏-->
+		<header id="header2" class="mui-bar mui-bar-nav header-top">
+			<a id="back" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:#fff"></a>
+			<h1 class="mui-title" style="color: white;">社区</h1>
+			<a href="editTie.html"> <span class="mui-icon mui-icon mui-icon-compose" style="color:#fff;float: right;"></span></a>
+		</header>
+		
+		
+		
+		<!--内容区域-->
+		<div class="content">
+			<!--第一页的职位详细信息-->
+	        <ul class="mui-table-view" id="tie_list">
+	
+	        </ul>
+	
+	        <!--下拉滚动-->
+	        <div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="padding:0;">
+	            <div class="mui-scroll">
+	                <!--数据列表-->
+	                <!--职位详细列表-->
+	                <ul class="mui-table-view" id="tie_list2">
+						
+	
+	                </ul>
+	            </div>
+	        </div>
+		
+		</div>
+		<script src="../../js/mui.min.js "></script>
+		<!--<script type="text/javascript ">
+			mui.init()
+		</script>-->
+		
+		<script type="text/javascript">
+			//不下拉就读取数据
+			var page = 1;
+			
+			mui.ajax($$$.siturl + 'm=App&c=Index&a=discuzInde&page=' + page,{
+				type:'get',
+				success:function(str){
+	                var data = JSON.parse(str);
+
+	                // 职位详细信息
+	                var ties = data.data;
+	                for(var x = 0; x < ties.length; x++){
+	                	new CreateList_index({
+	                		id:'tie_list',
+	                		data:ties[x]
+	                	})
+	                }
+	                
+	                // 给每个条目绑定事件
+					var ul = document.querySelector('#tie_list');
+					var lis = ul.children;
+					for(var x = 0 ;x < lis.length; x++){
+						lis[x].addEventListener('click',function(){
+							var id = this.children[0].getAttribute('data-id');
+							var tid = this.children[0].getAttribute('data-tid');
+							localStorage.setItem('user_id',id);
+							localStorage.setItem('t_id',tid);
+//							alert(localStorage.getItem('jid'))
+						})
+					}
+					
+	                
+	            }
+			});
+
+		</script>
+		
+		<script type="text/javascript">
+		    function CreateList_index (option){
+		        this.id = option.id || 'work_detail';
+		        this.data = option.data;
+		        this.init();
+		    }
+		    CreateList_index.prototype = {
+		        init:function () {
+		            // 处理id
+		            var id = this.birthId(this.id);
+		            // 创建并插入预制组件
+		            var str = this.create(this.data);
+		            this.insert(id,str);
+		        },
+		        birthId:function (id) {
+		            var query = '#' + id;
+		            return query;
+		        },
+		        create:function (data) {
+		            
+		            var result = '';
+		            // 立即执行函数，只是为了可以点击折叠按钮而已，没有实际功能。里边放置的是result(职位详细信息字符串)
+		            (function(data){
+		            	
+		            	var lis = '';
+		            	var imgs = data.img;
+		            	for(var i = 0; i < imgs.length; i++){
+			            		lis += '<li class="smallImg"><img src="' + $$$.imgurl +  imgs[i] +'" style="width: 100%;height: 100%; " /></li>';
+			            }
+		            	
+		            	result += '<li style="width:100%;" data-id = "'+data.uid+'" data-tid="'+data.id+'">';
+		                result += '<div class="mui-card mui-clearfix"> '
+							+ '<div class="mui-card-header mui-card-media ">'
+								+ '<img style="width: 42px;height:42px;border-radius: 21px; " src="'+$$$.imgurl + imgs[0]+'" />'
+								+ '<div class="mui-media-body " style="font-size: 15px;margin-left: 58px; ">'
+								+ '	<p style="margin-top: 6px;color: #5ca8fc;font-weight: 800; ">'+ data.realname +'</p>'
+								+ '	<p style="color: #646464;font-size: 8px;padding-top: 8px; ">' +data.addtime + '</p>'
+							+ '	</div>'
+						+ '	</div>'
+				
+				
+						+ '	<div class="mui-card-content " style="padding-left: 13px; ">'
+							+ '	<p style="font-size: 13px;color: #323232; ">'+data.content+'</p>'
+							+ '	<ul class="smallUl">';
+							
+						result += lis;
+
+						result	+= '</ul>';
+						result	+= '</div>'
+						+ '	<div class="mui-card-footer ">'
+							+ '	<div id="zanping " class="zanping " style="text-align:right; ">'
+								+ '	<img src="images/dianzan.png " style="width: 16px;height: 15px;margin-right: 7px; " />'
+								+ '	<span id=" " style="padding-right: 13px; ">'+ data.onfabulous+'</span>'
+								+ '	<img src="images/pinglun.png " style="width: 16px;height: 15px;margin-right: 7px; " />'
+							+ '	</div>'
+						+ '	</div>'
+						+ '</li>';
+						
+//						
+		            })(data);
+		            return result;
+		        },
+		        insert:function (id,result) {
+		            var div = document.createElement('div');
+		            div.innerHTML = result;
+		            div.addEventListener('click',function(){
+		            	goTieLink();
+		            })
+		            
+		            
+		            var box = document.querySelector(id);
+		            if(box.appendChild){
+		            	box.appendChild(div);
+		            }else{
+		            	box.append(div);
+		            }
+		            
+		            
+		            
+		    	}
+			}
+		    function goTieLink(){
+		    	var tid = localStorage.getItem('tid');
+		    	
+		    	alert(tid);
+		    	mui.openWindow({
+				    url:'community_detail.html',
+				    id:'community_detail',
+				    extras:{
+				      tid:tid
+				    },
+				    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+				    waiting:{
+				      autoShow:true,//自动显示等待框，默认为true
+				      title:'正在加载...',//等待对话框上显示的提示内容
+				    }
+				})
+		    }
+		</script>
+		<script type="text/javascript">
+			var back = document.querySelector('#back');
+			back.addEventListener('click',function () {
+                mui.openWindow({
+                    url:'../../index.html',
+                    id:'tabbar-with-community',
+                    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+                    waiting:{
+                        autoShow:true//自动显示等待框，默认为true
+                    }
+                })
+            })
+		</script>
+		</body>
+
+</html>

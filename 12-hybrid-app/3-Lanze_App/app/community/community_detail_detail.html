@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="../../css/mui.min.css" rel="stylesheet" />
+    <style type="text/css">
+        html,body {
+            background-color: #fff;
+            height:100%;
+            width:100%; 
+            position: relative;
+        }
+
+        /*头部区域*/
+
+        .mui-bar {
+            background-color: #5CA8FC;
+        }
+
+        .mui-bar .mui-icon:active {
+            opacity: 1;
+        }
+        /*内容区域*/
+
+        .mui-card {
+            margin: 0;
+            margin-bottom: 10px;
+            padding-top: 44px;
+        }
+
+        .mui-card-footer:before,
+        .mui-card-header:after {
+            background-color: #fff;
+        }
+
+        .mui-card-footer:before {
+            position: static;
+        }
+        /*图片*/
+        ul {
+            padding:0;
+            /*background-color: #ccc;*/
+            width:100%;
+            box-sizing: border-box;
+        }
+        ul::after ,
+        ul::before {
+            content:' ';
+            height:0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        }
+        ul li {
+            list-style:none;
+            float: left;
+            width:28%;margin-right:3%;
+            margin-bottom:10px;
+            height:110px;
+            background-color: #fff;
+            border:1px solid #ededed;
+        }
+        @media screen and (min-width: 768px){
+            ul li {
+                width:13%;
+                margin-right:1%;
+            }
+        }
+
+        .heaed_icon {
+            padding-left:13px;
+            background-color: #fff;
+            padding-right:13px;
+        }
+        .heaed_icon span {
+            display: block;
+            width:15px;
+            height:15px;
+            margin-right:7px;
+            margin-top:5px;
+            background-size: 15px 15px;
+            float: left;
+        }
+
+
+        /*评论行*/
+        .line-one {
+            margin-top:10px;
+            font-size: 11px;
+            height:11px;
+            line-height: 21px;
+        }
+        .line-one .name {
+            color:#5CA8FC;
+            float: left;
+        }
+        .line-one .text {
+            color:#000;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+<!--头部区域-->
+<!--顶部栏-->
+<header id="header2" class="mui-bar mui-bar-nav header-top">
+    <a href="../../index.html" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color:#fff"></a>
+    <h1 class="mui-title" style="color: white;">社区</h1>
+    <a href="editTie.html">	<span class="mui-icon mui-icon mui-icon-compose"style="color:#fff;float: right;"></span></a>
+</header>
+<!--内容区域-->
+<div class="mui-card" style="margin-bottom:0;">
+<!--页眉，放置标题-->
+<div class="mui-card-header mui-card-media" >
+    <img id="img_logo" style="width: 42px;height:42px;border-radius: 21px; " src="../../images/shequdongtai2.png" />
+    <div class="mui-media-body " style="font-size: 15px;margin-left: 58px; ">
+        <p id="user_name" style="margin-top: 6px;color: #5ca8fc;"></p>
+        <p id="addtime" style="color: #646464;font-size: 8px;padding-top: 8px; "></p>
+    </div>
+</div>
+
+<!--内容区-->
+<div class="mui-card-content " style="padding-left: 13px; ">
+    <p id="tie_content" style="font-size: 13px;color: #323232; "></p>
+    <ul id="img_box">
+    </ul>
+</div>
+<!--页脚，放置补充信息或支持的操作-->
+<div class="mui-card-footer ">
+    <div class="zanping " style="float:right; ">
+        <!--<img id="zan_btn" src="images/dianzan.png " style="width: 16px;height: 15px;margin-right: 7px; " />-->
+        <span id="zan_btn" style="display:inline-block;width: 16px;height: 15px;margin-right: 7px;background: url(images/dianzan_sprite.png) 0 0;background-size: 16px 32px; "></span>
+        <span id="zan_count"  style="padding-right: 13px; "></span>
+        <img id="commet_btn" src="images/pinglun.png " style="width: 16px;height: 15px;margin-right: 7px; " />
+        <span id="commet_count" style="padding-right: 0; ">1</span>
+    </div>
+</div>
+</div>
+<!--评论区-->
+<div style="height:7px;background-color: #EFEFEF;width:100%;"></div>
+<div>
+    <!--顶部头像-->
+    <div class="heaed_icon mui-clearfix" style="height:30px;border-bottom:1px solid #c0c0c0;">
+        <span style="background-image: url(images/dianzan.png)"></span>
+        <span style="background-image: url(images/dianzan.png)"></span>
+        <span style="background-image: url(images/dianzan.png)"></span>
+        <span style="background-image: url(images/dianzan.png)"></span>
+        <span style="background-image: url(images/dianzan.png)"></span>
+    </div>
+    <!--下部评论-->
+    <div id="content_list" class="content" style="padding-left:13px;overflow: scroll;margin-bottom:50px;">
+
+    </div>
+</div>
+
+<!--底部评论栏-->
+<div style="position: fixed;width:100%;bottom:0;left:0;height:50px;border-top:1px solid #b2b2b2;background-color: #fff;">
+    <!--输入框-->
+    <div style="display:inline-block;position:relative;margin-left:8px;margin-top:10px;width:78%;height:30px;background-color: #fff;">
+        <input id="fasong_input" type="text" style="font-size:11px;width:100%;height:100%;border-radius:10px;" placeholder="写下您的评论吧..    ">
+    </div>  
+    <!--发布按钮-->
+    <div id="fasong_btn" style="display:inline-block;margin-left:5%;height:21px;width:26px;position: relative;left:0;top:5px;">
+        <span style="display:inline-block;width:100%;height:100%;background-image: url(images/fasong.png);background-size: 26px 21px;"></span>
+    </div>
+</div>
+<script src="../../js/mui.min.js "></script>
+<script type="text/javascript ">
+    mui.init();
+
+    // 绑定dom对象
+    var tie_content = document.querySelector('#tie_content');
+    var user_name = document.querySelector('#user_name');
+    var zan_count = document.querySelector('#zan_count');
+    var addtime = document.querySelector('#addtime');
+	var img_logo = document.querySelector('#img_logo');
+	var commet_count=document.querySelector('#commet_count');
+ 		//alert(commet_count);
+	// ajax请求数据
+    var t_id = localStorage.getItem('t_id'); // t_id
+    var uid = localStorage.getItem('user_id');
+   
+    mui.ajax($$$.siturl + 'm=App&c=Index&a=getSpecTie',{
+        type:'post',
+        data:{ 
+            t_id:t_id,
+            uid:uid
+        },
+        dataType:'json',
+        success:function (data) {
+				alert(JSON.stringify(data));
+            // 绑定内容数据
+            tie_content.innerHTML = data.data.con.content;
+            user_name.innerHTML = data.data.con.username;
+            zan_count.innerHTML = data.data.con.onfabulous;
+            addtime.innerHTML = data.data.con.addtime;
+			commet_count.innerHTML=data.data.con.cont;
+            // 把发帖人的姓名写入本地
+            sessionStorage.setItem('username',data.data.con.username);
+
+            //绑定用户头像
+			img_logo.src = $$$.imgurl + data.data.con.img[0];
+
+			// 绑定用户上传的图片
+			var img_box = document.querySelector('#img_box');
+			for(var x = 0; x < data.data.con.img.length; x++){
+				var img = document.createElement('img');
+				img.src = $$$.imgurl + data.data.con.img[x];
+				img.style.width = '100%';
+				img.style.height = '100%';
+				
+				var li = document.createElement('li');
+				if(li.appendChild){
+					li.appendChild(img);
+				}else {
+					li.append(img);
+				}
+				
+				if(img_box.appendChild){
+					img_box.appendChild(li);
+				}else {
+					img_box.append(li);
+				}
+			}
+            
+            
+            // 绑定评论的内容
+            for(var x = 0; x < data.data.con.reply.length; x++){
+                new CreateList_index({
+                    id:'content_list',
+                    data:data.data.con.reply[x]
+                })
+            }
+
+        },error:function (xht,err) { 
+            alert(err); 
+        }
+    });
+
+    // 点赞按钮 
+    var zan_btn = document.querySelector('#zan_btn');
+    zan_btn.addEventListener('click',function () {
+        mui.ajax($$$.siturl + 'm=App&c=IsLogo&a=fabous',{
+            type:'post',
+            data:{
+                t_id:1
+            },
+            dataType:'json', 
+            success:function (data) {
+                if(data.staus=='0'){
+                    zan_btn.style.backgroundPosition = 'left bottom';
+                    //赞的数量减一
+                    zan_count.innerHTML = +zan_count.innerHTML-1;
+                }else{
+                    zan_btn.style.backgroundPosition = 'left top';
+                    if(zan_count.innerHTML <= '0'){
+                        zan_count.innerHTML ='';
+                    }else{
+                        zan_count.innerHTML = +zan_count.innerHTML+1;
+
+                    }
+
+                }
+            },
+            error:function (xhr,err) {
+                alert(err);
+            } 
+        }); 
+    });
+
+    // 发布评论按钮
+    var fasong_btn = document.querySelector('#fasong_btn');
+    var fasong_input = document.querySelector('#fasong_input');
+    var content_list = document.querySelector('#content_list');
+    fasong_btn.addEventListener('click',function () {
+        mui.ajax($$$.siturl + 'm=App&c=InfoMeber&a=replyDis',{
+            type:'post',
+            dataType:'json',
+            data:{
+                t_pid:'1',
+                content : fasong_input.value
+            },
+            success:function (data) {
+//                alert(JSON.stringify(data));
+
+                // 发送的数据添加到评论框中
+                var inStr = '';
+                var div = document.createElement('div');
+                div.classList.add('line-one');
+                
+                inStr += '<div class="name">'+sessionStorage.getItem('username')+'</div>';
+                inStr += '<span style="float:left;margin-right:3px;">:</span>';
+                inStr += '<div class="text">'+fasong_input.value+'</div>';
+                div.innerHTML = inStr;
+                if(content_list.appendChild){
+                    content_list.appendChild(div);
+                }else {
+                    content_list.append(div);
+                }
+
+                // 清空文本框
+                fasong_input.value = '';
+            },error:function (xhr,err) {
+                alert(err);
+            }
+        });
+    });
+
+    // 点击评论文本框聚焦且弹出键盘
+    var commet_btn = document.querySelector('#commet_btn');
+    commet_btn.addEventListener('click',function () {
+        fasong_input.focus();
+    });
+
+</script>
+
+<!--函数定义-->
+<script type="text/javascript">
+    function CreateList_index (option){
+        this.id = option.id || 'work_detail';
+        this.bg = option.bg || '#fff';
+        this.data = option.data;
+        this.init();
+    }
+    CreateList_index.prototype = {
+        init:function () {
+            // 处理id
+            var id = this.birthId(this.id);
+            // 创建并插入预制组件
+            var str = this.create(this.data);
+            this.insert(id,str);
+        },
+        birthId:function (id) {
+            var query = '#' + id;
+            return query;
+        },
+        create:function (data) {
+            var result = '';
+            // 第一个回复人的评论
+            result += '<div class="line-one">';
+            result += '<div class="name">'+data.data[0].uid+'</div>';
+            result += '<span style="float:left;margin-right:3px;">:</span>';
+            result += '<div class="text">'+data.data[0].content+'</div>';
+            result += '</div>';
+
+            // 回复第一个人的评论
+            for(var x = 1; x < data.data.length ; x++){
+                result += '<div class="line-one" style="margin-left:10px;">';
+                result += '<div class="name">'+data.data[x].uid+'</div>';
+                result += '<span style="float:left;margin-right:3px;">:</span>';
+                result += '<div class="text">'+data.data[x].content+'</div>';
+                result += '</div>';
+            }
+
+            return result;
+        },
+        insert:function (id,result) {
+            var div = document.createElement('div');
+            div.innerHTML = result;
+            div.addEventListener('click',function(){
+                goJobLink();
+            })
+            var box = document.querySelector(id);
+            if(box.appendChild){
+                box.appendChild(div);
+            }else{
+                box.append(div);
+            }
+        }
+    };
+
+</script>
+
+</body>
+
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

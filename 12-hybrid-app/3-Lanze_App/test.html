@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+	</head>
+	
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav"style="background-color: #5CA8FC;">
+			<a style="color: white;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title_company" class="mui-title" style="color: white;">推荐好友</h1>
+		</header>
+		<img id="img_box" src="" alt="" />
+		<script src="js/mui.min.js"></script>
+	</body>
+
+</html>
+<script>
+	mui.plusReady(function(){
+				(function(com){ 
+     				var myStorage = plus.storage;
+     
+     				// 本地保存的文件名
+				    var hashCode = function(str) { 
+				        var hash = 0; 
+				        if (!str || str.length == 0) return hash; 
+				        
+				        
+				        for (i = 0; i < str.length; i++) { 
+				            char = str.charCodeAt(i); 
+				            hash = ((hash << 5) - hash) + char; 
+				            hash = hash & hash; // Convert to 32bit integer 
+				        } 
+				        return hash; 
+				    }; 
+				    com.hashCode=hashCode; 
+				    
+				    
+				    /** 
+				     *存储当前下载路径
+				     */  
+				    var cache = {};  
+				    cache.getFile = function(netPath, cb) { 
+				        var filePathCache = getLocalFileCache(netPath); 
+				        
+				        // 如果拿到了本地图片，执行传进来的回调函数
+				        if (filePathCache) { 
+				            return cb(filePathCache); 
+				        } else { 
+				            Filedownload(netPath, function(localPath) { 
+				                return cb(localPath); 
+				            }); 
+				        } 
+				    }; 
+				    
+//				    cache.a = '2';
+//				    cache.b = function(){
+//				    	alert('done');
+//				    }
+				 
+				    //下载 
+				    
+				    
+				    var Filedownload = function (netPath, callback) {
+						var dtask = plus.downloader.createDownload(netPath, {}, function ( d, status ) {
+							// 下载完成
+							if (status == 200) { 
+				                plus.io.resolveLocalFileSystemURL(d.filename, function(entry) { 
+//				                	alert(entry.toLocalURL());
+				                    setLocalFileCache(netPath, entry.toLocalURL()); 
+				                    callback(entry.toLocalURL()); //获取当前下载路径 
+				                    
+//				                    alert('done'); 
+				                }); 
+				           }   
+						});
+						//dtask.addEventListener( "statechanged", onStateChanged, false );
+						dtask.start(); 
+				    }; 
+
+				    function getLocalFileCache(netPath) { 
+				        var FILE_CACHE_KEY = "filePathCache_" + common.hashCode(netPath); 	// 文件地址
+				        var localUrlObj = myStorage.getItem(FILE_CACHE_KEY); 
+				        return localUrlObj;  
+				    } 
+				 
+				    function setLocalFileCache(netPath, localPath) { 
+				        var FILE_CACHE_KEY = "filePathCache_" + common.hashCode(netPath); 
+				        myStorage.setItem(FILE_CACHE_KEY, localPath); 
+				    } 
+				 
+				    com.cache = cache; 
+				}(window.common={})) 
+				
+				var img_box = document.querySelector('#img_box');
+				alert(img_box);
+				
+				window.common.cache.getFile('http://www.zhizhaojob.cn/data/upload/discuz/u=156963840,724585560&fm=23&gp=0.jpg',function(urlPath){
+					var url = urlPath;  
+//					alert(url);
+					console.log(url);
+					 
+					
+//					plus.runtime.openFile( 'file:///storage/emulated/0/Android/data/io.dcloud.HBuilder/.HBuilder/downloads/deviceid.txt', {}, function ( e ) {
+//		                plus.nativeUI.alert( "无法打开此文件："+e.emssage );
+//		            } );
+		            
+//		            plus.runtime.openFile( 'file:///storage/emulated/0/Android/data/io.dcloud.HBuilder/.HBuilder/downloads/11.png', {}, function ( e ) {
+//		                plus.nativeUI.alert( "无法打开此文件："+e.emssage );
+//		            } );
+					 
+					
+					img_box.src = url;
+					img_box.style.width = '100%';
+//					img_box.style.height = '100%';
+				});
+//				console.log(JSON.stringify(window.common));
+ 
+			});
+</script>
+</body>
+</html>

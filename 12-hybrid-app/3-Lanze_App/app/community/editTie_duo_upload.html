@@ -1,0 +1,693 @@
+<!doctype html>  
+<html class="feedback">  
+    <head>  
+        <meta charset="utf-8" />  
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />  
+        <meta name="misapplication-tap-highlight" content="no" />  
+        <meta name="HandheldFriendly" content="true" />  
+        <meta name="MobileOptimized" content="320" />  
+        <link rel="stylesheet" href="css/mui.min.css">  
+        <link rel="stylesheet" type="text/css" href="css/app.css" />
+        <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="css/feedback-page.css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+
+
+		  <style type="text/css">  
+            .del {  
+                position: absolute;  
+                top:1px;  
+                right: 1px;    
+                display: block;        
+                line-height: 1;  
+                cursor: pointer;  
+                color:#fff;  
+            }  
+  
+            .del:hover {  
+                color:#ff3333;  
+            }  
+        </style>
+	<style>  
+            .table-view {  
+                position: relative;  
+                margin-top: 0;  
+                margin-bottom: 0;  
+                padding-left: 0;  
+                list-style: none;  
+                background-color: #f5f5f5;  
+            }  
+              
+            .table-view-cell {  
+                position: relative;  
+                overflow: hidden;  
+                padding: 0px 15px;   
+                -webkit-touch-callout: none;  
+                margin-bottom: 1px;  
+            }  
+              
+            .table-view-cell:after {  
+                position: absolute;  
+                right: 0;  
+                bottom: 0;  
+                left: 0px;  
+                height: 1px;  
+                content: '';  
+                -webkit-transform: scaleY(.5);  
+                transform: scaleY(.5);  
+                background-color: #c8c7cc;  
+            }  
+              
+            .table-view-cell>a:not(.btn) {  
+                position: relative;  
+                display: block;  
+                overflow: hidden;  
+                margin: -0px -15px;  
+                padding: inherit;  
+                white-space: nowrap;  
+                text-overflow: ellipsis;  
+                color: inherit;  
+                background-color: #75b9f4;  
+                height: 40px;  
+                line-height: 40px;  
+            }  
+              
+            .navigate-right:after  
+            {  
+                font-family: Muiicons;  
+                font-size: inherit;  
+                line-height: 1;  
+                position: absolute;  
+                top: 50%;  
+                display: inline-block;  
+                -webkit-transform: translateY(-50%);  
+                transform: translateY(-50%);  
+                text-decoration: none;  
+                color: #666;  
+                -webkit-font-smoothing: antialiased;  
+            }  
+              
+            .table-view-cell.collapse .collapse-content {  
+                position: relative;  
+                display: none;  
+                overflow: hidden;  
+                margin: 0px -15px 0px;  
+                padding: 0px 0px !important;  
+                -webkit-transition: height .35s ease;  
+                -o-transition: height .35s ease;  
+                transition: height .35s ease;  
+                background-color: transparent;  
+            }  
+            .image-item{  
+                position: relative;  
+            }  
+            .image-item .info{  
+                position: absolute;  
+                top:0px;  
+                left:4px;  
+                color: #ff9900;  
+                font-size: 12px;                          
+                  
+            }  
+        </style> 
+		<script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/utitls.js"></script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bar bar-nav" style="background-color: #fff;color:#000;box-shadow: 0 1px #ccc;">  
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="title" style="color:#000;">写帖子</h1>  
+            <a id="fabu_btn" href="pullrefresh_main.html" class="pull-right" style="line-height: 44px;">发布</a>
+        </header>  
+        
+
+		<!--文本内容-->
+		<div class="content" style="background-color: #fff;">
+			<textarea name="" id="txtcontent" placeholder="我想说..." style="color: #7b7b7b;height: 166px;" class="contenetvalue"></textarea>
+		</div>
+		
+		
+		<div class="mui-content" style="background-color:#fff;height:44px;">		
+			<div class="mui-table-view-cell mui-clearfix" style="background-color:#fff;height:44px;position: relative;">
+				<span style="padding-left:13px;line-height: 44px;"></span>
+				<div class="mui-switch mui-active myswitch" style="" >
+					<div class="mui-switch-handle"></div>
+				</div>
+			</div>		
+		</div>
+
+
+
+<!-- 上传图片的部分 -->
+<div class="content" style="padding:0;">   
+    <input type="hidden" id="ckjl.id" name="ckjl.id" value="429">  
+    <div class="collapse-content" >  
+        <form>  
+            <!--<label class="row-label"></label>-->  
+            <div id='F_CKJLBS' class="row image-list">  
+
+               
+                
+                <!-- 打开本地图片 -->
+                <div class="image-item"id="F_CKJLB" onclick="showActionSheet(this);" >
+                    <img src="images/tianjiazhaopian.png" alt="" />
+                </div>
+        	</div> 
+        	 <!-- 图片上传 -->
+                <div class="image-item upload" onclick="uploadimge();" style="width: 100%;height: 40px;background-color: #5CA8FC;color: white;text-align: center;line-height: 40px;">
+                    <!--<img src="images/tianjiazhaopian.png" alt="" />-->
+                    	上传图片
+                </div>
+        </form>  
+    </div>  
+</div>
+
+
+<script src="../../js/mui.min.js"></script>
+
+<!--发布帖子-->
+<script>
+	var fabu_btn = document.querySelector('#fabu_btn');
+	var multiInput = document.querySelector('textarea');
+	
+	var imgarr = '';
+	var imgarrChild = '';
+	
+	var posiFlag = false;
+	var islocalseqwe=1;	
+	// 获取地理位置信息
+	// 扩展API加载完毕，现在可以正常调用扩展API
+	document.addEventListener( "plusready", onPlusReady, false );
+	function onPlusReady() {
+				plus.webview.close('pullrefresh_sub.html');
+		
+		
+				wid = plus.geolocation.getCurrentPosition( function ( p ) {
+				
+				
+				
+			
+				var address = p.address.city;
+				var cityName = document.querySelector('#cityName');
+//				alert(JSON.stringify(p));
+				localStorage.setItem('address',JSON.stringify(p));
+				
+				
+//				alert(address);
+//				var posi = document.querySelector('#posi');
+//				posi.innerHTML = p.address.district + '/' + p.address.poiName;
+							
+					value = p.address.district + '/' + p.address.poiName;
+					sessionStorage.setItem('posiAddress',value);
+					res.innerText = value;
+			}, function ( e ) {
+//				alert( "Geolocation error: " + e.message );
+		} );
+		
+		
+		
+		mui('.mui-content .mui-switch').each(function() { //循环所有toggle
+				//toggle.classList.contains('mui-active') 可识别该toggle的开关状态
+				res = this.parentNode.querySelector('span');
+				value = '';
+				if(this.classList.contains('mui-active')){
+					value = '正在获取地理位置...';
+				}else{
+					value = '正在获取地理位置...';
+				}
+				
+				
+				
+//				if(posiFlag) {
+//					var address = localStorage.getItem('address');
+//					address = JSON.parse(address);
+//					
+//					value = address.poiName;
+//				}
+				
+				res.innerText = value;
+//				 
+				/**
+				 * toggle 事件监听
+				 */
+				this.addEventListener('toggle', function(event) {
+//					//event.detail.isActive 可直接获取当前状态
+//					
+				if(event.detail.isActive){
+					islocalseqwe=1;
+					if(sessionStorage.getItem('posiAddress')){
+						value = sessionStorage.getItem('posiAddress');
+					}else {
+						value = '正在获取地理信息'
+					}
+				}else{
+					islocalseqwe=2;
+					value = '位置已关闭';
+				}
+				res.innerText = value;
+				});
+			});
+	}
+	
+	fabu_btn.addEventListener('click',function(){
+//		alert('done');
+		fabu();
+		//上传完成后，文本框内晴空内容
+		var txtcontent = document.querySelector('#txtcontent');
+		txtcontent.value='';
+//		delImgFromLocal();
+//		alert(txtcontent.value);
+	})
+	
+	function fabu(){
+		
+		if(imgarrChild != null){
+			imgarr += imgarrChild;	// 需要上传的图片地址字符串
+		}
+
+
+		var address = localStorage.getItem('address');
+		address = JSON.parse(address);
+		var province = address.address.province;
+		var city = address.address.city;
+		var district = address.address.district;
+		var street = address.address.street;
+		var poiName = address.address.poiName;
+//		alert(province + city + district + street + poiName);
+		
+		var latitude = address.coords.latitude;
+		var longitude = address.coords.longitude;
+//		alert(latitude + ' '+ longitude);
+		
+		
+		// 向后台提交帖子的数据
+		mui.ajax($$$.siturl + 'm=App&c=InfoMeber&a=releaseDis',{
+			type:'post',
+			data:{
+				img:imgarr,
+				title:'title',
+				content:multiInput.value,
+				province:province,
+				city:city,
+				district:district,
+				street:street,
+				poiName:poiName,
+				latitude:latitude,
+				longitude:longitude,
+				islocalse:islocalseqwe
+			},
+			dataType:'json',
+			success:function(data){
+				mui.toast(data.msg);
+
+				/*mui.openWindow({
+				    url:'pullrefresh_sub.html',
+				    id:'pullrefresh_sub.html',
+				    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+				})*/
+				
+			},
+			error:function(xhr,err){
+				alert(xhr);
+				alert(err);
+			}
+		});
+		
+	}
+</script>
+
+<!--上传图片-->
+<script>  
+    var procinstid = 0;  
+    //初始化页面执行操作  
+    function plusReady() {  
+        //Android返回键监听事件  
+        plus.key.addEventListener('backbutton',function(){  
+           mui.back();
+        },false);  
+    }  
+    if (window.plus) {  
+        plusReady();  
+    } else {  
+        document.addEventListener('plusready', plusReady, false);  
+    }
+
+        // 定义图片上传的数组
+        var imgArray = [];
+
+        //加载页面初始化需要加载的图片信息  
+        //或者相册IMG_20160704_112620.jpg  
+        //imgId:图片名称：1467602809090或者IMG_20160704_112620  
+        //imgkey:字段例如：F_ZDDZZ  
+        //ID：站点编号ID,例如429  
+        //src：src="file:///storage/emulated/0/Android/data/io.dcloud.HBuilder/.HBuilder/apps/HBuilder/doc/upload/F_ZDDZZ-1467602809090.jpg"  
+        function showImgDetail (imgId,imgkey,id,src) {    
+            var html = "";  
+            html +='<div  id="Img'+imgId+imgkey+'" class="image-item ">';   
+            html +='    <img id="picBig" data-preview-src="" data-preview-group="1" '+src+'/>';  
+            html +='    <span class="del" onclick="delImg(\''+imgId+'\',\''+imgkey+'\','+id+');">';         
+            html +='        <div class="fa fa-times-circle"></div>';      
+            html +='    </span>';   
+            html +='</div>';  
+            $("#"+imgkey+"S").append(html);  
+        }  
+
+
+        //删除图片  
+        //imgId:图片名称：IMG_20160704_112614  
+        //imgkey:字段，例如F_ZDDZZ  
+        //ID：站点编号ID，例如429  
+        function delImg(imgId,imgkey,id){  
+            var bts = ["是", "否"];  
+            plus.nativeUI.confirm("是否删除图片？", function(e) {  
+                    var i = e.index;  
+                    if (i == 0) {  
+                        var itemname=id+"img-"+imgkey;//429img-F_ZDDZZ  
+                        var itemvalue=plus.storage.getItem(itemname);  
+                        //{IMG_20160704_112614,_doc/upload/F_ZDDZZ-IMG_20160704_112614.jpg,file:///storage/emulated/0/Android/data/io.dcloud...../doc/upload/F_ZDDZZ-1467602809090.jpg}  
+                        if(itemvalue!=null){  
+                            var index=itemvalue.indexOf(imgId+",");  
+                            if(index==-1){//没有找到  
+                                delImgfromint(imgId,imgkey,id,index);  
+                            }else{   
+                                delImgFromLocal(itemname,itemvalue,imgId,imgkey,index); //修改，加了一个index参数  
+                            }  
+                              
+                        }else{  
+                            delImgfromint(imgId,imgkey,id);   
+                        }  
+                    }  
+                },"查看", bts);  
+            /*var isdel = confirm("是否删除图片？");  
+            if(isdel == false){  
+                return;  
+            }*/  
+              
+              
+        }
+        // 本地删除图片
+        function delImgFromLocal(itemname,itemvalue,imgId,imgkey,index){  
+                var wa = plus.nativeUI.showWaiting();  
+                var left=itemvalue.substr(0,index-1);  
+                var right=itemvalue.substring(index,itemvalue.length);  
+                var end=right.indexOf("}");  
+                right=right.substring(end+1,right.length);  
+                var newitem=left+right;  
+                plus.storage.setItem(itemname,newitem);   
+                //myAlert("删除成功");  
+                $("#Img"+imgId+imgkey).remove();  
+                wa.close();  
+        }
+
+
+
+
+        //选取图片的来源，拍照和相册  
+        function showActionSheet(conf){
+              // conf就是this
+
+              var divid = conf.id;
+              var actionbuttons=[{title:"拍照"},{title:"相册选取"}];  
+              var actionstyle={title:"选择照片",cancel:"取消",buttons:actionbuttons};  
+              plus.nativeUI.actionSheet(actionstyle, function(e){  
+                    if(e.index==1){  
+                        getImage(divid);  
+                    }else if(e.index==2){  
+                        galleryImg(divid);  
+                    }  
+              } );  
+              
+              
+        }
+
+
+
+        // 拍照之后的函数
+        function galleryImg(divid){
+                plus.gallery.pick( function(e){
+                //alert(e.files.length);
+                var zm=0;
+                setTimeout(file,200);
+                function file(){
+                    plus.io.resolveLocalFileSystemURL(e.files[zm], function(entry) {
+                             compressImage(entry.toLocalURL(),entry.name,divid); 
+                    }, function(e) {
+                       plus.nativeUI.toast("读取拍照文件错误：" + e.message);
+                    });
+                    zm++;
+                    if(zm<e.files.length){
+                        setTimeout(file,200);
+                    }
+                }
+                 
+                }, function ( e ) {
+                   console.log( "取消选择图片" );
+                },{filename: "_doc/camera/",
+                   filter:"image",
+                   multiple:true
+                });
+         }
+        // 拍照  
+        function getImage(divid) {  
+            var cmr = plus.camera.getCamera();  
+            cmr.captureImage(function(p) {  
+                //alert(p);//_doc/camera/1467602809090.jpg  
+                plus.io.resolveLocalFileSystemURL(p, function(entry) {  
+                    //alert(entry.toLocalURL());//file:///storage/emulated/0/Android/data/io.dcloud...../doc/camera/1467602809090.jpg  
+                    //alert(entry.name);//1467602809090.jpg  
+                    compressImage(entry.toLocalURL(),entry.name,divid);  
+                }, function(e) {  
+                    plus.nativeUI.toast("读取拍照文件错误：" + e.message);  
+                });  
+            }, function(e) {  
+            }, {  
+                filename: "_doc/camera/",  
+                index: 1  
+            });  
+        }
+
+
+
+
+        //压缩图片  
+        function compressImage(url,filename,divid){  
+            var name="_doc/upload/"+divid+"-"+filename; //_doc/upload/F_ZDDZZ-1467602809090.jpg
+            plus.zip.compressImage({  
+                    src:url, //src: (String 类型 )压缩转换原始图片的路径
+                    dst:name, //压缩转换目标图片的路径
+                    quality:20, //quality: (Number 类型 )压缩图片的质量.取值范围为1-100
+                    overwrite:true //overwrite: (Boolean 类型 )覆盖生成新文件
+                },  
+                function(event) {   
+                    //uploadf(event.target,divid);  
+                    var path = name;//压缩转换目标图片的路径  
+                    //event.target获取压缩转换后的图片url路  
+                    //filename图片名称  
+                    saveimage(event.target,divid,filename,path);  
+                },function(error) {  
+                    plus.nativeUI.toast("压缩图片失败，请稍候再试");  
+            });  
+        }
+
+
+
+        //保存信息到本地  
+        /**  
+         *   
+         * @param {Object} url  图片的地址  
+         * @param {Object} divid  字段的名称  
+         * @param {Object} name   图片的名称  
+         */  
+        function saveimage(url,divid,name,path){  
+			imgArray = [divid];
+
+            // alert(url);//file:///storage/emulated/0/Android/data/io.dcloud...../doc/upload/F_ZDDZZ-1467602809090.jpg
+            // alert(path);//_doc/upload/F_ZDDZZ-1467602809090.jpg
+
+
+            var  state=0;
+            var wt = plus.nativeUI.showWaiting();  
+            //  plus.storage.clear();
+
+            //图片名称：1467602809090
+            name =name.substring(0,name.indexOf("."));
+
+
+            var id = document.getElementById("ckjl.id").value;  
+            var itemname = id+"img-" + divid; //429img-F_ZDDZ
+            var itemvalue = plus.storage.getItem(itemname);  
+
+
+            if(itemvalue==null){  
+                itemvalue="{"+name+","+path+","+url+"}";
+                //{IMG_20160704_112614,_doc/upload/F_ZDDZZ-IMG_20160704_112614.jpg,file:///storage/emulated/0/Android/data/io.dcloud...../doc/upload/F_ZDDZZ-1467602809090.jpg}  
+            }else{    
+                itemvalue=itemvalue+"{"+name+","+path+","+url+"}";  
+            }  
+
+
+            plus.storage.setItem(itemname, itemvalue);  
+                     
+            var src = 'src="' + url + '"';  
+            //alert("itemvalue="+itemvalue);  
+            showImgDetail(name,divid,id,src);  
+            wt.close();  
+              
+        }  
+
+
+
+
+
+    //上传图片，实例中没有添加上传按钮
+    function uploadimge(agree,back) {
+        //plus.storage.clear();  
+        var wa = plus.nativeUI.showWaiting();
+        var DkeyNames=[];
+
+
+
+        var id = document.getElementById("ckjl.id").value;
+        var length = id.toString().length;
+        var idnmae = id.toString();
+        var numKeys = plus.storage.getLength();
+//      alert('numKeys: ' + numKeys);
+
+
+//		alert('url: ' + getUrl() + 'm=App&c=Index&a=uploadfile');
+
+//		alert(getUrl() + 'm=App&c=Index&a=uploadfile');
+		
+		
+        var task = plus.uploader.createUpload(
+            // url
+            getUrl() + 'm=App&c=Index&a=uploadfile2', 
+            // options
+            {
+                method: "POST" 
+            },
+            // callback 
+            function(upload, status) {
+                // 上传完成
+                if ( status == 200 ) {
+//                  alert( "Upload success: " + upload.url );
+//                  alert( "Upload success: " + upload.getAllResponseHeaders());
+
+
+                    var d = upload.responseText;  
+//                  alert(d);   
+                    d = JSON.parse(d); 
+                    
+                    // 单次上传的图片储存数组
+                    imgarrChild = '';
+                    for(var x = 0 ; x< d.data.length; x++){
+                    	var imgSrc = d.data[x]['attr'];
+                    	
+                    	if(x < d.data.length-1){
+                    		imgarrChild += imgSrc + ',';
+                    	}else {
+                    		imgarrChild += imgSrc;
+                    	}
+                    	
+                    }
+                    
+                   	 
+					 
+					if(d.staus){   
+						wa.close();     
+						alert('上传成功');	 
+					}else {
+						alert('上传失败');
+					}
+                    
+                } else {
+                    alert( "Upload failed: " + status );
+                }
+            }
+        );
+
+
+        // imgArray中有哪些属性？
+        /*
+            1. imgname
+            2. imgurl 
+        
+        */
+//      alert('id: ' + id);
+        task.addData("id",id);
+
+		
+        for(var i=0; i < imgArray.length;i++){
+            var itemkey = id + "img-"+imgArray[i];
+//          alert(itemkey);
+            if(plus.storage.getItem(itemkey)!=null){
+                var itemvalue = plus.storage.getItem(itemkey).split("{");
+
+
+//           alert(itemvalue);
+             for(var img = 1;img < itemvalue.length; img++){
+				// for(var img = 1;img < 2; img++){
+                    var imgname=itemvalue[img].substr(0,itemvalue[img].indexOf(","));
+                    var imgurl=itemvalue[img].substring(itemvalue[img].indexOf(",")+1,itemvalue[img].lastIndexOf(","));
+
+//                  alert(imgname);
+//                  alert(imgurl); 
+                    /*
+                        @url：path 
+                        @options(key:value)      
+                                options参数中指定的key在任务中已经存在，则添加失败返回false
+                    */
+                    task.addFile(imgurl,{key:imgurl});
+                } 
+            }
+
+        }
+        task.start();
+        
+        
+        var itemkey = id + "img-"+imgArray[0];
+		plus.storage.setItem(itemkey,'');
+
+    }
+
+</script> 
+	
+	
+</body>
+	
+	
+	
+	<script>
+			mui.init({
+//				swipeBack:true //启用右滑关闭功能
+			});
+			
+			
+			
+			
+				/*var switch = mui('.mui-content .mui-switch');
+				alert(switch);
+				var res = switch.parentNode.querySelector('span');
+				var value;
+				if(switch.classList.contains('mui-active')){
+					value = '位置共享已开启';
+				}else{
+					value = '位置共享已关闭';
+				}
+				res.innerText = value;
+				switch.addEventListener('toggle', function(event) {
+//					//event.detail.isActive 可直接获取当前状态
+//					
+					if(event.detail.isActive){
+					value = '位置共享已开启';
+					}else{
+						value = '位置共享已关闭';
+					}
+					res.innerText = value;
+					});
+				});
+*/		</script>
+</html>

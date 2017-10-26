@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			#kuaisu_content .mui-table-view-cell {
+				padding:0;
+				height:40px;
+			}
+			#kuaisu_content .needed {
+				font-size:12px;
+				color:red;
+			}
+			#kuaisu_content label {
+				width:20%;
+				font-size:12px;
+				line-height: 40px;
+				padding:0;
+				height:100%;
+				padding-left:8px;
+				box-sizing: border-box;
+			}
+			#kuaisu_content input {
+				width:80%;
+				font-size:12px;
+				line-height: 40px;
+			}
+
+			#kuaisu_content .mui-table-view-cell a {
+				margin:0;
+				font-size:12px;
+				line-height: 40px;
+			}
+			#kuaisu_content .mui-table-view-cell a input {
+				visibility: hidden;
+				margin:0;
+			}
+
+
+
+			/*弹出面板*/
+			.mui-popover {
+				text-align: center;
+				line-height:40px;
+			}
+			.mui-popover .mui-popover-arrow {
+				visibility: hidden;
+			}
+			.mui-popover .mui-table-view {
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!--顶部栏-->
+	<header id="header" class="mui-bar mui-bar-nav header-top">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">蓝泽信息</h1>
+	</header>
+	<div id="kuaisu_content" style="padding-top:44px;">
+		<ul class="mui-table-view">
+			<!--用户名-->
+			 <li class="mui-table-view-cell">
+			 	<div class="mui-input-row">
+			        <label>用户名<span class="needed">*</span></label>
+			    	<input id="username" type="text" class="mui-input-clear" placeholder="请输入您的姓名">
+			    </div>
+			 </li>
+			<!--性别-->
+			 <li class="mui-table-view-cell">
+				<div class="mui-input-row" id="sex">
+					<label>性别<span class="needed">*</span></label>
+					<label style="float:left;width:20px;" for="gender1">男</label>
+					<input style="float:left;width:50px;margin-top:11px;height:18px;" name="radio" value="男" id="gender1" type="radio" checked="checked" >
+					<label style="float:left;width:20px;" for="gender2">女 </label>
+					<input style="float:left;width:50px;margin-top:11px;height:18px;" name="radio" value="女" id="gender2" type="radio" >
+				</div>
+			 </li>
+			<!--手机号-->
+			 <li class="mui-table-view-cell">
+				<div class="mui-input-row">
+					<label>手机号<span class="needed">*</span></label>
+					<input id="phoneNumber" type="text" class="mui-input-clear" placeholder="请输入您的联系方式">
+				</div>
+			 </li>
+			<!--意向职位-->
+			 <li class="mui-table-view-cell" id="zhiwei" style="position: relative;">
+				 <a class="mui-navigate-right" href="#jobs_pop" id="openPopover">
+					<label>意向职位</label><div class="con" style="position: absolute;left:20%;top:0;"></div>
+					<input id="jobs" type="text" class="mui-input-clear" placeholder="请输入您的联系方式">
+				 </a>
+
+			 </li>
+			<!--期望区域-->
+			 <li class="mui-table-view-cell" id="quyu">
+				<a class="mui-navigate-right" href="#areas_pop" id="openPopover">
+					<label>期望区域</label><div class="con" style="position: absolute;left:20%;top:0;"></div>
+					<input id="areas" type="text" class="mui-input-clear" placeholder="请输入您的联系方式">
+			 	</a>
+			 </li>
+			<!--期望薪资-->
+			 <li class="mui-table-view-cell" id="xinzi">
+				<a class="mui-navigate-right" href="#wages_pop" id="openPopover">
+					<label>期望薪资</label><div class="con" style="position: absolute;left:20%;top:0;"></div>
+					<input id="wages" type="text" class="mui-input-clear" placeholder="请输入您的联系方式">
+				</a>
+			 </li>
+		</ul>
+		<button id="submit" style="margin:70px 1.5%;background-color: #5CA8FC;width:97%;color:#fff;">提交</button>
+
+		<!--弹出框-->
+		<div id="jobs_pop" class="mui-popover">
+			<div class="mui-table-view-cell">
+				意向职位
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="#">Item1</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item2</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item3</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item4</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item5</a></li>
+			</ul>
+		</div>
+		<div id="areas_pop" class="mui-popover">
+			<div class="mui-table-view-cell">
+				意向职位
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="#">Item1</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item2</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item3</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item4</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item5</a></li>
+			</ul>
+		</div>
+		<div id="wages_pop" class="mui-popover">
+			<div class="mui-table-view-cell">
+				意向职位
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="#">Item1</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item2</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item3</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item4</a></li>
+				<li class="mui-table-view-cell"><a href="#">Item5</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+		<script src="../../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+
+			// 使选中的pop选项赋值给其底部隐藏的input的value
+            addTrigger('#jobs','#jobs_pop');
+            addTrigger('#areas','#areas_pop');
+            addTrigger('#wages','#wages_pop');
+            function addTrigger(textId,popId){
+                var pop = document.querySelector(popId);
+                var lis = pop.children[1].children;
+                var input_hidden = document.querySelector(textId);
+                for(var x = 0; x < lis.length; x++){
+                    lis[x].onclick = function () {
+                        input_hidden.value = this.children[0].innerHTML;
+                        var con = input_hidden.parentNode.children[1];
+						con.innerHTML = this.children[0].innerHTML;
+                        mui(popId).popover('hide');
+                    }
+                }
+			}
+
+
+			// 提交按钮
+			var submit = document.querySelector('#submit');
+            submit.addEventListener('click',function () {
+
+                var user_input = document.querySelector('#username');
+                var radios = document.querySelectorAll('#sex input');
+                var phoneNumber_input = document.querySelector('#phoneNumber');
+
+				var gender = "";
+                for(var x = 0; x < radios.length; x++){
+					if(radios[x].checked){
+					    gender = radios[x].value;
+					    console.log(gender);
+					}
+				}
+				// 校验是否为空
+				if(!user_input.value){
+                    alert('请输入用户名');
+                    return;
+				}
+                if(!phoneNumber_input.value){
+                    alert('请输入您的联系方式');
+                    return;
+                }
+
+
+
+
+                var jobs = document.querySelector('#jobs');
+                var areas = document.querySelector('#areas');
+                var wages = document.querySelector('#wages');
+
+                if(!jobs.value){
+                    alert('请选择意向职位');
+                    return;
+                }
+                if(!areas.value){
+                    alert('请选择期望工作区域');
+                    return;
+                }
+                if(!wages.value){
+                    alert('请选择期望薪资');
+                    return;
+                }
+
+//                alert(user_input.value);
+//                alert(gender);
+//                alert(phoneNumber_input.value);
+//                alert(jobs.value);
+//                alert(areas.value);
+//                alert(wages.value);
+
+
+
+                mui.ajax('',{
+                    type:'post',
+					data:{
+
+					},
+					success:function (str) {
+						var data = JSON.parsr(str);
+						alert(data.msg);
+                    }
+				});
+            })
+
+		</script>
+	</body>
+
+</html>

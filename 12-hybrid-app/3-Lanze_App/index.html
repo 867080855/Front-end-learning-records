@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+    var page = 1; 
+		mui.init({ 
+		  pullRefresh : {
+		    container:'#refreshContainer',//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+		    up : { 
+		      height:50,//可选.默认50.触发上拉加载拖动距离
+		      auto:false,//可选,默认false.自动上拉加载一次
+		      contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+		      contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+		      callback :pullfresh_function //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+		    } 
+		  },
+		  preloadPages:[//缓存其他页面  
+            {  
+              url:'pullrefresh_main.html',  
+              id:'pullrefresh_main.html',  
+              styles:{  
+                 top:'0px',  
+            	 bottom:'60px'  
+              }  
+            },  
+            {  
+              url:'pullrefresh_sub.html',  
+              id:'pullrefresh_sub.html',  
+              styles:{  
+                 top:'44px',  
+                 bottom:'60px'  
+              }  
+            }  
+        ] 
+		});      
+		
+		function pullfresh_function(flag) {
+		      //业务逻辑代码，比如通过ajax从服务器获取新数据；
+		      //注意：
+		      //1、加载完新数据后，必须执行如下代码，true表示没有更多数据了：
+		      //2、若为ajax请求，则需将如下代码放置在处理完ajax响应数据之后
+		      
+		      	// 如果flag为假，显示默认的首页内容
+		        if(!selectorFlag){
+		       		page ++;
+		            request();
+		            this.endPullupToRefresh(false);
+			            function request(){
+		                	mui.ajax($$$.siturl + 'm=App&c=Index&a=index&page='+page,{
+		                    type : 'GET',
+		                    success : function(str) {
+		                        var data = JSON.parse(str);
+		                
+				                // 职位详细信息
+				                var jobs = data.data;
+				                for(var x = 0; x < jobs.length; x++){
+				                	new CreateList_index({
+				                		id:'job_list2',
+				                		data:jobs[x]
+				                	})
+				                }
+				                
+				                var ul = document.querySelector('#job_list2')
+								var lis = ul.children;
+								for(var x = 0 ;x < lis.length; x++){
+									lis[x].addEventListener('click',function(){
+										var id = this.children[0].getAttribute('data-id');
+										localStorage.setItem('jid',id);
+			//							alert(localStorage.getItem('jid'))
+									})
+								}
+		                    },
+		                    error : function(e) {
+		                         alert(e);
+		                    }
+		                });
+					}
+	            }else {
+	            	if(flag){
+	            		return ;
+	            	}
+	            	
+	            	selectPage ++;
+		            request2();
+		            this.endPullupToRefresh(false);
+		            function request2(){
+//		                alert($$$.siturl + 'm=App&c=index&a=qxhj' + updata);
+		                
+		                
+          				mui.ajax($$$.siturl + 'm=App&c=index&a=qxhj' + updata,{
+          					type:'get',
+          					dataType:'json',
+          					success:function(data){
+//        						alert(JSON.stringify(data));
+//        						var data = JSON.stringify(data);
+//        						selectorFlag = true;
+          						
+          						
+          						// 职位详细信息
+				                var jobs = data.data;
+				                var job_list2 = document.querySelector('#job_list2');
+				                job_list2.innerHTML = '';
+				                for(var x = 0; x < jobs.length; x++){
+//				                	alert('done');
+				                	new CreateList_index({
+				                		id:'job_list2',
+				                		data:jobs[x]
+				                	})
+				                }
+				                
+				                // 给每个条目绑定事件
+								var ul = document.querySelector('#job_list')
+								var lis = ul.children;
+								for(var x = 0 ;x < lis.length; x++){
+									lis[x].addEventListener('click',function(){
+										var id = this.children[0].getAttribute('data-id');
+										localStorage.setItem('jid',id);
+			//							alert(localStorage.getItem('jid'))
+									})
+								}
+          						
+          						
+          					},
+          					error:function(xhr,err){
+          						alert(err);
+          					}
+          				});
+
+	            }
+	 
+		     
+		       }
+		     
+		     
+		}
+
+    </script>
+    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	html,body {
+    		width : 100%;
+    		height : 100%;
+    	}
+    	@font-face {
+		  font-family: 'lanze';
+		  src: url('lib/fonts/icomoon.eot') format('embedded-opentype'), url('lib/fonts/icomoon.svg') format('svg'), url('lib/fonts/icomoon.ttf') format('truetype'), url('lib/fonts/icomoon.woff') format('woff');
+		}
+		
+		[class^="icon-"],
+		[class*=" icon-"] {
+			font-family: lanze;
+			font-style: normal;	
+		}
+		
+		.icon-mobilephone:before {
+		  content: "\e908";
+		  font-size: 13px;
+		}
+
+ 
+        /*头部栏颜色*/
+        .header-top {
+            /*background-color: #5CA8FC;*/
+            opacity: 1;
+        }
+    	 
+    	#circle .mui-table-view-cell {
+    		padding-top:0;
+    		padding-bottom:0;
+    		background-color: #fff;
+    		border:none;
+    	}
+    	#circle .mui-table-view-cell span {
+    		display: inline-block;
+        	width:2.4em;
+        	height:2.3em;
+    		background-image:url(images/index_circle.png);
+    		background-size:200% 200%;	
+    		background-repeat: no-repeat;
+    	}
+        .kuaisu {
+        	
+            background-position: left bottom;
+        }
+        .fujin {
+            background-position: left top;
+        }
+        .zixun {
+            background-position: right bottom;
+        }
+        .mingqi {
+            background-position: right top ;
+        }
+
+        /*筛选框*/
+        #selector span {
+            display: inline-block;
+            border:1px solid #737373;
+            border-radius: 5px;
+            margin-right:9px;
+            margin-bottom:14px;
+            height:20px;
+            line-height: 10px;
+            padding:6px 12px;
+            box-sizing: border-box;
+            font-size: 10px;
+            overflow: hidden;
+        }
+        #selected {
+            padding:12px 23px 14px 32px;
+        }
+
+        /*消息面板*/
+        .news-tab {
+            height:70px;
+            background-color: #fff;
+        }
+        .news-tab .left {
+            width:70px;
+            height:100%;
+            float: left;
+            box-sizing: border-box;
+            padding:12px 10px 12px 13px;
+        }
+        .news-tab .left img {
+            width: 100%;
+            height: 100%;
+        }
+        .news-tab .right {
+            width:70%;
+            height:100%;
+            float: left;
+            padding:16px 13px 16px 0;
+        }
+        .news-tab .right .line-one {
+            font-size: 14px;
+            line-height: 14px;
+            height:14px;
+            margin-bottom: 12px;
+            color:#323232;
+            position: relative;
+        }
+        .news-tab .right .line-one span {
+            position: absolute;
+            right:0;
+            top:0;
+            color:#5CA8FC;
+            font-size: 14px;
+        }
+        .news-tab .right .line-two {
+            font-size: 12px;
+            line-height: 12px;
+            height: 12px;
+            color:#737373;
+        }
+
+        /*设置面板*/
+        #tabbar-with-my .title {
+        	position: relative;
+            height:139px;
+            background-image: url("images/beijing.png");
+            background-repeat: no-repeat;
+            background-size: 100% 139px;
+            padding: 40px 13px 0 11px;
+            overflow: hidden;
+        }
+        #tabbar-with-my .title .left {
+            /*width:17.3%;*/
+            padding-left:11px;
+            width:69px;
+            float: left;
+        }
+        #tabbar-with-my .title .left img{
+            width:100%;
+            height:100%;
+        }
+        #tabbar-with-my .title .right {
+            padding-top: 13px;
+            padding-left: 14px;
+            float: left;
+            color:#fff;
+            position: relative;
+            width:70%;
+        }
+        #tabbar-with-my .title .right .line-one {
+            margin-bottom: 13px;
+            font-size: 13px;
+            height: 13px;
+            line-height:13px;
+        }
+        #tabbar-with-my .title .right .line-two {
+            font-size: 11px;
+            height: 11px;
+            line-height: 11px;
+        }
+
+
+		.arrow {
+			position: absolute;
+            right:3px;
+            top:50%;
+            margin-top:-6px;
+            width:9px;
+            height:20px;
+            overflow: hidden;
+		}
+		.arrow::after {
+			content:' ';
+            position: absolute;
+            right:3px;
+            top:0;
+            width:12px;
+            height:12px;
+            border:3px solid #C4CDD9;
+            transform: rotate(45deg);
+		}
+
+
+
+        /*已申请职位，收藏。。。*/
+        #tabbar-with-my .news-content .block {
+            width:33.3%;
+            float:left;
+            margin:13px 0;
+            font-size: 12px;
+            line-height: 12px;
+            background-color: #fff;
+        }
+        #tabbar-with-my .news-content .block + div {
+            border-left:1px solid #cdcdcd;
+        }
+        #tabbar-with-my .news-content .block .img-t {
+            position: relative;
+            left:50%;
+            margin-left:-15px;
+            width:30px;
+        }
+        #tabbar-with-my .news-content .block .text-b {
+            padding-top:9px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /*客服热线，招聘合作*/
+        #tabbar-with-my .news-service .news-service-item {
+            width:100%;
+            height:60px;
+            background-color: #fff;
+        }
+        #tabbar-with-my .news-service .news-service-item .left1 {
+            box-sizing: border-box;
+            padding:17px 8px 0 10px;
+            height:60px;
+            width:40px;
+            float: left;
+        }
+        #tabbar-with-my .news-service .news-service-item .left1 img {
+            width:100%;
+        }
+        #tabbar-with-my .news-service .news-service-item .left2 {
+            color:#757575;
+            font-size:11px;
+            line-height: 11px;
+            float: left;
+            padding:24px 0;
+        }
+        
+        
+        /*顶部栏颜色*/
+       /*header {*/
+       		/*background-color: #5CA8FC !important;	*/
+       /*}*/
+
+
+        /*下拉框列表项小标签格式*/
+        #sel_box div {
+            display: inline-block;
+            font-size: 10px;
+            height:24px;
+            line-height: 20px;
+            box-sizing: border-box;
+            padding:4px 12px;
+            background-color: #F5F4F4;
+            border-radius: 3px;
+            margin-bottom:13px;
+            margin-right:9px;
+            border:1px solid #737373;
+			
+        }
+    </style>
+</head>
+<body>
+    <div id="tabbar" class="mui-control-content mui-active" style="height:100%;">
+        <!--顶部栏-->
+        <header id="header" class="mui-bar mui-bar-nav header-top" style="position: fixed;">
+            <!--<a href="app/login/bianji_delete.html"><h1 class="mui-title">蓝泽信息</h1></a>-->
+            
+            <a onclick="goCityList();" href="app/citylist/citylist.html" style="color:#737373;">
+                <div style="width:80px;display: inline-block;" id="quanguo">
+                    <div id="area" style="padding-left:8px;float:left;font-size:14px;line-height: 44px;width:45px ;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                        全国
+                    </div>
+                    <div style="width:12px;height:100%;float:left;padding-left:7px;padding-top:11px;box-sizing: content-box;">
+                        <img id="quanguo_img" src="images/xiala.png" style="width:100%;" alt="" />
+                    </div>
+                </div>
+            </a>
+            <a href="app/search/search.html">
+                <div class="mui-title" style="right:80px;left:80px;display: inline-block;height:33px;margin-top:5px;background-color: #efefef;border-radius: 15px;border: 1px solid #bab9b7;">
+                    <div style="position: absolute;left:14px;top:9px;width:19px;height:16px;background-image: url(images/sousuo.png);background-repeat: no-repeat;background-size: 19px 16px;">
+                    </div>
+                </div>
+            </a>
+        	<!--<a href="test.html" style="color:#737373;">
+                <div style="width:80px;display: inline-block;" id="quanguo">
+                    <div id="area" style="position:absolute;right:10px;top:0;font-size:14px;line-height: 44px;width:45px ;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                    		测试
+                    </div>
+                </div>
+            </a>-->
+        	
+        	<!--测试网页-->
+        	
+        </header>
+        <!--轮播图-->
+        <div class="mui-slider" style="padding-top:44px;">
+            <div class="mui-slider-group mui-slider-loop" id="slider">
+
+            </div>
+        </div>
+        <!--四个小圆图标-->
+        <div class="mui-content" style="padding:0;background-color: #fff;" id="circle">
+            <ul class="mui-table-view mui-grid-view mui-grid-9" style="margin:0;">
+                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="app/circle/kuaisu/kuaisu.html">
+                    <span class="kuaisu"></span>
+                    <div class="mui-media-body" style="text-overflow: initial;">快速入职</div></a></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="app/circle/fujin/fujin.html">
+                    <span class="fujin"></span>
+                    <div class="mui-media-body" style="text-overflow: initial;">附近职位</div></a></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="app/circle/mingqi/famousenterprise.html">
+                    <span class="mingqi"></span>
+                    <div class="mui-media-body" style="text-overflow: initial;">名企推荐</div></a></li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3"><a href="app/circle/zhichang/zhichang.html">
+                    <span class="zixun"></span>
+                    <div class="mui-media-body" style="text-overflow: initial;">职场分类</div></a></li>
+            </ul>
+        </div>
+        <!--筛选框-->
+        <!--
+
+        <div id="shaixuan">
+            <a href="#popover1" id="openPopover" class="mui-btn mui-btn-block" style="width:25%;float:left;">请选择</a>
+            <div id="popover1" class="mui-popover">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell"><a href="#">Item1</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item2</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item3</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item4</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item5</a></li>
+                </ul>
+            </div> 
+
+            <a href="#popover2" id="openPopover" class="mui-btn mui-btn-block" style="width:25%;float:left;">请选择</a>
+            <div id="popover2" class="mui-popover">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell"><a href="#">Item1</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item2</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item3</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item4</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item5</a></li>
+                </ul>
+            </div> 
+
+            <a href="#popover3" id="openPopover" class="mui-btn mui-btn-block" style="width:25%;float:left;">请选择</a>
+            <div id="popover3" class="mui-popover">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell"><a href="#">Item1</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item2</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item3</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item4</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item5</a></li>
+                </ul>
+            </div>
+
+            <a href="#popover4" id="openPopover" class="mui-btn mui-btn-block" style="width:25%;float:left;">请选择</a>
+            <div id="popover4" class="mui-popover">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell"><a href="#">Item1</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item2</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item3</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item4</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item5</a></li>
+                </ul>
+            </div>
+        </div>
+
+        -->
+        <!--假的筛选框-->
+        <!--
+        <div id="selector2" height="100px;">
+            <div id="title" style="background-color: #fff;width:25%;">
+                请选择
+            </div>
+            <div id="detail" style="background-color: #fff;height:100px;">
+                <div style="background-color: #fff;">青岛</div>
+                <div style="background-color: #fff;">青岛</div>
+            </div>
+        </div>
+        -->
+        <!--假的筛选框-->
+        <!--
+        <ul class="mui-table-view" style="width:25%;">
+            <li class="mui-table-view-cell mui-collapse" style="width:400%;">
+                <a class="mui-navigate-right" href="#" style="width:28%;">请选择</a>
+                <div class="mui-collapse-content">
+                    <p style="float:left;margin:5px 0;margin-right:10px;border:1px solid #ccc;border-radius:5px;">面板1子内容</p>
+                    <p style="float:left;margin:5px 0;margin-right:10px;border:1px solid #ccc;border-radius:5px;">面板1子内容</p>
+                    <p style="float:left;margin:5px 0;margin-right:10px;border:1px solid #ccc;border-radius:5px;">面板1子内容</p>
+                    <p style="float:left;margin:5px 0;margin-right:10px;border:1px solid #ccc;border-radius:5px;">面板1子内容</p>
+                    <p style="float:left;margin:5px 0;margin-right:10px;border:1px solid #ccc;border-radius:5px;">面板1子内容</p>
+                    <p style="float:left;margin:5px 0;margin-right:10px;border:1px solid #ccc;border-radius:5px;">面板1子内容</p>
+                </div>
+            </li>
+        </ul>
+        -->
+        <!--筛选框-->
+        <div style="height:44px;position: relative;" id="selector">
+            <!--下拉框-->
+            <!--区域-->
+            <div id="selector1"  style="width:25%;height:44px;float: left;background-color:#fff;line-height: 44px;font-size:13px;padding-left:21px;box-sizing: border-box">
+                <div class="sel-text" style="float:left;">
+                    区域
+                </div>
+                <div class="sel-img" style="padding-left:6px;float: left;">
+                    <img src="images/xiala.png" style="width:11px;height:10px;" alt="">
+                </div>
+            </div>
+            <!--职位-->
+            <div id="selector2"  style="width:25%;height:44px;float: left;background-color:#fff;line-height: 44px;font-size:13px;padding-left:21px;box-sizing: border-box">
+                <div class="sel-text" style="float:left;">
+                    职位
+                </div>
+                <div class="sel-img" style="padding-left:6px;float: left;">
+                    <img src="images/xiala.png" style="width:11px;height:10px;" alt="">
+                </div>
+            </div>
+            <!--薪资-->
+            <div id="selector3"  style="width:25%;height:44px;float: left;background-color:#fff;line-height: 44px;font-size:13px;padding-left:21px;box-sizing: border-box">
+                <div class="sel-text" style="float:left;">
+                    薪资
+                </div>
+                <div class="sel-img" style="padding-left:6px;float: left;">
+                    <img src="images/xiala.png" style="width:11px;height:10px;" alt="">
+                </div>
+            </div>
+            <!--福利-->
+            <div id="selector4"  style="width:25%;height:44px;float: left;background-color:#fff;line-height: 44px;font-size:13px;padding-left:21px;box-sizing: border-box">
+                <div class="sel-text" style="float:left;">
+                    福利
+                </div>
+                <div class="sel-img" style="padding-left:6px;float: left;">
+                    <img src="images/xiala.png" style="width:11px;height:10px;" alt="">
+                </div>
+            </div>
+            
+            	
+            	
+            <!--模态框-->
+			
+		<div class="mui-scroll-wrapper" id="sel_box" style="display:none;position: absolute;top:44px;min-height:80px;background-color: #F5F4F4;width:100%;z-index: 1000;padding:13px 30px;height:120px;">
+				<div class="mui-scroll" style="padding:0;height:100%;width:100%;border:none;margin:0;">
+
+				</div>
+			</div>
+        </div>
+
+
+        <!--第一页的职位详细信息-->
+        <ul class="mui-table-view" id="job_list">
+
+        </ul>
+
+        <!--下拉滚动-->
+        <div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="padding:0;">
+            <div class="mui-scroll">
+                <!--数据列表-->
+                <!--职位详细列表-->
+                <ul class="mui-table-view" id="job_list2">
+
+
+                </ul>
+            </div>
+        </div>
+        
+
+        
+    </div>
+    <!--暂时放置-->
+    <div id="tabbar-with-community" class="mui-control-content">
+        <!--顶部栏-->
+        <header id="header2" class="mui-bar mui-bar-nav header-top" >
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">消息</h1>
+        </header>
+        <div id="com_content" style="padding-top: 44px;font-size: 20px;">
+            <!--<a href="app/community/community.html">community</a> <br>-->
+            <!--<a href="app/community/community_detail.html">community_detail</a> <br />
+            <a href="app/community/editTie.html">editTie</a> <br />
+            <a href="app/image/index.html">image</a> <br />
+            <a href="app/community/about.html">about</a> <br />-->
+            
+            
+            
+            
+        </div>
+    </div>
+    <!--消息-->
+    <div id="tabbar-with-news" class="mui-control-content" >
+        <!--顶部栏-->
+        <header id="header3" class="mui-bar mui-bar-nav header-top" >
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">消息</h1>
+        </header>
+        <!--消息-->
+        <div id="news_content" style="padding-top: 44px;">
+            <div class="news-tab" onclick="tiaozhuan()" style="position: relative;">
+            	<span style="position: absolute;right:10px;top:16px;font-size:11px;line-height: 11px;height:11px;color:#5CA8FC;">一天前</span>
+                <div class="left">
+                    <img src="images/xiaoxitongzhi.png" alt="">
+                </div>
+                <div class="right">
+                    <div class="line-one">
+                        系统通知 
+                    </div>
+                    <div class="line-two">
+                        2月14日举办大型招聘会
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--我的-->
+    <div id="tabbar-with-my" class="mui-control-content" style="background-color: #efefef;">
+        <!--顶部区域-->
+        <div id="title" class="title">
+            <!--<div class="head">
+				<!--<a href="app/login/login.html" style="background: url('') no-repeat center;float:left;overflow:hidden;display:inline-block;width:40px;height:40px;border-radius:20px;"></a>
+            	
+         <a href="app/login/login.html" style="background-size: 40px 40px; background: url("") no-repeat center;float:left;overflow:hidden;display:inline-block;width:40px;height:40px;border-radius:20px;">
+		 </a> -->
+	            	<!--左侧头像-->
+	          <!--<a href="app/login/login.html" style="background-size: 40px 40px;float:left;overflow:hidden;display:inline-block;width:40px;height:40px;border-radius:20px;">
+            		<div class="left" style="padding-left: 0;position: relative;">
+            			<img src="images/index_circle.png" alt="" style="height:40px;width:40px;">
+            		</div>
+            	</a>-->
+            	<!--右侧详细信息-->
+            	<!--<div class="right">
+            		<div class="line-one" style="width: 80%;">
+                     lzz
+                     <span class="" style="display:inline-block;float:right;">子珍</span>
+            		</div>
+		    		<div class="line-two">
+		    			nv
+		    		</div>
+                    
+            	</div>-->
+            	<!--小三角-->
+            	<!--<div class="arrow" style="position: absolute;right:30px;height:30px;">
+            	</div>
+            </div>-->
+        </div>
+        <!--已申请职位，收藏，社区动态-->
+        <div class="news-content" style="height:73px;background-color: #fff;border-bottom:1px solid #C0C0C0;overflow: hidden;">
+            <a href="app/apply/apply.html" style="color:#000;">
+            	<div class="block">
+	                <div class="img-t">
+	                    <img src="images/shenqingguo.png" alt="" style="width:100%;">
+	                </div>
+	                <div class="text-b">
+	                    已申请职位
+	                </div>
+	            </div>
+            </a>
+            <a href="app/shoucang/shoucang.html" style="color:#000;">
+            	<div class="block">
+	                <div class="img-t">
+	                    <img src="images/shoucang2.png" alt="" style="width:100%;">
+	                </div>
+	                <div class="text-b">
+	                    收藏
+	                </div>
+	            </div>
+            </a>
+            <a href="app/community/about.html" style="color:#000;">
+            	<div class="block">
+	                <div class="img-t">
+	                    <img src="images/shequdongtai2.png" alt="" style="width:100%;">
+	                </div>
+	                <div class="text-b">
+	                    社区动态
+	                </div>
+	            </div>
+            </a>
+        </div>
+        <!--客服热线，招聘合作-->
+        <div class="news-service" style="margin-top:8px;">
+        	<!--客服热线，调起本地的电话-->
+            <a href="tel:15275241931" style="display: block;">
+            	 	<div class="news-service-item" style="border-bottom:1px solid #C0C0C0;">
+	                <div class="left1">
+	                    <img src="images/kefu2.png" alt="">
+	                </div> 
+	                <div class="left2"> 
+	                    客服热线
+	                </div>
+	            </div>
+            </a>
+            <a href="app/zhaopin/zhaopin.html">
+            	<div class="news-service-item"style="border-bottom:1px solid #C0C0C0;">
+                <div class="left1">
+                    <img src="images/zhaopinhezuo2.png" alt="">
+                </div>
+                <div class="left2">
+                    招聘合作
+                </div>
+            </div>
+            </a>
+            <a href="app/tuijian/tuiFriend.html">
+            	<div class="news-service-item">
+                <div class="left1">
+                    <img src="app/tuijian/images/txl.png" alt="">
+                </div>
+                <div class="left2">
+                    推荐入职
+                </div>
+            </div>
+            </a>
+        </div>
+        
+        <!--设置-->
+        <div class="news-service" style="margin-top:8px;" id="setting">
+            <div class="news-service-item">
+                <div class="left1">
+                    <img src="images/shezhi2.png" alt="">
+                </div>
+                <div class="left2">
+                    设置
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="mui-bar mui-bar-tab" id="footer">
+    <a class="mui-tab-item mui-active" href="#tabbar">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item" href="app/community/pullrefresh_main.html" id="communityLink">
+        <span class="mui-icon mui-icon-chatbubble"></span>
+        <span class="mui-tab-label">社区</span>
+    </a>
+    
+    <a class="mui-tab-item" href="#tabbar-with-news">
+        <span class="mui-icon mui-icon-email"></span>
+        <span class="mui-tab-label">消息</span>
+    </a>
+    <a class="mui-tab-item" href="#tabbar-with-my">
+        <span class="mui-icon mui-icon-gear"></span>
+        <span class="mui-tab-label">设置</span>
+    </a> 
+</nav>
+
+</body>
+<!--主要js区域-->
+<script>
+//		var communityLink = document.querySelector('#communityLink');
+	function tiaozhuan(){
+		mui.openWindow({
+			url:'app/tongzhi/notice.html',
+			id:'notice' 
+		})
+		
+	}
+
+	// 使页面底部的tab栏生效	
+	mui('body').on('tap','a',function(){
+//		document.location.href = 'app/community/community.html';
+		document.location.href = this.href;
+	});
+
+	var mainPage = mui.preload({
+		"id": 'pullrefresh_sub',
+		"url": 'pullrefresh_sub.html'
+	});
+	var mainPage2 = mui.preload({
+		"id": 'pullrefresh_main',
+		"url": 'pullrefresh_main.html'
+	});
+	
+	mui.fire(mainPage, 'show', null);
+	mui.fire(mainPage2, 'show', null);
+//	mainPage.show("pop-in");
+	
+//	var main_loaded_flag = false;
+//	mainPage.addEventListener("loaded",function () {
+//		main_loaded_flag = true; 
+//	});
+//	
+//	var toMain = function() {
+//		//使用定时器的原因：
+//		//可能执行太快，main页面loaded事件尚未触发就执行自定义事件，此时必然会失败
+//		var id = setInterval(function () {
+//			if(main_loaded_flag){
+//				clearInterval(id);
+//				$.fire(mainPage, 'show', null);
+//				mainPage.show("pop-in");
+//			}
+//		},20);
+//	};
+
+	document.addEventListener( "plusready",  function(){
+		plus.webview.close('pullrefresh_sub.html');
+			//plus.nativeUI.actionSheet( {title:"Plus is ready!",cancel:"取消",buttons:[{title:"1"},{title:"2"}]},
+//		var immersed = 0;
+//		var topoffset = 44;
+//		var ms=(/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
+//		if(ms && ms.length>=3){ // 当前环境为沉浸式状态栏模式
+//			immersed = parseFloat(ms[2]);// 获取状态栏的高度
+//			immersed = plus.navigator.getStatusbarHeight();
+//			
+//			topoffset = topoffset + immersed;
+//			
+//			// 统改所有顶部栏位置
+//			var t = document.getElementsByTagName('header');	// 顶部栏(蓝泽信息)
+//			if(t){
+//				for(var x = 0; x < t.length; x++){
+//					t[x].style.paddingTop = immersed+'px';
+//					t[x].style.height= topoffset +'px';
+//				}	
+//			}
+//			// 统改所有内容区域距离顶部栏的位置
+//			var contents = document.querySelectorAll('#content > .mui-control-content');
+//			
+//			for(var x = 0; x < contents.length; x++){
+//				var tar = contents[x].children[1];
+//				var top = tar.style['padding-top'];
+//				top = Number.parseInt(top);
+//				if(top == '44'){
+//					tar.style['padding-top'] = topoffset + 'px';
+//				}
+//			}
+//	//		var mc = document.getElementsByClassName('mui-content')[0];
+//	//		if (mc) {
+//	//			var newpt = 44 + immersed +'px';
+//	//			mc.style.paddingTop = newpt;
+//	//		}
+//
+//		}
+		
+		
+//		var first = null;
+//	    plus.key.addEventListener('backbutton', function(){
+//	        //首次按键，提示‘再按一次退出应用’
+//	        if(!first){
+//	            first = new Date().getTime();
+//	            mui.toast('再按一次退出应用');
+//	            setTimeout(function(){
+//	                first = null;
+//	            },1000);
+//	        }else{
+//	            if(new Date().getTime()-first<1000){
+//	                plus.runtime.quit();
+//	            }
+//	        }
+//	    }, false);
+	    
+	    var backButtonPress = 0;
+	    mui.back = function(event) {
+			backButtonPress++;
+			if (backButtonPress > 1) {
+				plus.runtime.quit();
+			} else {
+				plus.nativeUI.toast('再按一次退出应用');
+			}
+			setTimeout(function() {
+				backButtonPress = 0;
+			}, 1000);
+			return false;
+		};
+		
+		
+		// 消息推送
+	    message = document.getElementById("message");
+	    
+	    
+	    var info = plus.push.getClientInfo();  
+//		console.log( JSON.stringify( info ) ); 
+//		alert( JSON.stringify( info ) );
+		
+	    // 监听点击消息事件
+	    plus.push.addEventListener( "click", function( msg ) {
+	        // 判断是从本地创建还是离线推送的消息
+	        switch( msg.payload ) {
+	            case "LocalMSG":
+	                outSet( "点击本地创建消息启动：" );
+	            break;
+	            default:
+	                outSet( "点击离线推送消息启动：");
+	            break;
+	        }
+	        // 提示点击的内容
+	        plus.ui.alert( msg.content );
+	        // 处理其它数据
+	        logoutPushMsg( msg );
+	    }, false );
+	     
+	    
+	    // 监听在线消息事件
+	    plus.push.addEventListener( "receive", function( msg ) {
+	        if ( msg.aps ) {  // Apple APNS message
+	            outSet( "接收到在线APNS消息：" );
+	        } else {
+	            outSet( "接收到在线透传消息：" );
+	        }
+	        logoutPushMsg( msg );
+	    }, false );
+	    
+	    
+	    
+	    function createLocalPushMsg(){
+		    var options = {cover:false};
+		    var str = dateToStr(new Date());
+		    str += ": 欢迎使用Html5 Plus创建本地消息！";
+		    plus.push.createMessage( str, "LocalMSG", options );
+		    outSet( "创建本地消息成功！" );
+		    outLine( "请到系统消息中心查看！" );
+		    if(plus.os.name=="iOS"){
+		        outLine('*如果无法创建消息，请到"设置"->"通知"中配置应用在通知中心显示!');
+		    }
+		}
+//   	createLocalPushMsg();
+
+		
+			var sliderbox = document.querySelector('#slider');
+	        
+	        
+	        // 首页第一屏的数据加载---应用刚打开的时候的数据加载
+	        mui.ajax($$$.siturl + 'm=App',{
+				type:'get',
+				success:function(str){
+	                var data = JSON.parse(str);
+	                // 职位详细信息
+	                var jobs = data.data;
+	                for(var x = 0; x < jobs.length; x++){
+	                	if(x<5){
+	                		zhiding = '<span class="" style="color:white;display: inline-block;width: 40px;height:17px;text-align:center;font-size:10px;border-top-left-radius: 3px;border-top-right-radius: 3px;font-weight:400;position: absolute;top:8px;right:0px;background: #ff7113;">急招</span>';
+	                	}else{
+	                		zhiding = '';
+	                	}
+	                	new CreateList_index({
+	                		id:'job_list',
+	                		data:jobs[x]
+	                	})
+	                }
+	                
+	                // 给每个条目绑定事件
+					var ul = document.querySelector('#job_list')
+					var lis = ul.children;
+					for(var x = 0 ;x < lis.length; x++){
+						lis[x].addEventListener('click',function(){
+							var id = this.children[0].getAttribute('data-id');
+							localStorage.setItem('jid',id);
+//							alert(localStorage.getItem('jid'))
+						})
+					}
+					
+					
+	                
+	                function lunbotu(){
+	                	var result = '';
+		                var tar = data.lunbotu;
+		                
+		                
+		                var url = $$$.imgurl;
+		                // 最后一张图片
+		                result  += '<div class="mui-slider-item data-id lb" ><a href="#" ><img style="height:120px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+		                
+		                
+		                // 第一张图片
+						result  += '<div class="mui-slider-item data-id lb"  ><a href="javascript:goJobLink_lunbo(216);" ><img style="height:120px;" src="'+ url + tar[0] +'" /></a></div>';
+						
+						// 中间的图片(其实就是第二张图片) 
+		                for(var x = 1; x < tar.length-1; x++){
+							result  += '<div class="mui-slider-item data-id lb" data-id="59" ><a href="javascript:goJobLink_lunbo(59);" ><img style="height:120px;" src="'+ url + tar[x] +'" /></a></div>';
+						}
+		                
+		                // 最后一张图片
+	                	result  += '<div class="mui-slider-item data-id lb" ><a href="#" ><img style="height:120px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+	                	
+	                	// 第一张图片
+	                	result  += '<div class="mui-slider-item data-id lb" data-id="216" ><a href="javascript:goJobLink_lunbo(216);" ><img style="height:120px;" src="'+ url + tar[0] +'" /></a></div>';
+		                sliderbox.innerHTML = result;
+		                
+		                
+		                
+		                // 创建轮播图对象
+		                var gallery = mui('.mui-slider');
+						gallery.slider({
+						  interval:1000//自动轮播周期，若为0则不自动播放，默认为0；
+						});
+						
+
+
+	                }
+	                
+	                
+	                
+	                lunbotu();
+					
+	            }
+			});
+	      
+	},true);
+</script>
+
+<!--函数定义-->
+<script type="text/javascript">
+
+    function CreateList_index (option){
+        this.id = option.id || 'work_detail';
+        this.bg = option.bg || '#fff';
+        this.data = option.data;
+        this.init();
+    }
+    CreateList_index.prototype = {
+        init:function () {
+            // 处理id
+            var id = this.birthId(this.id);
+            // 创建并插入预制组件
+            var str = this.create(this.data);
+            this.insert(id,str);
+        },
+        birthId:function (id) {
+            var query = '#' + id;
+            return query;
+        },
+        create:function (data) {
+            /*定义组件字符串*/
+            var tags = data.tag_cn.split(',');
+            var leng=0;
+            if(tags.length>3){
+                leng=3;
+
+            }else{
+                leng=tags.length;
+            }
+            var srce='';
+            for (var i=0; i <leng; i++) {
+                // alert(tags[i]); 
+                srce+='<span style="font-size;10px;line-height: 12px;height:16px;padding:2px 4px;box-sizing: border-box;display: inline-block;text-align: center;border:1px solid #5CA8FC;border-radius: 5px;color:#5CA8FC;margin-right:3px;">'+tags[i]+'</span>';
+            }
+            var result = '';
+            // 立即执行函数，只是为了可以点击折叠按钮而已，没有实际功能。里边放置的是result(职位详细信息字符串)
+            (function(data){
+                result += '<li id="2" class="mui-table-view-cell " style="padding-right:0px;padding-left:8px;padding-bottom:1px;padding-top:6px;box-sizing: border-box;border-bottom:1px solid #CDCDCD;" data-id="'+data.jid+'">';
+                
+                
+			    result += '<div style="padding:3px 0;">';
+				
+				
+				// 左侧头像
+                result += '<div style="width:23%;float:left;padding-right:13px;">';
+                result += '<img src="' + $$$.imgurl + data.logo+'" style="width:100%;height:62px;border-radius: 8px;">';
+                result += '</div>';
+
+
+
+				// 右侧详细信息
+			    result += '<div class="" style="float:left;width:77%;">';
+			    result += '<div class="" style="width:100%">';
+
+
+
+			    result += '<div  class="">';
+			    result += '<div class="" style="font-weight:700;font-size:14px;padding-bottom:10px;line-height: 14px;">'+data.jobs_name+'</div>';
+			    result += '</div>';
+			
+				result += zhiding;
+
+			    result += '<div  class="" style="position: relative;font-size:14px;padding-bottom: 7px;line-height: 12px;">';
+                    result += '<div class="" style="color:#737373;">'+data.category_cn+'</div>';
+                    result += '<div class="" style="color:#ff7113;font-size:1.2em;position:absolute;right:13px;top:0;">'+data.minwage+'-'+data.maxwage+'元</div>';
+			    result += '</div>';
+
+
+			    result += '<div  class="" style="position:relative;font-size:10px;">';
+			    result += '<div class="">';
+			    	result += srce;
+			    result += '</div>';
+			    result += '<div class="" style="position: absolute;right:13px;bottom:0;">'+data.district_cn+'</div>';
+			    result += '</div>';
+			    result += '</div>';
+			    result += '</div>';
+			    result += '</div>';
+			    result += '</li>';
+            })(data);
+            return result;
+        },
+        insert:function (id,result) {
+            var div = document.createElement('div');
+            div.innerHTML = result;
+            div.addEventListener('click',function(){
+            	goJobLink();
+            })
+            var box = document.querySelector(id);
+            if(box.appendChild){
+            	box.appendChild(div);
+            }else{
+            	box.append(div);
+            }
+        }
+    };
+    
+    
+    function goJobLink(){
+    	var jid = localStorage.getItem('jid');
+    	mui.openWindow({
+		    url:'app/job/job.html',
+		    id:'job',
+		    extras:{
+		      jid:jid
+		    },
+		    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		    waiting:{
+		      autoShow:true,//自动显示等待框，默认为true
+		      title:'正在加载...',//等待对话框上显示的提示内容
+		    }
+		})
+    }
+
+	function goCityList(){
+		mui.openWindow({
+		    url:'app/citylist/citylist.html',
+		    id:'citylist'
+		})
+    }
+	
+	
+	function goJobLink_lunbo(lidh){
+//						alert(lid)
+
+    	localStorage.setItem('jid',lidh)
+    	mui.openWindow({
+		    url:'app/job/job.html',
+		    id:'job',
+		    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		    waiting:{
+		      autoShow:true,//自动显示等待框，默认为true
+		      title:'正在加载...',//等待对话框上显示的提示内容
+		    }
+		})
+   }         
+</script>
+
+<!--主界面第四区域----我的js-->
+<script>
+	
+	var settingButton = document.querySelector('#setting');
+	settingButton.addEventListener('click',function(){
+		mui.openWindow({
+		    url:'app/setting/setting.html',
+		    id:'setting',
+		    show:{
+		      aniShow:'slide-in-right'//页面显示动画，默认为”slide-in-right“；
+		    }
+		})
+	})
+			
+//	alert('localLen: ' + localStorage.length);
+//	alert('sessionLen : ' + sessionStorage.length);
+//	
+	
+	
+	var login_uid = localStorage.getItem('user_name');
+	var login_pass = localStorage.getItem('user_pass');
+	
+//	var login_uid = 0;
+//	var login_pass =0;
+	
+	
+	var str=""; 
+	var title = document.querySelector('.title');
+//	alert(login_uid); 
+//	alert(login_pass);
+
+	function recordUserMsg(data){
+		localStorage.setItem('user_name',data.data.username);
+		localStorage.setItem('user_pass',data.data.pass);
+		localStorage.setItem('user_info',JSON.stringify(data.data));
+		
+		
+		
+		localStorage.setItem('user_info_sess',JSON.stringify(data.data))				
+		sessionStorage.setItem('isLogin',true);
+				
+//				alert(sessionStorage.getItem('user_info_sess'));		
+//				
+	}
+
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//没有本地session ，登陆动作
+	var isling=sessionStorage.getItem('isLogin');
+	
+		if(isling==null){ 
+
+				mui.ajax($$$.siturl + 'm=App&c=Mumber&a=logoin',{
+				type:'post',
+				dataType:'json',
+				data:{
+					uname:login_uid,
+					password:login_pass//lxg
+				},
+				success:function(data){ 
+					//alert(JSON.stringify(data));
+					//var user_info = sessionStorage.getItem('user_info_sess');
+			
+					//var user_info = JSON.parse(user_info);
+		
+					if(data.staus == 0){
+						//alert(data);
+						str +=	'<div class="head">';
+				            str +=	   '<!--右侧详细信息-->';
+					        str +=	    '<div class="right" style="padding-left: 0;width:100%;text-align:center;">';
+			                str +=	   		'<a href="app/login/login.html" style = " color:#fff;font-size:20px;width:100%;display:block;height:40px;padding:10px;">登录</a>';
+			                str +=		'</div>';
+				            str +=	'</div>';
+					}else if(data.staus == 1){ 
+							// 退出登录标识 
+//							localStorage.setItem('tuichu_flag',false);
+						
+							recordUserMsg(data);
+							//alert(JSON.stringify(data));
+							
+							var	user_info=data.data;
+							var user_gender;
+							
+							if(user_info != null) {
+								 
+								//alert('done');
+								if(user_info.userdata != null){
+									if(user_info.userdata.sex == 1){
+							 			user_gender = '男';
+								 	}else if(user_info.userdata.sex == 2){
+								 		user_gender = '女';
+								 	}
+								}else{
+									user_gender = '';
+								}
+							}
+		
+		//		            str +=	        '<div class="left">'
+		//		            str +=	           '<img src="'+$$$.imgurl+user_info.avatars+'" alt="">'
+		//		            str +=	        '</div>'				 
+		
+							str +=	    '<!--左侧头像-->'
+							str +=		'<a href="app/login/bianji.html" style="background-size: 60px 60px;float:left;overflow:hidden;display:inline-block;width:60px;height:60px;border-radius:30px;">'
+					        str +=    		'<div class="left" style="padding-left: 0;">'
+					        str +=    			'<img src="'+$$$.imgurl + user_info.avatars+'" alt="" style="height:60px;width:60px;">'
+					        str +=    		'</div>'
+					        str +=    	'</a>'
+				            
+		//		            str +=	   '<!--右侧详细信息-->' 
+				            str +=	    '<div class="right">'
+				            str +=	        '<div class="line-one" style="width:80%;">'
+				            str +=	             user_info.username;
+				           if(user_info.userdata != null && user_info.userdata != 'null' ){
+							        str +=	        '<span class="" style="display:inline-block;float:right;">'
+								    str +=	             user_info.userdata.realname;
+								    str +=	        '</span>'
+							}
+				            str +=	        '</div>'
+							            
+						    str +=	        '<div class="line-two">'
+						    str +=	            user_gender
+						    str +=	         '</div>'
+				                    
+				            str +=	    '</div>'
+		//		            str +=		'<!--小三角-->'
+				            str +=		'<div class="arrow" style="position: absolute;right:30px;height:30px;">';
+				            str +=	    '</div>'	         
+						
+					}
+					title.innerHTML = str;
+				},error:function(xhr,err){
+					alert(xhr);
+				}
+			});
+
+	}
+	
+	var j=sessionStorage.getItem('isLogin'); 
+	//登陆成功，获取本地session 添加到页面上
+		
+	if(j=='true'){
+			
+//			localStorage.setItem('tuichu_flag',false);
+			var user_gender;
+			var user_info=localStorage.getItem('user_info_sess');
+			user_info=JSON.parse(user_info);
+				  
+					//console.log(JSON.stringify(user_info));
+					if(user_info != null) {
+		
+						if(user_info.userdata != null){
+							if(user_info.userdata.sex == 1){
+					 			user_gender = '男';
+						 	}else if(user_info.userdata.sex == 2){
+						 		user_gender = '女';
+						 	}
+						}else{
+						user_gender = '男';
+						
+						}
+					}					
+					//console.log(JSON.stringify(user_gender));
+						//alert($$$.imgurl+user_info.avatars); 
+					str +=	    '<!--左侧头像-->'
+					str +=		'<a href="app/login/bianji.html" style="background-size: 60px 60px;float:left;overflow:hidden;display:inline-block;width:60px;height:60px;border-radius:30px;">'
+			        str +=    		'<div class="left" style="padding-left: 0;">'
+			        str +=    			'<img src="'+$$$.imgurl + user_info.avatars+'" alt="" style="height:60px;width:60px;">'
+			        str +=    		'</div>'
+			        str +=    	'</a>'
+		            
+		            str +=	   '<!--右侧详细信息-->'
+		            str +=	    '<div class="right">'
+		            str +=	        '<div class="line-one" style="width:80%;">'
+		            str +=	             user_info.username
+//		            str +=	        '</div>';
+		            
+		            
+		            	//alert(user_info.userdata);
+		            if(user_info.userdata != null && user_info.userdata != 'null' ){
+//		            	str +=	        '<div class="line-one">'
+			            str +=	             '<span style="display:inline-block;float:right;">' + user_info.userdata.realname + '</span>';
+			            str +=	        '</div>'
+		            }
+		            
+				    str +=	        '<div class="line-two">'
+				    str +=	            user_gender
+				    str +=	         '</div>'
+		                    
+		            str +=	    '</div>'
+//		            str +=		'<!--小三角-->'
+		            str +=		'<div class="arrow" style="position: absolute;right:30px;height:30px;">'
+		            str +=	    '</div>'
+		//alert(str);
+		title.innerHTML = str;
+	}
+	
+//	
+//	var tuichu_flag = localStorage.getItem('tuichu_flag');
+//	if(tuichu_flag){
+//		str +=	'<div class="head">';
+//      str +=	   '<!--右侧详细信息-->';
+//      str +=	    '<div class="right" style="padding-left: 0;width:100%;text-align:center;">';
+//      str +=	   		'<a href="app/login/login.html" style = " color:#fff;font-size:20px;width:100%;display:block;height:40px;padding:10px;">登录</a>';
+//      str +=		'</div>';
+//      str +=	'</div>';
+//      
+//      title.innerHTML = str;  
+//	}
+</script>
+
+<!--首页筛选框实现-->
+<script>
+    var selector1 = document.querySelector('#selector1');
+    var selector2 = document.querySelector('#selector2');
+    var selector3 = document.querySelector('#selector3');
+    var selector4 = document.querySelector('#selector4');
+    
+    var selectorFlag = false;	// false时表示不显示筛选框筛选出的数据
+    var selectPage = 1;	// 筛选框页数标识
+
+    var sel_box = document.querySelector('#sel_box');
+    var tabbar = document.querySelector('#tabbar');
+
+    // 地区(注：地区不能使用下边定义的函数)
+    selector1.addEventListener('click',function () {
+        sel_box.innerHTML = '';
+        sel_box.style.display = 'block';
+        
+        document.body.style.height = '100%';
+//      document.body.style.overflow='hidden';//手机版设置这个。
+        tabbar.style.overflow = 'hidden';
+        
+        
+        
+        var mask = mui.createMask(function () {
+            sel_box.style.display = 'none';
+            tabbar.style.overflow = 'auto';
+            
+        });//callback为用户点击蒙版时自动执行的回调；
+        mask.show();//显示遮罩
+        mui.ajax( $$$.siturl + 'm=App&c=TagToli&a=districttoall',{
+            type:'get',  
+            dataType:'json', 
+            success:function (data) {
+                var sel_areas = data.data[0].disdata;
+                
+//              alert(sel_areas);
+
+                // 创建不限小标签
+                var div2 = document.createElement('div');
+                div2.innerHTML = '不限';
+                div2.setAttribute('data-did','');
+                
+                // 小标签点击事件
+                div2.addEventListener('click',function () {
+                    mask.close();
+                    sel_box.style.display = 'none';
+                    // ajax请求相应的数据
+                    // 准备数据(4项数据都需要提交)
+                    var did = this.getAttribute('data-did');
+                    sessionStorage.setItem('sel_did',did);
+//                  alert(did);
+
+                    // 创建好用于上传的数据
+                    var updata = createUpData();
+                                       
+//                  alert($$$.siturl + 'm=App&c=index&a=qxhj' + updata);
+	               	                
+      				mui.ajax($$$.siturl + 'm=App&c=index&a=qxhj' + updata,{
+		
+      					type:'get',
+      					dataType:'json',
+      					success:function(data){
+//    						alert(JSON.stringify(data));
+//        						var data = JSON.stringify(data);
+      						selectorFlag = true;
+      						
+      						// 职位详细信息
+			                var jobs_sel = data.data;
+			                var job_list = document.querySelector('#job_list');
+			                job_list.innerHTML = '';
+			                
+
+			                for(var x = 0; x < jobs_sel.length; x++){
+//				                	alert('done');
+//              				alert(jobs_sel.length);
+			                	new CreateList_index({
+			                		id:'job_list',
+			                		data:jobs_sel[x]
+			                	})
+			                }
+			                
+			                // 给每个条目绑定事件
+							var ul = document.querySelector('#job_list')
+							var lis = ul.children;
+							for(var x = 0 ;x < lis.length; x++){
+								lis[x].addEventListener('click',function(){
+									var id = this.children[0].getAttribute('data-id');
+									localStorage.setItem('jid',id);
+		//							alert(localStorage.getItem('jid'))
+								})
+							}
+      						
+      						
+      					},
+      					error:function(xhr,err){
+      						alert(err);
+      					}
+      				});
+                        
+
+                    });
+                    
+                    if(sel_box.appendChild){
+                        sel_box.appendChild(div2);
+                    }else {
+                        sel_box.append(div2);
+                    }
+				 
+                
+                for(var x = 0;x < sel_areas.length; x++){
+                    var div = document.createElement('div');
+                    div.innerHTML = sel_areas[x].cnane;
+                    div.setAttribute('data-did',sel_areas[x].cnane);
+                    div.addEventListener('click',function () {
+                        mask.close();
+                        sel_box.style.display = 'none';
+                        // ajax请求相应的数据
+                        // 准备数据(4项数据都需要提交)
+                        var did = this.getAttribute('data-did');
+                        sessionStorage.setItem('sel_did',did);
+//                      alert(did);
+
+                        // 创建好用于上传的数据
+                        var updata = createUpData();
+                        
+                        
+//                      alert($$$.siturl + 'm=App&c=index&a=qxhj' + updata);
+		                
+		                
+          				mui.ajax($$$.siturl + 'm=App&c=index&a=qxhj' + updata,{
+          					type:'get',
+          					dataType:'json',
+          					success:function(data){
+//        						alert(JSON.stringify(data));
+//        						var data = JSON.stringify(data);
+          						selectorFlag = true;
+          						
+          						
+          						// 职位详细信息
+				                var jobs_sel = data.data;
+				                var job_list = document.querySelector('#job_list');
+				                job_list.innerHTML = '';
+				                
+				                
+//				                alert(jobs_sel);
+				                for(var x = 0; x < jobs_sel.length; x++){
+//				                	alert('done'); 
+				                	new CreateList_index({
+				                		id:'job_list',
+				                		data:jobs_sel[x]
+				                	})
+				                }
+				                
+				                // 给每个条目绑定事件
+								var ul = document.querySelector('#job_list')
+								var lis = ul.children;
+								for(var x = 0 ;x < lis.length; x++){
+									lis[x].addEventListener('click',function(){
+										var id = this.children[0].getAttribute('data-id');
+										localStorage.setItem('jid',id);
+			//							alert(localStorage.getItem('jid'))
+									})
+								}
+          						
+          						
+          					},
+          					error:function(xhr,err){
+          						alert(err);
+          					}
+          				});
+                        
+
+                    });
+                    if(sel_box.appendChild){
+                        sel_box.appendChild(div);
+                    }else {
+                        sel_box.append(div);
+                    }
+                }
+            },
+            error:function (xhr) {
+				alert(xhr);
+            }
+        });
+    });
+
+    // 职位
+    selector2.addEventListener('click',function () {	
+    	getSelData({
+			urls : 'm=App&c=TagToli&a=zhiwei',
+			dataName : 'zhiwei',
+			parseNum : 'id',
+			parseName : 'categoryname',
+			mark : 'data-zid',	// 标签的自定义属性名称
+			localMark : 'sel_zid'	// 用来存放本地缓存的特有字段
+		});
+    });
+
+    // 薪资
+    selector3.addEventListener('click',function () {
+    	getSelData({
+			urls : 'm=App&c=TagToli&a=wge',
+			dataName : 'wge',
+			parseNum : 'c_id',
+			parseName : 'c_name',
+			mark : 'data-xid',	// 标签的自定义属性名称
+			localMark : 'sel_xid'	// 用来存放本地缓存的特有字段
+		});
+    });
+
+    // 福利
+    selector4.addEventListener('click',function () {
+     	getSelData({
+			urls : 'm=App&c=TagToli&a=welfare',
+			dataName : 'welfare',
+			parseNum : 'c_id',
+			parseName : 'c_name',
+			mark : 'data-fid',	// 标签的自定义属性名称
+			localMark : 'sel_fid'	// 用来存放本地缓存的特有字段
+		});
+    });
+
+	
+	// 单个筛选框的实现
+	function getSelData(options){
+		// 准备变量
+		var urls = options.urls;
+		var dataName = options.dataName;
+		var parseNum = options.parseNum;
+		var parseName = options.parseName;
+		var mark = options.mark;
+		var localMark = options.localMark;
+		
+		
+		
+		// 用于放数据的sel_box盒子
+		sel_box.innerHTML = '';
+        sel_box.style.display = 'block';
+        
+        document.body.style.height = '100%';
+//      document.body.style.overflow='hidden';//手机版设置这个。
+        tabbar.style.overflow = 'hidden';
+         
+        // 打开遮罩层
+        var mask = mui.createMask(function () {
+            sel_box.style.display = 'none';
+            tabbar.style.overflow = 'auto';
+        });//callback为用户点击蒙版时自动执行的回调；
+        mask.show();//显示遮罩
+        
+        // 获取数据
+        mui.ajax($$$.siturl + urls,{
+        	
+            type:'get',
+            dataType:'json',
+            success:function (data) {
+            	
+                var sel_data = data[dataName];
+//              alert(sel_data);	// object
+
+				// 创建不限小标签
+                var div2 = document.createElement('div');
+                div2.innerHTML = '不限';
+                div2.setAttribute('data-did','');
+                div2.addEventListener('click',function () {
+                    mask.close();
+                        sel_box.style.display = 'none';
+                        // ajax请求相应的数据
+                        // 准备数据
+                        sessionStorage.setItem(localMark,'');	// 将选中的id放入本地以待后期存取使用
+//                      alert(id);	// 质检员
+						
+						// 创建提交字符串
+                        updata = createUpData();
+                         
+                        
+//						alert($$$.siturl + 'm=App&c=index&a=qxhj' + updata);
+		                
+		                
+          				mui.ajax($$$.siturl + 'm=App&c=index&a=qxhj' + updata,{
+          					type:'get',
+          					dataType:'json',
+          					success:function(data){
+//        						alert(JSON.stringify(data));
+//        						var data = JSON.stringify(data);
+          						selectorFlag = true;
+          						
+          						
+          						// 职位详细信息
+				                var jobs_sel = data.data;
+				                var job_list = document.querySelector('#job_list');
+				                job_list.innerHTML = '';
+				                
+				                
+//				                alert(jobs_sel);
+				                for(var x = 0; x < jobs_sel.length; x++){
+//				                	alert('done'); 
+									
+				                	new CreateList_index({
+				                		id:'job_list',
+				                		data:jobs_sel[x]
+				                	})
+				                }
+				                
+				                // 给每个条目绑定事件
+								var ul = document.querySelector('#job_list')
+								var lis = ul.children;
+								for(var x = 0 ;x < lis.length; x++){
+									lis[x].addEventListener('click',function(){
+										var id = this.children[0].getAttribute('data-id');
+										localStorage.setItem('jid',id);
+			//							alert(localStorage.getItem('jid'))
+									})
+								}
+          						
+          						
+          					},
+          					error:function(xhr,err){
+          						alert(err);
+          					}
+          				});
+ 
+                    });
+                    
+                    if(sel_box.appendChild){
+                        sel_box.appendChild(div2);
+                    }else {
+                        sel_box.append(div2);
+                    }
+
+                
+                for(var x = 0;x < sel_data.length; x++){
+                    var div = document.createElement('div');
+                    div.innerHTML = sel_data[x][parseName];
+                    div.setAttribute(mark,sel_data[x][parseName]);
+
+					// 单个元素的点击事件
+                    div.addEventListener('click',function () {
+                        mask.close();
+                        sel_box.style.display = 'none';
+                        // ajax请求相应的数据
+                        // 准备数据
+                        var id = this.getAttribute(mark);
+                        sessionStorage.setItem(localMark,id);	// 将选中的id放入本地以待后期存取使用
+//                      alert(id);	// 质检员
+						
+						// 创建提交字符串
+                        updata = createUpData();
+                         
+                        
+//						alert($$$.siturl + 'm=App&c=index&a=qxhj' + updata);
+		                
+		                
+          				mui.ajax($$$.siturl + 'm=App&c=index&a=qxhj' + updata,{
+          					type:'get',
+          					dataType:'json',
+          					success:function(data){
+//        						alert(JSON.stringify(data));
+//        						var data = JSON.stringify(data);
+          						selectorFlag = true;
+          						
+          						
+          						// 职位详细信息
+				                var jobs_sel = data.data;
+				                var job_list = document.querySelector('#job_list');
+				                job_list.innerHTML = '';
+				                
+				                
+//				                alert(jobs_sel);
+				                for(var x = 0; x < jobs_sel.length; x++){
+				                	
+				                	
+				                	
+//				                	alert('done'); 
+				                	new CreateList_index({
+				                		id:'job_list',
+				                		data:jobs_sel[x]
+				                	})
+				                }
+				                
+				                // 给每个条目绑定事件
+								var ul = document.querySelector('#job_list')
+								var lis = ul.children;
+								for(var x = 0 ;x < lis.length; x++){
+									lis[x].addEventListener('click',function(){
+										var id = this.children[0].getAttribute('data-id');
+										localStorage.setItem('jid',id);
+			//							alert(localStorage.getItem('jid'))
+									})
+								}
+          						
+          						
+          					},
+          					error:function(xhr,err){
+          						alert(err);
+          					}
+          				});
+                        
+                        
+                        
+                        
+                        
+                    });
+
+
+					// 插入放置小标签的盒子
+                    if(sel_box.appendChild){
+                        sel_box.appendChild(div);
+                    }else {
+                        sel_box.append(div);
+                    }
+                }
+            },
+            error:function (xhr,err) {
+				alert(err);
+            }
+        });
+	}
+
+	// 将选中的值传给筛选框，还没有写内容
+    function bindStrToSel(){
+
+    }
+    
+    // 准备好筛选框将要提交的数据
+    function createUpData(){
+    	
+
+        var up_xid;	// 薪资
+        var str = '';	// 用于返回的字符串
+        var min = '';	// 最低薪资
+		var max = '';	// 最高薪资
+
+		// 校验数据，如果贝蒂可以拿到四个数据，则直接赋值，否则令其为空。
+		  
+		
+		
+		// 地区 
+        if(!sessionStorage.getItem('sel_did')){
+            str += '&dist=';
+        }else {
+            str += '&dist=' + sessionStorage.getItem('sel_did');
+        }
+ 
+		// 职位
+        if(!sessionStorage.getItem('sel_zid')){
+            str += '&job=';
+        }else {
+            str += '&job=' + sessionStorage.getItem('sel_zid');
+        }
+
+
+		// 薪资
+		var sel_xid_flag = sessionStorage.getItem('sel_xid');
+//		alert(sel_xid_flag);
+        if(!sel_xid_flag){ 
+//      	alert('done');
+            str += '&min=&mix=';
+        }else {
+            up_xid = sessionStorage.getItem('sel_xid');
+			
+			var re =  /([0-9]+)([0-9]+)/g; 
+            min = up_xid.match(re)[0];
+            max = up_xid.match(re)[1];
+//          alert(min);	// 2000
+//          alert(max);	// 3000
+
+			str += '&min=' + min + '&min=' + max;
+        }
+
+
+		// 福利
+        if(!sessionStorage.getItem('sel_fid')){
+            str += '&welfare=';
+        }else {
+            str += '&welfare=' + sessionStorage.getItem('sel_fid');
+        }
+
+
+
+//        alert(up_did);
+//        alert(up_zid);
+//        alert(up_xid);
+//        alert(up_fid);
+//
+//      return array = [up_did,up_zid,min,max,up_fid];
+		return str;
+    }
+
+
+</script>
+
+<!--首页全国的切换-->
+<script>
+    var cityName = localStorage.getItem('cityName');
+    var area222 = document.querySelector('#area');
+
+
+    if(localStorage.getItem('cityChanged')){
+        area222.innerHTML = cityName;
+    }
+</script>
+
+<!--我的消息-->
+<script>
+//	mui.ajax($$$.siturl + 'm=App&c=ApplyJob&a=msgS',{
+//		type : 'get', 
+//		data : {},
+//		dataType : 'json',
+//		success : function(data){
+//			alert(JSON.stringify(data));
+//		},
+//		error : function(xhr,err){
+//			alert(xhr);
+//		}
+//	});
+</script>
+</html>

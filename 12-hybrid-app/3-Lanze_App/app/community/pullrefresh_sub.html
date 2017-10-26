@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<script src="../../js/mui.min.js"></script>
+		<style type="text/css">
+			/*头部区域*/
+			.content{
+				margin-top: 44px;
+
+			}
+			.mui-bar {
+				background-color: #5CA8FC;
+			}
+			
+			.mui-bar .mui-icon:active {
+				opacity: 1;
+			}
+			/*内容区域*/
+			
+			.mui-card {
+				margin: 0;
+				margin-bottom: 10px;
+
+			}
+			
+			.mui-card-footer:before,
+			.mui-card-header:after {
+				background-color: #fff;
+			}
+			
+			.mui-card-footer:before {
+				position: static;
+			}
+			/*图片*/
+			
+			.smallUl {
+				padding: 0;
+				/*background-color: #ccc;*/
+				width: 100%;
+				box-sizing: border-box;
+			}
+			
+			.smallUl::after,
+			.smallUl::before {
+				content: ' ';
+				height: 0;
+				visibility: hidden;
+				display: block;
+				clear: both;
+			}
+			
+			.smallImg {
+				list-style: none;
+				float: left;
+				width: 31%;
+				margin-right: 1%;
+				margin-bottom: 10px;
+				height: 110px;
+				background-color: #fff;
+				border: 1px solid #ededed;
+			}
+			
+			@media screen and (min-width: 768px) {
+				.smallImg {
+					width: 13%;
+					margin-right: 1%;
+				}
+			}
+		</style>
+	
+	
+	</head>
+ 
+	<body>
+
+		
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="padding:0;">
+	            <div class="mui-scroll">
+	                <!--数据列表-->
+	                <!--帖子详细列表-->
+	                <ul class="mui-table-view" id="tie_list2">
+						
+	
+	                </ul>
+	            </div>
+	        </div>
+		
+		<!--函数定义-->
+		<script type="text/javascript">
+			
+			
+			
+		    function CreateList_index (option){
+		        this.id = option.id || 'work_detail';
+		        this.data = option.data;
+		        this.init();
+		    }
+		    CreateList_index.prototype = {
+		        init:function () {
+		            // 处理id
+		            var id = this.birthId(this.id);
+		            // 创建并插入预制组件
+		            var str = this.create(this.data);
+		            this.insert(id,str);
+		        },
+		        birthId:function (id) {
+		            var query = '#' + id;
+		            return query;
+		        },
+		        create:function (data) {
+		            
+		            var result = '';
+		            // 立即执行函数，只是为了可以点击折叠按钮而已，没有实际功能。里边放置的是result(职位详细信息字符串)
+		          
+		           	
+		           	
+		            
+		            (function(data){
+		            	
+		            	var lis = '';
+		            	var imgs = data.img;
+		            	if(imgs[0] != undefined){
+		            		
+//		            		alert(imgs[0]);
+		            		for(var i = 0; i < imgs.length; i++){
+			            		lis += '<li class="smallImg"><img src="' + $$$.imgurl +  imgs[i] +'" style="width: 100%;height: 100%; " /></li>';
+			            	}
+		            	}
+		            	
+		            	var pingdata = data.reply;
+		            	//alert(JSON.stringify(pingdata));
+//		            	alert(data.realname);
+						var genderdata = data;
+		            	if(genderdata.sex==1){
+		            		sex='<img style="padding-left: 7px;vertical-align: middle;width: 16px;" src="images/nan.png" alt="" />';
+		            	}else if(genderdata.sex==2){
+		            		sex='<img style="padding-left: 7px;vertical-align: middle;width: 16px;" src="images/nv.png" alt="" />';
+		            	}else{
+		            		sex='';
+		            	}
+		            	
+		            	
+		            	
+					var pingluncontent='';
+					if(pingdata!='null' || pingdata!=undefined||pingdata!=''){
+						
+						for(var i=0;i<pingdata.length;i++){
+		            		
+		            		pingluncontent += '<li style="list-style: none;"><span style="color:#5CA8FC">'+pingdata[i].uname+'</span>：'+ pingdata[i].content+'</li>'
+		            	}
+					}
+		            	
+
+//		            	
+		            	var dates = new Date(data.addtime * 1000);
+		            	var times = dates.toLocaleTimeString();
+//		            	alert(times);
+		            	
+		            	result += '<li style="width:100%;" data-id = "'+data.uid+'" data-tid="'+data.id+'">';
+		                result += '<div class="mui-card mui-clearfix"> '
+							+ '<div class="mui-card-header mui-card-media ">'
+								+ '<img style="width: 42px;height:42px;border-radius: 21px; " src="'+$$$.imgurl + data.ulog+'" />'
+								+ '<div class="mui-media-body " style="font-size: 15px;margin-left: 58px; ">'
+								+ '	<p style="margin-top: 6px;color: #5ca8fc;font-weight: 800; ">'+ data.realname+sex +'</p>'
+								+ '	<p style="color: #646464;font-size: 8px;padding-top: 8px; ">' +data.times + '</p>'
+							+ '	</div>'
+						+ '	</div>'
+				 
+				
+						+ '	<div class="mui-card-content " style="padding-left: 13px; ">'
+							+ '	<p style="font-size: 13px;color: #323232; ">'+data.content+'</p>'
+							+ '	<ul class="smallUl">';
+							
+									result += lis;
+ 
+						result	+= '</ul>';
+						result	+= '</div>';
+						
+						
+						// 底部栏
+						result	+= '	<div class="mui-card-footer " style="position:reletive;">';
+						
+						if(data.city!=null && data.city!='' && data.city!=undefined){
+							result	+= 	  ' <div class="weizhi" style="width:50%;height:21px;position:absolute;left:10px;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'
+
+							result	+=data.city
+								
+								if(data.poiname!=undefined && data.poiname!='undefined'){
+									result	+=' · '+data.poiname
+								}
+								
+								result+='</div> ';
+						}
+						
+							 
+							
+							result	+=  '	<div id="zanping " class="zanping " style="text-align:right; ">';
+								// 点赞按钮
+								result	+=  '	<div onclick="dianzan(this,event)" class="zan_button"  style="display:inline-block;width: 16px;height: 15px;margin-right: 7px;background: url(images/dianzan_sprite.png) 0 0;background-size: 16px 32px;background-position: left bottom; "></div>' 
+								result	+=  '<span  id=" " style="padding-right: 13px; ">'+ data.onfabulous+'</span>'
+								+ '	<img src="images/pinglun.png " style="width: 16px;height: 15px;margin-right: 7px; " />'
+							+ '	</div>'
+						result	+='	</div>'
+							
+							
+							// 评论内容
+							if(pingluncontent!=''){
+								result+= '<ul class="pkuang" style="border-top: 2px #ccc solid;padding: 20px 0;padding-left: 10px;">'
+								result+=	pingluncontent;
+								result+='</ul>';
+							}
+							
+							
+						result	+='</li>';
+						
+//						 
+
+		            })(data);
+		            return result;
+		        },
+		        insert:function (id,result) {
+		            var div2 = document.createElement('div');
+		            div2.innerHTML = result;
+		            div2.addEventListener('click',function(){
+		            	goTieLink();
+		            })
+		            
+		            var box = document.querySelector(id);
+		            if(box.appendChild){
+		            	box.appendChild(div2);
+		            }else{
+		            	box.append(div2);
+		            }
+		            
+		            		             
+		    	}
+			}
+		    
+		    
+		    
+		    function goTieLink(){
+		    	var tid = localStorage.getItem('tid');
+		    	
+//		    	alert(tid);
+		    	mui.openWindow({
+				    url:'community_detail.html',
+				    id:'community_detail',
+				    extras:{
+				      tid:tid
+				    },
+				    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+				    waiting:{
+				      autoShow:true,//自动显示等待框，默认为true
+				      title:'正在加载...',//等待对话框上显示的提示内容
+				    }
+				})
+		    }
+		
+			function dianzan(obj,event){
+				var evt = window.event || event;
+			　	if (event.stopPropagation){
+			　　		event.stopPropagation();
+			　　	} else {
+			　　　　event.cancelBubble = true;
+			　　	}
+			
+//				alert('donw');
+				// 准备点赞需要提交的数据
+				var li_node = obj.parentNode.parentNode.parentNode.parentNode;
+				var t_id = li_node.getAttribute('data-tid');
+//				alert(t_id);
+				
+				var zan_count = obj.nextSibling || obj.nextElementSibling;
+//				alert(zan_count.innerHTML);
+				
+			
+			
+		    	// 点赞按钮 
+		//  	alert('done');
+		        mui.ajax($$$.siturl + 'm=App&c=IsLogo&a=fabous',{
+		            type:'post',
+		            data:{
+		                t_id:t_id 
+		            },
+		            dataType:'json', 
+		            success:function (data) {
+		//          	alert(data.staus);
+		                if(data.staus=='0'){
+//							alert('取消点赞成功');
+		                    obj.style.backgroundPosition = 'left bottom';
+		                    //赞的数量减一
+		                    if(zan_count.innerHTML=='赞'||zan_count.innerHTML=='1'){
+		                    	zan_count.innerHTML = '赞';
+		                    }else{
+		                    	zan_count.innerHTML = +zan_count.innerHTML-1;
+		                    }
+//		                    
+		                }else if(data.staus == '1'){
+//		                	alert('点赞成功');
+		                    obj.style.backgroundPosition = 'left top';
+		                    
+		                    if(zan_count.innerHTML == '赞'){
+		                        zan_count.innerHTML = 1;
+		                    }else {
+		                        zan_count.innerHTML = +zan_count.innerHTML+1;
+		                    }
+//		
+		                }
+		//              localStorage.setItem('')
+		            },
+		            error:function (xhr,err) {
+		                  alert(err);
+		            } 
+		        }); 
+//			    });
+			}
+		
+		
+		</script>
+		
+		
+		<script>
+			mui.init({
+				pullRefresh: {
+					container: '#refreshContainer',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			
+			
+			
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			var count = 0;
+			var page = 1;
+			
+			function pulldownRefresh() {
+				setTimeout(function() {
+//					alert('down')
+					
+					var ul = document.querySelector('#tie_list2');
+					ul.innerHTML = '';
+					
+					//业务逻辑代码，比如通过ajax从服务器获取新数据；
+				     //注意：
+				     //1、加载完新数据后，必须执行如下代码，true表示没有更多数据了：
+				     //2、若为ajax请求，则需将如下代码放置在处理完ajax响应数据之后
+				     
+			     	mui.ajax($$$.siturl + 'm=App&c=Index&a=discuzInde&page=1',{
+						type:'get',
+						success:function(str){
+			                var data = JSON.parse(str);
+							
+		//					alert(data);
+							
+			                // 职位详细信息
+			                var ties = data.data;
+			                for(var x = 0; x < ties.length; x++){
+			                	new CreateList_index({
+			                		id:'tie_list2',
+			                		data:ties[x]
+			                	})
+			                }
+			                
+			                // 给每个条目绑定事件
+							var ul = document.querySelector('#tie_list2');
+							
+//							ul.innerHTML = '';
+							
+							
+							var lis = ul.children;
+							for(var x = 0 ;x < lis.length; x++){
+								lis[x].addEventListener('click',function(){
+									var id = this.children[0].getAttribute('data-id');
+									var tid = this.children[0].getAttribute('data-tid');
+									
+									localStorage.setItem('user_id',id);
+									localStorage.setItem('t_id',tid);
+		//							alert(localStorage.getItem('user_id'))
+		//							alert(localStorage.getItem('t_id')) 
+								}) 
+							}
+							
+			                
+			           },
+			            error:function(xhr,err){
+				           	alert(err);
+		//		           	alert(err.msg);
+			            }
+					});
+		     	   
+
+					mui('#refreshContainer').pullRefresh().endPulldownToRefresh(); //refresh completed
+				}, 0);
+			}
+			
+
+			
+			
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				var self = this;
+				setTimeout(function() {
+//				   alert('up');
+				   if(page == 1){
+				   		page = 1;
+				   		sssrequest();
+				   		page = 2;
+				   }else {
+				   		if(page == 2){
+				   			sssrequest();
+				   			return ;
+				   		}
+				   		page ++; 
+				   		sssrequest();
+				   }
+			       
+			       
+			       mui('#refreshContainer').pullRefresh().endPullupToRefresh((++count > 10)); 
+			       
+		           function sssrequest(){
+//						alert($$$.siturl + 'm=App&c=Index&a=discuzInde&page=' + page);
+		                mui.ajax($$$.siturl + 'm=App&c=Index&a=discuzInde&page=' + page,{
+		                    type : 'GET',
+		                    success : function(str) { 
+		                        var data = JSON.parse(str);
+		          				
+//		          				alert(data);
+		          				
+				                // 职位详细信息
+				                var ties = data.data;
+				                for(var x = 0; x < ties.length; x++){
+				                	new CreateList_index({
+				                		id:'tie_list2',
+				                		data:ties[x]
+				                	})
+				                }
+				                
+				                
+								
+								var ul = document.querySelector('#tie_list2');
+								var lis = ul.children;
+								for(var x = 0 ;x < lis.length; x++){
+									lis[x].addEventListener('click',function(){
+										var id = this.children[0].getAttribute('data-id');
+										var tid = this.children[0].getAttribute('data-tid');
+										
+										localStorage.setItem('user_id',id);
+										localStorage.setItem('t_id',tid);
+//										alert(localStorage.getItem('user_id'))
+//										alert(localStorage.getItem('t_id')) 
+									}) 
+								}
+								
+//								self.endPullupToRefresh(true);
+		                    },
+		                    error : function(e) {
+		                         alert(e);
+		                    }
+		                });
+		                
+		           }
+				
+				}, 0);
+			}
+			
+			
+			
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#refreshContainer').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#refreshContainer').pullRefresh().pullupLoading();
+				});
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../../../js/mui.min.js"></script>
+    <link href="../../../css/mui.min.css" rel="stylesheet"/>
+    <style>
+    	li {
+    		list-style: none;
+    	}
+    </style>
+    <script type="text/javascript" >
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">名企推荐</h1>
+	</header>
+		<div class="mui-slider" style="padding-top:44px;">
+            <div class="mui-slider-group mui-slider-loop" id="slider">
+
+            </div>
+        </div>
+		
+
+<ul class="mui-table-view uilist" id="refreshContainer" style="margin-top: -40px;">
+<!--
+	作者：1311875357@qq.com
+	时间：2017-04-07
+	描述：
+   <li class="mui-table-view-cell mui-media" style="" >
+        <a href="javascript:;" style="width: 100%;height: 90px;">
+        
+			 <img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg" style="position:relative;float:left;height: 60px;width:4em;border-radius: 3px;margin-top: .4em;max-width: none;">
+            
+            <div class="mui-media-body" style="margin-left: 20px;position: relative;float:left;margin-top: 4px;">
+            	<p class='mui-ellipsis' style="padding-left: 20px;">青岛龙鹤制衣有限公司</p>
+            	<span class='mui-ellipsis ' style="color: #8f8f94;padding-left: 20px">1000-9999人|</span><span style="color: #8f8f94;" class='mui-ellipsis '>合资</span>
+                <p class=''></p><span style="color: #8f8f94;padding-left: 20px" class='mui-ellipsis'>机械/设备/重工</span>
+            </div>
+        </a>
+   </li>
+ -->  
+</ul> 
+ 
+</body> 
+<script>
+	
+	mui.ajax($$$.siturl+'m=App&c=Tool&a=mingqilunbo',{
+		type:'get',
+		     data:{
+		     	
+		     },
+		     dataType:'json',
+		     success:function(data){
+		     var sliderbox = document.querySelector('#slider');
+
+					 lunbotu(data.data);
+		     	//alert(JSON.stringify(data));
+		     }
+		})	     	
+	
+</script>
+<script>
+/*	
+	mui.ajax($$$.siturl+'m=App&c=index&a=minqitj',{
+		     type:'get',
+		     data:{
+		     	
+		     },
+		     dataType:'json',
+		     success:function(str){
+			     	
+			     	crea('.uilist',str.data);
+			     	
+			     	function crea(id,data){
+			     		var list=new Creat_MQ({
+				     			id:id,
+				     			data:data,
+			     		})
+			     	} 
+		     
+		     },
+		    error:function(xhr,type,errorThrown){
+				mui.toast('遇到问题，正在完善',{ duration:'short', type:'div' }) ;
+			}
+	})
+	
+*/
+</script>
+<script>
+	function Creat_MQ(option){
+		this.id=option.id;
+		this.data=option.data;
+		
+		this.init();
+	}
+	Creat_MQ.prototype={
+			init:function(){
+				var lidata=this.creater(this.datafun());
+				
+				this.insert(lidata);
+			},
+			datafun:function(){
+				return this.data;
+			},
+			creater:function(datas){
+				var result="";
+				(function(datas){
+					for(var i=0;i<datas.length;i++){
+						var data=datas[i]; 
+						//alert($$$.imgurl+data.logo);
+						result+='<li class="mui-table-view-cell mui-media"  data-id='+data.id+'>';
+					    result+='<a href="javascript:;">'     
+					    result+=' <img class="mui-media-object mui-pull-left" src="'+$$$.imgurl+data.logo+'" style="margin-left: 20px;;height: 3.5em;width:4em;border-radius: 3px;margin-top: .4em;max-width: none;">'       
+					    result+=' <div class="mui-media-body" style="margin-top: 8px;">' ;      
+					    result+='<p class="mui-ellipsis" style="margin-left: 20px; font-size: 17px;">'+data.companyname+'</p>';      	
+					    result+='<span class="mui-ellipsis" style="color: #8f8f94;padding-left: 24px;font-size: 13px;">'+data.scale_cn+'|</span><span style="color: #8f8f94;font-size: 13px" class="mui-ellipsis ">'+data.nature_cn+'</span><span style="float:right;padding-right:10px" class="mui-icon mui-icon-checkmarkempty"></span> ' ;     	
+					    result+='  <span class=""></p><span style="color: #8f8f94;padding-left: 20px;" class="mui-ellipsis">'+data.trade_cn+'</span>';         
+					    result+='</div>' ;       
+					    result+= '</a>' ;  
+  						result+='</li>';  
+					}
+				})(datas)
+				
+				return result;
+			},
+			insert:function(data){
+				var self=this;
+				var div = document.createElement('div');
+				var list=document.querySelector(this.id);
+				
+				div.innerHTML=data;
+				
+				if(list.appendChild){
+		            list.appendChild(div);
+	            }else{
+	            	list.append(div);
+	            }
+		            var lilist=div.children;
+		           	for(var i=0;i<lilist.length;i++){
+							//alert(lilist[i]);
+						lilist[i].onclick=function(){
+			            	var li=this;
+			            	var cid=li.getAttribute('data-id');
+							localStorage.setItem("cid", cid);
+							mui.openWindow({
+							    url:'../../company/company.html',
+							    id:'company',
+							})
+		           		}
+					}
+	       }, 	
+	}
+	
+</script>
+<script>
+	
+		var page = 1;
+		
+		mui.ajax($$$.siturl+'m=App&c=index&a=minqitj&page='+page,{
+			     type:'get',
+			     data:{	     	
+			     },
+			     dataType:'json',
+			     success:function(str){
+				     	
+				     	crea('.first_content',str.data);
+				     	
+				     	function crea(id,data){
+				     		var list=new Creat_MQ({
+					     			id:id,
+					     			data:data,
+				     		})
+				     	} 
+			     
+			     },
+			    error:function(xhr,type,errorThrown){
+					mui.toast('遇到问题，正在完善',{ duration:'short', type:'div' }) ;
+				}
+		})
+		
+		
+		
+		mui.init({
+		  pullRefresh : {
+			    container:'#refreshContainer',//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+			    up : {
+		      height:50,//可选.默认50.触发上拉加载拖动距离
+		      auto:true,//可选,默认false.自动上拉加载一次
+		      contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+		      contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+		      callback :pullfresh_function //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+		    }
+		  } 
+		});
+		
+		function pullfresh_function() {
+				page ++;
+	            request();
+	            this.endPullupToRefresh(false);
+				function  request(){
+					mui.ajax($$$.siturl+'m=App&c=index&a=minqitj&page='+page,{
+							     type:'get',
+							     data:{	     	
+							     },
+							     dataType:'json',
+							     success:function(str){
+								     	
+								     	crea('.uilist',str.data);
+								     	
+								     	function crea(id,data){
+								     		var list=new Creat_MQ({
+									     			id:id,
+									     			data:data,
+								     		})
+								     	} 
+							     
+							     },
+							    error:function(xhr,type,errorThrown){
+									mui.toast('遇到问题，正在完善',{ duration:'short', type:'div' }) ;
+								}
+						})
+				}
+		}
+	
+	var sliderbox = document.querySelector('#slider');
+					
+					
+					function lunbotu(data){
+	                	var result = '';
+		                var tar = data;
+		                var url = $$$.imgurl;
+		                result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+						result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[0] +'" /></a></div>';
+		                for(var x = 1; x < tar.length-1; x++){
+							result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[x] +'" /></a></div>';
+						}
+	                	result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+	                	result  += '<div class="mui-slider-item"><a href="#"><img style="height:120px;" src="'+ url + tar[0] +'" /></a></div>';
+		                sliderbox.innerHTML = result;
+		                
+		                // 创建轮播图对象
+		                var gallery = mui('.mui-slider');
+						gallery.slider({
+						  interval:3000//自动轮播周期，若为0则不自动播放，默认为0；
+						});
+	             }
+</script>
+</html>

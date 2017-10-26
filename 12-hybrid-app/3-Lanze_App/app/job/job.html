@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../../js/mui.min.js"></script>
+    <link href="../../css/mui.min.css" rel="stylesheet"/>
+    <style type="text/css">
+    	.button_apply {
+    		background-color: #5CA8FC;
+    	} 
+    	.button_apply.active {
+    		background-color:royalblue;
+    	}
+    	
+    	#showcang {
+    		background-image: url(images/shoucang.png);
+    		background-repeat: no-repeat;
+    		background-size: 20px 40px; 
+    		background-position: left bottom;
+    	}
+    	#showcang.active {
+    		background-position: left top;
+    	}
+    	
+    	li {
+    		list-style: none;
+    		background-color: #fff;
+    	}
+    	.mui-table-view:after {
+    		left:0;
+    	}
+    	.mui-table-view-cell:after{
+    		left:0;
+    	}
+    </style>
+    <script type="text/javascript" >
+      	mui.init();  
+    </script>
+</head>
+<body>
+	<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title_company" class="mui-title"></h1>
+	</header>
+	
+	
+<div class="mui-content ">
+		<!--轮播图-->
+		<div class="mui-slider" style="border-bottom: 1px solid #efefef;">
+		    
+		    <div class="mui-slider-group mui-slider-loop" id="slider">
+		    	
+		    </div> 
+		
+		</div> 
+	<script>
+		 
+		document.addEventListener( "plusready", onPlusReady, false );
+			// 扩展API加载完毕，现在可以正常调用扩展API 
+			function onPlusReady() {
+				
+//				mui(".mui-content").on('tap','.mui-slider',function(){
+//						var cmr = plus.camera.getCamera();
+//						var res = cmr.supportedImageResolutions[0];
+//						var fmt = cmr.supportedImageFormats[0];
+//						console.log("Resolution: "+res+", Format: "+fmt);
+//						cmr.captureImage( function( path ){
+////								alert( "Capture image success: " + path );  
+//							},
+//							function( error ) {
+//								alert( "Capture image failed: " + error.message );
+//							},
+//							{resolution:res,format:fmt}
+//						);
+//				})
+	
+			}
+	</script>
+
+<!--工种、薪资、小标签-->
+<ul class="mui-table-view" style="height:67px;padding-left:15px;">
+    <li class=""> <span class="caozuogong" style="height:37px;line-height: 37px;">操作工</span>
+	<span class="mui-pull-right spanmony" style="color:#F68520;font-size:20px;line-height: 37px;padding-right:9px;">3000-5000</span>      </li>
+    	<li class="tagxiaobiaoqian"> 
+    		
+    	</li>
+</ul> 
+
+<!--地址-->
+<li class="mui-table-view-cell libaiduditu" style="height:40px;font-size:12px;line-height: 40px;padding:0;padding-left:35px;background: #fff url(images/weizhi.png) no-repeat 15px center;background-size: 14px;" onclick="Tomap()">
+	地址：山东;青岛市;四方区;萍乡路53号
+</li>
+<script>
+//mui.close('#map');
+		function Tomap(){
+			
+			
+			mui.openWindow({
+				    url:'map.html',
+				    id:'map.html',
+				    extras:{
+				     
+				    },
+				    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+				    waiting:{
+				      autoShow:true,//自动显示等待框，默认为true
+				      title:'正在加载...',//等待对话框上显示的提示内容
+				    }
+			})
+		}
+	
+	
+</script>
+
+<li class="mui-table-view-cell gsxq"  data-id="" data-jid="" style="position:relative;height:80px;margin-top:8px;padding:0;padding-left:13px;">
+	<span style="width: 60px;height: 60px;display: inline-block;background: url(images/yinzhang.png) no-repeat;background-size:60px 60px ;position: absolute;top:15px;right:80px"></span>
+	<span style="background: url(images/xiaji.png) no-repeat;width: 20px;height: 20px;display: inline-block;position: absolute;top:30px;right:10px;background-size: 16px 18px;"></span>
+	<span class="gongsimingchneg-li" style="padding-top:20px;font-size:15px;line-height: 48px;">公司名称</span> <br />
+	<span class="qiyexinxi-li" style="font-size:12px;">  股份制企业 | 500-999人 | 青岛</span>  
+</li>
+
+ 
+ 
+ <ul class="mui-table-view">
+   <!-- <li class="mui-table-view-cell" style="margin-top:8px;font-weight: 700;padding-left:45px;background: url(images/zhaopin.png) no-repeat 10px center;background-size: 25px 25px;">职位描述</li>-->
+    <li class="mui-table-view-cell zhiwexiangqingxinxi" style="background-color: #efefef;padding:0;width:100%;">
+    <!--
+    	作者：1311875357@qq.com
+    	时间：2017-04-06
+    	描述：
+   
+    	<div id="">
+    		 【工资标准】
+    	</div>
+    	<div style="padding-left:40px ;text-indent: 2em;" ;>
+    		公司实行先工作后支付工资的规定，每月15日发放上个月的结算工资。按规定正常办理离职的发给离职当月的结算工资，并于次月15日直接发放至职工的工资卡内。
+ 				平均工资5000-7000元左右（含保险）。
+    	</div>
+ -->	
+    </li>
+</ul> 
+  
+<!--职位详细列表-->
+<li class="mui-table-view-cell" style="margin-top:8px;font-weight: 700;padding-left:45px;background: url(images/tuijianzhiwei.png) no-repeat 10px center;background-size: 20px 25px;">推荐职位</li>
+<ul class="mui-table-view uilist" style="margin-bottom: 10px;">
+   
+   <!--<li class="mui-table-view-cell mui-media">
+        <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg" style="height: 3em;width:4em;border-radius: 3px;margin-top: .4em;max-width: none;">
+            <div class="mui-media-body">
+            	<p class='mui-ellipsis'>青岛龙鹤制衣有限公司</p>
+            	<span class='mui-ellipsis ' style="color: #8f8f94;">操作工</span><span style="color: #8f8f94;" class='mui-ellipsis mui-pull-right'>3500~4000</span>
+                <p class=''></p><span style="color: #8f8f94;" class='mui-ellipsis'>全请将</span><span class='mui-ellipsis mui-pull-right' style="color: #8f8f94;">青岛市/黄岛区</span>
+            </div>
+        </a>
+    </li>-->
+</ul>
+
+</div>
+<div class="bt" style="margin:20px 0 50px;padding: 0px 0 20px;text-align: center;">您想要的职位没有找到？<a href="../search/search.html">立即搜索</a></div>
+
+<!--固定底部栏-->
+<div id="bottom_tab" style="position: fixed;bottom:0;left:0;width:100%;height:50px;background-color: #fff;">
+	<div style="display:inline-block;width:20px;height:100%;margin-left:45%;margin-top:8px;float:left;">
+		<div id="showcang" class="" src="images/shoucang.png" alt="" style="width:100%;height:20px;margin-bottom: 5px;"></div>
+		<p style="font-size:10px;margin:0;height:10px;line-height: 10px;">收藏</p >
+	</div>
+	<div id="button_apply" class="button_apply" style="display:inline-block;float:left;width:30%;height:33px;margin-left:20px;;margin-top:8px;line-height: 33px;color:#fff;border-radius:5px;text-align: center;">
+		立即申请
+	</div>
+</div>
+</body> 
+
+<script>
+
+
+	// 点击实现页面的跳转以及给按钮加背景色
+	var button_apply = document.querySelector('#button_apply');
+    button_apply.addEventListener('touchstart',function () {
+		// alert(this.innerHTML);
+		// alert('done');
+		this.classList.add('active');
+    });
+    button_apply.addEventListener('touchend',function(){
+    	this.classList.remove('active');
+    	var jid = localStorage.getItem('jid');
+		//alert($$$.siturl+'m=App&c=ApplyJob&a=resume_apply');
+
+    	mui.ajax($$$.siturl+'m=App&c=ApplyJob&a=resume_apply',{
+			type:'post',
+			data:{
+				jid:jid,
+			},
+			dataType:'json',
+			success:function(data){
+				
+				if(data.staus==9){
+					mui.openWindow({
+						url:'../login/bianji_delete.html',
+						id:'bianji_delete',
+					})
+					 
+					return;
+				}
+				
+				if(data.staus==1){
+					 mui.toast(data.msg,{ duration:'long', type:'div' }) 
+				}
+				
+				if(data.staus==0){
+					 //mui.toast(data.msg,{ duration:'long', type:'div' }) 
+					mui.openWindow({
+						url:'../login/login.html',
+						id:'bianji_delete',
+					})
+ 
+				}
+			},
+			error:function(err){ 
+				alert(err);
+			} 
+		})
+    	
+    })
+    button_apply.addEventListener('touchmove',function(){
+    	this.classList.remove('active');
+    })
+
+	// 点击收藏实现图标变色并且申请职位
+	var shoucang_icon = document.querySelector('#showcang');
+	shoucang_icon.addEventListener('touchstart',function () {
+        shoucang();
+    });
+
+function shoucang(){
+	
+	var jid = localStorage.getItem('jid');
+	
+	mui.ajax($$$.siturl+'m=App&c=ApplyJob&a=resume_showcang',{
+		type:'post',
+		data:{
+			jid:jid
+		},
+		dataType:'json',
+		success:function(data){
+			if(data.staus==9){
+				mui.openWindow({
+					url:'../login/bianji_delete.html',
+					id:'bianji_delete'
+				});
+			 	return;
+			}
+
+			if(data.staus==1){
+				 mui.toast(data.msg,{ duration:'long', type:'div' })
+                 shoucang_icon.classList.toggle('active');
+			}
+ 
+			if(data.staus==0){
+				 mui.toast(data.msg,{ duration:'long', type:'div' })
+				 mui.openWindow({
+						url:'../login/login.html',
+						id:'bianji_delete',
+				})
+			//     shoucang_icon.classList.remove('active');
+			}
+		},
+		error:function(err){
+			alert(err);
+		}
+	})
+	
+}	
+
+document.addEventListener( "plusready",  function(){
+			plus.webview.close('map.html');
+			// 轮播图
+		    var jid = localStorage.getItem('jid');
+
+	        mui.ajax($$$.siturl+'m=App&c=index&a=compangprofil&jid='+jid,{
+				type:'get',
+				success:function(data){
+
+					var jsons=JSON.parse(data);
+					var sliderbox = document.querySelector('#slider');
+					var jobs=jsons.job;
+					var reslut="";					
+					for(var i=0;i< jobs.length;i++ ){	
+						
+						var tags = jobs[i].tag_cn.split(',');
+			            var leng=0;
+			            if(tags.length>3){
+			                leng=3;
+			
+			            }else{
+			                leng=tags.length;
+			            }
+			            var srce='';
+			            for (var x=0; x <leng; x++) {
+			                // alert(tags[i]);
+			                srce+='<span style="font-size:12px;line-height: 12px;height:18px;padding:2px 0;box-sizing: border-box;display: inline-block;text-align: center;border:1px solid #5CA8FC;border-radius: 5px;color:#5CA8FC;margin-right:3px;">';
+			                srce+=tags[x]+'</span>';
+			            }
+
+						reslut+='<li class="mui-table-view-cell mui-media li_togo_next" id="'+jobs[i].jid+'">';
+						reslut+='<a href=":;">';
+							reslut+=' <div class="mui-media-body" style="">';	
+								// 公司名称 + 薪资
+								reslut+='<span class="mui-ellipsis" style="color: #8f8f94;color:#000;font-size:15px;font-weight:700;">' + jobs[i].jobs_name + ' </span><span class="mui-ellipsis mui-pull-right" style="color: #EB793B;">'+jobs[i].minwage+'-'+jobs[i].maxwage+'元</span>';	
+								
+								// 第二行工种 + 地区 + 小标签
+								reslut+='<p class=""><span class="mui-ellipsis; " style="color: #737373;">'+jobs[i].category_cn+'</span><span style="margin-left:20%;" class="mui-ellipsis">'+srce+'</span><span style="color: #000;font-size:13px;" class="mui-ellipsis mui-pull-right" >'+jobs[i].district_cn+'</span></p>';
+								
+								
+							reslut+='</div>';	
+						reslut+='</a>';
+						reslut+='</li>';													
+					}
+					
+					document.querySelector('.uilist').innerHTML=reslut; 
+					
+					//点击事件
+					var alist=document.querySelectorAll('.li_togo_next');
+					
+					for (var i=0;i< alist.length;i++){	
+						
+						alist[i].addEventListener('click',function(e){
+							e.preventDefault();
+								localStorage.setItem("jid", this.getAttribute('id'));
+								//localStorage.getItem("jid");
+								mui.openWindow({
+								    url: 'job.html',  
+								    id:localStorage.getItem("jid")
+								});
+							e.stopPropagation();
+						}) 
+					}
+
+				var tags = jsons.data.fuli.split(',');
+	            var leng=0;
+	            if(tags.length>4){
+	                leng=4;
+	
+	            }else{
+	                leng=tags.length;
+	            }
+	            var srce='';
+	            var imgarr;
+	            imgarr = ['gender','age','degree'];
+	            for (var i=0; i <leng; i++) {
+	               
+	                srce+='<span style="background: url(images/'+imgarr[i]+'.png) no-repeat;background-size: 16px 16px;font-size;12px;line-height: 12px;height:18px;padding:2px 0;padding-left:18px;display: inline-block;text-align: center;color:#5CA8FC;margin-right:11px;">'+tags[i]+'</span>';
+	            }
+	            
+	            localStorage.setItem('xmap',jsons.data.map_x);
+				localStorage.setItem('ymap',jsons.data.map_y);
+	            
+	              function htmlDecode(text){
+			        //1.首先动态创建一个容器标签元素，如DIV
+			        var temp = document.createElement("div");
+			        //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+			        temp.innerHTML = text;
+			        //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+			        var output = temp.innerText || temp.textContent;
+			        temp = null;
+			        return output;
+			   	 }
+	            
+	                   	lunbotu(jsons.img);
+	             
+			 			document.querySelector('.libaiduditu').innerHTML=jsons.data.address;
+	                    document.querySelector('#title_company').innerHTML = jsons.data.jobs_name;
+	
+						document.querySelector('.tagxiaobiaoqian').innerHTML=srce;
+						document.querySelector('.caozuogong').innerHTML=jsons.data.category_cn;
+						document.querySelector('.spanmony').innerHTML=jsons.data.minwage+'-'+jsons.data.minwage+'元'; 
+						document.querySelector('.gongsimingchneg-li').innerHTML=jsons.data.companyname; 
+						document.querySelector('.qiyexinxi-li').innerHTML=jsons.data.nature_cn+' | '+jsons.data.district_cn; 
+						
+						var dddd=htmlDecode(jsons.data.contents);
+						var div2 = document.createElement('div');
+					
+						div2.innerHTML = dddd;
+						//alert(div2.innerHTML);
+						var obj=Resove(jsons.data.contents);
+						var obj=Resoveto(jsons.data.contents)
+						//alert(obj);
+						var s=creatXiangqing(obj);
+						
+						
+						localStorage.setItem('addresstocompor',jsons.data.address)
+						var box = document.querySelector('.zhiwexiangqingxinxi');
+						box.innerHTML=s;
+						//box.appendChild(s);
+						
+						document.querySelector('.gongsimingchneg-li').setAttribute('data-id',jsons.data.cid);
+						document.querySelector('.gongsimingchneg-li').setAttribute('data-jid',jsons.data.jid);
+
+						document.querySelector('.gsxq').addEventListener('click',function(e){
+							e.preventDefault();
+							
+//							alert(this.children[2].innerHTML );
+							var cid=this.children[2].getAttribute('data-id');
+								localStorage.setItem("cid", cid);
+							mui.openWindow({
+							    url:'../company/company.html',
+							    id:'company',
+							})
+							e.stopPropagation();
+						});
+							
+						
+					//轮播图
+					var result = '';
+	              
+	                function lunbotu(jsons){
+	                	
+//	                	console.log(jsons+'这是测试');
+	                	var result = '';
+		                var tar = jsons;
+		                //(JSON.stringify(tar));
+		                var url = $$$.imgurl;
+		               // alert(url);
+		                result  += '<div class="mui-slider-item"><a href="#"><img style="height:140px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+						result  += '<div class="mui-slider-item"><a href="#"><img style="height:140px;" src="'+ url + tar[0] +'" /></a></div>';
+		                for(var x = 1; x < tar.length-1; x++){
+							result  += '<div class="mui-slider-item"><a href="#"><img style="height:140px;" src="'+ url + tar[x] +'" /></a></div>';
+						}
+	                	result  += '<div class="mui-slider-item"><a href="#"><img style="height:140px;" src="'+ url + tar[tar.length -1 ] +'" /></a></div>';
+	                	result  += '<div class="mui-slider-item"><a href="#"><img style="height:140px;" src="'+ url + tar[0] +'" /></a></div>';
+		                sliderbox.innerHTML = result;
+		                
+		                // 创建轮播图对象
+		                var gallery = mui('.mui-slider');
+						gallery.slider({
+						  interval:0//自动轮播周期，若为0则不自动播放，默认为0；
+						});
+	                }
+	                //解析字符串方法
+	                function Resove(data){
+	                	//console.log(data);
+	                	var arry=[];
+	                	var ay=new Array();
+	                	var to=new Array();
+	                	ay=data.split('【')
+	                	for(var i=0;i<ay.length;i++){
+	                		 to=ay[i].split('】');
+	                		 var ob={title:to[0],text:to[1]};
+	                		arry.push(ob);
+	                	}
+	                	console.log(arry);
+	                	 arry.shift(0)
+	                	 if(arry.length){
+	                	 	return {key:1,value:arry};
+	                	 }else{
+	                	 	return {key:2,value:data};
+	                	 }	
+	                }
+	                
+	                function Resoveto(data){
+	                	//console.log(data);
+	                	var arry=[];
+	                	var ay=new Array();
+	                	var to=new Array();
+	                	ay=data.split('【')
+	                	for(var i=0;i<ay.length;i++){
+			                		 to=ay[i].split('】');
+			                	
+			                	var  st=String(to[1]);
+			                	///\d、/
+			                	var stin=st.replace(/\d、/g,'|');
+			                	
+			                		var xiangqing= stin.split('|');
+			                		if(xiangqing.length>1){
+			                			var au=[];
+			                			for (var x=0;x<xiangqing.length;x++) {
+			                				au.push(xiangqing[x]);
+			                			}
+			                			console.log(au);
+			                			var ob={title:to[0],text:au,isbul:1};
+			                		}else{
+			                			var ob={title:to[0],text:to[1],isbul:2};
+			                		}
+								
+			                		arry.push(ob);
+	                	}
+	                	
+	                	 arry.shift(0)
+	                	 if(arry.length){
+	                	 	return {key:1,value:arry};
+	                	 }else{
+	                	 	return {key:2,value:data};
+	                	 }	
+	                }
+	                
+	                function creatXiangqing(data){
+	                	console.log(JSON.stringify(data));
+	                	var str="";
+	                	if(data.key==1){
+	                		data1=data.value;
+			                	for(var i=0;i<data1.length;i++)
+			                	{
+
+
+			                		str+= '<div id=""style="height:40px;line-height:40px;font-size:17px;background-color:#fff;padding:0 10px;margin-top:10px;color:#5CA8FC;border-bottom:1px solid #efefef;"><span style="font-weight:1000;width:100%;">| </span>'+data1[i].title+':</div>';
+			                		str+='<div style="padding-left:0px ;text-indent: 1em;font-size:16px;color:#888;padding-bottom:10px;padding-top:5px;background-color:#fff;" >'; 	 	
+			                		if(data1[i].isbul==1){
+			                			var sss=data1[i].text;
+			                			for(var t=1;t<sss.length;t++){
+			                				if(sss[t]!=''){
+			                					if(t!=1){
+			                						str+='<span style="padding-left:10px;">'+t+'</span>'+'、'+sss[t]+'<br/>';
+			                					}else{
+			                						str+='<span style="margin-left:-5px;">'+t+'</span>'+'、'+sss[t]+'<br/>';
+			                					}
+			                					
+			                				}               				
+			                			}			                			
+			                		}else{
+			                			str+=data1[i].text; 
+			                		}
+			                		
+			                		str+='</div>';
+			                	} 
+			                	
+	                	}else if(data.key==2){
+	                		str=data.value;
+	                	}
+	                	
+	                return str;	
+	                }
+	               
+	               
+	           },
+                error:function (err) {
+                    alert(err);
+                }
+			});				
+},true);
+ function goJobLink(){
+    	//var jid = localStorage.getItem('jid');
+    	//localStorage.setItem('jid',jid);
+    	mui.openWindow({
+		    url:'../job/job.html',
+		    id:'job',
+		    extras:{
+		      jid:jid
+		    },
+		    createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		    waiting:{
+		      autoShow:true,//自动显示等待框，默认为true
+		      title:'正在加载...',//等待对话框上显示的提示内容
+		    }
+		})
+    }
+
+
+		document.addEventListener('plusready',function(){
+			plus.webview.close('map.html');
+		})
+</script>
+
+</html>
