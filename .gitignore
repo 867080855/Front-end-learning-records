@@ -1,1 +1,4 @@
-12-hybrid-app/3-Lanze_App/.project
+# 忽略文件
+node_modules/
+bower_components/
+.project
