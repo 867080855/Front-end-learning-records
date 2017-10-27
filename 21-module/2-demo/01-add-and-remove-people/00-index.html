@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Js Test!</title>
+    <style>
+        body,html{
+            width:100%;height:100%;
+        }
+        input,button,select,textarea{outline:none}
+        li{list-style: none}
+        .content {
+            margin:0 auto;
+            width: 500px;
+            height:100%;
+        }
+        .head-div {
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 30px;
+            background-color: gainsboro;
+            margin:0 auto;
+            margin-top:100px;
+        }
+        .text-div {
+            width:100%;
+            margin-top:20px;
+            margin-bottom: 20px;
+        }
+        .text-div input {
+            margin-left:100px;
+            margin-right:20px;
+            border-radius: 5px;
+            border:1px solid gray;
+            outline: none;
+            height:20px;
+            line-height: 20px;
+            text-indent: 1em;
+        }
+        .text-div .button {
+            display: inline-block;
+            padding:0 10px;
+            height: 20px;
+            border-radius: 3px;
+            border:2px solid black;
+            background-color: black;
+            color:white;
+            cursor: pointer;
+        }
+        .text-div .button:hover {
+            background-color: grey;
+            border:2px solid grey;
+        }
+        ul {
+            padding-left:0;
+        }
+        ul .item {
+            display: inline-block;
+            width:150px;
+            height: 25px;
+            border-radius: 5px;
+            background-color: wheat;
+            position: relative;
+        }
+        ul span {
+            display: inline-block;
+            height: 15px;
+            line-height: 15px;
+            font-size: 15px;
+        }
+        ul .item .person-name {
+            position: absolute;
+            left:20px;
+            top:5px;
+            width:100px;
+            text-align: center;
+        }
+        ul .item .close {
+            position: absolute;
+            width:15px;
+            text-align: center;
+            right:10px;
+            top:5px;
+            background-color: gainsboro;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+        ul .item .close:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- a module! -->
+    <div class="content">
+        <!-- title -->
+        <div class="head-div">Js Module</div>   
+        <!-- input and button -->
+        <div class="text-div">
+            <input type="text" class="name" placeholder="Wiki">
+            <div class="button">Add Person</div> 
+        </div>
+        <hr>
+        <!-- items of person -->
+        <ul id="target">
+            <script id="template" type="x-tmpl-mustache">
+                {{#people}}
+                    <li class="item">
+                        <span class="person-name">{{.}}</span>
+                        <span class="close">X</span>
+                    </li>
+                {{/people}}
+            </script>
+        </ul>
+    </div>
+<!-- scripts -->
+<script src="./bower_components/jquery/dist/jquery.js"></script>
+<script src="./bower_components/mustache.js/mustache.js"></script>
+<script src="./01-My-module.js"></script>
+</body>
+</html>
