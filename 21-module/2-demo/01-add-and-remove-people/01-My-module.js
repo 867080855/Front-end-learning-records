@@ -1,3 +1,4 @@
+// 这种方式写的方法，people没有办法对外调用，没有API,在02-moduleJs.js写一个可以返回API的js
 (function(){
     var people = {
         people: ['shell','tecWang'],
@@ -32,9 +33,9 @@
         removePerson: function(e){
             var $remove = $(e.target).closest('li');
             var index = this.$ul.find('li').index($remove);
-        
-            $remove.remove();
-            this.people.slice(index,1);  // 有啥用？
+
+            this.people.splice(index,1);  // 有啥用？
+            this.render();
         }
     };
 

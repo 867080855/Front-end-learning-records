@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Js Test!</title>
+    <style>
+        body,html{
+            width:100%;height:100%;
+        }
+        input,button,select,textarea{outline:none}
+    </style>
+    <link rel="stylesheet" href="./01-stat.css">
+    <link rel="stylesheet" href="./00-content.css">
+</head>
+<body>
+    <!-- a module! -->
+    <div class="stat">
+        <h1>Stats</h1>
+        <div class="bull">
+            <script id="stat_template" type="x-tmpl-mustache">
+                <span>People: <i class="len">{{length}}</i></span>
+            </script>
+        </div>
+    </div>
+    <div class="content">
+        <!-- title -->
+        <div class="head-div">Js Module</div>   
+        <!-- input and button -->
+        <div class="text-div">
+            <input type="text" class="name" placeholder="Wiki">
+            <div class="button">Add Person</div> 
+        </div>
+        <hr>
+        <!-- items of person -->
+        <ul id="target">
+            <script id="template" type="x-tmpl-mustache">
+                {{#people}}
+                    <li class="item">
+                        <span class="person-name">{{.}}</span>
+                        <span class="close">X</span>
+                    </li>
+                {{/people}}
+            </script>
+        </ul>
+    </div>
+<!-- scripts -->
+<script src="./bower_components/jquery/dist/jquery.js"></script>
+<script src="./bower_components/mustache.js/mustache.js"></script>
+<!-- 注意引用顺序 -->
+<script src="./03-PubSub.js"></script>
+<script src="./01-stat.js"></script>
+<script src="./02-people.js"></script>
+</body>
+</html>

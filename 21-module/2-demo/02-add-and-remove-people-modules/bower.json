@@ -1,0 +1,21 @@
+{
+  "name": "tyt",
+  "authors": [
+    "tecWang <tecWang@users.noreply.github.com>"
+  ],
+  "description": "0.0.1",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "mustache.js": "mustache#^2.3.0"
+  }
+}
