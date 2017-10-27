@@ -1,0 +1,1 @@
+document.write("You are so funny!</br>");
