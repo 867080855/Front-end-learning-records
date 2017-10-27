@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Bookshop</title>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- <div class="container" ng-init="books = [{name:'Effective Java',author:'Joshua Bloch'},{name:'Year without Pants',author:'Scott Berkun'},{name:'Confessions of public speakers',author:'Scott Berkun'},{name:'Javascript Good Parts',author:'Douglas Crokckfrod'}]"> -->
+    <div class="container" ng-controller="BookCtrl">
+        <h2>Your Online Bookshop</h2>
+        <input type="search" ng-model="critearia"><span style="color:red">(在输入框中输入文字可以起到筛选的作用)</span>
+        <ul class="unstyled" style="margin-top:20px;">
+            <li ng-repeat="book in books | filter:critearia | orderBy: 'name'">
+                <span>{{book.name | uppercase}} written by {{book.author | uppercase}}</span>
+            </li>
+        </ul>
+    </div>
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
