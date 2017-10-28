@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        var {name, age} = {age : 12, name : 'tecwang'};
+        console.log("name = " + name);
+        console.log("age = " + age);
+
+
+        console.log("==============================================================");
+        var {person_name, person_age } = {name : 'tecwang', age : 12};
+        console.log("person_name = " + person_name);    // undefined
+        console.log("person_age = " + person_age);      // undefined
+
+        
+        console.log("==============================================================");
+        var {name: person_name, age: person_age} = {name : 'tecwang', age : 12};
+        console.log("person_name = " + person_name);    // undefined
+        console.log("person_age = " + person_age);      // undefined
+        
+        console.log("==============================================================");
+        let object = {first: 'hello', last: 'world'};
+        let { first: firstName, last: lastName} = object;
+        console.log("firstName = " + firstName);    // hello
+        console.log("lastName = " + lastName);      // world
+    </script>
+</body>
+</html>

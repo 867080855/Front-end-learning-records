@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        // 参数是一组有次序的值(数组)
+        function fn([x, y, z]){
+            // x = 100,
+            // y = 200 
+            // z = 300
+
+        }
+        fn([100, 200, 300]);
+
+        // 参数是一组无次序的值(对象)
+        function fun({x, y, z}){
+            // x = 100
+            // y = 200
+            // z = 300
+        }
+        fun({
+            x: 100,
+            z: 300,
+            y: 200
+        });
+    </script>
+</body>
+</html>

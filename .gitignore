@@ -4,6 +4,5 @@ bower_components/
 .project
 
 #ES6编译
-traceur-compiler/   
-
-
+traceur-compiler   
+traceur-compiler/

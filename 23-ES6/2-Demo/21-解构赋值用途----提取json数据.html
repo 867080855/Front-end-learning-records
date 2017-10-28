@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        // 定义json数据
+        var json = {
+            id: 007,
+            name: 'tecwang',
+            age: 23,
+            score: {
+                math: 100,
+                chinese: 100,
+                chemistry: 88
+            },
+            height: 182,
+            weight: 182
+        };
+        var {id, name, age, score, height, weight} = json;
+        console.log("id = " + id);
+        console.log("name = " + name);
+        console.log("age = " + age);
+        console.log("score = " + score);
+        console.log("height = " + height);
+        console.log("weight = " + weight);
+    </script>
+</body>
+</html>

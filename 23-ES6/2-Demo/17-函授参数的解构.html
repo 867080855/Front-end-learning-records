@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        // 正常套路
+        function add1(a,b){
+            return a + b;
+        }
+        console.log("add1 = " + add1(1, 2));    // 3
+
+        // 换个套路
+        function add2([a, b]){
+            return a + b; 
+        }
+        console.log("add2 = " + add2([1, 2]));  // 3
+
+        // 再换个套路
+        console.log("=====================================================");
+        function fn({a = 0, b = 9} = {}){
+            return [a, b];
+        }
+        console.log(fn({a: 100,b: 200}));   // (2) [100, 200]
+        console.log(fn({a: 100}));   // (2) [100, 9]
+        console.log(fn({b: 200}));   // (2) [0, 200]
+        console.log(fn({a: undefined, b: 999}));   // (2) [0, 200]
+        console.log(fn({x: 100,y: 200}));   // (2) [0, 9]
+        // 只有匹配到 a 或者 b 的键值才能改变默认值
+        
+        console.log("=====================================================");
+        // 新套路
+        function fn2({a, b} = {a: 0, b: 9}){
+            return [a, b];
+        }
+        console.log(fn2({a: 100,b: 200}));   // (2) [100, 200]
+        console.log(fn2({a: 100}));   // (2) [100, undefined]
+        console.log(fn2({b: 200}));   // (2) [undefined, 200]
+        console.log(fn2({a: undefined, b: 999}));   // (2) [undefined, 999]
+        console.log(fn2({x: 100,y: 200}));   // (2) [undefined, undefined]
+
+        console.log("=====================================================");
+    </script>
+</body>
+</html>

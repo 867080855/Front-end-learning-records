@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        // 字符串解构赋值可以把字符串转化为数组
+        const [a, b, c, d, e] = "world";
+        console.log("a = " + a);    // w
+        console.log("b = " + b);    // r
+        console.log("c = " + c);    // o
+        console.log("d = " + d);    // l
+        console.log("e = " + e);    // d
+
+        // 拿到字符串的length属性
+        const {length: len} = "hello";
+        console.log("len = " + len);    // 5
+
+        const {length} = "world";
+        console.log("length = " + length);  // 5
+    </script>
+</body>
+</html>

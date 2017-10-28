@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        // 交换变量a, b
+        // 传统的交换变量方式
+        console.log("====================================================");
+        var a = 100, b= 200, temp;
+        console.log("a = " + a + " b = " + b);
+        
+        temp = a;
+        a = b;
+        b = temp;
+        
+        console.log("a = " + a + " b = " + b);
+        
+        // 解构赋值交换变量
+        console.log("====================================================");
+        var x = 100, y = 200;
+        console.log("x = " + x + " y = " + y);
+
+        [x, y] = [y, x];
+        
+        console.log("x = " + x + " y = " + y);
+    </script>
+</body>
+</html>

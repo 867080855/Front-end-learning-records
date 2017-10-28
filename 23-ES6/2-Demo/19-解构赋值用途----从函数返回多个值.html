@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        // 函数返回一个数组或者多个对象时如何方便的获取内部的特定值
+
+        // 返回一个数组
+        function fun(){
+            return [1, 2, 3];
+        }
+        var [x, y, z] = fun();
+        console.log(y);
+
+        // 返回一个对象
+        function fn(){
+            return {
+                name: 'tecwang',
+                age: 23
+            };
+        }
+        var {name, age} = fn();
+        var {name: person_name, age: person_age } = fn();
+        console.log("name = " + name + ", age = " + age);
+        console.log("person_name = " + person_name + ", person_age = " + person_age);
+
+
+    </script>
+</body>
+</html>
