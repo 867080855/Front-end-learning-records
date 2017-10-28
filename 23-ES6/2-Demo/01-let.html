@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+    <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+    <!-- 本地文件引用暂时不能用，先用网上的吧 -->
+    <!-- <script src="./lib/traceur-compiler/src/traceur.js"></script>
+    <script src="./lib/traceur-compiler/src/bootstrap.js"></script> -->
+    <script type="text/traceur">
+        console.log("===================================================");
+        console.log("块级作用域：");       
+        var a = 100;    // 变量
+        let b = 200;    // 局部变量
+        console.log("var a = " + a);
+        console.log("let b = " + b);   
+        
+        
+        {
+            var c = 100;
+            let d = 200;
+            console.log("in block: let d = " + d); // 200
+        }
+        console.log("out block: var c = " + c);
+        // console.log(d);     // d is not defined
+        
+        
+        console.log("===================================================");
+        console.log("let不存在变量提升");
+        var e = [];
+        for(var i = 1; i <= 5; i++){
+            var f = i;
+            e[i] = function(){
+                console.log("var in func: " + f);
+            }// 数组里堆了一堆的方法
+        };
+        e[4](); // 5
+        e[2](); // 5
+
+        let g = [];
+        for(var i = 1; i <= 5; i++){
+            let h = i;
+            g[i] = function(){
+                console.log("let in func: " + h);
+            }// 数组里堆了一堆的方法
+        };
+        g[4](); // 4
+        g[2](); // 2
+
+
+        console.log("===================================================");
+        console.log("let暂时性死区");
+        var j = 200;
+        {
+            // 感觉这才是不存在变量提升哦...
+            console.log("in block: j = " + j);    // undefined
+            let j = 100;
+            console.log("in block: j = " + j);    // 100
+        }
+        console.log("out block: var j = " + j);
+
+
+        console.log("===================================================");
+        console.log("let不允许反复声明");
+        {
+            var k = 100;
+            var k = 200;
+        }
+        console.log("k = " + k);
+        {
+            var m = 100;
+            // let m = 200;    // Duplicate declaration, m
+        }
+        console.log("m = " + m);
+        {
+            // let n = 100;    // Duplicate declaration, n
+            var n = 200;    
+        }
+        console.log("n = " + n);
+        {
+            let x = 100;
+            // let x = 200;    // Duplicate declaration, x
+            console.log("in block: x = " + x);
+        }
+        // console.log("x = " + x);    //x is not defined
+
+        {
+            var z = 100;
+            var z = 200;
+            console.log("in first block: z = " + z);
+        }
+        {
+            let z = 300;
+            console.log("in another block: z = " + z);
+        }
+        console.log("===================================================");
+    </script>
+</body>
+</html>

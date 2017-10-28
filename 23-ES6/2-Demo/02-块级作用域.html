@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+    <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        console.log("=============================================================");
+        console.log("块级作用域的覆盖");
+        var time = new Date();
+
+        function fun(){
+            console.log(time);
+            if(false){
+                var time = "Hello World!";
+            }
+        }
+        fun();  // undefined
+        // time覆盖了之前函数外边的time定义，把那句定义删掉就可以正常打印了
+
+
+        console.log("=============================================================");
+        console.log("块级作用域");
+        var string = 'Hello World!';
+        for(var i = 0; i < string.length; i++){
+            console.log(string[i]);
+        }
+        console.log("end loop, i = " + i);
+        // 定义的i并不会消失，下一次重新var出来的i也依旧会存在，浪费内存空间
+
+        console.log("=============================================================");
+        var a = 10;
+        var a = 20;
+        // 反复声明的a变量并不会覆盖之前的变量，而是会重新开辟一个内存空间，造成浪费
+        console.log("let的块级作用域");
+        function fun2(){
+            let num = 100;
+            if(true){
+                let num = 200;
+            }
+            console.log("let num = " + num);
+        }
+        fun2();
+        console.log("var的作用域");
+        function fun3(){
+            var num = 100;
+            if(true){
+                var num = 200;
+            }
+            console.log("var num = " + num);
+        }
+        fun3();
+        console.log("=============================================================");
+        console.log("立即执行函数");
+        {
+            // 可以当立即执行函数去使用，因为其块级作用域的存在起到了和立即执行函数一样的作用
+            let temp = function(){
+                
+            }
+        }
+    </script>
+    <script>
+        function fn(){
+            console.log("ES5立即执行函数外部");
+        }
+
+        (function(){
+            if(true){
+            // if(false){    // fn不存在
+                function fn(){
+                    console.log("ES5立即执行函数内部");
+                }
+            }
+            fn();   // 不执行...
+        }());
+    </script>
+</body>
+</html>
