@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+    <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        // 本文件不能执行，只是演示过程
+        // module1.js   输出三个变量
+        export const intName = 100;
+        export const charName = 'a';
+        export const booleanName = false;
+
+        // module2. js  引入全部变量
+        import * as variable from './module1';
+        console.log(variable.intName);  // 100
+        console.log(variable.charName); // 'a'
+        console.log(variable.booleanName);  // false
+
+        // module3.js   引入多个变量
+        import {intName,charName} as variable from './module1' 
+        console.log(variable.intName);
+        console.log(variable.charName);
+
+        // module4.js   只引入一个变量
+        import intName as variable from './module1'
+        console.log(variable.intName);
+    </script>
+</body>
+</html>

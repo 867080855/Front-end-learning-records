@@ -1,5 +1,9 @@
 # 忽略文件
 node_modules/
 bower_components/
-lib/
 .project
+
+#ES6编译
+traceur-compiler/   
+
+

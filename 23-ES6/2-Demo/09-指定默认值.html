@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        var [temp = "string"] = [];
+        console.log("temp = " + temp);  // string
+
+        var [temp = "string"] = ["tempString"];
+        console.log("temp = " + temp);  // tempString
+
+        console.log("=================================================");
+        var [x = '3', y] = [,99];
+        console.log("x = " + x);    // 3
+        console.log("y = " + y);    // 99
+        
+        console.log("==================================================");
+        var [x = 3, y] = [99];
+        console.log("x = " + x);    // 99
+        console.log("y = " + y);    // undefined
+
+        console.log("==================================================");
+        var [x, y = 3] = [99];
+        console.log("x = " + x);    // 99
+        console.log("y = " + y);    // 3
+
+        console.log("==================================================");
+        var [x, y = 3] = [99,undefined];
+        console.log("x = " + x);    // 99
+        console.log("y = " + y);    // 3
+
+        
+    </script>
+</body>
+</html>

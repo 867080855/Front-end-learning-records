@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+    <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        var varName = 'varValue';
+        console.log(window.varName);    // varValue
+        // console.log(global.varName); // node下使用
+        
+        // node 和 浏览器通用的用法？
+        console.log(this.varName);  // 全局变量属性 varValue
+
+        let letName = 'letValue';
+        console.log('letName = ' + window.letName); // letValue
+        // use strict --- undefined
+        console.log('letName = ' + this.letName);   // letValue
+        // use strict --- undefined
+    </script>
+</body>
+</html>

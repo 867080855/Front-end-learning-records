@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        console.log("==========================================");
+        let [x,y] = [1,2,3];
+        console.log("x = " + x);
+        console.log("y = " + y);
+
+        console.log("==========================================");
+        let [a,[b],c] = [1, [2, 3], 4]; 
+        console.log("a = " + a);    // 1
+        console.log("b = " + b);    // 2
+        console.log("c = " + c);    // 4
+        
+        console.log("==========================================");
+        
+    </script>
+</body>
+</html>
