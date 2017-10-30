@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/traceur/traceur.js"></script>
+    <script src="./lib/traceur/BrowserSystem.js"></script>
+    <script src="./lib/traceur/bootstrap.js"></script>
+</head>
+<body>
+    <script type="text/traceur">
+        console.log("模板字符串");
+        let dessert = 'Cake';
+        let drink = 'Milk';
+
+        let breakfast = `今天的早餐是 ：
+                        ${dessert} 和 ${drink} `;
+        console.log(breakfast);
+
+        console.log("带标签的模板字符串");
+        
+
+    </script>
+</body>
+</html>
