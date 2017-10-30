@@ -1,1 +1,0 @@
-function Hello(e){return"Hello"+e}function bye(e){return"Bye"+e}

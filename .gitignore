@@ -7,4 +7,5 @@ bower_components/
 traceur-compiler   
 traceur-compiler/
 
-#开发输出
+#开发引用
+bootstrap/

@@ -1,0 +1,1 @@
+function Hello(n){return"Hello"+n}function bye(n){return"Bye"+n}function change_test(){return"就看你会不会变！"}
