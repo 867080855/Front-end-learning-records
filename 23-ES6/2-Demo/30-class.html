@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 刚刚发现一个惊天大秘密...chrome支持ES6..心累 -->
+    <h1 id="message"></h1>
+    <script>
+        class Person {
+            constructor(name) {
+                this.name = name;
+                this.hobbies = [];
+            }
+
+            // 方法名不可以跟任何属性名重复，否则会出现错误
+            get hobby() {
+                return this.hobbies;
+            }
+            set hobby(ele) {
+                this.hobbies.push(ele);
+            }
+
+            // 普通方法
+            walk() {
+                console.log(this.name + ' is walk on the street!');
+            }
+            // 静态方法
+            static say(){
+                console.log('hello');
+            }
+        }
+        
+        // 静态方法可以不实例化对象直接调用
+        Person.say();
+        // Person.walk();   // Person.walk is not a function
+
+        var person = new Person('tecwang');
+        person.walk();
+
+        person.hobby = 'eat'; 
+        person.hobby = 'talk'; 
+        console.log(person.hobby);
+
+        console.log("======================================================");
+
+        class Chef extends Person {
+            constructor(name) {
+                super(name);
+            }
+
+            cock (){
+                console.log('I am a chef who can cook');
+            }
+        }
+        var chef = new Chef('Li Dan');
+        console.log(person);// __proto__:Object
+        console.log(chef);  // __proto__:Person
+        chef.cock();
+        chef.walk();
+        chef.hobby = 'cock';
+        chef.hobby = 'play tennis';
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let food = new Map();
+        let fruit = {},cook = function(){},dessert = 'dessert';
+
+        food.set(fruit, 'apple');   // {Object => "apple"}
+        food.set(cook, 'fork');     // {function (){} => "fork"}
+        food.set(dessert,'cake');   // {"dessert" => "cake"}
+
+        console.log(food);
+
+        console.log(food.get(fruit));
+        console.log(food.get(cook));
+        console.log(food.get(dessert));
+        // 不就像个localStorage？
+    </script>
+</body>
+</html>

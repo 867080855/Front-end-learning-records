@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 利用module可以导入js文件 -->
+    <script type="module">
+        // 导入export default的内容
+        import module1 from './33-module.js'
+        console.log(module1.sayHi('tecwang'));
+
+        // 导入export的一个内容
+        import {str} from './33-module.js';
+        console.log(str);
+
+        // 导入export的多个内容
+        import {goFunc, Buy} from './33-module.js';
+        console.log(goFunc('England'));
+        console.log(Buy('Movie ticket'));
+        
+        // 导入export的改名之后的内容
+        import {item1, item2} from './33-module.js';
+        console.log(`${item1}, ${item2}`);
+        // The requested module does not provide an export named 'a'
+        // import {a, b} from './33-module.js';
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let dessert = new Set(['apple', 'cake', 'milk']);
+        console.log(dessert);   // Set(3) {"apple", "cake", "milk"}
+
+        let alpha = new Set('abcdefg'); 
+        console.log(alpha);     // Set(7) {"a", "b", "c", "d", "e", …}
+
+        console.log(alpha.size);
+        console.log(alpha.has('c'));
+        console.log(alpha.delete('c'));
+        console.log(alpha);     // Set(6) {"a", "b", "d", "e", "f", …}
+
+        // 遍历
+        alpha.forEach( item => {
+            console.log(item);
+            // a b d e f g
+        });
+    </script>
+</body>
+</html>
