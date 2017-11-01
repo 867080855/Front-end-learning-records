@@ -1,0 +1,24 @@
+<div id="app2">
+<!-- <div id="app2"> -->
+    <h2>app2</h2>
+    <!-- 大括号渲染 -->
+    <input type="text" data-url={{url}} v-model="message">
+    <input type="text" v-model="tec">
+    <p>{{tec}}</p>
+    <!-- 
+        1. {{*message}} 表示只在最初时渲染一次 
+        2. {{}} 直接解析文本，不解析html
+        3. {{{}}} 三个大括号可以解析html
+    -->
+    <p v-if="show">{{{*message}}}</p>
+
+    <!-- js表达式 -->
+    <div>{{x=1}}</div>
+    <!-- Avoid using reserved keywords in expression: var x=1 -->
+    <!-- <div>{{var x=1}}</div> -->
+
+    <!-- 过滤器 -->
+    <!-- Https://www.tecwang.cn,过滤器实现了首字母大写 -->
+    <div>{{url | capitalize}}</div>
+    <hr>
+</div>

@@ -1,10 +1,10 @@
 // 加载模板
-import commonUtil from '../utils/commonUtil';
+import commonUtil from '../../utils/commonUtil';
 let indexTpl = require('./index.string');
 commonUtil.render(indexTpl);
 
 // 加载vue
-var Vue = require('../libs/vue');
+var Vue = require('../../libs/vue');
 
 // 定义 view 和 module
 new Vue({
@@ -12,10 +12,11 @@ new Vue({
     el: '#app',
     // 数据
     data: {
-        newTodo: '',
+        newTodo: 'learn Javascript',
         todos: [
             { text: 'Add some todos' },
-        ]
+        ],
+        show: false
     },
     methods: {
         addTodo: function(){
@@ -31,3 +32,4 @@ new Vue({
         }
     }
 });
+// console.log(vm);

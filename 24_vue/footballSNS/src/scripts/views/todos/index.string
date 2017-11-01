@@ -1,5 +1,6 @@
 <!-- todo list -->
 <div id="app">
+    <h2>app1</h2>
     <!-- 数据绑定： 又是数据绑定这一套... -->
     {{newTodo}} <br>
     <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">
@@ -12,4 +13,7 @@
             <button v-on:click="removeTodo($index)">X</button>
         </li>
     </ul>
+    <!-- 如果show == true,显示{{newTodo的内容}}，show在index.js文件的data中定义 -->
+    <p v-if="show">{{newTodo}}</p>
+    <hr>
 </div>
