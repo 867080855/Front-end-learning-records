@@ -12,6 +12,7 @@ new Vue({
     el: '#app',
     // 数据
     data: {
+        title: 'todo list',
         newTodo: 'learn Javascript',
         todos: [
             { text: 'Add some todos' },

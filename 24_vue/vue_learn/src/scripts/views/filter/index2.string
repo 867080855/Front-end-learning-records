@@ -1,6 +1,6 @@
 <div id="app2">
 <!-- <div id="app2"> -->
-    <h2>app2</h2>
+    <h2>App2: {{title}}</h2>
     <!-- 大括号渲染 -->
     <input type="text" data-url={{url}} v-model="message">
     <input type="text" v-model="tec">
@@ -11,6 +11,8 @@
         3. {{{}}} 三个大括号可以解析html
     -->
     <p v-if="show">{{{*message}}}</p>
+    <a href="{{url}}">herf</a>
+
 
     <!-- js表达式 -->
     <div>{{x=1}}</div>

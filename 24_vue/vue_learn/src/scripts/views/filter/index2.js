@@ -9,6 +9,7 @@ const Vue = require('../../libs/vue');
 new Vue({
     el: '#app2',
     data: {
+        title: 'js表达式 & filter & {{{}}} & {{*mess}}',
         message: '<b>text</b>',
         tec: 'tecwang',
         show: true,

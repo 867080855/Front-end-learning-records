@@ -1,6 +1,6 @@
 <!-- todo list -->
 <div id="app">
-    <h2>app1</h2>
+    <h2>App1：{{title}}</h2>
     <!-- 数据绑定： 又是数据绑定这一套... -->
     {{newTodo}} <br>
     <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">

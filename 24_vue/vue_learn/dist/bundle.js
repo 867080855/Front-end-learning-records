@@ -60,11 +60,72 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// css
+__webpack_require__(1); // 初始页面样式
+
+
+// todos
+// require('./views/todos/index');  
+
+// js表达式 & filter & {{{}}} & {{*mess}}
+// require('./views/filter/index2'); 
+
+// 参数 & 修饰符 & 修饰符
+__webpack_require__(2);
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _commonUtil = __webpack_require__(3);
+
+var _commonUtil2 = _interopRequireDefault(_commonUtil);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var indexTpl = __webpack_require__(4);
+_commonUtil2.default.render(indexTpl);
+
+var Vue = __webpack_require__(5);
+new Vue({
+    el: '#app3',
+    data: {
+        // title
+        title: '指令 & 参数 & 修饰符',
+        // v-if
+        show: true,
+        message: 'message',
+        // v-bind
+        attr: 'div-attr'
+    },
+    methods: {
+        alertTip: function alertTip() {
+            alert('You have clicked the div');
+        }
+    }
+});
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84,7 +145,13 @@ var commonUtil = {
 exports.default = commonUtil;
 
 /***/ }),
-/* 1 */
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"app3\">    <h2>App3: {{title}}</h2>    <!-- v-if -->    <div><b>1. v-if</b></div>    <div v-if=\"show\">{{message}}</div>    <div v-if=\"true\">{{message}}</div>    <div v-if=\"false\">{{message}}</div>    <div v-if=\"1 + 2\">{{message}}</div>    <!-- v-bind -->    <div><b>2. v-bind</b></div>    <div v-bind:attr=\"attr\">{{attr}}</div>    <!-- 绑定一个不存在的属性的时候，页面不会显示出来 -->    <div>{{abc}}</div>    <div v-bind:data = \"1 + 2\"></div>   <!-- data = 3 -->    <div v-bind:data.literal = \"1 + 2\"></div> <!-- data = 1 + 2 -->    <!-- v-on -->    <div><b>3. v-on</b></div>    <button v-on:click=\"alertTip\">v-on:onclick</button>    <!-- 缩写 -->    <div><b>4. 指令缩写</b></div>    <div :attr=\"attr\">{{attr}}</div>    <button @click=\"alertTip\">@click</button>        <hr></div>"
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10343,117 +10410,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   return Vue;
 });
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// css
-__webpack_require__(7); // 初始页面样式
-
-
-// js表达式 & filter & {{{}}} & {{*mess}}
-__webpack_require__(5);
-// todos
-__webpack_require__(3);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _commonUtil = __webpack_require__(0);
-
-var _commonUtil2 = _interopRequireDefault(_commonUtil);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var indexTpl = __webpack_require__(4); // 加载模板
-
-_commonUtil2.default.render(indexTpl);
-
-// 加载vue
-var Vue = __webpack_require__(1);
-
-// 定义 view 和 module
-new Vue({
-    // 相当于选择器
-    el: '#app',
-    // 数据
-    data: {
-        newTodo: 'learn Javascript',
-        todos: [{ text: 'Add some todos' }],
-        show: false
-    },
-    methods: {
-        addTodo: function addTodo() {
-            var text = this.newTodo.trim();
-            if (text) {
-                this.todos.push({ text: text });
-                this.newTodo = '';
-            }
-        },
-        removeTodo: function removeTodo(index) {
-            console.log(index);
-            this.todos.splice(index, 1);
-        }
-    }
-});
-// console.log(vm);
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = "<!-- todo list --><div id=\"app\">    <h2>app1</h2>    <!-- 数据绑定： 又是数据绑定这一套... -->    {{newTodo}} <br>    <input type=\"text\" v-model=\"newTodo\" v-on:keyup.enter=\"addTodo\">    <!-- v-model 的 v 代表 vue -->    <!-- 渲染列表 -->    <ul>        <li v-for=\"todo in todos\">            <span>{{todo.text}}</span>            <button v-on:click=\"removeTodo($index)\">X</button>        </li>    </ul>    <!-- 如果show == true,显示{{newTodo的内容}}，show在index.js文件的data中定义 -->    <p v-if=\"show\">{{newTodo}}</p>    <hr></div>"
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _commonUtil = __webpack_require__(0);
-
-var _commonUtil2 = _interopRequireDefault(_commonUtil);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var indexTpl = __webpack_require__(6); // 加载
-
-_commonUtil2.default.render(indexTpl);
-
-// 加载vue
-var Vue = __webpack_require__(1);
-// 遇到了一个问题，当一个页面加载了两个app时，最先加载的app中的v-model生效，另一个失去绑定效果，仅限于input
-new Vue({
-    el: '#app2',
-    data: {
-        message: '<b>text</b>',
-        tec: 'tecwang',
-        show: true,
-        url: 'https://www.tecwang.cn'
-    },
-    methods: {}
-});
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"app2\"><!-- <div id=\"app2\"> -->    <h2>app2</h2>    <!-- 大括号渲染 -->    <input type=\"text\" data-url={{url}} v-model=\"message\">    <input type=\"text\" v-model=\"tec\">    <p>{{tec}}</p>    <!--         1. {{*message}} 表示只在最初时渲染一次         2. {{}} 直接解析文本，不解析html        3. {{{}}} 三个大括号可以解析html    -->    <p v-if=\"show\">{{{*message}}}</p>    <!-- js表达式 -->    <div>{{x=1}}</div>    <!-- Avoid using reserved keywords in expression: var x=1 -->    <!-- <div>{{var x=1}}</div> -->    <!-- 过滤器 -->    <!-- Https://www.tecwang.cn,过滤器实现了首字母大写 -->    <div>{{url | capitalize}}</div>    <hr></div>"
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
