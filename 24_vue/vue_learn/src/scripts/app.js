@@ -9,6 +9,7 @@ require('../styles/usage/page/app.scss');   // 初始页面样式
 // require('./views/filter/index2'); 
 
 // 参数 & 修饰符 & 修饰符
-require('./views/params/index3');
+// require('./views/v_bind/index3');
 
- 
+ // 计算属性 computed properties
+ require('./views/computed/index4');

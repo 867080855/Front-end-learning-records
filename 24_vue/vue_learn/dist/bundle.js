@@ -81,7 +81,10 @@ __webpack_require__(1); // 初始页面样式
 // require('./views/filter/index2'); 
 
 // 参数 & 修饰符 & 修饰符
-__webpack_require__(2);
+// require('./views/v_bind/index3');
+
+// 计算属性 computed properties
+__webpack_require__(12);
 
 /***/ }),
 /* 1 */
@@ -90,41 +93,7 @@ __webpack_require__(2);
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _commonUtil = __webpack_require__(3);
-
-var _commonUtil2 = _interopRequireDefault(_commonUtil);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var indexTpl = __webpack_require__(4);
-_commonUtil2.default.render(indexTpl);
-
-var Vue = __webpack_require__(5);
-new Vue({
-    el: '#app3',
-    data: {
-        // title
-        title: '指令 & 参数 & 修饰符',
-        // v-if
-        show: true,
-        message: 'message',
-        // v-bind
-        attr: 'div-attr'
-    },
-    methods: {
-        alertTip: function alertTip() {
-            alert('You have clicked the div');
-        }
-    }
-});
-
-/***/ }),
+/* 2 */,
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -145,12 +114,7 @@ var commonUtil = {
 exports.default = commonUtil;
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"app3\">    <h2>App3: {{title}}</h2>    <!-- v-if -->    <div><b>1. v-if</b></div>    <div v-if=\"show\">{{message}}</div>    <div v-if=\"true\">{{message}}</div>    <div v-if=\"false\">{{message}}</div>    <div v-if=\"1 + 2\">{{message}}</div>    <!-- v-bind -->    <div><b>2. v-bind</b></div>    <div v-bind:attr=\"attr\">{{attr}}</div>    <!-- 绑定一个不存在的属性的时候，页面不会显示出来 -->    <div>{{abc}}</div>    <div v-bind:data = \"1 + 2\"></div>   <!-- data = 3 -->    <div v-bind:data.literal = \"1 + 2\"></div> <!-- data = 1 + 2 -->    <!-- v-on -->    <div><b>3. v-on</b></div>    <button v-on:click=\"alertTip\">v-on:onclick</button>    <!-- 缩写 -->    <div><b>4. 指令缩写</b></div>    <div :attr=\"attr\">{{attr}}</div>    <button @click=\"alertTip\">@click</button>        <hr></div>"
-
-/***/ }),
+/* 4 */,
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10410,6 +10374,64 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   return Vue;
 });
+
+/***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _commonUtil = __webpack_require__(3);
+
+var _commonUtil2 = _interopRequireDefault(_commonUtil);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var indexTpl = __webpack_require__(13);
+_commonUtil2.default.render(indexTpl);
+
+var Vue = __webpack_require__(5);
+var vm = new Vue({
+    el: '#app4',
+    data: {
+        // title
+        title: '计算属性',
+        a: 1,
+        // $watch
+        firstName: '',
+        lastName: '',
+        fullName: ''
+    },
+    methods: {},
+    computed: {
+        b: function b() {
+            // parseInt把string转换成数字，只对字符串有效
+            return parseInt(this.a) + 2;
+        }
+    }
+});
+
+vm.$watch('firstName', function (value) {
+    var vm = this;
+    vm.fullName = value + ' ' + vm.lastName;
+});
+vm.$watch('lastName', function (value) {
+    var vm = this;
+    vm.fullName = vm.firstName + ' ' + value;
+});
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"app4\">    <h2>App4: {{title}}</h2>    <p><b>computed</b></p>    <input type=\"text\" v-model=\"a\">    <input type=\"text\" v-model=\"b\">    <!-- 即使设置为number，传到后台的值仍然是string -->    <!-- <input type=\"number\" v-model=\"c\"> -->        <p><b>$watch</b></p>    <input type=\"text\" placeholder=\"Json\" v-model=\"firstName\">    <input type=\"text\" placeholder=\"Smith\" v-model=\"lastName\">    <input type=\"text\" placeholder=\"Json Smith\" v-model=\"fullName\"></div>"
 
 /***/ })
 /******/ ]);

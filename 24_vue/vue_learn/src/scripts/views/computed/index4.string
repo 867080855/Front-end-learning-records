@@ -1,0 +1,13 @@
+<div id="app4">
+    <h2>App4: {{title}}</h2>
+    <p><b>computed</b></p>
+    <input type="text" v-model="a">
+    <input type="text" v-model="b">
+    <!-- 即使设置为number，传到后台的值仍然是string -->
+    <!-- <input type="number" v-model="c"> -->
+    
+    <p><b>$watch</b></p>
+    <input type="text" placeholder="Json" v-model="firstName">
+    <input type="text" placeholder="Smith" v-model="lastName">
+    <input type="text" placeholder="Json Smith" v-model="fullName">
+</div>
