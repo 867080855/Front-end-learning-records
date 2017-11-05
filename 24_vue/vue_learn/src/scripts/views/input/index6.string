@@ -1,0 +1,6 @@
+<div id="app6">
+    <!-- <div id="app2"> -->
+    <h2>App6: {{title}}</h2>
+    <input type="text" value="index6">
+    <hr>
+</div>

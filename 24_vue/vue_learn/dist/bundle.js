@@ -81,10 +81,16 @@ __webpack_require__(1); // 初始页面样式
 // require('./views/filter/index2'); 
 
 // 参数 & 修饰符 & 修饰符
-// require('./views/v_bind/index3');
+// require('./views/v_/index3');
 
 // 计算属性 computed properties
-__webpack_require__(12);
+// require('./views/computed/index4');
+
+// array
+// require('./views/array/index5');
+
+// 表单控件绑定
+__webpack_require__(14);
 
 /***/ }),
 /* 1 */
@@ -94,7 +100,11 @@ __webpack_require__(12);
 
 /***/ }),
 /* 2 */,
-/* 3 */
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -114,8 +124,8 @@ var commonUtil = {
 exports.default = commonUtil;
 
 /***/ }),
-/* 4 */,
-/* 5 */
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10376,62 +10386,43 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
 /* 10 */,
 /* 11 */,
-/* 12 */
+/* 12 */,
+/* 13 */,
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _commonUtil = __webpack_require__(3);
+var _commonUtil = __webpack_require__(7);
 
 var _commonUtil2 = _interopRequireDefault(_commonUtil);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var indexTpl = __webpack_require__(13);
+var indexTpl = __webpack_require__(15); // 加载
+
 _commonUtil2.default.render(indexTpl);
 
-var Vue = __webpack_require__(5);
-var vm = new Vue({
-    el: '#app4',
+// 加载vue
+var Vue = __webpack_require__(9);
+// 遇到了一个问题，当一个页面加载了两个app时，最先加载的app中的v-model生效，另一个失去绑定效果，仅限于input
+new Vue({
+    el: '#app6',
     data: {
-        // title
-        title: '计算属性',
-        a: 1,
-        // $watch
-        firstName: '',
-        lastName: '',
-        fullName: ''
-    },
-    methods: {},
-    computed: {
-        b: function b() {
-            // parseInt把string转换成数字，只对字符串有效
-            return parseInt(this.a) + 2;
-        }
-    }
-});
+        title: '表单控件绑定'
 
-vm.$watch('firstName', function (value) {
-    var vm = this;
-    vm.fullName = value + ' ' + vm.lastName;
-});
-vm.$watch('lastName', function (value) {
-    var vm = this;
-    vm.fullName = vm.firstName + ' ' + value;
+    },
+    methods: {}
 });
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"app4\">    <h2>App4: {{title}}</h2>    <p><b>computed</b></p>    <input type=\"text\" v-model=\"a\">    <input type=\"text\" v-model=\"b\">    <!-- 即使设置为number，传到后台的值仍然是string -->    <!-- <input type=\"number\" v-model=\"c\"> -->        <p><b>$watch</b></p>    <input type=\"text\" placeholder=\"Json\" v-model=\"firstName\">    <input type=\"text\" placeholder=\"Smith\" v-model=\"lastName\">    <input type=\"text\" placeholder=\"Json Smith\" v-model=\"fullName\"></div>"
+module.exports = "<div id=\"app6\">    <!-- <div id=\"app2\"> -->    <h2>App6: {{title}}</h2>    <input type=\"text\" value=\"index6\">    <hr></div>"
 
 /***/ })
 /******/ ]);

@@ -1,0 +1,43 @@
+<div id="app3">
+    <h2>App3: {{title}}</h2>
+    <!-- v-if -->
+    <div><b>1. v-if</b></div>
+    <div v-if="show">{{message}}</div>
+    <div v-if="true">{{message}}</div>
+    <div v-if="false">{{message}}</div>
+    <div v-if="1 + 2">{{message}}</div>
+
+    <!-- v-bind -->
+    <div><b>2. v-bind</b></div>
+    <div v-bind:attr="attr">{{attr}}</div>
+    <!-- 绑定一个不存在的属性的时候，页面不会显示出来 -->
+    <div>{{abc}}</div>
+    <div v-bind:data = "1 + 2"></div>   <!-- data = 3 -->
+    <div v-bind:data.literal = "1 + 2"></div> <!-- data = 1 + 2 -->
+
+
+    <!-- v-on -->
+    <div><b>3. v-on</b></div>
+    <button v-on:click="alertTip">v-on:click="alertTip"</button>
+    <button v-on:click="showInfo">v-on:click="showInfo"</button>
+    <button v-on:click="sayHi('tecwang')">v-on:click="sayHi('tecwang')"</button>
+    <button v-on:click="say('hello!', $event)">v-on:click:say(msg, $event)</button>
+    
+    <!-- 缩写 -->
+    <div><b>4. 指令缩写</b></div>
+    <div :attr="attr">{{attr}}</div>
+    <button @click="alertTip">@click</button>
+    
+    <!-- 默认时间 && 冒泡 -->
+    <div><b>5. 阻止默认事件和冒泡</b></div>
+    <ul v-on:click="do" style="width:200px;height:100px;background-color:orange;">
+        <li v-on:click.stop.prevent="doThis" src="https://www.baidu.com">阻止默认事件及冒泡</li>
+        <li v-on:click.stop="doThis">阻止冒泡</li>
+        <li v-on:click="do">啥也不阻止</li>
+    </ul>
+    
+    <!-- 按键修饰符 -->
+    <div><b>6. 按键修饰符</b></div>
+    <input style="width:300px;" type="text" v-model="keyup_text" v-on:keyup.enter="enterHandler">
+    <hr>
+</div>

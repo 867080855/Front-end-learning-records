@@ -1,0 +1,7 @@
+<div id="app5">
+    <h2>App5: {{title}}</h2>
+    <ul>
+        <li v-for="item in items">{{item}}</li>
+    </ul>
+    <hr>
+</div>
