@@ -90,7 +90,7 @@ __webpack_require__(1); // 初始页面样式
 // require('./views/array/index5');
 
 // 表单控件绑定
-__webpack_require__(14);
+__webpack_require__(2);
 
 /***/ }),
 /* 1 */
@@ -99,12 +99,57 @@ __webpack_require__(14);
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _commonUtil = __webpack_require__(3);
+
+var _commonUtil2 = _interopRequireDefault(_commonUtil);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var indexTpl = __webpack_require__(4); // 加载
+
+_commonUtil2.default.render(indexTpl);
+
+// 加载vue
+var Vue = __webpack_require__(5);
+// 遇到了一个问题，当一个页面加载了两个app时，最先加载的app中的v-model生效，另一个失去绑定效果，仅限于input
+new Vue({
+    el: '#app6',
+    data: {
+        title: '表单控件绑定',
+        // input 
+        msg: '',
+        info: '',
+        // checkbox:数组中的值跟checkbox的value相等时，该项被选中
+        checkedNames: ['Mike'],
+        // radio
+        picked: '男',
+        // select
+        selected: 'Mike',
+        selected2: '1',
+        selected3: ['020'],
+        items: [{ text: 'One', value: 'A' }, { text: 'Two', value: 'B' }, { text: 'Three', value: 'C' }],
+        selected4: 'B',
+        // 三个参数
+        age: 0,
+        toDebounce: '',
+        toLazy: ''
+    },
+    methods: {},
+    computed: {
+        info: function info() {
+            return '{"msg": "' + this.msg + '" }';
+        }
+    }
+});
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -124,8 +169,13 @@ var commonUtil = {
 exports.default = commonUtil;
 
 /***/ }),
-/* 8 */,
-/* 9 */
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"app6\">    <!-- <div id=\"app2\"> -->    <h2>App6: {{title}}</h2>    <!-- input -->    <div><b>1. input</b></div>    <input type=\"text\" v-model=\"msg\">    {{info}}    <!-- checkbox -->    <div><b>2. checkbox</b></div>    <input type=\"checkbox\" value=\"Jake\" v-model=\"checkedNames\" id=\"\">    <input type=\"checkbox\" value=\"John\" v-model=\"checkedNames\" id=\"\">    <input type=\"checkbox\" value=\"Mike\" v-model=\"checkedNames\" id=\"\">    <div>{{checkedNames}}</div>    <div>{{checkedNames | json}}</div>    <!-- radio -->    <div><b>3. radio</b></div>    <input type=\"radio\" value=\"男\" v-model=\"picked\" name=\"r1\" id=\"\">    <input type=\"radio\" value=\"女\" v-model=\"picked\" name=\"r1\" id=\"\">    <div>{{picked | json}}</div>    <!-- select -->    <div><b>4. select</b></div>    <select v-model=\"selected\" name=\"\" id=\"\">        <option>Jake</option>        <option>John</option>        <option selected>Mike</option>    </select>    <div>{{ selected }}</div>    <select v-model=\"selected2\" name=\"\" id=\"\">        <option value=\"0\">Jake</option>        <option value=\"1\">John</option>        <option value=\"2\">Mike</option>    </select>    <div>{{ selected2 }}</div>    <select v-model=\"selected3\" multiple id=\"\">        <option value=\"010\">北京</option>        <option value=\"020\">上海</option>        <option value=\"030\">天津</option>    </select>    <div>{{selected3}}</div>    <select name=\"\" v-model=\"selected4\" id=\"\">        <option v-bind:value=\"item.value\" v-for=\"item in items\">{{item.text}}</option>    </select>    <div>{{selected4}}</div>    <!-- 三个参数 -->    <!-- 转化为数值 -->    <input v-model=\"age\" v-click=\"showAge\" number>    <div>{{typeof age}}, 娘希匹，还是不能用</div>    <!-- ajax延时 -->    <input type=\"text\" v-model=\"toDebounce\" debounce>    <div>{{toDebounce}}</div>    <!-- lazy -->    <input type=\"text\" v-model=\"toLazy\" lazy>    <div>{{toLazy}}</div>    <hr></div>"
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10384,45 +10434,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   return Vue;
 });
-
-/***/ }),
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _commonUtil = __webpack_require__(7);
-
-var _commonUtil2 = _interopRequireDefault(_commonUtil);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var indexTpl = __webpack_require__(15); // 加载
-
-_commonUtil2.default.render(indexTpl);
-
-// 加载vue
-var Vue = __webpack_require__(9);
-// 遇到了一个问题，当一个页面加载了两个app时，最先加载的app中的v-model生效，另一个失去绑定效果，仅限于input
-new Vue({
-    el: '#app6',
-    data: {
-        title: '表单控件绑定'
-
-    },
-    methods: {}
-});
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"app6\">    <!-- <div id=\"app2\"> -->    <h2>App6: {{title}}</h2>    <input type=\"text\" value=\"index6\">    <hr></div>"
 
 /***/ })
 /******/ ]);

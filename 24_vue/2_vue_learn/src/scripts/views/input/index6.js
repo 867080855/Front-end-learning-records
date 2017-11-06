@@ -10,9 +10,33 @@ new Vue({
     el: '#app6',
     data: {
         title: '表单控件绑定',
-
+        // input 
+        msg: '',
+        info: '',
+        // checkbox:数组中的值跟checkbox的value相等时，该项被选中
+        checkedNames: ['Mike'],
+        // radio
+        picked: '男',
+        // select
+        selected: 'Mike',
+        selected2: '1',
+        selected3: ['020'],
+        items: [
+            {text: 'One', value: 'A'},
+            {text: 'Two', value: 'B'},
+            {text: 'Three', value: 'C'},
+        ],
+        selected4: 'B',
+        // 三个参数
+        age: 0,
+        toDebounce: '',
+        toLazy: ''
     },
     methods: {
-
+    },
+    computed: {
+        info: function(){
+            return `{\"msg\": \"${this.msg}\" }`;
+        }
     }
 });
