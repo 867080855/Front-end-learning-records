@@ -1,0 +1,30 @@
+body {
+  margin: 0; }
+#header_component {
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  background-color: black;
+  display: flex;
+  color: white;
+  flex-direction: row;
+  justify-content: space-between; }
+  #header_component .left {
+    background-color: red;
+    flex-grow: 1; }
+  #header_component .middle {
+    background-color: orange;
+    flex-grow: 1; }
+  #header_component .right {
+    background-color: green;
+    flex-grow: 1; }
+#aside {
+  background-color: blanchedalmond;
+  width: 200px; }
+  #aside .title {
+    background-color: blue; }
+  #aside .content {
+    background-color: plum;
+    height: 200px; }
+
+/*# sourceMappingURL=bundle.css.map*/

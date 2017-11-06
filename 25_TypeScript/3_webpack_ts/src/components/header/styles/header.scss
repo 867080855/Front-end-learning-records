@@ -1,0 +1,25 @@
+$main-color:black;
+
+// flex横向三列布局
+#header_component {
+    height: 65px;
+    line-height: 65px;
+    text-align: center;
+    background-color: $main-color;
+    display: flex;
+    color: white;
+    flex-direction: row;
+    justify-content: space-between;
+    .left {
+        background-color: red;
+        flex-grow: 1;
+    }
+    .middle {
+        background-color: orange;
+        flex-grow: 1;
+    }
+    .right {
+        background-color: green;
+        flex-grow: 1;
+    }
+}
