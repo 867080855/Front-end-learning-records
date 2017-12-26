@@ -51,7 +51,7 @@ module.exports = {
     // webpack-dev-server
     devServer: {
         // contentBase设置好服务器初始路径
-        contentBase: __dirname + '/dist',
+        contentBase: __dirname + '/dist/',
         port: 80,
         inline: true
     },

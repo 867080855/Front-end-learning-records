@@ -75,21 +75,23 @@ __webpack_require__(1); // 初始页面样式
 
 
 // todos
-// require('./views/todos/index');  
+// require('./views/01_todos/index');  
 
 // js表达式 & filter & {{{}}} & {{*mess}}
-// require('./views/filter/index2'); 
+// require('./views/02_filter/index2'); 
 
 // 参数 & 修饰符 & 修饰符
-// require('./views/v_/index3');
+// require('./views/03_v_/index3');
 
 // 计算属性 computed properties
-// require('./views/computed/index4');
+// require('./views/04_computed/index4');
 
 // array
-// require('./views/array/index5');
+// require('./views/05_array/index5');
 
 // 表单控件绑定
+// require('./views/06_input/index6');
+
 __webpack_require__(2);
 
 /***/ }),
@@ -105,77 +107,44 @@ __webpack_require__(2);
 "use strict";
 
 
-var _commonUtil = __webpack_require__(3);
-
-var _commonUtil2 = _interopRequireDefault(_commonUtil);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var indexTpl = __webpack_require__(4); // 加载
-
-_commonUtil2.default.render(indexTpl);
+// 加载模板
+var indexTpl = __webpack_require__(3);
 
 // 加载vue
-var Vue = __webpack_require__(5);
-// 遇到了一个问题，当一个页面加载了两个app时，最先加载的app中的v-model生效，另一个失去绑定效果，仅限于input
-new Vue({
-    el: '#app6',
+var Vue = __webpack_require__(4);
+// const vueResource = require('../../../../node_modules/vue-resource/dist/vue-resource');
+// Vue.use(vueResource);   // !important
+
+var vm = new Vue({
+    el: '#football-container',
     data: {
-        title: '表单控件绑定',
-        // input 
-        msg: '',
-        info: '',
-        // checkbox:数组中的值跟checkbox的value相等时，该项被选中
-        checkedNames: ['Mike'],
-        // radio
-        picked: '男',
-        // select
-        selected: 'Mike',
-        selected2: '1',
-        selected3: ['020'],
-        items: [{ text: 'One', value: 'A' }, { text: 'Two', value: 'B' }, { text: 'Three', value: 'C' }],
-        selected4: 'B',
-        // 三个参数
-        age: 0,
-        toDebounce: '',
-        toLazy: ''
-    },
-    methods: {},
-    computed: {
-        info: function info() {
-            return '{"msg": "' + this.msg + '" }';
-        }
+        html: indexTpl // 页面模板
     }
+
+    // ready: function(){
+    //     // console.log(this.$http);    // undefined
+    //     // vue-resource 属于vue的插件，想要使用需要 use 一下
+    //     this.$http.get('/mock/list.json')
+    //         .then(
+    //             response => {
+    //                 // console.log(response.data.data);
+    //                 console.log(this.list);  // enable
+    //                 this.html = response.data.data;
+    //             },response  => {
+    //                 console.log(response);
+    //             }
+    //         )
+    // }
 });
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var commonUtil = {
-    //把*.string渲染到html
-    render: function render(str) {
-        var container = document.querySelector('#football-container');
-        container.innerHTML = str + container.innerHTML;
-    }
-};
-
-exports.default = commonUtil;
+module.exports = "<div id=\"app7\">    <ul>        <template v-for=\"item in list\">            <li><img v-bind:src=\"item.img\" style=\"height:100px;width:200px;\" alt=\"\"></li>            <li>{{item.title}}</li>        </template>    </ul></div>"
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"app6\">    <!-- <div id=\"app2\"> -->    <h2>App6: {{title}}</h2>    <!-- input -->    <div><b>1. input</b></div>    <input type=\"text\" v-model=\"msg\">    {{info}}    <!-- checkbox -->    <div><b>2. checkbox</b></div>    <input type=\"checkbox\" value=\"Jake\" v-model=\"checkedNames\" id=\"\">    <input type=\"checkbox\" value=\"John\" v-model=\"checkedNames\" id=\"\">    <input type=\"checkbox\" value=\"Mike\" v-model=\"checkedNames\" id=\"\">    <div>{{checkedNames}}</div>    <div>{{checkedNames | json}}</div>    <!-- radio -->    <div><b>3. radio</b></div>    <input type=\"radio\" value=\"男\" v-model=\"picked\" name=\"r1\" id=\"\">    <input type=\"radio\" value=\"女\" v-model=\"picked\" name=\"r1\" id=\"\">    <div>{{picked | json}}</div>    <!-- select -->    <div><b>4. select</b></div>    <select v-model=\"selected\" name=\"\" id=\"\">        <option>Jake</option>        <option>John</option>        <option selected>Mike</option>    </select>    <div>{{ selected }}</div>    <select v-model=\"selected2\" name=\"\" id=\"\">        <option value=\"0\">Jake</option>        <option value=\"1\">John</option>        <option value=\"2\">Mike</option>    </select>    <div>{{ selected2 }}</div>    <select v-model=\"selected3\" multiple id=\"\">        <option value=\"010\">北京</option>        <option value=\"020\">上海</option>        <option value=\"030\">天津</option>    </select>    <div>{{selected3}}</div>    <select name=\"\" v-model=\"selected4\" id=\"\">        <option v-bind:value=\"item.value\" v-for=\"item in items\">{{item.text}}</option>    </select>    <div>{{selected4}}</div>    <!-- 三个参数 -->    <!-- 转化为数值 -->    <input v-model=\"age\" v-click=\"showAge\" number>    <div>{{typeof age}}, 娘希匹，还是不能用</div>    <!-- ajax延时 -->    <input type=\"text\" v-model=\"toDebounce\" debounce>    <div>{{toDebounce}}</div>    <!-- lazy -->    <input type=\"text\" v-model=\"toLazy\" lazy>    <div>{{toLazy}}</div>    <hr></div>"
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
