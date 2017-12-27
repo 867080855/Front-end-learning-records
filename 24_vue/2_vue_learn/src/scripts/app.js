@@ -21,4 +21,4 @@ require('../styles/usage/page/app.scss');   // 初始页面样式
 // require('./views/06_input/index6');
 
 // 利用vue-resource请求数据
-require('./views/07_demo/index7'); 
+require('./views/07_http/index7'); 
