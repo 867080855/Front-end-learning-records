@@ -1,0 +1,15 @@
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" >
+            <section id="index_scroll">
+                <ul>
+                    <li v-for="item in list">
+                        <img v-bind:src="item.img" alt="">
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div class="swiper-slide">2</div>
+        <div class="swiper-slide">3</div>
+    </div>
+</div>

@@ -3,6 +3,9 @@ node_modules/
 bower_components/
 .project
 
+#测试文件夹
+99_Test/ 
+
 #ES6编译
 traceur-compiler   
 traceur-compiler/

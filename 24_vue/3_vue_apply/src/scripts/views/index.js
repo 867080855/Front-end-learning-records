@@ -1,12 +1,13 @@
-const indexTpl = require("./index.string");
+// 导入指定模板
+require("../tpls/scroll/scroll");
 
-import commonUtil from "../utils/commonUtil"
-commonUtil.render(indexTpl);
+// 导入指定模板字符串
+const footerTpl = require("../tpls/footer/footer.string");
 
 const Vue = require("../libs/vue");
-new Vue({
+const vm = new Vue({
     el: "#container",
     data: {
-        content: ""
+        footer: footerTpl   // footer模板字符串
     }
-});
+}); 

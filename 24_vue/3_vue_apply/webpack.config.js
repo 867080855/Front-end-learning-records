@@ -14,52 +14,31 @@ module.exports = {
     },
     devtool: 'source-map',
     module: {
-        rules: [
-            // css loader
-            {
+        rules: [{
                 test: /\.css$/,
                 use: extractCSS.extract({
                     fallback: "style-loader",
                     use: "css-loader"
                 })
-            },
-            // scss loader
-            {   
+            },{   
                 test: /\.scss$/,
                 use: extractSCSS.extract({
                     fallback: 'style-loader',
-                    //resolve-url-loader may be chained before sass-loader if necessary
                     use: ['css-loader', 'sass-loader']
                 })
-                // 从后往前加载loader
-                // loader:'style-loader!css-loader!'
-                // 文件以css结尾
-                // 两个loader的顺序一定不能换
-            },
-            // js loader
-            {
+            },{
                 test: /\.js$/,
                 use: ['babel-loader']
-            },
-            // string loader
-            {
+            },{
                 test: /\.string$/,
                 use: ['string-loader']
             }  
         ]
-    },
-    // webpack-dev-server
-    devServer: {
-        // contentBase设置好服务器初始路径
+    },devServer: {
         contentBase: __dirname + '/dist/',
         port: 80,
         inline: true
-    },
-    // extract css && scss
-    plugins: [
-        // new ExtractTextWebpackPlugin(
-        //     __dirname + '/dist/bundle.css'
-        // )
+    },plugins: [
         extractCSS,
         extractSCSS
     ]

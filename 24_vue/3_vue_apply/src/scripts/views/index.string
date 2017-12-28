@@ -1,4 +1,0 @@
-<div>
-    <input type="text" v-model="content">
-    {{content}}
-</div>
