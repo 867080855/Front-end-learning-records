@@ -1,0 +1,17 @@
+<div id="demo">
+    <!-- 注意下方 toggle 方法的写法 -->
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+
+    <p v-if="show" transition="fade">hello</p>
+</div>
+
+
+<style>
+    .fade-enter-active, .fade-leave-active 
+    { 
+        transition: opacity .5s
+    } 
+    .fade-enter, .fade-leave-active { opacity: 0 }
+</style>

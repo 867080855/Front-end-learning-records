@@ -21,4 +21,7 @@ require('../styles/usage/page/app.scss');   // 初始页面样式
 // require('./views/06_input/index6');
 
 // 利用vue-resource请求数据
-require('./views/07_http/index7'); 
+// require('./views/07_http/index7'); 
+
+// 类与属性的添加和移除
+require('./views/08_transitions/index8'); 
