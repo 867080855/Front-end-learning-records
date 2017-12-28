@@ -9,16 +9,29 @@
     <link href="https://cdn.bootcss.com/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
 </head>
 <body id="container">
-    <div id="football-container">
-        <section id="banner"></section>
+    <!-- <div id="example">
+        <my-component></my-component>
+    </div> -->
+
+
+    <!-- <div id="example2">
+        <parent-component></parent-component>
+    </div> -->
+
+    <!-- <div id="example3">
+        <my-component></my-component>
+    </div> -->
+
+    <div id="example4">
+        <child msg="Hello"></child>
+
+        <child2 my-message="parentMsg"></child2>
+        <br>
+
+        <input type="text" v-model="Msg" value="bind props">
+        <br>
+        <child2 v-bind:my-message="Msg"></child2>
     </div>
-    {{{footer}}}
-
-
-    <!-- 脚本文件要在最后引用 -->
-    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.js"></script>
-    <script src="https://cdn.bootcss.com/Swiper/3.3.1/js/swiper.js"></script>    
-    <script src="https://cdn.bootcss.com/iScroll/5.2.0/iscroll-probe.js"></script>
     <script src="./bundle.js"></script>
 </body>
 </html>
