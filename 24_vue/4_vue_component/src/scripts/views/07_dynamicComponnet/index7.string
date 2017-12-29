@@ -1,0 +1,25 @@
+<!-- component changes when vm.currentview changes! -->
+<component :is="currentView"></component> <br>
+<!-- inactive components will be cached! -->
+<!-- 实测好像没啥作用 -->
+<component :is="currentView" keep-active></component> <br>
+<input type="text" v-model="currentView">
+
+<br><br><br>
+
+
+<!-- 此处单选框切换时value和v-model都需要绑定 -->
+<!-- fade out first, then fade in -->
+<label><input name="view" type="radio" value="v-a" v-model="view"/>A </label>
+<label><input name="view" type="radio" value="v-b" v-model="view"/>B </label>
+<br><input type="text" v-model="view">
+<component :is="view" transition="fade" transition-mode="out-in"></component>
+
+<style>
+    .fade-transition {
+        transition: opacity .3s ease;
+    }
+    .fade-enter, .fade-leave {
+        opacity: 0;
+    }
+</style>

@@ -1,0 +1,21 @@
+<div class="center">
+    <!-- 声明一个孩子组件，但是不会显示 -->
+    <template id="child-template">
+        <!-- <input type="text" v-model="msg"> -->
+        <input type="text" v-model="msg2">
+        <button v-on:click="notify">Dispatch Event</button>
+    </template>
+
+
+    <template id="event-example">
+        <p>Message: {{message | json}}</p>
+        <child></child>
+    </template>
+</div>
+
+<style>
+    .center {
+        margin: 100px auto;
+        width:300px;
+    }
+</style>

@@ -1,0 +1,11 @@
+<my-component>
+    <p slot="one">One's Content</p>
+    <p slot="two">Two</p>
+    <p>Default A</p>
+
+    <br><br><br>
+    
+    <p>This is some original content</p>
+    <p>This is some more original content</p>
+</my-component>
+
