@@ -1,0 +1,16 @@
+<!-- 组件 -->
+<my-component :foo="baz" :bar="qux" @event-a="doThis" @event-b="doThat">
+    <!-- content -->
+    <img slot="icon" v-bind:src="path" style="width:200px;">
+    <p slot="main-text">{{content}}</p>
+</my-component>
+
+
+
+<!-- 数据绑定 -->
+<br>
+<label for="path">path:</label>
+<input type="text" id="path" v-model="path">
+<br>
+<label for="content">content:</label>
+<input type="text" id="content" v-model="content">

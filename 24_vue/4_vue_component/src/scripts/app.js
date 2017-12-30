@@ -7,4 +7,6 @@ require('../styles/usage/page/app.scss');   // 初始页面样式
 // require('./views/04_props/index4');
 // require('./views/05_communication/index5');
 // require('./views/06_slot/index6');
-require('./views/07_dynamicComponnet/index7');
+// require('./views/07_dynamicComponnet/index7');
+// require('./views/08_v_for_in_component/index8');
+require('./views/09_Reusable_component/index9');

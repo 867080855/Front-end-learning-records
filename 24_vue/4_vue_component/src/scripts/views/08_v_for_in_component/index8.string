@@ -1,0 +1,5 @@
+<my-component v-for="item in items" :item="item" :index="$index ">
+    {{item}}
+    <!-- 这个地方能够插进去是因为模板中定义了一个slot得以让外部元素插入到模板中而不会被覆盖 -->
+</my-component>
+
