@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <router-link to="/">Go to HOME</router-link>
+    <router-link to="/Index">Go to Index</router-link>
     <router-view/>
   </div>
 </template>
@@ -18,6 +20,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
