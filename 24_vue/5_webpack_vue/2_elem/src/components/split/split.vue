@@ -1,18 +1,21 @@
 <template>
-  <div>{{content}}</div>
+  <!-- 分割线组件 -->
+  <div class="split"></div>
 </template>
 
 <script>
 export default {
-  name: 'split',
-  data () {
-    return {
-      content: 'This is split page!'
-    }
-  }
+  name: 'split'
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" scoped>
-  @import "split.styl";
+
+<style lang="stylus" rel="stylesheet/stylus">
+  .split {
+    width: 100%;
+    height: 16px;
+    border-top: 1px solid rgba(1, 17, 27, 0.1);
+    border-top: 1px solid rgba(1, 17, 27, 0.1);
+    background: #f3f5f7;
+  }
 </style>
