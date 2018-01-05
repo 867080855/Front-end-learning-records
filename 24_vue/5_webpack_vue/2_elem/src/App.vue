@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <v-star></v-star>
+    <v-split></v-split>
   </div>
 </template>
 
 <script>
+import star from './components/star/star.vue';
+import split from './components/split/split.vue';
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    'v-star': star,
+    'v-split': split
+  }
 }
 </script>
 
@@ -18,6 +25,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
