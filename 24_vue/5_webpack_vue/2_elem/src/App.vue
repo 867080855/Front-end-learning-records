@@ -9,20 +9,23 @@
       因此一定不可以忘记去router/index.js 去注册路由 -->
     <div class="tab border-1px">
       	<div class="tab-item">
+			<!-- 会生成一个相应的带有目标路径的 a 标签， 在vue1.0中的用法是<a v-link:"./link">Abour</a>  -->
         	<router-link v-bind:to="'/good'">商品</router-link>
       	</div>
 
-		<div class="tab-item">
-			<router-link to="/rating">评论</router-link>
-		</div>
+        <div class="tab-item">
+          <router-link to="/rating">评论</router-link>
+        </div>
 
-		<div class="tab-item">
-			<router-link to="/shoper">商家</router-link>
-		</div>
+        <div class="tab-item">
+          <router-link to="/shoper">商家</router-link>
+        </div>
     </div>
 
-    <!-- 头部 -->
+	<!-- 路由跳转部分 -->
+	<!-- keep-alive 可以把切换出去的组件保留在内存中，可以保留它的状态或避免重新渲染 -->
     <keep-alive>
+    	<!-- 可以显示 goods, rating, sellers的内容 -->
       	<router-view :seller="seller"></router-view>
     </keep-alive>
 </div>
