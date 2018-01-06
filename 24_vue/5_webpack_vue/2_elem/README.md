@@ -1,6 +1,11 @@
 # 2_elem
 
-> A Vue.js project
+## 简介 
+
+无意中大佬Yangyi的eleme的vue+webpack项目，为自己了解vue提供了很大的帮助，但是由于初步接触所以
+很多内容不是很明白。因此在其基础上进行了一点点的重构并添加了不少易于理解的注释，方便自己理解。
+
+整体结构上依旧采用了大佬的模式，但是使用vue-cli直接初始化了vue-webpack项目，并从零开始组建了 这个项目。问题仍然有不少，尚需进一步改进。最后感谢大佬(～￣▽￣)～
 
 ## Build Setup
 
@@ -18,4 +23,3 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
