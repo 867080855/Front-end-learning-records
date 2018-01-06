@@ -55,7 +55,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import cartCtrl from '../cartControl/cartControl.vue';
+  import cartctrl from '../cartcontrol/cartcontrol.vue';
   import BScroll from 'better-scroll';
   export default {
     name: 'shopcart',
@@ -202,10 +202,10 @@
       }
     },
     components: {
-      'cartControl': cartCtrl
+      'cartControl': cartctrl
     }
   };
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "shopCart.styl";
+  @import "shopcart.styl";
 </style>

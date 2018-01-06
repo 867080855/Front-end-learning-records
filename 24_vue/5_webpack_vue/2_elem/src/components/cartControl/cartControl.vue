@@ -17,7 +17,7 @@
 <script type="text/ecmascript-6">
   import Vue from 'vue';
   export default {
-    name: 'cartCtrl',
+    name: 'cartctrl',
     props: {
       food: {
         type: Object
@@ -48,5 +48,5 @@
   };
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "cartControl.styl";
+  @import "cartcontrol.styl";
 </style>
