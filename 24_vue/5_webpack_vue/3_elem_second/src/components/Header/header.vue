@@ -28,15 +28,60 @@
 				</div>
 			</div>
 		</div>
-		<!-- 公告 -->
-		<div class="bulletin-wrapper"></div>
 
+		<!-- 公告 -->
+		<div class="bulletin-wrapper" @click="showDetail">
+			<!-- 公告内容 -->
+			<span class="bulletin-title"></span> <span class="bulletin-text">{{seller.bulletin}}</span>
+			<!-- 右侧小箭头 -->
+			<i class="icon iconfont icon-zuoyoujiantou"></i>
+		</div>
 
 		<!-- 背景 -->
-		<div class="background"></div>
-	</div>
+		<div class="background">
+			<img :src="seller.avatar" alt="" class="" width="100%" height="100%">
+		</div>
 
-	<!-- 跳出/隐藏的活动页 -->
+		<!-- 跳出/隐藏的活动页 -->
+		<transition name="fade">
+			<!-- transition内部只能有一个主要容器，其余的内容都要放在其容器内部，否则会报错 -->
+			<div v-show="detailShow" class="detail" @click="hideDetail" transition="fade">
+				<div class="detail-wrapper clearfix">
+				<div class="detail-main">
+					<h1 class="name">{{seller.name}}</h1>
+				</div>
+				<div class="star-wrapper"></div>
+				<!-- 非常巧妙的布局。。。 -->
+				<div class="title">
+					<div class="line"></div>
+					<div class="text">优惠信息</div>
+					<div class="line"></div>
+				</div>
+				<ul v-if="seller.supports" class="supports">
+					<li class="support-item" v-for="(item, index) in seller.supports">
+						<span class="icon" :class="classMap[seller.supports[index].type]"></span>
+						<span class="text">{{seller.supports[index].description}}</span>
+					</li>
+				</ul>
+				<div class="title">
+					<div class="line"></div>
+					<div class="text">商家公告</div>
+					<div class="line"></div>
+				</div>
+				<ul class="bulletin">
+					<p class="content">{{seller.bulletin}}</p>
+				</ul>
+
+				<!-- 关闭按钮 -->
+				<div class="detail-close" @click="hideDetail">
+					<i class="iconfont icon-cha"></i>
+				</div>
+
+			</div>
+			<div class="detail-close" @click="hideDetail"></div>
+			</div>
+		</transition>
+	</div>
 </template>
 
 <script>
