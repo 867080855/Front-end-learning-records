@@ -98,7 +98,7 @@ export default {
 	},
 	created() {
 		this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-		console.log(this.classMap);  
+		// console.log(this.classMap);  
 	},
 	methods: {
 		showDetail(){

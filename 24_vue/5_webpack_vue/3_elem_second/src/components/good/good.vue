@@ -41,8 +41,8 @@ export default {
 			// $refs 只在组件渲染完成后才填充，并且它是非响应式的。
 			// 此处是延迟调用才可以拿到的，否则是 undefined
 		this.$nextTick(()=>{
-			console.log(this);
-			console.log(this.$refs.menuWrapper);
+			// console.log(this);
+			// console.log(this.$refs.menuWrapper);
 			this._initScroll();
 		});
 	},
