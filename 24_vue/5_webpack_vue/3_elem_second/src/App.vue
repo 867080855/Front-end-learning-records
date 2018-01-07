@@ -19,9 +19,9 @@
 		</div>
 
 		<!-- 核心内容路由 -->
-		<!-- <keep-alive>
+		<keep-alive>
 			<router-view></router-view>
-		</keep-alive> -->
+		</keep-alive>
   	</div>
 </template>
 
@@ -31,7 +31,6 @@ import data from "./common/json/data.json"
 
 // 加载组件
 import Header from "./components/Header/header.vue"
-
 
 export default {
   	name: 'app',
