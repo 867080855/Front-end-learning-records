@@ -8,7 +8,7 @@
 		<!-- tab栏组件 -->
 		<div class="tab border-1px">
 			<div class="tab-item" tag="a">
-				<router-link to="/good">商品</router-link>
+				<router-link v-bind:to="'/good'">商品</router-link>
 			</div>
 			<div class="tab-item">
 				<router-link to="/rating">评论</router-link>
