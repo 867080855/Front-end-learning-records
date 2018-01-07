@@ -25,13 +25,14 @@
                 text-align center
                 margin 18px 0
                 border-right 1px solid rgba(7,17,27,.1)
+                font-size 10px
                 color rgb(147,153,159)
                 font-weight 200
-                color rgb(7,17,27)
                 // 很强大的功能吼
                 &:last-child
                     border none
                 .number 
+                    color rgb(7,17,27)
                     display inline-block
                     width 100%
                     margin-top 4px
@@ -39,5 +40,52 @@
                     line-height 24px
                 .suffix  
                     font-size 10px
+                    color rgb(7,17,27)
+    .bulletin
+        padding 18px
+        .title
+            font-weight bold
+            margin-bottom 18px
+        .content
+            margin-left 12px
+            color rgb(240,20,20)    
+            font-size 12px
+            font-weight 200
+            line-height 24px
+            margin-bottom 16px
+        .supports
+            .item
+                padding 16px 0 
+                margin-left 12px
+                border-top 1px solid rgba(7,17,27,.1)
+                font-size 12px
+                font-weight 200
+                color rgb(7,17,27)
+                line-height 16px
+                vertical-align top
+                .icon 
+                    display inline-block
+                    width 16px 
+                    height 16px
+                    background-size 16px 16px
+                    background-repeat no-repeat
+                    margin-right 6px
+                    vertical-align top
+                    &.decrease
+                        bg-image('decrease_4')
+                    &.discount
+                        bg-image('discount_4')
+                    &.guarantee
+                        bg-image('guarantee_4')
+                    &.invoice
+                        bg-image('invoice_4')
+                    &.special
+                        bg-image('special_4')  
+                .desc
+                    display inline-block
+                    // 正是这句话让两个span顶端对齐了，很强
+                    vertical-align top
+    
+
             
             
