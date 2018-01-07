@@ -6,7 +6,7 @@
 		<v-Header :seller="seller"></v-Header>
 
 		<!-- tab栏组件 -->
-		<div class="tab">
+		<div class="tab border-1px">
 			<div class="tab-item" tag="a">
 				<router-link to="/good">商品</router-link>
 			</div>
@@ -62,6 +62,9 @@ export default {
 		height: 40px;
 		width: 100%;
 		line-height: 40px;
+	}
+	.border-1px {
+		border-bottom 1px solid rgba(7,17,27,0.1);
 	}
 	.tab-item {
 		flex: 1;
