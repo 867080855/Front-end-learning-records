@@ -1,0 +1,42 @@
+@import "../../common/stylus/mixin.styl"
+.ratingselect
+    width 100%
+    .border-1px
+        border-1px(rgba(7,17,27,0.1))
+    .rating-type
+        // 为什么要把 padding和 margin分开来写？
+            // 因为这样可以实现不占满100%宽度的边框线
+        padding 18px 0 18px 0
+        margin 0 18px
+        .block
+            // 当盒子的大小和内容不确定时，用inline-block非常合适，不用强加尺寸
+            display inline-block
+            padding 8px 12px
+            margin-right 8px
+            border-radius 1px
+            font-size 12px
+            color rgb(77,85,93)
+            // stylus中一定要注意缩进，一旦检测到缩进错误就会编译出错
+            &.positive
+                background rgba(0, 160, 220, 0.2)
+                &.active
+                    color #ffffff
+                    background rgb(0, 160, 220)
+            &.negative
+                background rgba(77, 85, 93, 0.2)
+                &.active
+                    color #ffffff
+                    background rgb(77, 85, 93)
+    .switch
+        padding 12px 18px
+        line-height 24px
+        font-size 0
+        color rgb(147,153,159)
+        border-1px(rgba(1, 17, 27, 0.1))
+        .iconfont
+            display inline-block
+            vertical-align top 
+            font-size 24px
+            margin-right 4px
+        .text
+            font-size 12px

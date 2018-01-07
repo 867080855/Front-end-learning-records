@@ -16,31 +16,55 @@
 					</div>
 					<div class="score-wrapper">
 						<div class="title">送达时间</div>
+						<span class="delivery">{{seller.deliveryTime}}分钟</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		
 
+		<!-- 分割线 -->
+		<v-split></v-split>
 
-		<div class="rating-wrapper border-1px"></div>
+		<!-- 评价分类 -->
+		<v-ratingselect :ratings="ratings"></v-ratingselect>
+
+		<!-- 偷懒环节结束，又需要自己写了 -->
+		<div class="rating-wrapper border-1px">
+		</div>
 	</div>
 </template>
 
 <script>
 import data from "../../common/json/data.json"
-
+import split from "../split/split.vue"
+import ratingselect from "../ratingselect/ratingselect.vue"
 
 export default {
 	name: 'rating',
+	props: {
+		seller: Object
+	},
 	data(){
 		return {
-			seller: {}
+			ratings: []
 		}
 	},
 	created(){
-		this.seller = data.seller;
+		this.ratings = data.ratings;
+	},
+	components: {
+		'v-split': split,
+		'v-ratingselect': ratingselect
+	},
+	methods: {
+		incrementTotal(type, data) {
+			// this[type] = data;
+			// 	this.$nextTick(() => {
+			// 	this.scroll.refresh();
+        	// });
+      	}
 	}
+
 }
 </script>
 

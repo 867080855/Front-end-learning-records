@@ -20,7 +20,8 @@
 
 		<!-- 核心内容路由 -->
 		<keep-alive>
-			<router-view></router-view>
+			<!-- 注意此处的seller的数据绑定，否则子组件无从接收数据 -->
+			<router-view :seller="seller"></router-view>
 		</keep-alive>
   	</div>
 </template>
