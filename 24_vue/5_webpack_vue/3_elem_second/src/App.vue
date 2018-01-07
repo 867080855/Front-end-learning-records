@@ -7,7 +7,15 @@
 
 		<!-- tab栏组件 -->
 		<div class="tab">
-
+			<div class="tab-item" tag="a">
+				<router-link to="/good">商品</router-link>
+			</div>
+			<div class="tab-item">
+				<router-link to="/rating">评论</router-link>
+			</div>
+			<div class="tab-item">
+				<router-link to="/seller">商家</router-link>
+			</div>
 		</div>
 
 		<!-- 核心内容路由 -->
@@ -47,5 +55,28 @@ export default {
 	}
 }
 </script>
+
+<style lang="stylus" scoped>
+	.tab {
+		position: relative;
+		display: flex;
+		height: 40px;
+		width: 100%;
+		line-height: 40px;
+	}
+	.tab-item {
+		flex: 1;
+		text-align: center;
+	}
+	.tab .tab-item a {
+		display: block;
+		font-size: 14px;
+		color: rgb(77, 85, 93);
+	}
+	.tab .tab-item .router-link-active {
+		color: rgb(240, 20, 20);
+	}
+</style>
+
 
 
