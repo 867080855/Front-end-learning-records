@@ -23,6 +23,9 @@ time, mark, audio, video, input {
   vertical-align: baseline;
 }
 
+/* 定义页面字体 */
+body,html { font-family: microsoft yahei}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, menu, nav, section {
