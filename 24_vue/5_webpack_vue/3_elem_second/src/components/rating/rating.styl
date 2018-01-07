@@ -1,0 +1,51 @@
+@import "../../common/stylus/mixin"
+.ratings 
+    position absolute 
+    top 174px
+    bottom 0
+    left 0
+    width 100%
+    overflow hidden
+    .overview
+        display flex 
+        padding 18px 0 18px 18px
+        .overview-left 
+            flex 0 0 137px
+            width 137px
+            padding 0 0 6px 0
+            text-align center
+            border-right 1px solid rgba(7,17,27,0.1)
+            @media only screen and (max-width 320px)
+                flex 0 0 110px
+                width 110px
+            .score
+                font-size 24px
+                color rgb(255,153,0)
+                line-height 28px
+                margin-bottom 6px
+            .title
+                font-size 12px
+                color rbg(7,17,27)
+                line-height 12px
+                margin-bottom 8px
+            .rank
+                font-size 12px
+                color rgb(147, 153, 159)
+                line-height 12px
+        .overview-right 
+            flex 1
+            padding 0 0 6px 24px
+            @media only screen and (max-width 320px)
+                padding-left 6px
+            .score-wrapper
+                line-height 18px
+                margin-bottom 8px
+                font-size 0
+                .title 
+                    display inline-block
+                    vertical-align top 
+                    line-height 18px
+                    color rgb(7,17,27)
+                    font-size 12px
+            
+        
