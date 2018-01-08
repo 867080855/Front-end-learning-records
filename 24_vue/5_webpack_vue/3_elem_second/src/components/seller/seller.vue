@@ -1,6 +1,6 @@
 <template>
 	<div class="seller">
-		<div>
+		<div class="seller-box">
 			<!-- 第一部分，商家信息 -->
 			<div class="seller-detail">
 				<div class="detail-top">
@@ -40,6 +40,16 @@
 					</ul>
 				</div>
 			</div>
+			<v-split></v-split>
+			<!-- 第三部分，商家实景 -->
+			<div class="seller-image">
+				<div class="title">商家实景</div>
+				<div class="images">
+					<div class="image-box">
+						<img v-for="item in seller.pics" :src="item" alt="">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -61,9 +71,23 @@ export default {
 	created(){
 		this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
 		this.$nextTick(()=>{
-			this.sellerScroll = new BScroll(this.$el,{
-				click: true
-			});
+			if(!this.sellerScroll){
+				this.sellerScroll = new BScroll(this.$el,{
+					click: true
+				});
+			}else{
+				this.sellerScroll.refresh();
+			}
+				
+
+			if(!this.picScroll){
+				this.picScroll = new BScroll('.seller-image .images',{
+					scrollX: true,
+					eventPassthrough: 'vertical'
+				});
+			}else{
+				this.picScrll.refresh();
+			}
 		});
 	},
 	components: {
