@@ -1,8 +1,10 @@
 <template>
 	<div class="good">
+		<!-- 注意到定义了两个 ref 参数，方便调用 -->
 		<div class="menu-wrapper" ref="menuWrapper">
 			<ul>
 				<!-- <li v-for="(item, index) in goods" class="menu-item border-1px" :class="'current': currentIndex === index" @click="selectMenu(index, $event)"> -->
+				<!-- v-for 支持一个可选的第二个参数为当前项的索引 -->
 				<li v-for="(item, index) in goods" class="menu-item border-1px"  @click="selectMenu(index, $event)">
 					<span class="text">
 						<span v-show="item.type > 0" class="icon" :class="classMap[item.type]"></span>
@@ -67,12 +69,24 @@ export default {
 		});
 	},
 	methods: {
+		// 选中左侧栏目 让右侧栏目跳转
 		selectMenu(index, event){
-			alert('clicked');
-		},
-		_calculateHeight(){
+			// 去掉自带click事件的点击
+			if (!event._constructed) {
+				return;
+        	}
 
+			// 点击左侧选项时，选中右侧所有食物项
+			let foodlist = this.$refs.foodWrapper.querySelectorAll('.item');
+			let el = foodlist[index];
+			// console.log(foodlist);	[item, item, item, ...]
+			// console.log(index);	// 3
+
+			// 此处调用了 better scroll 的 api
+			// scrollToElement(el, time, offsetX, offsetY, easing)
+			this.foodScroll.scrollToElement(el,500);
 		},
+		// 初始化scroll组件
 		_initScroll(){
 			this.menuScroll = new BScroll(this.$refs.menuWrapper,{
 				click: true
@@ -80,18 +94,6 @@ export default {
 			this.foodScroll = new BScroll('.foods-wrapper',{
 				click: true
 			})
-		}
-	},
-	computed: {
-		currentIndex(){
-			for(let i = 0; i < this.listHeight.length; i++){
-				let height = this.listHeight[i];
-				let height2 = this.listHeight[i+1];
-				if(!height2 || (this.scrolly >= height) && this.scrolly < height2){
-					return i;
-				}
-				return 0;
-			}
 		}
 	}
 }

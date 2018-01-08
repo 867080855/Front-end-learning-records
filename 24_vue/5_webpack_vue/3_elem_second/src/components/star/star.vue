@@ -43,7 +43,7 @@ export default {
             
             while(result.length < LENGTH)
                 result.push(STAR_OFF)
-            console.log(result);
+            // console.log(result);
 
             return result;
         }
