@@ -1,7 +1,7 @@
 <template>
 	<div class="seller">
 		<div class="seller-box">
-			<!-- 第一部分，商家信息 -->
+			<!-- 第一部分，商家外卖信息 -->
 			<div class="seller-detail">
 				<div class="detail-top">
 					<div class="line-one">{{seller.name}}</div>
@@ -48,6 +48,18 @@
 					<div class="image-box">
 						<img v-for="item in seller.pics" :src="item" alt="">
 					</div>
+				</div>
+			</div>
+			<v-split></v-split>
+			<!-- 第四部分，商家信息 -->
+			<div class="seller-detail-2">
+				<div class="title">商家信息</div>
+				<div class="supports">
+					<ul>
+						<li class="item" v-for="item in seller.infos">
+							<span class="desc">{{item}}</span>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>

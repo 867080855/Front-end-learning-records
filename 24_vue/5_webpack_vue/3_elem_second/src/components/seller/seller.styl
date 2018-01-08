@@ -1,5 +1,6 @@
 @import "../../common/stylus/mixin.styl"
 .seller
+    // 利用绝对定位控制盒子的高度，让子盒子自动增大，来实现滚动
     position absolute 
     top 174px
     bottom 0
@@ -112,6 +113,32 @@
                         margin-right 6px
                         &.last-child
                             margin 0
+        .seller-detail-2
+            padding 18px
+            .title
+                font-weight bold
+                margin-bottom 18px
+            .content
+                margin-left 12px
+                color rgb(240,20,20)    
+                font-size 12px
+                font-weight 200
+                line-height 24px
+                margin-bottom 16px
+            .supports
+                .item
+                    padding 16px 0 
+                    margin-left 12px
+                    border-top 1px solid rgba(7,17,27,.1)
+                    font-size 12px
+                    font-weight 200
+                    color rgb(7,17,27)
+                    line-height 16px
+                    vertical-align top 
+                    .desc
+                        display inline-block
+                        // 正是这句话让两个span顶端对齐了，很强
+                        vertical-align top
 
             
             
