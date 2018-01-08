@@ -6,6 +6,8 @@
 				<div class="detail-top">
 					<div class="line-one">{{seller.name}}</div>
 					<div class="line-two">
+						<!-- size 是star 组件提供的接口，分别有三个选项，24,36,48，代表星星的大小 -->
+						<v-star :score="seller.score" :size="24"></v-star>
 						({{seller.ratingCount}})
 						<span class="sale-count">月售{{seller.sellCount}}单</span>
 					</div>
@@ -69,6 +71,7 @@
 <script>
 import BScroll from "better-scroll"
 import split from "../split/split.vue"
+import star from "../star/star.vue"
 
 export default {
 	name: 'seller',
@@ -103,7 +106,8 @@ export default {
 		});
 	},
 	components: {
-		'v-split': split
+		'v-split': split,
+		'v-star': star
 	}
 }
 </script>

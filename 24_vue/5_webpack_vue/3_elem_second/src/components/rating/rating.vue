@@ -10,10 +10,18 @@
 					</div>
 					<div class="overview-right">
 						<div class="score-wrapper">
-							<div class="title">服务态度</div>
+							<div class="title">
+								服务态度
+								<v-star :score="seller.serviceScore" :size="36"></v-star>
+								{{seller.serviceScore}}
+							</div>
 						</div>
 						<div class="score-wrapper">
-							<div class="title">商品评分</div>
+							<div class="title">
+								商品评分
+								<v-star :score="seller.foodScore" :size="36"></v-star>
+								{{seller.foodScore}}
+							</div>
 						</div>
 						<div class="score-wrapper">
 							<div class="title">送达时间</div>
@@ -64,6 +72,7 @@
 import BScroll from "better-scroll"
 import data from "../../common/json/data.json"
 import split from "../split/split.vue"
+import star from "../star/star.vue"
 import ratingselect from "../ratingselect/ratingselect.vue"
 
 export default {
@@ -86,6 +95,7 @@ export default {
 	},
 	components: {
 		'v-split': split,
+		'v-star': star,
 		'v-ratingselect': ratingselect
 	},
 	methods: {

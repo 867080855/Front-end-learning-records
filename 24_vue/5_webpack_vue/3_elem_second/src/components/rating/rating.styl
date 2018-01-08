@@ -2,7 +2,7 @@
 .ratings 
     position absolute 
     top 174px
-    bottom 0
+    bottom 46px
     left 0
     width 100%
     overflow hidden
@@ -34,9 +34,16 @@
                 line-height 12px
         .overview-right 
             flex 1
-            padding 0 0 0 24px
+            padding 0 24px 0 24px
             @media only screen and (max-width 320px)
                 padding-left 6px
+            .stars
+                margin-left 8px
+                vertical-align bottom
+                height 18px
+                // 添加 >>> 可以使父组件直达子组件
+                >>> .star
+                    margin 0 2px
             .score-wrapper
                 line-height 18px
                 margin-bottom 8px

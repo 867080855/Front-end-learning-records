@@ -1,0 +1,42 @@
+@import "../../common/stylus/mixin.styl"
+.stars
+    display inline-block
+    &.star-48
+        .star
+            display inline-block
+            width 20px
+            height 20px
+            background-size 20px 20px
+            background-repeat no-repeat
+            &.on
+                bg-image('star48_on')
+            &.half
+                bg-image('star48_half')
+            &.off
+                bg-image('star48_off')
+    &.star-36
+        .star
+            display inline-block
+            width 15px
+            height 15px
+            background-size 15px 15px
+            background-repeat no-repeat
+            &.on
+                bg-image('star36_on')
+            &.half
+                bg-image('star36_half')
+            &.off
+                bg-image('star36_off')
+    &.star-24
+        .star
+            display inline-block
+            width 10px
+            height 10px
+            background-size 10px 10px
+            background-repeat no-repeat
+            &.on
+                bg-image('star24_on')
+            &.half
+                bg-image('star24_half')
+            &.off
+                bg-image('star24_off')

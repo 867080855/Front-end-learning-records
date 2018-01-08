@@ -11,7 +11,27 @@
 				</li>
 			</ul>
 		</div>
-		<div class="foods-wrapper" ref="foodWrapper"></div>
+		<div class="foods-wrapper" ref="foodWrapper">
+			<ul class="item-wrapper">
+				<li class="item" v-for="item in goods">
+					<div class="title">{{item.name}}</div>
+					<div class="item-content" v-for="food in item.foods">
+						<div class="content-left">
+							<img :src="food.image" alt="">
+						</div>
+						<div class="content-right">
+							<div class="line-one line">{{food.name}}</div>
+							<!-- 我在这里加了一个空格保证占位 -->
+							<div class="line-two line">{{food.description}}&nbsp</div>
+							<div class="line-third line">月售{{food.sellCount}}份<span class="good-rating">好评率{{food.rating}}%</span></div>
+							<div class="line-forth line">
+								￥{{food.price}}<span class="delete" v-if="food.oldPrice != 0">￥{{food.oldPrice}}</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
@@ -57,6 +77,9 @@ export default {
 			this.menuScroll = new BScroll(this.$refs.menuWrapper,{
 				click: true
 			});
+			this.foodScroll = new BScroll('.foods-wrapper',{
+				click: true
+			})
 		}
 	},
 	computed: {
