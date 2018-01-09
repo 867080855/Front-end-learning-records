@@ -65,9 +65,11 @@
             padding 18px
             box-sizing border-box
             border-bottom 1px solid rgba(7,17,27,.1)
+            display flex
             .content-left
                 display inline-block
                 vertical-align top
+                flex 0 0 60px
                 width 60px
                 height 60px
                 border-radius 5px
@@ -76,9 +78,11 @@
                     width 100%
                     height 100%
             .content-right 
+                flex 1
                 display inline-block
                 padding-left 10px
                 vertical-align top
+                position relative
                 .line
                     // display inline-block
                     width 100%
@@ -96,15 +100,27 @@
                     .good-rating
                         margin-left 12px
                 .line-forth
+                    width 100%
+                    display inline-block
                     color red
                     font-size 14px
                     line-height 24px
                     font-weight bold
+                    position relative
                     .delete
                         font-size 10px
                         color rgb(147,153,159)
                         line-height 24px
                         margin-left 8px
+                    .cartctrl
+                        position absolute
+                        height 24px
+                        right 18px
+                        top 0
+                        >>> span 
+                            line-height 24px
+                        >>> .count 
+                            color black
 
 
             

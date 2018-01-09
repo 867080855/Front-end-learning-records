@@ -45,7 +45,7 @@ export default {
 	},
 	data(){
 		return {
-			seller: {1:2},
+			seller: {},
 			// 此处是一个立即执行函数
 			id: (() => {
 				// let queryParam = urlParse();

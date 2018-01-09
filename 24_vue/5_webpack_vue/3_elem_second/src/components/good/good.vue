@@ -28,6 +28,7 @@
 							<div class="line-third line">月售{{food.sellCount}}份<span class="good-rating">好评率{{food.rating}}%</span></div>
 							<div class="line-forth line">
 								￥{{food.price}}<span class="delete" v-if="food.oldPrice != 0">￥{{food.oldPrice}}</span>
+								<v-cartctrl class="clearfix" @change="changeList"></v-cartctrl>
 							</div>
 						</div>
 					</div>
@@ -41,6 +42,8 @@
 import BScroll from 'better-scroll'
 import data from '../../common/json/data.json'
 
+import cartctrl from "../cartctrl/cartctrl.vue"
+
 export default {
 	name: 'good',
 	props: {
@@ -49,8 +52,6 @@ export default {
 	data(){
 		return {
 			goods: [],
-			scrolly: 0,
-			listHeight: []
 		}
 	},
 	created(){
@@ -94,7 +95,14 @@ export default {
 			this.foodScroll = new BScroll('.foods-wrapper',{
 				click: true
 			})
+		},
+		changeList(data, el){
+			console.log(data);
+			console.log(el);
 		}
+	},
+	components: {
+		'v-cartctrl': cartctrl
 	}
 }
 </script>

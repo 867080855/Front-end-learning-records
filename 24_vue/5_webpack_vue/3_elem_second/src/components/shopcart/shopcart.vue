@@ -22,6 +22,7 @@
                             <li class="item" v-for="item in selectFoods">
                                 <div class="name">{{item.name}}</div>
                                 <div class="price clearfix">￥{{item.price * item.count}}</div>
+                                <v-cartctrl class="cartctrl" :count="item.count"></v-cartctrl>
                             </li>
                         </ul>
                     </div>
@@ -36,6 +37,7 @@
 
 <script>
 import BScroll from "better-scroll"
+import cartctrl from "../cartctrl/cartctrl.vue"
 
 export default {
     name: 'shopcart',
@@ -69,6 +71,7 @@ export default {
     data(){
         return {
             fold:  true 
+            // fold:  false
         }
     },
     methods: {
@@ -143,6 +146,9 @@ export default {
 
             return !this.fold;
         }
+    },
+    components: {
+        'v-cartctrl': cartctrl
     }
 }
 </script>
