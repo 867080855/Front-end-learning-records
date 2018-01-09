@@ -24,8 +24,6 @@
 			<router-view :seller="seller"></router-view>
 		</keep-alive>
 
-		<!-- 购物车 -->
-		<v-shopcart></v-shopcart>
   	</div>
 </template>
 
@@ -35,13 +33,11 @@ import data from "./common/json/data.json"
 
 // 加载组件
 import Header from "./components/Header/header.vue"
-import shopcart from "./components/shopcart/shopcart.vue"
 
 export default {
   	name: 'app',
 	components: {
-		'v-Header': Header,
-		'v-shopcart': shopcart
+		'v-Header': Header
 	},
 	data(){
 		return {

@@ -28,13 +28,16 @@
 							<div class="line-third line">月售{{food.sellCount}}份<span class="good-rating">好评率{{food.rating}}%</span></div>
 							<div class="line-forth line">
 								￥{{food.price}}<span class="delete" v-if="food.oldPrice != 0">￥{{food.oldPrice}}</span>
-								<v-cartctrl class="clearfix" @change="changeList"></v-cartctrl>
+								<v-cartctrl :food="food" class="clearfix" @change="changeList"></v-cartctrl>
 							</div>
 						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
+
+		<!-- 购物车 -->
+		<v-shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice" ></v-shopcart>
 	</div>
 </template>
 
@@ -42,6 +45,7 @@
 import BScroll from 'better-scroll'
 import data from '../../common/json/data.json'
 
+import shopcart from "../shopcart/shopcart.vue"
 import cartctrl from "../cartctrl/cartctrl.vue"
 
 export default {
@@ -52,6 +56,7 @@ export default {
 	data(){
 		return {
 			goods: [],
+			selectFoods: []
 		}
 	},
 	created(){
@@ -97,12 +102,45 @@ export default {
 			})
 		},
 		changeList(data, el){
-			console.log(data);
-			console.log(el);
+			// 能打印东西，说明此时父组件已经收到了子组件的消息
+			// console.log(data);
+			// console.log(el);
+
+			// 那么关键问题就是父组件此时如果锁定需要改动的内容
+				// 需要改动的是selectFoods 而不是原始数据的 data，这很关键
+			function addNew(arr){
+				let newFood = {};
+				newFood.name = data.name;
+				newFood.price = data.price;
+				newFood.count = 1;
+				arr.push(newFood);
+			}
+
+			if(this.selectFoods.length == 0){
+				addNew(this.selectFoods);
+			}else{
+				let modify = false;
+				let length = this.selectFoods.length;
+				this.selectFoods.forEach((food)=>{
+					// console.log(food.name);
+					if(food.name == data.name){
+						// console.log('done true');
+						food.count++;
+					}else{
+						length--;
+					}
+				});
+				// 如果length等于0，说明列表中没有任何一项可以匹配到
+				if(length == 0){
+					addNew(this.selectFoods);
+				}
+			}
+			// console.log(this.selectFoods);
 		}
 	},
 	components: {
-		'v-cartctrl': cartctrl
+		'v-cartctrl': cartctrl,
+		'v-shopcart': shopcart
 	}
 }
 </script>

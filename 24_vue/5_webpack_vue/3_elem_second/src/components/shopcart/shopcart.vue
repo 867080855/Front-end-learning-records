@@ -22,7 +22,7 @@
                             <li class="item" v-for="item in selectFoods">
                                 <div class="name">{{item.name}}</div>
                                 <div class="price clearfix">￥{{item.price * item.count}}</div>
-                                <v-cartctrl class="cartctrl" :count="item.count"></v-cartctrl>
+                                <v-cartctrl class="cartctrl" :food="item"></v-cartctrl>
                             </li>
                         </ul>
                     </div>
@@ -118,7 +118,7 @@ export default {
         // 修改支付按钮的类名
         payClass(){
             if(this.totalPrice < this.minPrice)
-                return 'not enough'
+                return 'not-enough'
             else 
                 return 'enough'
         },
