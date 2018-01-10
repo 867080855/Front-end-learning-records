@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import ElementUi from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
+import 'muse-ui/dist/theme-carbon.css' // 使用 carbon 主题
+Vue.use(MuseUI)
 
 Vue.config.productionTip = false
 

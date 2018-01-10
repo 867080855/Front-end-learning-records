@@ -1,4 +1,4 @@
-# 忽略文件
+# 依赖文件
 node_modules/
 bower_components/
 .project
@@ -12,6 +12,7 @@ traceur-compiler/
 
 #开发引用
 bootstrap/
+font-awesome-4.7.0/
 
 # 尚不能提交的内容
 16_templates/
