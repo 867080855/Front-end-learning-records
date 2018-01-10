@@ -28,7 +28,8 @@
 							<div class="line-third line">月售{{food.sellCount}}份<span class="good-rating">好评率{{food.rating}}%</span></div>
 							<div class="line-forth line">
 								￥{{food.price}}<span class="delete" v-if="food.oldPrice != 0">￥{{food.oldPrice}}</span>
-								<v-cartctrl :food="food" class="clearfix" @change="changeList"></v-cartctrl>
+								<v-cartctrl :food="food" class="clearfix"></v-cartctrl>
+								<!-- <v-cartctrl :food="food" class="clearfix" @change="changeList"></v-cartctrl> -->
 							</div>
 						</div>
 					</div>
@@ -56,13 +57,13 @@ export default {
 	data(){
 		return {
 			goods: [],
-			selectFoods: []
+			// selectFoods: []
 		}
 	},
 	created(){
 		this.goods = data.goods;
 		this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
-		console.log(this.goods);
+		// console.log(this.goods);
 
 
 		// 注意此处的 this.$refs.menuWrapper
@@ -136,6 +137,22 @@ export default {
 				}
 			}
 			// console.log(this.selectFoods);
+		}
+	},
+	computed: {
+		selectFoods(){
+			let foods = [];
+			// 注意 this.goods 和 item.foods 都是数组， 即子组件改变数据父组件也会被改变。
+				// 不受到vue2 单向数据绑定的影响
+			// 除此之外，如果数据是对象，也会和数组一样受到影响
+			this.goods.forEach((item)=>{
+				item.foods.forEach((food)=>{
+					if(food.count)
+						foods.push(food);
+				});
+			});
+			// console.log(foods);
+			return foods;
 		}
 	},
 	components: {

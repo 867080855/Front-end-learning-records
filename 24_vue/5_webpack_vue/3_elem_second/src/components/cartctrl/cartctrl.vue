@@ -1,51 +1,40 @@
 <template>
     <div class="cartctrl">
-        <span class="iconfont icon-jian" @click="substr($event)"></span>
+        <span class="iconfont icon-jian" v-show="food.count > 0" @click.stop.prevent="substr($event)"></span>
 
-        <span class="count" v-show="!show">{{count}}</span>
-        <span class="count" v-show="show">{{selectCount}}</span>
+        <span class="count" v-show="food.count > 0">{{food.count}}</span>
+        <!-- <span class="count" v-show="show">{{selectCount}}</span> -->
         
-        <span class="iconfont icon-jia" @click="add($event)"></span>
+        <!-- @click.stop.prevent阻止默认事件 -->
+        <span class="iconfont icon-jia" @click.stop.prevent="add($event)"></span>
     </div>
 </template>
 
 <script>
+import Vue from "vue"
+
+
 export default {
     name: 'cartctrl',
+    // 如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态
     props: {
         food: {
             type: Object
         }
     },
     data(){
-        return {
-            // 将父元素传进来的值定义为局部变量避免污染
-            foodPrivate: this.food,
-            count: 0,
-            selectCount: 0
-        }
+        return {}
     },
     methods: {
         substr(event){
-            this.count--;
-            this.$emit('change', this.foodPrivate, event.target);
+            this.food.count--;
         },
         add(event){
-            this.count++;
-            this.$emit('change', this.foodPrivate, event.target);
-            // event.target 表示点击的那个 div
-        }
-    },
-    computed: {
-        show(){
-            for(var key in this.foodPrivate){
-                if(key == 'count'){
-                    console.log(key);
-                    this.selectCount = this.foodPrivate[key];
-                    return true;
-                }
+            if (!this.food.count) {
+                Vue.set(this.food, 'count', 1);
+            } else {
+                this.food.count++;
             }
-            return false;
         }
     }
 }
