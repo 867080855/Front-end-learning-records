@@ -15,6 +15,7 @@
 import top from './components/top/top.vue'
 import card from './components/card/card.vue'
 
+
 import data from './common/data/data.json'
 import BScroll from 'better-scroll'
 
@@ -60,6 +61,7 @@ export default {
 		position relative
 		left 0
 		top 60px
+		padding-top 60pxs
 		bottom 0
 		width 100%
 		height 100%
@@ -70,6 +72,7 @@ export default {
 			box-sizing border-box
 			padding-top 10px
 			background-color rgb(220,220,220)
+			// background-color rgb(220,220,220)
 		.card-wrapper:nth-of-type(n)
 			padding-left 10px
 			padding-right 5px
@@ -80,7 +83,6 @@ export default {
 		.card-wrapper:last-child
 			padding-bottom 10px
 			margin-bottom 60px
-	
 </style>
 
 
