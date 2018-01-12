@@ -59,9 +59,9 @@ export default {
 		},
 		functionTrigger(obj){
 			// console.log(obj);	// markdown/涂鸦
-			this.toggleMask();
 
 			if(obj.name === this.items[0].name){
+				this.toggleMask();
 				newPage(obj);
 			}else{
 				sort(obj);

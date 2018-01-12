@@ -2,14 +2,15 @@
 	<!-- <v-header>as</v-header> -->
 	<div class="card">
 		<div class="title">{{card.title}}</div>
-		<div class="content">{{card.desc}}</div>
+		<div class="content">
+			<v-scroll>{{card.desc}}</v-scroll>
+		</div>
 	</div>
 </template>
 
 
 <script>
-// import {Header} from 'mint-ui'
-// import Vue from 'vue's
+import Scroll from "../scroll/scroll.vue"
 
 export default {
 	name: 'card',
@@ -27,7 +28,7 @@ export default {
 		}
 	},
 	components: {
-		// 'v-header': Header
+		'v-scroll': Scroll
 	}
 }
 </script>

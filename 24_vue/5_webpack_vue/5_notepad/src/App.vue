@@ -17,7 +17,7 @@ import card from './components/card/card.vue'
 
 
 import data from './common/data/data.json'
-import BScroll from 'better-scroll'
+// import BScroll from 'better-scroll'
 
 
 export default {
@@ -30,9 +30,9 @@ export default {
 	created(){
 		this.cards = data.cards;
 		this.$nextTick(()=>{
-			this.scroll = new BScroll(this.$refs.cardWrapper,{
-				click: true
-			});
+			// this.scroll = new BScroll(this.$refs.cardWrapper,{
+			// 	click: true
+			// });
 		});
 	},
 	components: {
@@ -66,11 +66,13 @@ export default {
 		width 100%
 		height 100%
 		min-width 400px
+		overflow-y scroll
 		.card-wrapper
 			display inline-block
 			width 50%
 			box-sizing border-box
 			padding-top 10px
+			vertical-align top
 			background-color rgb(220,220,220)
 			// background-color rgb(220,220,220)
 		.card-wrapper:nth-of-type(n)

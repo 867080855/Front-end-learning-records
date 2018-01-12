@@ -5,7 +5,8 @@
             <div class="top">
                 <div class="left">
                     <div class="input-wrapper">
-                        <input type="text" v-model="titleText">
+                        <input type="text" v-model="titleText" placeholder="Title" 
+                            onfocus="this.placeholder=''" onblur="this.placeholder='Title'">
                     </div>
                 </div>
                 <div class="middle">
@@ -35,14 +36,23 @@
                     </div>
                 </div>
             </div>
-            <div class="content-wrapper"></div>
+            <div class="content-wrapper" >
+                <div class="content">
+                    <div class="wrapper">
+                        <div class="text">{{content}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 // import Vue from "vue"
-
+// import BScroll from "better-scroll"
+// import IScroll from "../../common/js/iscroll.js"
+// import IScroll from "iscroll"
+import Scroll from "../scroll/scroll.vue"
 
 export default {
     name: 'writer',
@@ -51,13 +61,29 @@ export default {
     },
     data(){
         return {
-            titleText: 'Title',
+            titleText: '',
+            content: 'GitHub is a web-based Git version control repository hosting service. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project',
             category: ['工作','学习','生活'],
             listShow: false,
-            isActive: false,
+            isActive: false, 
             changeIcon: false,
             currentIndex: 0
         }
+    },
+    mounted(){
+        // this.$nextTick(()=>{
+            
+        // });  
+        // setTimeout(() => {
+        //     if(!this.conScroll){
+        //         this.conScroll = new BScroll(this.$refs.conWrapper, {
+        //             click: true
+        //         });
+        //         console.log(this.conScroll);
+        //     }else{
+        //         this.conScroll.refresh();
+        //     }
+        // }, 2000);
     },
     methods: {
         putIn(){
@@ -84,6 +110,9 @@ export default {
             console.log('saved');
         }
     },
+    components: {
+        'v-scroll': Scroll
+    }
     // 自定义指令实现文本框聚焦
     // directives: {
     //     focus: {
