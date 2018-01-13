@@ -1,9 +1,11 @@
 <template>
 	<!-- <v-header>as</v-header> -->
 	<div class="card">
-		<div class="title">{{card.title}}</div>
+		<div class="title">{{cardPrivate.title}}</div>
 		<div class="content">
-			<v-scroll>{{card.desc}}</v-scroll>
+			<v-scroll>
+				<div v-html="compiledMarkdown"></div>
+			</v-scroll>
 		</div>
 	</div>
 </template>
@@ -11,6 +13,8 @@
 
 <script>
 import Scroll from "../scroll/scroll.vue"
+import Marked from "marked"
+
 
 export default {
 	name: 'card',
@@ -18,13 +22,22 @@ export default {
 		card: {
 			type: Object,
 			default(){
-				return {title: '标题', desc: '内容'}
+				return {title: 'title', desc: 'desc'}
 			}
 		}
 	},
 	data(){
 		return {
-			content: 'card content'
+			cardPrivate: {},
+			markedDesc: ''
+		}
+	},
+	created(){
+		this.cardPrivate = this.card;
+	},
+	computed: {
+		compiledMarkdown(){
+			return Marked(this.cardPrivate.desc);
 		}
 	},
 	components: {
