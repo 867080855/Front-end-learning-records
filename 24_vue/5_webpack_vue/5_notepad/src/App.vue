@@ -3,8 +3,8 @@
 		<v-top class="top"></v-top>
 		<div class="cards-wrapper" ref="cardWrapper">
 			<div>
-				<div class="card-wrapper" v-for="card in cards">
-					<v-card :card="card"></v-card>
+				<div class="card-wrapper" v-for="(card, index) in cards">
+					<v-card :card="card" :index="index"></v-card>
 				</div>
 			</div>
 		</div>

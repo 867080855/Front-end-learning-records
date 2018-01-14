@@ -100,11 +100,11 @@ export default {
         // 保存文本内容到本地
         save(){
             // 拿到文件title
-            console.log(this.titleText);
+            // console.log(this.titleText);
             // 拿到文件分组类型
-            console.log(this.currentIndex);
+            // console.log(this.currentIndex);
             // 拿到用户具体文本
-            console.log(this.content);
+            // console.log(this.content);
 
             // 保存当前数据到本地数据的第一条
             let data = JSON.parse(localStorage.getItem('dataPrivate'));
@@ -113,6 +113,9 @@ export default {
                 desc: this.content
             });
             localStorage.setItem('dataPrivate', JSON.stringify(data));
+
+            this.$parent.toggleMask();
+            this.$parent.toggleList();
         }
     },
     components: {

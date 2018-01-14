@@ -6,14 +6,27 @@
     border-radius 0 10px 10px 10px
     background-color white
     vertical-align top
-    .title
-        height 39px
-        font-size 15px
-        line-height 40px
-        font-weight bold
-        padding-left 10px
-        border-left 4px solid #096CA1
+    .top 
+        display flex
         border-bottom 1px solid #ddd
+        border-left 4px solid #096CA1
+        .title
+            flex 2
+            height 39px
+            font-size 15px
+            line-height 40px
+            font-weight bold
+            padding-left 10px
+        .right
+            display flex
+            flex 1
+            .fa
+                text-align center
+                line-height 39px
+            .edit
+                flex 1
+            .close
+                flex 1
     .content
         padding 12px
         height 260px
