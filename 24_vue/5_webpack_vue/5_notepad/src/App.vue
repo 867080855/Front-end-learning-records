@@ -83,8 +83,8 @@ export default {
 			padding-right 10px
 		.card-wrapper:nth-last-child(2),
 		.card-wrapper:last-child
-			padding-bottom 10px
-			margin-bottom 60px
+			// padding-bottom 10px
+			// margin-bottom 60px
 </style>
 
 

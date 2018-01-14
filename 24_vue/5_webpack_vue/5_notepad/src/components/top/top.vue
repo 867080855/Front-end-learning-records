@@ -24,9 +24,9 @@
 
 
 		<transition name="mask">
-			<div v-show="maskShow" class="mask" @click="toggleMask" >
+			<v-masker v-show="maskShow" class="mask" @click="toggleMask" >
 				<v-writter></v-writter>
-			</div>
+			</v-masker>
 		</transition>
 	</div>
 </template>
@@ -39,6 +39,7 @@ localStorage.setItem('itemsPrivate', JSON.stringify(items));
 
 import listItem from "../listitem/listitem.vue"
 import writter from '../writer/writer.vue'
+import Masker from "../mask/mask.vue"
 
 export default {
 	name: 'top',
@@ -60,7 +61,7 @@ export default {
 			this.maskShow = !this.maskShow;
 		},
 		functionTrigger(obj, func){
-			console.log(obj);	// markdown/涂鸦
+			// console.log(obj);	// markdown/涂鸦
 
 			if(obj.name === this.itemsGeted[0].name){
 				if(func == 'Markdown'){
@@ -91,7 +92,8 @@ export default {
 	},
 	components: {
 		'v-listitem': listItem,
-		'v-writter': writter
+		'v-writter': writter,
+		'v-masker': Masker
 	}
 }
 </script>

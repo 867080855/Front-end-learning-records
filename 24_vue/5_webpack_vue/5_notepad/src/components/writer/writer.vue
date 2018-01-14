@@ -5,7 +5,7 @@
             <div class="top">
                 <div class="left">
                     <div class="input-wrapper">
-                        <input type="text" v-model="titleText" placeholder="Title" 
+                        <input type="text" v-model="titleTextPrivate" placeholder="Title" 
                             onfocus="this.placeholder=''" onblur="this.placeholder='Title'">
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                 <div class="content">
                     <div class="wrapper">
                         <!-- <div class="text">{{content}}</div> -->
-                        <textarea class="text" v-model="content" cols="30" rows="10"></textarea>
+                        <textarea class="text" v-model="contentPrivate" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
@@ -49,37 +49,46 @@
 </template>
 
 <script>
-// import Vue from "vue"
-// import BScroll from "better-scroll"
-// import IScroll from "../../common/js/iscroll.js"
-// import IScroll from "iscroll"
 import Scroll from "../scroll/scroll.vue"
 
 export default {
     name: 'writer',
     props: {
-
+        typeOut: {
+            type: Number,
+            defalut: 1
+        },
+        index: Number,
+        card: Object
     },
     data(){
         return {
             // 文章标题 和 文本
-            titleText: '',
-            content: '',
+            titleTextPrivate: '',
+            contentPrivate: '',
 
             // 文章分类 
             category: ['工作','学习','生活'],
             isActive: false,    // 点中分类后的阴影效果
             changeIcon: false,  // 分类右侧的箭头上下方向切换
             listShow: false,    // 是否显示文本类型分类列表
-            currentIndex: 0     // 当前选中分类的类目
+            currentIndex: 0,    // 当前选中分类的类目
 
-            // 
+            // 两种调用方式   1. 新建     2. 编辑
+            type: 1,
+            currentIndex: 0
+        }
+    },
+    created(){
+        this.type = this.typeOut;
+        this.currentIndex = this.index;
+        if(this.type == 2){
+            // console.log(this.card.desc);
+            this.contentPrivate = this.card.desc;
+            this.titleTextPrivate = this.card.title;
         }
     },
     methods: {
-        putIn(){
-
-        },
         Focus(){
             this.focusStat = true;
         },
@@ -94,8 +103,12 @@ export default {
         },
         // 关闭当前父组件的所有list
         close(){
-            this.$parent.toggleMask();
-            this.$parent.toggleList();
+            if(this.$parent.$parent.toggleMask && this.$parent.$parent.toggleList){
+                this.$parent.$parent.toggleMask();
+                this.$parent.$parent.toggleList();
+            }else if(this.$parent.$parent.toggleMask){
+                this.$parent.$parent.toggleMask();
+            }
         },
         // 保存文本内容到本地
         save(){
@@ -108,15 +121,21 @@ export default {
 
             // 保存当前数据到本地数据的第一条
             let data = JSON.parse(localStorage.getItem('dataPrivate'));
-            data.cards.unshift({
-                title: this.titleText,
-                desc: this.content
-            });
+            if(this.type == 1){
+                data.cards.unshift({
+                    title: this.titleTextPrivate,
+                    desc: this.contentPrivate
+                });
+            }else if(this.type == 2){
+                data.cards[this.currentIndex] = {
+                    title: this.titleTextPrivate,
+                    desc: this.contentPrivate
+                }
+            }
             localStorage.setItem('dataPrivate', JSON.stringify(data));
-
-            this.$parent.toggleMask();
-            this.$parent.toggleList();
-        }
+            // 列表框消失
+            this.close();
+        },
     },
     components: {
         'v-scroll': Scroll

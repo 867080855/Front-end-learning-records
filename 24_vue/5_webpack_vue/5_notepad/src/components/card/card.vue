@@ -13,12 +13,22 @@
 				<div v-html="compiledMarkdown"></div>
 			</v-scroll>
 		</div>
+
+		<transition name="fade">
+			<div @click="toggleMask">
+				<v-masker v-show="maskShow" class="mask" >
+					<v-writer :typeOut="2" :card="cardPrivate" :index="currentIndex"></v-writer>
+				</v-masker>
+			</div>
+		</transition>
 	</div>
 </template>
 
 
 <script>
 import Scroll from "../scroll/scroll.vue"
+import Writer from "../writer/writer.vue"
+import Masker from "../mask/mask.vue"
 import Marked from "marked"
 
 export default {
@@ -34,9 +44,11 @@ export default {
 	},
 	data(){
 		return {
-			cardPrivate: {},
-			currentIndex: 0,
-			markedDesc: ''
+			cardPrivate: {},	// 主要数据
+			currentIndex: 0,	// 当前内容在cards数组的索引值
+			markedDesc: '',		// 编译后的内容
+
+			maskShow: false
 		}
 	},
 	created(){
@@ -55,11 +67,17 @@ export default {
 		}
 	},
 	methods:{
-		edit(){
-			console.log('edit');
+		toggleMask(){
+			this.maskShow = !this.maskShow;
 		},
+		// 编辑便签
+		edit(){
+			// console.log(this.$parent);
+			this.toggleMask();
+		},
+		// 删除便签
 		close(){
-			let flag = false;
+			let flag = true;
 			
 			if(flag){
 				// console.log(this.currentIndex);
@@ -81,7 +99,9 @@ export default {
 		}
 	},
 	components: {
-		'v-scroll': Scroll
+		'v-scroll': Scroll,
+		'v-writer': Writer,
+		'v-masker': Masker
 	}
 }
 </script>
