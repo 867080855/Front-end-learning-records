@@ -17,7 +17,7 @@
 		<transition name="fade">
 			<div @click="toggleMask">
 				<v-masker v-show="maskShow" class="mask" >
-					<v-writer :typeOut="2" :card="cardPrivate" :index="currentIndex"></v-writer>
+					<v-writer :typeOut="2" :card="cardPrivate" :index="currentIndex" @saved="changeContent"></v-writer>
 				</v-masker>
 			</div>
 		</transition>
@@ -96,6 +96,9 @@ export default {
 				// 使用js原生方法移除card组件及其父盒子
 				this.$el.parentNode.remove();
 			}
+		},
+		changeContent(obj){
+			this.cardPrivate.desc = obj.desc;
 		}
 	},
 	components: {

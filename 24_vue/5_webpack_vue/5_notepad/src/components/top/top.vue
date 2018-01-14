@@ -13,7 +13,7 @@
 				<transition> 元素作为单个元素/组件的过渡效果
 			-->
 			<transition name="fade">
-				<div class="container" v-show="listShow" @changed="changed">
+				<div class="container" v-show="listShow">
 					<div v-for="item in itemsGeted">
 						<!-- 创建一个父目录 如 New 及多个子目录 如 markdown，涂鸦... -->
 						<v-listitem :item="item" @clicked="functionTrigger"></v-listitem>
@@ -25,7 +25,7 @@
 
 		<transition name="mask">
 			<v-masker v-show="maskShow" class="mask" @click="toggleMask" >
-				<v-writter></v-writter>
+				<v-writter @saved="changeContent"></v-writter>
 			</v-masker>
 		</transition>
 	</div>
@@ -86,8 +86,8 @@ export default {
 				console.log('sort');
 			}
 		},
-		changed(data){
-			console.log(data);
+		changeContent(obj){
+			this.$emit('savedFromHead',obj);
 		}
 	},
 	components: {

@@ -56,7 +56,7 @@ export default {
     props: {
         typeOut: {
             type: Number,
-            defalut: 1
+            default: 1
         },
         index: Number,
         card: Object
@@ -121,18 +121,22 @@ export default {
 
             // 保存当前数据到本地数据的第一条
             let data = JSON.parse(localStorage.getItem('dataPrivate'));
+            let chanegdData = {
+                title: this.titleTextPrivate,
+                desc: this.contentPrivate
+            };
+
             if(this.type == 1){
-                data.cards.unshift({
-                    title: this.titleTextPrivate,
-                    desc: this.contentPrivate
-                });
+                data.cards.unshift(chanegdData);
+                // this.$emit('saved',chanegdData);
+                console.log(1);
             }else if(this.type == 2){
-                data.cards[this.currentIndex] = {
-                    title: this.titleTextPrivate,
-                    desc: this.contentPrivate
-                }
+                // this.$emit('saved',chanegdData);
+                data.cards[this.currentIndex] = chanegdData;
             }
+            // 内容存储本地
             localStorage.setItem('dataPrivate', JSON.stringify(data));
+            this.$emit('saved',chanegdData);
             // 列表框消失
             this.close();
         },

@@ -1,6 +1,6 @@
 <template>
 	<div class="app">
-		<v-top class="top"></v-top>
+		<v-top class="top" @savedFromHead="refresh"></v-top>
 		<div class="cards-wrapper" ref="cardWrapper">
 			<div>
 				<div class="card-wrapper" v-for="(card, index) in cards">
@@ -34,6 +34,13 @@ export default {
 	created(){
 		// 初始化数据
 		this.cards = this.dataGeted.cards;
+	},
+	methods:{
+		refresh(obj){
+			console.log(this);
+			this.cards = JSON.parse(localStorage.getItem('dataPrivate')).cards;
+			this.$forceUpdate();
+		}
 	},
 	components: {
 		'v-top': top,
