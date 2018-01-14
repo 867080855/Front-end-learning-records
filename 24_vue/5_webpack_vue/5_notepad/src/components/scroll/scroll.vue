@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
     @import "./scroll.styl"
 </style>
 

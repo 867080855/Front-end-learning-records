@@ -14,7 +14,7 @@
 			-->
 			<transition name="fade">
 				<div class="container" v-show="listShow" @changed="changed">
-					<div v-for="item in items">
+					<div v-for="item in itemsGeted">
 						<!-- 创建一个父目录 如 New 及多个子目录 如 markdown，涂鸦... -->
 						<v-listitem :item="item" @clicked="functionTrigger"></v-listitem>
 					</div>
@@ -33,7 +33,9 @@
 
 
 <script>
+// 转化为本地存储数据
 import items from "../../common/data/items.json"
+localStorage.setItem('itemsPrivate', JSON.stringify(items));
 
 import listItem from "../listitem/listitem.vue"
 import writter from '../writer/writer.vue'
@@ -42,13 +44,13 @@ export default {
 	name: 'top',
 	data(){
 		return {
-			maskShow: false,
-			listShow: false
+			maskShow: false,	// 显示遮罩层的flag
+			listShow: false,	// 显示列表框的flag
+			itemsGeted: []
 		}
 	},
 	created(){
-		this.items = items.data;
-		// console.log(this.items);
+		this.itemsGeted = JSON.parse(localStorage.getItem('itemsPrivate')).data;
 	},
 	methods: {
 		toggleList(){
@@ -57,15 +59,22 @@ export default {
 		toggleMask(){
 			this.maskShow = !this.maskShow;
 		},
-		functionTrigger(obj){
-			// console.log(obj);	// markdown/涂鸦
+		functionTrigger(obj, func){
+			console.log(obj);	// markdown/涂鸦
 
-			if(obj.name === this.items[0].name){
-				this.toggleMask();
-				newPage(obj);
+			if(obj.name === this.itemsGeted[0].name){
+				if(func == 'Markdown'){
+					this.toggleMask();
+					newPage(obj);
+				}else if(func == '涂鸦'){
+					alert('尚不支持，客官稍后呐...');
+				}
 			}else{
+				// 尚未开始书写
 				sort(obj);
 			}
+
+
 			function newPage(obj){
 				// obj[] = ['Markdown', '涂鸦']
 				obj.funcs.forEach((func)=>{

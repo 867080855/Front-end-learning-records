@@ -6,7 +6,7 @@
         </div>
         <transition name="fade">
             <div class="func-wrapper" v-show="listShow">
-                <div v-for="func in itemPrivate.funcs" class="func" @click="clicked(itemPrivate)">{{func}}</div>
+                <div v-for="func in itemPrivate.funcs" class="func" @click="clicked(itemPrivate, func)">{{func}}</div>
             </div>
         </transition>
     </div>
@@ -36,8 +36,8 @@ export default {
         toggleList(){
             this.listShow = !this.listShow;
         },
-        clicked(obj){
-            this.$emit('clicked', obj);
+        clicked(obj, func){
+            this.$emit('clicked', obj, func);
         }
     }
 }

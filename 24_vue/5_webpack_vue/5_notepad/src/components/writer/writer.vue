@@ -39,7 +39,8 @@
             <div class="content-wrapper" >
                 <div class="content">
                     <div class="wrapper">
-                        <div class="text">{{content}}</div>
+                        <!-- <div class="text">{{content}}</div> -->
+                        <textarea class="text" v-model="content" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
@@ -61,29 +62,19 @@ export default {
     },
     data(){
         return {
+            // 文章标题 和 文本
             titleText: '',
-            content: 'GitHub is a web-based Git version control repository hosting service. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project',
+            content: '',
+
+            // 文章分类 
             category: ['工作','学习','生活'],
-            listShow: false,
-            isActive: false, 
-            changeIcon: false,
-            currentIndex: 0
+            isActive: false,    // 点中分类后的阴影效果
+            changeIcon: false,  // 分类右侧的箭头上下方向切换
+            listShow: false,    // 是否显示文本类型分类列表
+            currentIndex: 0     // 当前选中分类的类目
+
+            // 
         }
-    },
-    mounted(){
-        // this.$nextTick(()=>{
-            
-        // });  
-        // setTimeout(() => {
-        //     if(!this.conScroll){
-        //         this.conScroll = new BScroll(this.$refs.conWrapper, {
-        //             click: true
-        //         });
-        //         console.log(this.conScroll);
-        //     }else{
-        //         this.conScroll.refresh();
-        //     }
-        // }, 2000);
     },
     methods: {
         putIn(){
@@ -101,13 +92,27 @@ export default {
             this.currentIndex = index;
             this.toggleList();
         },
+        // 关闭当前父组件的所有list
         close(){
-            // 关闭当前父组件的所有list
             this.$parent.toggleMask();
             this.$parent.toggleList();
         },
+        // 保存文本内容到本地
         save(){
-            console.log('saved');
+            // 拿到文件title
+            console.log(this.titleText);
+            // 拿到文件分组类型
+            console.log(this.currentIndex);
+            // 拿到用户具体文本
+            console.log(this.content);
+
+            // 保存当前数据到本地数据的第一条
+            let data = JSON.parse(localStorage.getItem('dataPrivate'));
+            data.cards.unshift({
+                title: this.titleText,
+                desc: this.content
+            });
+            localStorage.setItem('dataPrivate', JSON.stringify(data));
         }
     },
     components: {

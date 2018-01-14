@@ -16,24 +16,24 @@ import top from './components/top/top.vue'
 import card from './components/card/card.vue'
 
 
+// 处理静态数据为本地存储
 import data from './common/data/data.json'
-// import BScroll from 'better-scroll'
+if(!localStorage.getItem('dataPrivate')){
+	localStorage.setItem('dataPrivate', JSON.stringify(data));
+}
 
 
 export default {
 	name: 'app',
 	data(){
 		return {
-			cards: []
+			cards: [],
+			dataGeted: JSON.parse(localStorage.getItem('dataPrivate'))
 		}
 	},
 	created(){
-		this.cards = data.cards;
-		this.$nextTick(()=>{
-			// this.scroll = new BScroll(this.$refs.cardWrapper,{
-			// 	click: true
-			// });
-		});
+		// 初始化数据
+		this.cards = this.dataGeted.cards;
 	},
 	components: {
 		'v-top': top,

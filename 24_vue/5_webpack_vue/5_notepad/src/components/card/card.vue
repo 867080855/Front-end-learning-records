@@ -16,6 +16,7 @@ import Scroll from "../scroll/scroll.vue"
 import Marked from "marked"
 
 
+
 export default {
 	name: 'card',
 	props: {
@@ -37,7 +38,13 @@ export default {
 	},
 	computed: {
 		compiledMarkdown(){
-			return Marked(this.cardPrivate.desc);
+			// Synchronous highlighting with highlight.js
+
+			return Marked(this.cardPrivate.desc,{
+				highlight: function (code) {
+					return require('highlight.js').highlightAuto(code).value;
+				}
+			})
 		}
 	},
 	components: {
@@ -48,4 +55,8 @@ export default {
 
 <style lang="stylus" scoped>
 	@import "./card.styl"
+</style>
+
+<style>
+	@import "./card.css"
 </style>

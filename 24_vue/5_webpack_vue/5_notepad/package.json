@@ -12,6 +12,7 @@
   "dependencies": {
     "better-scroll": "^1.7.2",
     "firebase": "^4.8.1",
+    "highlight.js": "^9.12.0",
     "iscroll": "^5.2.0",
     "marked": "^0.3.12",
     "stylus": "^0.54.5",
