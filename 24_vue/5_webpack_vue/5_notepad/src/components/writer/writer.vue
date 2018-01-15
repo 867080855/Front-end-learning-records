@@ -147,13 +147,14 @@ export default {
                 if(item.id > max)
                     max = item.id;
             });
+            // 准备好要提交的数据
             let chanegdData = {
                 title: this.titleTextPrivate,
                 desc: this.contentPrivate,
                 id: ++max,
                 type: this.itemIndex
             };
-
+            // 根据type判断是哪个组件打开的本组件
             if(this.type == 1){
                 data.cards.unshift(chanegdData);
                 // this.$emit('saved',chanegdData);
