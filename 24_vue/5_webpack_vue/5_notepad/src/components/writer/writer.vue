@@ -96,6 +96,15 @@ export default {
         }
     },
     methods: {
+        init(){
+            if(this.titleTextPrivate)
+                this.titleTextPrivate = '';
+            if(this.contentPrivate)
+                this.contentPrivate = '';
+            if(this.itemIndex != 0)
+                this.itemIndex = 0;
+            console.log('inited');
+        },  
         // 标题聚焦
         Focus(){
             this.focusStat = true;
@@ -154,6 +163,9 @@ export default {
             }
             // 内容存储本地
             localStorage.setItem('dataPrivate', JSON.stringify(data));
+            // 如果是新建页面，重新初始化页面为空白状态
+            if(this.type == 1)
+                this.init();
             // 告知父级组件本地修改任务完成
             this.$emit('saved',chanegdData);
             // 列表框消失
