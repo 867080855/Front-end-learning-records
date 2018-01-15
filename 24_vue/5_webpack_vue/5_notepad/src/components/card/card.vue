@@ -83,7 +83,6 @@ export default {
 				// console.log(this.currentIndex);
 				let arr = JSON.parse(localStorage.getItem('dataPrivate')).cards;
 				// 删除指定索引的元素
-				console.log(arr);
 				arr.splice(this.currentIndex, 1);	
 				
 				localStorage.setItem('dataPrivate', JSON.stringify({

@@ -3,7 +3,8 @@
 		<v-top class="top" @savedFromHead="refresh"></v-top>
 		<div class="cards-wrapper" ref="cardWrapper">
 			<div>
-				<div class="card-wrapper" v-for="(card, index) in cards">
+				<div class="card-wrapper" v-for="(card, index) in cards" :key="card.id">
+					{{card.id}}
 					<v-card :card="card" :index="index"></v-card>
 				</div>
 			</div>

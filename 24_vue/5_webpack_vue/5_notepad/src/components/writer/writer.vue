@@ -131,22 +131,30 @@ export default {
 
             // 保存当前数据到本地数据的第一条
             let data = JSON.parse(localStorage.getItem('dataPrivate'));
+
+            // 拿到唯一辨识度的id，默认比当前所有项目的id高一个数
+            let max = 0;
+            data.cards.forEach((item)=>{
+                if(item.id > max)
+                    max = item.id;
+            });
             let chanegdData = {
                 title: this.titleTextPrivate,
                 desc: this.contentPrivate,
+                id: ++max,
                 type: this.itemIndex
             };
 
             if(this.type == 1){
                 data.cards.unshift(chanegdData);
                 // this.$emit('saved',chanegdData);
-                console.log(1);
             }else if(this.type == 2){
                 // this.$emit('saved',chanegdData);
                 data.cards[this.currentIndex] = chanegdData;
             }
             // 内容存储本地
             localStorage.setItem('dataPrivate', JSON.stringify(data));
+            // 告知父级组件本地修改任务完成
             this.$emit('saved',chanegdData);
             // 列表框消失
             this.close();
