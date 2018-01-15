@@ -35,7 +35,9 @@
 <script>
 // 转化为本地存储数据
 import items from "../../common/data/items.json"
-localStorage.setItem('itemsPrivate', JSON.stringify(items));
+if(!localStorage.getItem('itemsPrivate')){
+	localStorage.setItem('itemsPrivate', JSON.stringify(items));
+}
 
 import listItem from "../listitem/listitem.vue"
 import writter from '../writer/writer.vue'

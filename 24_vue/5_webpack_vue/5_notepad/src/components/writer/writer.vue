@@ -13,7 +13,7 @@
                     <div class="selected">
                         <!-- 单击切换类名 -->
                         <div class="text" :class="{'active': isActive}" @click="toggleList">
-                            {{category[currentIndex]}}
+                            {{category[itemIndex]}}
                             <i class="fa" :class="{'fa-angle-down': !changeIcon, 'fa-angle-up': changeIcon}"></i>
                         </div>
                     </div>
@@ -54,12 +54,15 @@ import Scroll from "../scroll/scroll.vue"
 export default {
     name: 'writer',
     props: {
-        typeOut: {
+        // 外界的打开writer组件的分辨变量，对应新建和编辑
+        typeOut: {  
             type: Number,
             default: 1
         },
-        index: Number,
-        card: Object
+
+
+        index: Number,  // card组件索引
+        card: Object    // card组件会传进来的数据
     },
     data(){
         return {
@@ -72,33 +75,40 @@ export default {
             isActive: false,    // 点中分类后的阴影效果
             changeIcon: false,  // 分类右侧的箭头上下方向切换
             listShow: false,    // 是否显示文本类型分类列表
-            currentIndex: 0,    // 当前选中分类的类目
+            itemIndex: 0,    // 当前选中分类的类目
 
-            // 两种调用方式   1. 新建     2. 编辑
-            type: 1,
-            currentIndex: 0
+            // 两种调用方式   
+            type: 1,            // 1. 新建    2. 编辑
+            currentIndex: 0     // 选中的card在cards数组的索引
         }
     },
     created(){
-        this.type = this.typeOut;
-        this.currentIndex = this.index;
+        this.type = this.typeOut;           // 确定是谁打开的wrtier，是card还是top
+
+
+        // 如果是card打开的，需要进行相关数据的绑定
         if(this.type == 2){
             // console.log(this.card.desc);
-            this.contentPrivate = this.card.desc;
-            this.titleTextPrivate = this.card.title;
+            this.itemIndex = this.card.type;            // 绑定card信息所选择的文章分类
+            this.currentIndex = this.index;             // 绑定索引
+            this.contentPrivate = this.card.desc;       // 同步内容
+            this.titleTextPrivate = this.card.title;    // 同步标题
         }
     },
     methods: {
+        // 标题聚焦
         Focus(){
             this.focusStat = true;
         },
+        // 切换文章分类列表的现实
         toggleList(){
             this.listShow = !this.listShow;
             this.isActive = !this.isActive;
             this.changeIcon = !this.changeIcon;
         },
+        // 更改文章分类
         changeItem(index){
-            this.currentIndex = index;
+            this.itemIndex = index;
             this.toggleList();
         },
         // 关闭当前父组件的所有list
@@ -123,7 +133,8 @@ export default {
             let data = JSON.parse(localStorage.getItem('dataPrivate'));
             let chanegdData = {
                 title: this.titleTextPrivate,
-                desc: this.contentPrivate
+                desc: this.contentPrivate,
+                type: this.itemIndex
             };
 
             if(this.type == 1){

@@ -1,84 +1,29 @@
 {
     "cards": [
         {
-            "title": "标题1",
-            "desc": "# markDown Test"
+            "title": "测试保存功能",
+            "type": 0,
+            "desc": "保存后列表关闭\n\n啦啦啦\n\n添加的内容\n\n```\nlet a = 1;\nlet b = 2;\nconsole.log(a + b);\n```\n保存后列表关闭\n\n啦啦啦\n\n添加的内容\n\n```\nlet a = 1;\nlet b = 2;\nconsole.log(a + b);\n```\n保存后列表关闭\n\n啦啦啦\n\n添加的内容\n\n```\nlet a = 1;\nlet b = 2;\nconsole.log(a + b);\n```\n保存后列表关闭\n\n啦啦啦\n\n添加的内容\n\n```\nlet a = 1;\nlet b = 2;\nconsole.log(a + b);\n```\n保存后列表关闭\n\n啦啦啦\n\n添加的内容\n\n```\nlet a = 1;\nlet b = 2;\nconsole.log(a + b);\n```"
         },
         {
-            "title": "标题2",
-            "desc": "The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. The context Vue instance is passed as the third argument.The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. The context Vue instance is passed as the third argument.The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. The context Vue instance is passed as the third argument.The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. The context Vue instance is passed as the third argument.The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. The context Vue instance is passed as the third argument."
+            "title": "注释",
+            "type": 0,
+            "desc": "```\n// javascript\n```\n\nadd content\n\nadd content twice\n\nadd content third\n\nadd content forth\n\nfifth\n\nsixth\n\nseventh"
         },
         {
-            "title": "标题3",
-            "desc": "better-scroll is a plugin which is aimed at solving scrolling circumstances on the mobile side (perhaps supporting the PC side in the future). The core is inspired by the implementation of iscroll, so the APIs of better-scroll are compatible with iscroll on the whole. What's more, better-scroll also extends some features and optimizes for performance based on iscroll.better-scroll is a plugin which is aimed at solving scrolling circumstances on the mobile side (perhaps supporting the PC side in the future). The core is inspired by the implementation of iscroll, so the APIs of better-scroll are compatible with iscroll on the whole. What's more, better-scroll also extends some features and optimizes for performance based on iscroll."
-        },
-        {
-            "title": "标题4",
-            "desc": "The best way to learn and use better-scroll is by viewing its demo. We have put all the code in example directory. Considering that one of the most suitable JavaScript MVVM framework for mobile development currently is Vue, and better-scroll can be applied in conjunction with Vue very well, so I rewrote the demo with Vue.The best way to learn and use better-scroll is by viewing its demo. We have put all the code in example directory. Considering that one of the most suitable JavaScript MVVM framework for mobile development currently is Vue, and better-scroll can be applied in conjunction with Vue very well, so I rewrote the demo with Vue."
-        },
-        {
-            "title": "标题5",
-            "desc": "内容5"
+            "title": "代码",
+            "type": 0,
+            "desc": "## 代码测试\n\n```\n<div>\n   <p>123</p>\n<div>\n```"
         },
         {
             "title": "标题6",
-            "desc": "内容6"
-        },
-        {
-            "title": "标题7",
-            "desc": "内容7"
+            "type": 1,
+            "desc": "内容6\n\nappend"
         },
         {
             "title": "标题8",
+            "type": 2,
             "desc": "内容8"
-        },
-        {
-            "title": "标题9",
-            "desc": "内容9"
-        },
-        {
-            "title": "标题10",
-            "desc": "内容10"
-        },
-        {
-            "title": "标题1",
-            "desc": "内容1"
-        },
-        {
-            "title": "标题2",
-            "desc": "内容2"
-        },
-        {
-            "title": "标题3",
-            "desc": "内容3"
-        },
-        {
-            "title": "标题4",
-            "desc": "内容4"
-        },
-        {
-            "title": "标题5",
-            "desc": "内容5"
-        },
-        {
-            "title": "标题6",
-            "desc": "内容6"
-        },
-        {
-            "title": "标题7",
-            "desc": "内容7"
-        },
-        {
-            "title": "标题8",
-            "desc": "内容8"
-        },
-        {
-            "title": "标题9",
-            "desc": "内容9"
-        },
-        {
-            "title": "标题10",
-            "desc": "内容10"
         }
     ]
 }
