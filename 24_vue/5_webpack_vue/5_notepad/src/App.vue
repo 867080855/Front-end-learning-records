@@ -74,6 +74,7 @@ export default {
 		height 100%
 		min-width 400px
 		overflow-y scroll
+		background-color #dcdcdc
 		.card-wrapper
 			display inline-block
 			width 50%
@@ -88,10 +89,10 @@ export default {
 		.card-wrapper:nth-of-type(2n)
 			padding-left 5px
 			padding-right 10px
-		.card-wrapper:nth-last-child(2),
+		// .card-wrapper:nth-last-child(2),
 		.card-wrapper:last-child
-			// padding-bottom 10px
-			// margin-bottom 60px
+			padding-bottom 10px
+			margin-bottom 60px
 </style>
 
 
